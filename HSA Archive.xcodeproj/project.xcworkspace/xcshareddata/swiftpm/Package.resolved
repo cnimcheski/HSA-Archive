@@ -1,0 +1,15 @@
+{
+  "originHash" : "92966e54feeb88e6bf0cba9500b4346f219148ed426b606392689324a0ac39a8",
+  "pins" : [
+    {
+      "identity" : "navigation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cnimcheski/Navigation.git",
+      "state" : {
+        "revision" : "dc1198a47d63af317f2c8c5d8597e2e07d9d1efb",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}
