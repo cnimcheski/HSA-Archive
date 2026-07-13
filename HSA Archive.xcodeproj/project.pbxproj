@@ -136,13 +136,13 @@
 		99C008C03000B26400CDF610 /* HSA Archive */ = {
 			isa = PBXGroup;
 			children = (
+				99C008BF3000B26400CDF610 /* HSA_ArchiveApp.swift */,
 				99C008E23001DE6B00CDF610 /* Components */,
 				99C008D73001A49000CDF610 /* Features */,
 				99C008ED3002A16100CDF610 /* Modifiers */,
 				99C008CC3000B28200CDF610 /* Navigation */,
 				99C00904300415A000CDF610 /* Theme */,
 				99C008BD3000B26400CDF610 /* Assets.xcassets */,
-				99C008BF3000B26400CDF610 /* HSA_ArchiveApp.swift */,
 			);
 			path = "HSA Archive";
 			sourceTree = "<group>";
@@ -194,8 +194,8 @@
 		99C008D73001A49000CDF610 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				99C008D93001A49F00CDF610 /* ReceiptsView */,
 				99C008D83001A49A00CDF610 /* HomeView */,
+				99C008D93001A49F00CDF610 /* ReceiptsView */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -251,8 +251,8 @@
 		99C008ED3002A16100CDF610 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				99C00901300345C400CDF610 /* ExtraLargeTitle */,
 				99C008EE3002A16B00CDF610 /* CardStyle */,
+				99C00901300345C400CDF610 /* ExtraLargeTitle */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
