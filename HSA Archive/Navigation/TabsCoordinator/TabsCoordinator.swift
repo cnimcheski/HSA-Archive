@@ -9,10 +9,10 @@ import Navigation
 import SwiftUI
 
 struct TabsCoordinator: View {
-    @StateObject private var viewModel: TabsCoordinatorViewModel
+    @ObservedObject private var viewModel: TabsCoordinatorViewModel
     
-    init(viewModel: TabsCoordinatorViewModel = .init()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+    init(viewModel: TabsCoordinatorViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {

@@ -11,7 +11,7 @@ import SwiftUI
 struct HSA_ArchiveApp: App {
     var body: some Scene {
         WindowGroup {
-            TabsCoordinator()
+            RootCoordinator()
         }
     }
 }

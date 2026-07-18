@@ -28,7 +28,7 @@ private extension HomeView.Overview {
             Text("Total receipts on file")
                 .foregroundStyle(.secondary)
             Text(8420.15, format: AppFormatStyle.Currency.current)
-                .extraLargeTitle()
+                .xLargeTitle()
                 .fontWeight(.bold)
         }
     }

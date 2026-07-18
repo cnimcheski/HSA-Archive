@@ -1,13 +1,40 @@
 {
-  "originHash" : "92966e54feeb88e6bf0cba9500b4346f219148ed426b606392689324a0ac39a8",
+  "originHash" : "1c69a6ca6e65a411401dd8bd55350b365f3995997efe3ff783893c49d398cd5b",
   "pins" : [
+    {
+      "identity" : "factory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Factory.git",
+      "state" : {
+        "revision" : "27717e148c0c1ed2998f687a8e98d9395d684abf",
+        "version" : "3.3.2"
+      }
+    },
     {
       "identity" : "navigation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Navigation.git",
       "state" : {
-        "revision" : "dc1198a47d63af317f2c8c5d8597e2e07d9d1efb",
-        "version" : "1.0.1"
+        "revision" : "348d0ffdc7b1bf6a4bb3e99198552df8e26fd8e2",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "observabledefaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fatbobman/ObservableDefaults.git",
+      "state" : {
+        "revision" : "5e2cca5f824afe6d08ee00ba064ff6608e110850",
+        "version" : "1.8.10"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "79e4b74a295b6eb74a8b585e3a39d29e70c1dbd1",
+        "version" : "603.0.2"
       }
     }
   ],
