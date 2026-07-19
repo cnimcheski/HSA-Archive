@@ -48,6 +48,7 @@
 		99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0097E300AC79200CDF610 /* RootCoordinator.swift */; };
 		99C00981300AC7A000CDF610 /* RootCoordinator+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00980300AC7A000CDF610 /* RootCoordinator+ViewModel.swift */; };
 		99C00984300C423100CDF610 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00983300C423100CDF610 /* AppButton.swift */; };
+		99C00989300D4F5700CDF610 /* DocumentScannerView in Frameworks */ = {isa = PBXBuildFile; productRef = 99C00988300D4F5700CDF610 /* DocumentScannerView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 				99C0096C30089B5300CDF610 /* FactoryKit in Frameworks */,
 				99C009713008A61900CDF610 /* ObservableDefaults in Frameworks */,
 				99C008BC3000AE6100CDF610 /* Navigation in Frameworks */,
+				99C00989300D4F5700CDF610 /* DocumentScannerView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +442,7 @@
 				99C008BB3000AE6100CDF610 /* Navigation */,
 				99C0096B30089B5300CDF610 /* FactoryKit */,
 				99C009703008A61900CDF610 /* ObservableDefaults */,
+				99C00988300D4F5700CDF610 /* DocumentScannerView */,
 			);
 			productName = "HSA Archive";
 			productReference = 99C008903000ADED00CDF610 /* HSA Archive.app */;
@@ -521,6 +524,7 @@
 				99C008BA3000AE6100CDF610 /* XCRemoteSwiftPackageReference "Navigation" */,
 				99C0096A30089B5300CDF610 /* XCRemoteSwiftPackageReference "Factory" */,
 				99C0096F3008A61900CDF610 /* XCRemoteSwiftPackageReference "ObservableDefaults" */,
+				99C00987300D4F5700CDF610 /* XCRemoteSwiftPackageReference "DocumentScannerView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 99C008913000ADED00CDF610 /* Products */;
@@ -969,6 +973,14 @@
 				minimumVersion = 1.8.10;
 			};
 		};
+		99C00987300D4F5700CDF610 /* XCRemoteSwiftPackageReference "DocumentScannerView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/edonv/DocumentScannerView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -986,6 +998,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99C0096F3008A61900CDF610 /* XCRemoteSwiftPackageReference "ObservableDefaults" */;
 			productName = ObservableDefaults;
+		};
+		99C00988300D4F5700CDF610 /* DocumentScannerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99C00987300D4F5700CDF610 /* XCRemoteSwiftPackageReference "DocumentScannerView" */;
+			productName = DocumentScannerView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
