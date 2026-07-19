@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Navigation.git",
       "state" : {
-        "revision" : "348d0ffdc7b1bf6a4bb3e99198552df8e26fd8e2",
-        "version" : "1.0.2"
+        "revision" : "d1f875917923aed63aed7fb824f9734c894bf189",
+        "version" : "1.0.3"
       }
     },
     {

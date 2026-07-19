@@ -17,7 +17,7 @@
 		99C008D13000B31F00CDF610 /* TabsCoordinator+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008D03000B31F00CDF610 /* TabsCoordinator+ViewModel.swift */; };
 		99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008D33000BD4F00CDF610 /* HomeCoordinator.swift */; };
 		99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008D53000BD5600CDF610 /* ReceiptsCoordinator.swift */; };
-		99C008DB3001A4A900CDF610 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DA3001A4A900CDF610 /* HomeViewModel.swift */; };
+		99C008DB3001A4A900CDF610 /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DA3001A4A900CDF610 /* HomeView+ViewModel.swift */; };
 		99C008DD3001A4AE00CDF610 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DC3001A4AE00CDF610 /* HomeView.swift */; };
 		99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DE3001A57300CDF610 /* ReceiptsView.swift */; };
 		99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008E03001A57900CDF610 /* ReceiptsViewModel.swift */; };
@@ -80,7 +80,7 @@
 		99C008D03000B31F00CDF610 /* TabsCoordinator+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabsCoordinator+ViewModel.swift"; sourceTree = "<group>"; };
 		99C008D33000BD4F00CDF610 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		99C008D53000BD5600CDF610 /* ReceiptsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsCoordinator.swift; sourceTree = "<group>"; };
-		99C008DA3001A4A900CDF610 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		99C008DA3001A4A900CDF610 /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
 		99C008DC3001A4AE00CDF610 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		99C008DE3001A57300CDF610 /* ReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsView.swift; sourceTree = "<group>"; };
 		99C008E03001A57900CDF610 /* ReceiptsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewModel.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				99C008F63002A8C500CDF610 /* RecentActivitySection */,
 				99C008F13002A22D00CDF610 /* SyncAccountsView */,
 				99C008DC3001A4AE00CDF610 /* HomeView.swift */,
-				99C008DA3001A4A900CDF610 /* HomeViewModel.swift */,
+				99C008DA3001A4A900CDF610 /* HomeView+ViewModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -571,7 +571,7 @@
 				99C008F83002A8E000CDF610 /* HomeView+RecentActivitySection.swift in Sources */,
 				99C009793009E7DB00CDF610 /* OnboardingView+Page.swift in Sources */,
 				99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */,
-				99C008DB3001A4A900CDF610 /* HomeViewModel.swift in Sources */,
+				99C008DB3001A4A900CDF610 /* HomeView+ViewModel.swift in Sources */,
 				99C009113004549900CDF610 /* FormatStyle.swift in Sources */,
 				99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */,
 				99C00903300345D300CDF610 /* ScaledFont.swift in Sources */,

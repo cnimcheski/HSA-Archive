@@ -9,24 +9,25 @@ import Combine
 import Navigation
 import SwiftUI
 
+@MainActor
+@Observable
 final class HomeCoordinator: StackCoordinator {
     enum Page: CoordinatedPage {
         // TODO: - Implement further navigation
         case temp
     }
     
-    @Published var path: [Page] = []
-    @Published var sheet: Page?
-    @Published var fullScreenCover: Page?
+    var path: [Page] = []
+    var sheet: Page?
+    var fullScreenCover: Page?
     
     var rootView: some View {
         HomeView(viewModel: homeViewModel)
     }
     
-    private var homeViewModel: HomeViewModel
+    private var homeViewModel = HomeView.ViewModel()
     
     init() {
-        homeViewModel = .init()
         homeViewModel = homeViewModel.setup(delegate: self)
     }
     
@@ -40,9 +41,9 @@ final class HomeCoordinator: StackCoordinator {
 
 // MARK: - Delegate Handlers
 
-extension HomeCoordinator: HomeViewModelDelegate {
+extension HomeCoordinator: HomeView.NavigationDelegate {
     @MainActor
-    func navigate(to destination: HomeViewModel.Destination) {
+    func navigate(to destination: HomeView.ViewModel.Destination) {
         switch destination {
         case .temp:
             // TODO: - Add actual navigation logic..
