@@ -14,7 +14,7 @@
 		99C008CA3000B26C00CDF610 /* HSA_ArchiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008C73000B26C00CDF610 /* HSA_ArchiveUITests.swift */; };
 		99C008CB3000B26C00CDF610 /* HSA_ArchiveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008C83000B26C00CDF610 /* HSA_ArchiveUITestsLaunchTests.swift */; };
 		99C008CF3000B2F900CDF610 /* TabsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008CE3000B2F900CDF610 /* TabsCoordinator.swift */; };
-		99C008D13000B31F00CDF610 /* TabsCoordinatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008D03000B31F00CDF610 /* TabsCoordinatorViewModel.swift */; };
+		99C008D13000B31F00CDF610 /* TabsCoordinator+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008D03000B31F00CDF610 /* TabsCoordinator+ViewModel.swift */; };
 		99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008D33000BD4F00CDF610 /* HomeCoordinator.swift */; };
 		99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008D53000BD5600CDF610 /* ReceiptsCoordinator.swift */; };
 		99C008DB3001A4A900CDF610 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DA3001A4A900CDF610 /* HomeViewModel.swift */; };
@@ -77,7 +77,7 @@
 		99C008C73000B26C00CDF610 /* HSA_ArchiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSA_ArchiveUITests.swift; sourceTree = "<group>"; };
 		99C008C83000B26C00CDF610 /* HSA_ArchiveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSA_ArchiveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		99C008CE3000B2F900CDF610 /* TabsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsCoordinator.swift; sourceTree = "<group>"; };
-		99C008D03000B31F00CDF610 /* TabsCoordinatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsCoordinatorViewModel.swift; sourceTree = "<group>"; };
+		99C008D03000B31F00CDF610 /* TabsCoordinator+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabsCoordinator+ViewModel.swift"; sourceTree = "<group>"; };
 		99C008D33000BD4F00CDF610 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		99C008D53000BD5600CDF610 /* ReceiptsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsCoordinator.swift; sourceTree = "<group>"; };
 		99C008DA3001A4A900CDF610 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				99C008CE3000B2F900CDF610 /* TabsCoordinator.swift */,
-				99C008D03000B31F00CDF610 /* TabsCoordinatorViewModel.swift */,
+				99C008D03000B31F00CDF610 /* TabsCoordinator+ViewModel.swift */,
 			);
 			path = TabsCoordinator;
 			sourceTree = "<group>";
@@ -584,7 +584,7 @@
 				99C0097730096CCD00CDF610 /* OnboardingView+PageView.swift in Sources */,
 				99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */,
 				99C00906300416F800CDF610 /* ShapeStyle+Colors.swift in Sources */,
-				99C008D13000B31F00CDF610 /* TabsCoordinatorViewModel.swift in Sources */,
+				99C008D13000B31F00CDF610 /* TabsCoordinator+ViewModel.swift in Sources */,
 				99C0096E30089B5E00CDF610 /* UserDefaultsManager.swift in Sources */,
 				99C008F03002A17600CDF610 /* DefaultCardStyle.swift in Sources */,
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,

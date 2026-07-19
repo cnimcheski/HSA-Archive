@@ -9,9 +9,9 @@ import Navigation
 import SwiftUI
 
 struct TabsCoordinator: View {
-    @ObservedObject private var viewModel: TabsCoordinatorViewModel
+    private let viewModel: ViewModel
     
-    init(viewModel: TabsCoordinatorViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
     
@@ -26,21 +26,21 @@ struct TabsCoordinator: View {
 // MARK: - Private Views
 
 private extension TabsCoordinator {
-    var homeCoordinator: some TabContent<TabsCoordinatorViewModel.Tab> {
+    var homeCoordinator: some TabContent<ViewModel.Tab> {
         Tab(
             "Home",
             systemImage: "house.fill",
-            value: TabsCoordinatorViewModel.Tab.home
+            value: ViewModel.Tab.home
         ) {
             NavigationStackCoordinator(for: viewModel.homeCoordinator)
         }
     }
     
-    var receiptsCoordinator: some TabContent<TabsCoordinatorViewModel.Tab> {
+    var receiptsCoordinator: some TabContent<ViewModel.Tab> {
         Tab(
             "Receipts",
             systemImage: "receipt.fill",
-            value: TabsCoordinatorViewModel.Tab.receipts
+            value: ViewModel.Tab.receipts
         ) {
             NavigationStackCoordinator(for: viewModel.receiptsCoordinator)
         }

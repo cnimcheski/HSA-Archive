@@ -20,7 +20,7 @@ extension RootCoordinator {
         private let userDefaultsManager = Container.shared.userDefaultsManager()
         
         let onboardingViewModel = OnboardingView.ViewModel()
-        let tabsCoordinatorViewModel = TabsCoordinatorViewModel()
+        let tabsCoordinatorViewModel = TabsCoordinator.ViewModel()
         
         var rootViewType: RootViewType {
             userDefaultsManager.didFinishOnboarding ? .tabs : .onboarding
