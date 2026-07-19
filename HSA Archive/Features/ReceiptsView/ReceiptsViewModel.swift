@@ -5,17 +5,21 @@
 //  Created by Steve Nimcheski on 7/10/26.
 //
 
-import Combine
 import Navigation
+import Observation
 
-protocol ReceiptsViewModelDelegate: AnyObject {
-    @MainActor func navigate(to destination: ReceiptsViewModel.Destination)
-}
-
-final class ReceiptsViewModel: ObservableObject, Navigating {
-    enum Destination {
-        case temp
+extension ReceiptsView {
+    protocol NavigationDelegate: AnyObject {
+        @MainActor func navigate(to destination: ViewModel.Destination)
     }
     
-    weak var delegate: ReceiptsViewModelDelegate?
+    @MainActor
+    @Observable
+    final class ViewModel: Navigating {
+        enum Destination {
+            case temp
+        }
+        
+        weak var delegate: NavigationDelegate?
+    }
 }
