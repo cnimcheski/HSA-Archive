@@ -9,9 +9,9 @@ import Navigation
 import Observation
 
 extension HomeView {
-//    protocol NavigationDelegate: AnyObject {
-//        @MainActor func navigate(to destination: ViewModel.Destination)
-//    }
+    protocol NavigationDelegate: AnyObject {
+        @MainActor func navigate(to destination: ViewModel.Destination)
+    }
     
     @MainActor
     @Observable
