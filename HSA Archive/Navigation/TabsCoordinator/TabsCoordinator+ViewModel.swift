@@ -19,8 +19,8 @@ extension TabsCoordinator {
         
         private var activeTab = Tab.home
         
-        let homeCoordinator: HomeCoordinator = .init()
-        let receiptsCoordinator: ReceiptsCoordinator = .init()
+        let homeCoordinator = HomeCoordinator()
+        let receiptsCoordinator = ReceiptsCoordinator()
         
         var tabSelection: Binding<Tab> {
             Binding(
