@@ -12,7 +12,9 @@ extension ReceiptsView {
     protocol NavigationDelegate: AnyObject {
         @MainActor func navigate(to destination: ViewModel.Destination)
     }
-    
+}
+
+extension ReceiptsView {
     @MainActor
     @Observable
     final class ViewModel: Navigating {
