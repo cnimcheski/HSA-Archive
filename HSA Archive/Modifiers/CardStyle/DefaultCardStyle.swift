@@ -29,6 +29,7 @@ struct DefaultCardStyleModifier<C: ShapeStyle>: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(padding)
+            .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.large))
             .background(
                 RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
                     .fill(backgroundColor)

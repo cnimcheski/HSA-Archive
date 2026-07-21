@@ -48,7 +48,15 @@
 		99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0097E300AC79200CDF610 /* RootCoordinator.swift */; };
 		99C00981300AC7A000CDF610 /* RootCoordinator+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00980300AC7A000CDF610 /* RootCoordinator+ViewModel.swift */; };
 		99C00984300C423100CDF610 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00983300C423100CDF610 /* AppButton.swift */; };
-		99C00989300D4F5700CDF610 /* DocumentScannerView in Frameworks */ = {isa = PBXBuildFile; productRef = 99C00988300D4F5700CDF610 /* DocumentScannerView */; };
+		99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0098B300D505400CDF610 /* ReceiptScannerView.swift */; };
+		99C0098E300D508300CDF610 /* ReceiptScannerView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0098D300D508300CDF610 /* ReceiptScannerView+ViewModel.swift */; };
+		99C00991300D873E00CDF610 /* AddReceiptCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00990300D873E00CDF610 /* AddReceiptCoordinator.swift */; };
+		99C00994300D97D600CDF610 /* ReceiptReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00993300D97D600CDF610 /* ReceiptReviewView.swift */; };
+		99C00996300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00995300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift */; };
+		99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00997300DC87700CDF610 /* ReceiptScannerView+Representable.swift */; };
+		99C0099B300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */; };
+		99C0099E300F22F900CDF610 /* Dialogs in Frameworks */ = {isa = PBXBuildFile; productRef = 99C0099D300F22F900CDF610 /* Dialogs */; };
+		99C009A4300F290600CDF610 /* AlertViewModel+HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009A3300F290600CDF610 /* AlertViewModel+HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +119,14 @@
 		99C0097E300AC79200CDF610 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		99C00980300AC7A000CDF610 /* RootCoordinator+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootCoordinator+ViewModel.swift"; sourceTree = "<group>"; };
 		99C00983300C423100CDF610 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
+		99C0098B300D505400CDF610 /* ReceiptScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScannerView.swift; sourceTree = "<group>"; };
+		99C0098D300D508300CDF610 /* ReceiptScannerView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptScannerView+ViewModel.swift"; sourceTree = "<group>"; };
+		99C00990300D873E00CDF610 /* AddReceiptCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceiptCoordinator.swift; sourceTree = "<group>"; };
+		99C00993300D97D600CDF610 /* ReceiptReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptReviewView.swift; sourceTree = "<group>"; };
+		99C00995300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptPreviewView+ViewModel.swift"; sourceTree = "<group>"; };
+		99C00997300DC87700CDF610 /* ReceiptScannerView+Representable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptScannerView+Representable.swift"; sourceTree = "<group>"; };
+		99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNDocumentCameraScan+Extensions.swift"; sourceTree = "<group>"; };
+		99C009A3300F290600CDF610 /* AlertViewModel+HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertViewModel+HomeView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +136,8 @@
 			files = (
 				99C0096C30089B5300CDF610 /* FactoryKit in Frameworks */,
 				99C009713008A61900CDF610 /* ObservableDefaults in Frameworks */,
+				99C0099E300F22F900CDF610 /* Dialogs in Frameworks */,
 				99C008BC3000AE6100CDF610 /* Navigation in Frameworks */,
-				99C00989300D4F5700CDF610 /* DocumentScannerView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +184,7 @@
 				99C009633005F19900CDF610 /* HSA-Archive-Info.plist */,
 				99C008BF3000B26400CDF610 /* HSA_ArchiveApp.swift */,
 				99C008E23001DE6B00CDF610 /* Components */,
+				99C00999300DCF3C00CDF610 /* Extensions */,
 				99C008D73001A49000CDF610 /* Features */,
 				99C0096930089AB600CDF610 /* Managers */,
 				99C008ED3002A16100CDF610 /* Modifiers */,
@@ -199,6 +216,7 @@
 		99C008CC3000B28200CDF610 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				99C0098F300D75E100CDF610 /* ChildCoordinators */,
 				99C0097D300AC78600CDF610 /* RootCoordinator */,
 				99C008D23000BD4000CDF610 /* StackCoordinators */,
 				99C008CD3000B28E00CDF610 /* TabsCoordinator */,
@@ -229,6 +247,8 @@
 			children = (
 				99C008D83001A49A00CDF610 /* HomeView */,
 				99C0095E30049B5100CDF610 /* OnboardingView */,
+				99C00992300D97B900CDF610 /* ReceiptReviewView */,
+				99C0098A300D503700CDF610 /* ReceiptScannerView */,
 				99C008D93001A49F00CDF610 /* ReceiptsView */,
 			);
 			path = Features;
@@ -237,6 +257,7 @@
 		99C008D83001A49A00CDF610 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				99C009A2300F28EC00CDF610 /* Modals */,
 				99C008E730029F7700CDF610 /* Overview */,
 				99C008F63002A8C500CDF610 /* RecentActivitySection */,
 				99C008F13002A22D00CDF610 /* SyncAccountsView */,
@@ -422,6 +443,49 @@
 			path = AppButton;
 			sourceTree = "<group>";
 		};
+		99C0098A300D503700CDF610 /* ReceiptScannerView */ = {
+			isa = PBXGroup;
+			children = (
+				99C0098B300D505400CDF610 /* ReceiptScannerView.swift */,
+				99C00997300DC87700CDF610 /* ReceiptScannerView+Representable.swift */,
+				99C0098D300D508300CDF610 /* ReceiptScannerView+ViewModel.swift */,
+			);
+			path = ReceiptScannerView;
+			sourceTree = "<group>";
+		};
+		99C0098F300D75E100CDF610 /* ChildCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				99C00990300D873E00CDF610 /* AddReceiptCoordinator.swift */,
+			);
+			path = ChildCoordinators;
+			sourceTree = "<group>";
+		};
+		99C00992300D97B900CDF610 /* ReceiptReviewView */ = {
+			isa = PBXGroup;
+			children = (
+				99C00993300D97D600CDF610 /* ReceiptReviewView.swift */,
+				99C00995300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift */,
+			);
+			path = ReceiptReviewView;
+			sourceTree = "<group>";
+		};
+		99C00999300DCF3C00CDF610 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		99C009A2300F28EC00CDF610 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				99C009A3300F290600CDF610 /* AlertViewModel+HomeView.swift */,
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -442,7 +506,7 @@
 				99C008BB3000AE6100CDF610 /* Navigation */,
 				99C0096B30089B5300CDF610 /* FactoryKit */,
 				99C009703008A61900CDF610 /* ObservableDefaults */,
-				99C00988300D4F5700CDF610 /* DocumentScannerView */,
+				99C0099D300F22F900CDF610 /* Dialogs */,
 			);
 			productName = "HSA Archive";
 			productReference = 99C008903000ADED00CDF610 /* HSA Archive.app */;
@@ -524,7 +588,7 @@
 				99C008BA3000AE6100CDF610 /* XCRemoteSwiftPackageReference "Navigation" */,
 				99C0096A30089B5300CDF610 /* XCRemoteSwiftPackageReference "Factory" */,
 				99C0096F3008A61900CDF610 /* XCRemoteSwiftPackageReference "ObservableDefaults" */,
-				99C00987300D4F5700CDF610 /* XCRemoteSwiftPackageReference "DocumentScannerView" */,
+				99C0099C300F22F900CDF610 /* XCRemoteSwiftPackageReference "Dialogs" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 99C008913000ADED00CDF610 /* Products */;
@@ -576,15 +640,21 @@
 				99C009793009E7DB00CDF610 /* OnboardingView+Page.swift in Sources */,
 				99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */,
 				99C008DB3001A4A900CDF610 /* HomeView+ViewModel.swift in Sources */,
+				99C009A4300F290600CDF610 /* AlertViewModel+HomeView.swift in Sources */,
 				99C009113004549900CDF610 /* FormatStyle.swift in Sources */,
 				99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */,
 				99C00903300345D300CDF610 /* ScaledFont.swift in Sources */,
+				99C00994300D97D600CDF610 /* ReceiptReviewView.swift in Sources */,
+				99C00996300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift in Sources */,
 				99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */,
 				99C008C23000B26400CDF610 /* HSA_ArchiveApp.swift in Sources */,
+				99C0098E300D508300CDF610 /* ReceiptScannerView+ViewModel.swift in Sources */,
 				99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */,
+				99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */,
 				99C0090C30043A3400CDF610 /* CornerRadius.swift in Sources */,
 				99C008DD3001A4AE00CDF610 /* HomeView.swift in Sources */,
 				99C008FD3002D78800CDF610 /* ReceiptPreview.swift in Sources */,
+				99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */,
 				99C0097730096CCD00CDF610 /* OnboardingView+PageView.swift in Sources */,
 				99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */,
 				99C00906300416F800CDF610 /* ShapeStyle+Colors.swift in Sources */,
@@ -594,11 +664,13 @@
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,
 				99C00908300417EA00CDF610 /* Spacing.swift in Sources */,
 				99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */,
+				99C00991300D873E00CDF610 /* AddReceiptCoordinator.swift in Sources */,
 				99C0090A3004197100CDF610 /* Theme.swift in Sources */,
 				99C00981300AC7A000CDF610 /* RootCoordinator+ViewModel.swift in Sources */,
 				99C0090F3004477100CDF610 /* HomeView+Overview+BalanceCard.swift in Sources */,
 				99C0096030049B6300CDF610 /* OnboardingView.swift in Sources */,
 				99C008F33002A24800CDF610 /* HomeView+SyncAccountsView.swift in Sources */,
+				99C0099B300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift in Sources */,
 				99C0090030032B7A00CDF610 /* Badge.swift in Sources */,
 				99C009743008A73700CDF610 /* Container+Managers.swift in Sources */,
 				99C0097C3009EFD800CDF610 /* OnboardingView+ProgressPills.swift in Sources */,
@@ -770,6 +842,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HSA-Archive-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to scan receipts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -802,6 +875,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HSA-Archive-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is used to scan receipts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -973,12 +1047,12 @@
 				minimumVersion = 1.8.10;
 			};
 		};
-		99C00987300D4F5700CDF610 /* XCRemoteSwiftPackageReference "DocumentScannerView" */ = {
+		99C0099C300F22F900CDF610 /* XCRemoteSwiftPackageReference "Dialogs" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/edonv/DocumentScannerView.git";
+			repositoryURL = "https://github.com/cnimcheski/Dialogs.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -999,10 +1073,10 @@
 			package = 99C0096F3008A61900CDF610 /* XCRemoteSwiftPackageReference "ObservableDefaults" */;
 			productName = ObservableDefaults;
 		};
-		99C00988300D4F5700CDF610 /* DocumentScannerView */ = {
+		99C0099D300F22F900CDF610 /* Dialogs */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 99C00987300D4F5700CDF610 /* XCRemoteSwiftPackageReference "DocumentScannerView" */;
-			productName = DocumentScannerView;
+			package = 99C0099C300F22F900CDF610 /* XCRemoteSwiftPackageReference "Dialogs" */;
+			productName = Dialogs;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

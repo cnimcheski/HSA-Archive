@@ -1,13 +1,13 @@
 {
-  "originHash" : "86868f81b1f01a5c64dee53894230a2cce62ef45d6fcf1a3a3bdd9397396ce78",
+  "originHash" : "38a547460725bc6d3084961f774ff94afad49c2455a0745c921a5f2a5de689d2",
   "pins" : [
     {
-      "identity" : "documentscannerview",
+      "identity" : "dialogs",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/edonv/DocumentScannerView.git",
+      "location" : "https://github.com/cnimcheski/Dialogs.git",
       "state" : {
-        "revision" : "b278314869450c1ed92d90c5e1f32ddb93673b43",
-        "version" : "0.0.6"
+        "revision" : "4e3d27749f4fb9019d342993b8713a715a738c14",
+        "version" : "1.0.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Navigation.git",
       "state" : {
-        "revision" : "d1f875917923aed63aed7fb824f9734c894bf189",
-        "version" : "1.0.3"
+        "revision" : "21ea82b6837edc2f6456ec9f0a7db6798a774142",
+        "version" : "1.0.4"
       }
     },
     {

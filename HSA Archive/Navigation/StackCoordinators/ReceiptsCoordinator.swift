@@ -16,8 +16,8 @@ final class ReceiptsCoordinator: StackCoordinator {
     }
     
     var path: [Page] = []
-    var sheet: Page?
-    var fullScreenCover: Page?
+    var sheet: Modal<Page>?
+    var fullScreenCover: Modal<Page>?
     
     var rootView: some View {
         ReceiptsView()
