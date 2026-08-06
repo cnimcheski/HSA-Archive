@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99021A7930147A9600D7DC8D /* SelectionView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A7730147A9600D7DC8D /* SelectionView+ViewModel.swift */; };
+		99021A7A30147A9600D7DC8D /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A7630147A9600D7DC8D /* SelectionView.swift */; };
+		99021A7D30147E9500D7DC8D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A7C30147E9500D7DC8D /* AppConstants.swift */; };
+		99021A7F301481BA00D7DC8D /* ReceiptReviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A7E301481BA00D7DC8D /* ReceiptReviewCoordinator.swift */; };
+		99021A823015123300D7DC8D /* OnFirstTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A803015123300D7DC8D /* OnFirstTask.swift */; };
+		99021A85301555A900D7DC8D /* AppToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A84301555A900D7DC8D /* AppToggle.swift */; };
+		99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A863015594100D7DC8D /* Binding+Optional.swift */; };
+		99021A8A3015981900D7DC8D /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A893015981900D7DC8D /* Sync.swift */; };
+		99021A993016E35A00D7DC8D /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 99021A983016E35A00D7DC8D /* Shimmer */; };
+		99021A9C3016E42800D7DC8D /* RedactedShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A9B3016E42800D7DC8D /* RedactedShimmer.swift */; };
+		99021A9E3016FA7700D7DC8D /* AIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A9D3016FA7700D7DC8D /* AIRequest.swift */; };
+		99021AA13016FAC400D7DC8D /* AIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AA03016FAC400D7DC8D /* AIResponse.swift */; };
+		99021AA33016FB0500D7DC8D /* ReceiptExtractionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AA23016FB0500D7DC8D /* ReceiptExtractionResponse.swift */; };
+		99021AA53016FB7300D7DC8D /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AA43016FB7300D7DC8D /* DateFormatter+Extensions.swift */; };
+		99021AA730171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AA630171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift */; };
+		99021AAA30171E2D00D7DC8D /* RemoteConfigClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AA930171E2D00D7DC8D /* RemoteConfigClient.swift */; };
+		99021AAD30171E9200D7DC8D /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 99021AAC30171E9200D7DC8D /* FirebaseRemoteConfig */; };
+		99021AB1301720B500D7DC8D /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99021AB0301720B500D7DC8D /* RemoteConfigDefaults.plist */; };
+		99021AB33018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AB23018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift */; };
+		99021AB6301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AB5301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift */; };
+		99021AB830186AAD00D7DC8D /* ReceiptExtractionResponse+Payload+Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AB730186AAD00D7DC8D /* ReceiptExtractionResponse+Payload+Fields.swift */; };
+		99021ABA301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AB9301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift */; };
+		99021ABD301B0BCF00D7DC8D /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021ABC301B0BCF00D7DC8D /* ErrorBanner.swift */; };
+		99021ABF301D3DC900D7DC8D /* ErrorBanner+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021ABE301D3DC900D7DC8D /* ErrorBanner+Action.swift */; };
+		99021AC2301DAAEF00D7DC8D /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AC0301DAAEF00D7DC8D /* Debug.swift */; };
+		99021AC4301DB73300D7DC8D /* GeminiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AC3301DB73300D7DC8D /* GeminiError.swift */; };
+		99021AC7301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AC6301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift */; };
+		99B98D7C3012F58400A45554 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D7B3012F58400A45554 /* Category.swift */; };
+		99B98D7F3012F5F500A45554 /* ReceiptExtractionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D7E3012F5F500A45554 /* ReceiptExtractionRequest.swift */; };
+		99B98D813012F62100A45554 /* FirebaseAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D803012F62100A45554 /* FirebaseAIClient.swift */; };
+		99B98D843012F92B00A45554 /* InputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D833012F92B00A45554 /* InputContainer.swift */; };
+		99B98D8730130DEE00A45554 /* AppDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D8630130DEE00A45554 /* AppDatePicker.swift */; };
 		99C008BC3000AE6100CDF610 /* Navigation in Frameworks */ = {isa = PBXBuildFile; productRef = 99C008BB3000AE6100CDF610 /* Navigation */; };
 		99C008C23000B26400CDF610 /* HSA_ArchiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008BF3000B26400CDF610 /* HSA_ArchiveApp.swift */; };
 		99C008C33000B26400CDF610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99C008BD3000B26400CDF610 /* Assets.xcassets */; };
@@ -52,11 +84,32 @@
 		99C0098E300D508300CDF610 /* ReceiptScannerView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0098D300D508300CDF610 /* ReceiptScannerView+ViewModel.swift */; };
 		99C00991300D873E00CDF610 /* AddReceiptCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00990300D873E00CDF610 /* AddReceiptCoordinator.swift */; };
 		99C00994300D97D600CDF610 /* ReceiptReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00993300D97D600CDF610 /* ReceiptReviewView.swift */; };
-		99C00996300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00995300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift */; };
+		99C00996300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00995300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift */; };
 		99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C00997300DC87700CDF610 /* ReceiptScannerView+Representable.swift */; };
 		99C0099B300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */; };
 		99C0099E300F22F900CDF610 /* Dialogs in Frameworks */ = {isa = PBXBuildFile; productRef = 99C0099D300F22F900CDF610 /* Dialogs */; };
-		99C009A4300F290600CDF610 /* AlertViewModel+HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009A3300F290600CDF610 /* AlertViewModel+HomeView.swift */; };
+		99C009A4300F290600CDF610 /* AlertViewModel+ReceiptScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009A3300F290600CDF610 /* AlertViewModel+ReceiptScannerView.swift */; };
+		99C009A83010014500CDF610 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009A73010014500CDF610 /* TextRecognizer.swift */; };
+		99C009AA3010091D00CDF610 /* Container+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009A93010091D00CDF610 /* Container+Services.swift */; };
+		99C009AE301088AA00CDF610 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009AD301088AA00CDF610 /* AppTextField.swift */; };
+		99C009B130114CE000CDF610 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009B030114CE000CDF610 /* Receipt.swift */; };
+		99C009B6301159E400CDF610 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 99C009B5301159E400CDF610 /* FirebaseAI */; };
+		99C009B8301159E400CDF610 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99C009B7301159E400CDF610 /* FirebaseAnalytics */; };
+		99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009B930115A1300CDF610 /* AppDelegate.swift */; };
+		99C009BD3011A75700CDF610 /* AIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009BC3011A75700CDF610 /* AIClient.swift */; };
+		99C009C43012C1BB00CDF610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99C009C33012C1BB00CDF610 /* GoogleService-Info.plist */; };
+		99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5BC301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift */; };
+		99D2D5BF301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5BE301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift */; };
+		99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5C230212B18007A65C3 /* ErrorBanner+ViewModel.swift */; };
+		99D2D5C530212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5C430212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift */; };
+		99D2D5C730217588007A65C3 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5C630217588007A65C3 /* Placeholders.swift */; };
+		99D2D5C9302175CE007A65C3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5C8302175CE007A65C3 /* String+Extensions.swift */; };
+		99D2D5CC3023DAFD007A65C3 /* CaseIterable+RawValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5CB3023DAFD007A65C3 /* CaseIterable+RawValues.swift */; };
+		99D2D5CF3024312B007A65C3 /* Debug+LogCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5CE3024312B007A65C3 /* Debug+LogCategory.swift */; };
+		99D2D5D230252570007A65C3 /* PreviewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D130252570007A65C3 /* PreviewInput.swift */; };
+		99D554073014229900E937BB /* SearchableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554003014229900E937BB /* SearchableMenu.swift */; };
+		99D5540A3014229900E937BB /* MenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554033014229900E937BB /* MenuLabel.swift */; };
+		99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D553FD3014229900E937BB /* DefaultMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +130,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99021A7630147A9600D7DC8D /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		99021A7730147A9600D7DC8D /* SelectionView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectionView+ViewModel.swift"; sourceTree = "<group>"; };
+		99021A7C30147E9500D7DC8D /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		99021A7E301481BA00D7DC8D /* ReceiptReviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptReviewCoordinator.swift; sourceTree = "<group>"; };
+		99021A803015123300D7DC8D /* OnFirstTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnFirstTask.swift; sourceTree = "<group>"; };
+		99021A84301555A900D7DC8D /* AppToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToggle.swift; sourceTree = "<group>"; };
+		99021A863015594100D7DC8D /* Binding+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Optional.swift"; sourceTree = "<group>"; };
+		99021A893015981900D7DC8D /* Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
+		99021A9B3016E42800D7DC8D /* RedactedShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedShimmer.swift; sourceTree = "<group>"; };
+		99021A9D3016FA7700D7DC8D /* AIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIRequest.swift; sourceTree = "<group>"; };
+		99021AA03016FAC400D7DC8D /* AIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIResponse.swift; sourceTree = "<group>"; };
+		99021AA23016FB0500D7DC8D /* ReceiptExtractionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptExtractionResponse.swift; sourceTree = "<group>"; };
+		99021AA43016FB7300D7DC8D /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		99021AA630171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppCheckProviderFactory.swift; sourceTree = "<group>"; };
+		99021AA930171E2D00D7DC8D /* RemoteConfigClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigClient.swift; sourceTree = "<group>"; };
+		99021AB0301720B500D7DC8D /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		99021AB23018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteConfigClient+RemoteConfigKey.swift"; sourceTree = "<group>"; };
+		99021AB5301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptExtractionResponse+Payload+Status.swift"; sourceTree = "<group>"; };
+		99021AB730186AAD00D7DC8D /* ReceiptExtractionResponse+Payload+Fields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptExtractionResponse+Payload+Fields.swift"; sourceTree = "<group>"; };
+		99021AB9301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptExtractionResponse+Payload.swift"; sourceTree = "<group>"; };
+		99021ABC301B0BCF00D7DC8D /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
+		99021ABE301D3DC900D7DC8D /* ErrorBanner+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorBanner+Action.swift"; sourceTree = "<group>"; };
+		99021AC0301DAAEF00D7DC8D /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		99021AC3301DB73300D7DC8D /* GeminiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiError.swift; sourceTree = "<group>"; };
+		99021AC6301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertViewModel+ReceiptReviewView.swift"; sourceTree = "<group>"; };
+		99B98D7B3012F58400A45554 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		99B98D7E3012F5F500A45554 /* ReceiptExtractionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptExtractionRequest.swift; sourceTree = "<group>"; };
+		99B98D803012F62100A45554 /* FirebaseAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAIClient.swift; sourceTree = "<group>"; };
+		99B98D833012F92B00A45554 /* InputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainer.swift; sourceTree = "<group>"; };
+		99B98D8630130DEE00A45554 /* AppDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatePicker.swift; sourceTree = "<group>"; };
 		99C008903000ADED00CDF610 /* HSA Archive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSA Archive.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C0089D3000ADEF00CDF610 /* HSA ArchiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HSA ArchiveTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C008A73000ADEF00CDF610 /* HSA ArchiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HSA ArchiveUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +192,7 @@
 		99C009103004549900CDF610 /* FormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatStyle.swift; sourceTree = "<group>"; };
 		99C0095F30049B6300CDF610 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		99C009613005ED1E00CDF610 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
-		99C009633005F19900CDF610 /* HSA-Archive-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "HSA-Archive-Info.plist"; sourceTree = SOURCE_ROOT; };
+		99C009633005F19900CDF610 /* HSA-Archive-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HSA-Archive-Info.plist"; sourceTree = SOURCE_ROOT; };
 		99C0096730089A7B00CDF610 /* OnboardingView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingView+ViewModel.swift"; sourceTree = "<group>"; };
 		99C0096D30089B5E00CDF610 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		99C009733008A73700CDF610 /* Container+Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Managers.swift"; sourceTree = "<group>"; };
@@ -123,10 +206,30 @@
 		99C0098D300D508300CDF610 /* ReceiptScannerView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptScannerView+ViewModel.swift"; sourceTree = "<group>"; };
 		99C00990300D873E00CDF610 /* AddReceiptCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReceiptCoordinator.swift; sourceTree = "<group>"; };
 		99C00993300D97D600CDF610 /* ReceiptReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptReviewView.swift; sourceTree = "<group>"; };
-		99C00995300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptPreviewView+ViewModel.swift"; sourceTree = "<group>"; };
+		99C00995300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptReviewView+ViewModel.swift"; sourceTree = "<group>"; };
 		99C00997300DC87700CDF610 /* ReceiptScannerView+Representable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptScannerView+Representable.swift"; sourceTree = "<group>"; };
 		99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNDocumentCameraScan+Extensions.swift"; sourceTree = "<group>"; };
-		99C009A3300F290600CDF610 /* AlertViewModel+HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertViewModel+HomeView.swift"; sourceTree = "<group>"; };
+		99C009A3300F290600CDF610 /* AlertViewModel+ReceiptScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertViewModel+ReceiptScannerView.swift"; sourceTree = "<group>"; };
+		99C009A73010014500CDF610 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
+		99C009A93010091D00CDF610 /* Container+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Services.swift"; sourceTree = "<group>"; };
+		99C009AD301088AA00CDF610 /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
+		99C009B030114CE000CDF610 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		99C009B930115A1300CDF610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99C009BC3011A75700CDF610 /* AIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIClient.swift; sourceTree = "<group>"; };
+		99C009C33012C1BB00CDF610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		99C009C53012C63C00CDF610 /* HSA Archive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HSA Archive.entitlements"; sourceTree = "<group>"; };
+		99D2D5BC301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextRecognizer+ScannedTextResponse.swift"; sourceTree = "<group>"; };
+		99D2D5BE301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextRecognizer+TextRecognitionError.swift"; sourceTree = "<group>"; };
+		99D2D5C230212B18007A65C3 /* ErrorBanner+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorBanner+ViewModel.swift"; sourceTree = "<group>"; };
+		99D2D5C430212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorBanner+ViewModel+ReceiptReviewView.swift"; sourceTree = "<group>"; };
+		99D2D5C630217588007A65C3 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
+		99D2D5C8302175CE007A65C3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		99D2D5CB3023DAFD007A65C3 /* CaseIterable+RawValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+RawValues.swift"; sourceTree = "<group>"; };
+		99D2D5CE3024312B007A65C3 /* Debug+LogCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug+LogCategory.swift"; sourceTree = "<group>"; };
+		99D2D5D130252570007A65C3 /* PreviewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInput.swift; sourceTree = "<group>"; };
+		99D553FD3014229900E937BB /* DefaultMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenu.swift; sourceTree = "<group>"; };
+		99D554003014229900E937BB /* SearchableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableMenu.swift; sourceTree = "<group>"; };
+		99D554033014229900E937BB /* MenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +237,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99021AAD30171E9200D7DC8D /* FirebaseRemoteConfig in Frameworks */,
+				99C009B6301159E400CDF610 /* FirebaseAI in Frameworks */,
 				99C0096C30089B5300CDF610 /* FactoryKit in Frameworks */,
+				99C009B8301159E400CDF610 /* FirebaseAnalytics in Frameworks */,
 				99C009713008A61900CDF610 /* ObservableDefaults in Frameworks */,
+				99021A993016E35A00D7DC8D /* Shimmer in Frameworks */,
 				99C0099E300F22F900CDF610 /* Dialogs in Frameworks */,
 				99C008BC3000AE6100CDF610 /* Navigation in Frameworks */,
 			);
@@ -158,12 +265,153 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99021A7830147A9600D7DC8D /* SelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				99021A7630147A9600D7DC8D /* SelectionView.swift */,
+				99021A7730147A9600D7DC8D /* SelectionView+ViewModel.swift */,
+			);
+			path = SelectionView;
+			sourceTree = "<group>";
+		};
+		99021A7B30147E8700D7DC8D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				99021A7C30147E9500D7DC8D /* AppConstants.swift */,
+				99D2D5C630217588007A65C3 /* Placeholders.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		99021A813015123300D7DC8D /* OnFirstTask */ = {
+			isa = PBXGroup;
+			children = (
+				99021A803015123300D7DC8D /* OnFirstTask.swift */,
+			);
+			path = OnFirstTask;
+			sourceTree = "<group>";
+		};
+		99021A833015557E00D7DC8D /* AppToggle */ = {
+			isa = PBXGroup;
+			children = (
+				99021A84301555A900D7DC8D /* AppToggle.swift */,
+			);
+			path = AppToggle;
+			sourceTree = "<group>";
+		};
+		99021A883015980B00D7DC8D /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				99021A893015981900D7DC8D /* Sync.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		99021A9A3016E41900D7DC8D /* RedactedShimmer */ = {
+			isa = PBXGroup;
+			children = (
+				99021A9B3016E42800D7DC8D /* RedactedShimmer.swift */,
+			);
+			path = RedactedShimmer;
+			sourceTree = "<group>";
+		};
+		99021A9F3016FA9D00D7DC8D /* ReceiptExtractionRequest */ = {
+			isa = PBXGroup;
+			children = (
+				99021AB4301869BE00D7DC8D /* Response */,
+				99B98D7E3012F5F500A45554 /* ReceiptExtractionRequest.swift */,
+			);
+			path = ReceiptExtractionRequest;
+			sourceTree = "<group>";
+		};
+		99021AA830171E0E00D7DC8D /* RemoteConfig */ = {
+			isa = PBXGroup;
+			children = (
+				99021AA930171E2D00D7DC8D /* RemoteConfigClient.swift */,
+				99021AB23018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift */,
+			);
+			path = RemoteConfig;
+			sourceTree = "<group>";
+		};
+		99021AAB30171E9200D7DC8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99021AB4301869BE00D7DC8D /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				99021AA23016FB0500D7DC8D /* ReceiptExtractionResponse.swift */,
+				99021AB9301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift */,
+				99021AB730186AAD00D7DC8D /* ReceiptExtractionResponse+Payload+Fields.swift */,
+				99021AB5301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		99021ABB301B0BB600D7DC8D /* ErrorBanner */ = {
+			isa = PBXGroup;
+			children = (
+				99021ABC301B0BCF00D7DC8D /* ErrorBanner.swift */,
+				99021ABE301D3DC900D7DC8D /* ErrorBanner+Action.swift */,
+				99D2D5C230212B18007A65C3 /* ErrorBanner+ViewModel.swift */,
+			);
+			path = ErrorBanner;
+			sourceTree = "<group>";
+		};
+		99021AC1301DAAEF00D7DC8D /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				99021AC0301DAAEF00D7DC8D /* Debug.swift */,
+				99D2D5CE3024312B007A65C3 /* Debug+LogCategory.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		99021AC5301E5C2D00D7DC8D /* UserFacing */ = {
+			isa = PBXGroup;
+			children = (
+				99021AC6301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift */,
+				99D2D5C430212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift */,
+			);
+			path = UserFacing;
+			sourceTree = "<group>";
+		};
+		99B98D7D3012F5E500A45554 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				99021A9F3016FA9D00D7DC8D /* ReceiptExtractionRequest */,
+				99021AA03016FAC400D7DC8D /* AIResponse.swift */,
+				99021A9D3016FA7700D7DC8D /* AIRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		99B98D823012F92200A45554 /* InputContainer */ = {
+			isa = PBXGroup;
+			children = (
+				99B98D833012F92B00A45554 /* InputContainer.swift */,
+			);
+			path = InputContainer;
+			sourceTree = "<group>";
+		};
+		99B98D8530130DE400A45554 /* AppDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				99B98D8630130DEE00A45554 /* AppDatePicker.swift */,
+			);
+			path = AppDatePicker;
+			sourceTree = "<group>";
+		};
 		99C008873000ADED00CDF610 = {
 			isa = PBXGroup;
 			children = (
 				99C008C03000B26400CDF610 /* HSA Archive */,
 				99C008C53000B26800CDF610 /* HSA ArchiveTests */,
 				99C008C93000B26C00CDF610 /* HSA ArchiveUITests */,
+				99021AAB30171E9200D7DC8D /* Frameworks */,
 				99C008913000ADED00CDF610 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,17 +429,26 @@
 		99C008C03000B26400CDF610 /* HSA Archive */ = {
 			isa = PBXGroup;
 			children = (
-				99C009633005F19900CDF610 /* HSA-Archive-Info.plist */,
+				99C009B930115A1300CDF610 /* AppDelegate.swift */,
 				99C008BF3000B26400CDF610 /* HSA_ArchiveApp.swift */,
+				99021A7B30147E8700D7DC8D /* Constants */,
 				99C008E23001DE6B00CDF610 /* Components */,
 				99C00999300DCF3C00CDF610 /* Extensions */,
 				99C008D73001A49000CDF610 /* Features */,
+				99021AC1301DAAEF00D7DC8D /* Logging */,
 				99C0096930089AB600CDF610 /* Managers */,
+				99C009AF30114CCA00CDF610 /* Models */,
 				99C008ED3002A16100CDF610 /* Modifiers */,
 				99C008CC3000B28200CDF610 /* Navigation */,
+				99D2D5D03025255A007A65C3 /* Previews */,
+				99C009A5301000EE00CDF610 /* Services */,
 				99C00904300415A000CDF610 /* Theme */,
 				99C009613005ED1E00CDF610 /* AppIcon.icon */,
 				99C008BD3000B26400CDF610 /* Assets.xcassets */,
+				99C009C33012C1BB00CDF610 /* GoogleService-Info.plist */,
+				99C009633005F19900CDF610 /* HSA-Archive-Info.plist */,
+				99021AB0301720B500D7DC8D /* RemoteConfigDefaults.plist */,
+				99C009C53012C63C00CDF610 /* HSA Archive.entitlements */,
 			);
 			path = "HSA Archive";
 			sourceTree = "<group>";
@@ -257,7 +514,6 @@
 		99C008D83001A49A00CDF610 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				99C009A2300F28EC00CDF610 /* Modals */,
 				99C008E730029F7700CDF610 /* Overview */,
 				99C008F63002A8C500CDF610 /* RecentActivitySection */,
 				99C008F13002A22D00CDF610 /* SyncAccountsView */,
@@ -280,9 +536,16 @@
 			isa = PBXGroup;
 			children = (
 				99C00982300C421B00CDF610 /* AppButton */,
+				99B98D8530130DE400A45554 /* AppDatePicker */,
+				99D554053014229900E937BB /* AppMenu */,
+				99C009AC3010889900CDF610 /* AppTextField */,
+				99021A833015557E00D7DC8D /* AppToggle */,
 				99C008FE30032B7400CDF610 /* Badge */,
 				99C008E33001DEB900CDF610 /* DotSeparator */,
+				99B98D823012F92200A45554 /* InputContainer */,
 				99C008FB3002D77800CDF610 /* ReceiptPreview */,
+				99021ABB301B0BB600D7DC8D /* ErrorBanner */,
+				99021A7830147A9600D7DC8D /* SelectionView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -307,7 +570,10 @@
 		99C008ED3002A16100CDF610 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				99021A883015980B00D7DC8D /* Sync */,
 				99C008EE3002A16B00CDF610 /* CardStyle */,
+				99021A813015123300D7DC8D /* OnFirstTask */,
+				99021A9A3016E41900D7DC8D /* RedactedShimmer */,
 				99C00901300345C400CDF610 /* ScaledFont */,
 			);
 			path = Modifiers;
@@ -446,6 +712,7 @@
 		99C0098A300D503700CDF610 /* ReceiptScannerView */ = {
 			isa = PBXGroup;
 			children = (
+				99D2D5CD3024239B007A65C3 /* UserFacing */,
 				99C0098B300D505400CDF610 /* ReceiptScannerView.swift */,
 				99C00997300DC87700CDF610 /* ReceiptScannerView+Representable.swift */,
 				99C0098D300D508300CDF610 /* ReceiptScannerView+ViewModel.swift */,
@@ -457,6 +724,7 @@
 			isa = PBXGroup;
 			children = (
 				99C00990300D873E00CDF610 /* AddReceiptCoordinator.swift */,
+				99021A7E301481BA00D7DC8D /* ReceiptReviewCoordinator.swift */,
 			);
 			path = ChildCoordinators;
 			sourceTree = "<group>";
@@ -464,8 +732,9 @@
 		99C00992300D97B900CDF610 /* ReceiptReviewView */ = {
 			isa = PBXGroup;
 			children = (
+				99021AC5301E5C2D00D7DC8D /* UserFacing */,
 				99C00993300D97D600CDF610 /* ReceiptReviewView.swift */,
-				99C00995300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift */,
+				99C00995300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift */,
 			);
 			path = ReceiptReviewView;
 			sourceTree = "<group>";
@@ -473,17 +742,121 @@
 		99C00999300DCF3C00CDF610 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				99021A863015594100D7DC8D /* Binding+Optional.swift */,
+				99D2D5CB3023DAFD007A65C3 /* CaseIterable+RawValues.swift */,
+				99021AA43016FB7300D7DC8D /* DateFormatter+Extensions.swift */,
+				99D2D5C8302175CE007A65C3 /* String+Extensions.swift */,
 				99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		99C009A2300F28EC00CDF610 /* Modals */ = {
+		99C009A5301000EE00CDF610 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				99C009A3300F290600CDF610 /* AlertViewModel+HomeView.swift */,
+				99C009BB3011A74400CDF610 /* AI */,
+				99D2D5CA302386EC007A65C3 /* AppCheck */,
+				99C009AB3010092600CDF610 /* DI */,
+				99021AA830171E0E00D7DC8D /* RemoteConfig */,
+				99C009A63010012D00CDF610 /* TextRecognition */,
 			);
-			path = Modals;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		99C009A63010012D00CDF610 /* TextRecognition */ = {
+			isa = PBXGroup;
+			children = (
+				99C009A73010014500CDF610 /* TextRecognizer.swift */,
+				99D2D5BC301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift */,
+				99D2D5BE301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift */,
+			);
+			path = TextRecognition;
+			sourceTree = "<group>";
+		};
+		99C009AB3010092600CDF610 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				99C009A93010091D00CDF610 /* Container+Services.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		99C009AC3010889900CDF610 /* AppTextField */ = {
+			isa = PBXGroup;
+			children = (
+				99C009AD301088AA00CDF610 /* AppTextField.swift */,
+			);
+			path = AppTextField;
+			sourceTree = "<group>";
+		};
+		99C009AF30114CCA00CDF610 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				99B98D7B3012F58400A45554 /* Category.swift */,
+				99C009B030114CE000CDF610 /* Receipt.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		99C009BB3011A74400CDF610 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				99B98D7D3012F5E500A45554 /* Requests */,
+				99C009BC3011A75700CDF610 /* AIClient.swift */,
+				99B98D803012F62100A45554 /* FirebaseAIClient.swift */,
+				99021AC3301DB73300D7DC8D /* GeminiError.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		99D2D5CA302386EC007A65C3 /* AppCheck */ = {
+			isa = PBXGroup;
+			children = (
+				99021AA630171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift */,
+			);
+			path = AppCheck;
+			sourceTree = "<group>";
+		};
+		99D2D5CD3024239B007A65C3 /* UserFacing */ = {
+			isa = PBXGroup;
+			children = (
+				99C009A3300F290600CDF610 /* AlertViewModel+ReceiptScannerView.swift */,
+			);
+			path = UserFacing;
+			sourceTree = "<group>";
+		};
+		99D2D5D03025255A007A65C3 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				99D2D5D130252570007A65C3 /* PreviewInput.swift */,
+			);
+			path = Previews;
+			sourceTree = "<group>";
+		};
+		99D553FF3014229900E937BB /* DefaultMenu */ = {
+			isa = PBXGroup;
+			children = (
+				99D553FD3014229900E937BB /* DefaultMenu.swift */,
+			);
+			path = DefaultMenu;
+			sourceTree = "<group>";
+		};
+		99D554023014229900E937BB /* SearchableMenu */ = {
+			isa = PBXGroup;
+			children = (
+				99D554003014229900E937BB /* SearchableMenu.swift */,
+			);
+			path = SearchableMenu;
+			sourceTree = "<group>";
+		};
+		99D554053014229900E937BB /* AppMenu */ = {
+			isa = PBXGroup;
+			children = (
+				99D553FF3014229900E937BB /* DefaultMenu */,
+				99D554023014229900E937BB /* SearchableMenu */,
+				99D554033014229900E937BB /* MenuLabel.swift */,
+			);
+			path = AppMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,6 +880,10 @@
 				99C0096B30089B5300CDF610 /* FactoryKit */,
 				99C009703008A61900CDF610 /* ObservableDefaults */,
 				99C0099D300F22F900CDF610 /* Dialogs */,
+				99C009B5301159E400CDF610 /* FirebaseAI */,
+				99C009B7301159E400CDF610 /* FirebaseAnalytics */,
+				99021A983016E35A00D7DC8D /* Shimmer */,
+				99021AAC30171E9200D7DC8D /* FirebaseRemoteConfig */,
 			);
 			productName = "HSA Archive";
 			productReference = 99C008903000ADED00CDF610 /* HSA Archive.app */;
@@ -589,6 +966,8 @@
 				99C0096A30089B5300CDF610 /* XCRemoteSwiftPackageReference "Factory" */,
 				99C0096F3008A61900CDF610 /* XCRemoteSwiftPackageReference "ObservableDefaults" */,
 				99C0099C300F22F900CDF610 /* XCRemoteSwiftPackageReference "Dialogs" */,
+				99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				99021A973016E35A00D7DC8D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 99C008913000ADED00CDF610 /* Products */;
@@ -609,6 +988,8 @@
 			files = (
 				99C008C33000B26400CDF610 /* Assets.xcassets in Resources */,
 				99C009623005ED1F00CDF610 /* AppIcon.icon in Resources */,
+				99021AB1301720B500D7DC8D /* RemoteConfigDefaults.plist in Resources */,
+				99C009C43012C1BB00CDF610 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,44 +1017,91 @@
 				99C00984300C423100CDF610 /* AppButton.swift in Sources */,
 				99C0096830089A7B00CDF610 /* OnboardingView+ViewModel.swift in Sources */,
 				99C008CF3000B2F900CDF610 /* TabsCoordinator.swift in Sources */,
+				99D2D5CC3023DAFD007A65C3 /* CaseIterable+RawValues.swift in Sources */,
 				99C008F83002A8E000CDF610 /* HomeView+RecentActivitySection.swift in Sources */,
+				99021ABD301B0BCF00D7DC8D /* ErrorBanner.swift in Sources */,
 				99C009793009E7DB00CDF610 /* OnboardingView+Page.swift in Sources */,
 				99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */,
+				99B98D7C3012F58400A45554 /* Category.swift in Sources */,
+				99021A9E3016FA7700D7DC8D /* AIRequest.swift in Sources */,
 				99C008DB3001A4A900CDF610 /* HomeView+ViewModel.swift in Sources */,
-				99C009A4300F290600CDF610 /* AlertViewModel+HomeView.swift in Sources */,
+				99C009A4300F290600CDF610 /* AlertViewModel+ReceiptScannerView.swift in Sources */,
 				99C009113004549900CDF610 /* FormatStyle.swift in Sources */,
+				99D2D5BF301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift in Sources */,
+				99D554073014229900E937BB /* SearchableMenu.swift in Sources */,
+				99021A8A3015981900D7DC8D /* Sync.swift in Sources */,
+				99D5540A3014229900E937BB /* MenuLabel.swift in Sources */,
+				99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */,
+				99021AA13016FAC400D7DC8D /* AIResponse.swift in Sources */,
 				99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */,
 				99C00903300345D300CDF610 /* ScaledFont.swift in Sources */,
+				99021AC4301DB73300D7DC8D /* GeminiError.swift in Sources */,
+				99021AC2301DAAEF00D7DC8D /* Debug.swift in Sources */,
+				99D2D5D230252570007A65C3 /* PreviewInput.swift in Sources */,
+				99C009AE301088AA00CDF610 /* AppTextField.swift in Sources */,
+				99021AA33016FB0500D7DC8D /* ReceiptExtractionResponse.swift in Sources */,
 				99C00994300D97D600CDF610 /* ReceiptReviewView.swift in Sources */,
-				99C00996300DA31500CDF610 /* ReceiptPreviewView+ViewModel.swift in Sources */,
+				99021A7930147A9600D7DC8D /* SelectionView+ViewModel.swift in Sources */,
+				99021A7A30147A9600D7DC8D /* SelectionView.swift in Sources */,
+				99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */,
+				99021A7D30147E9500D7DC8D /* AppConstants.swift in Sources */,
+				99C00996300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift in Sources */,
 				99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */,
+				99021AB33018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift in Sources */,
+				99021ABA301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift in Sources */,
 				99C008C23000B26400CDF610 /* HSA_ArchiveApp.swift in Sources */,
 				99C0098E300D508300CDF610 /* ReceiptScannerView+ViewModel.swift in Sources */,
+				99021A7F301481BA00D7DC8D /* ReceiptReviewCoordinator.swift in Sources */,
+				99B98D843012F92B00A45554 /* InputContainer.swift in Sources */,
 				99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */,
 				99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */,
 				99C0090C30043A3400CDF610 /* CornerRadius.swift in Sources */,
+				99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */,
+				99D2D5CF3024312B007A65C3 /* Debug+LogCategory.swift in Sources */,
+				99021AB6301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift in Sources */,
+				99021AA730171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift in Sources */,
 				99C008DD3001A4AE00CDF610 /* HomeView.swift in Sources */,
 				99C008FD3002D78800CDF610 /* ReceiptPreview.swift in Sources */,
+				99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */,
 				99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */,
 				99C0097730096CCD00CDF610 /* OnboardingView+PageView.swift in Sources */,
+				99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */,
 				99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */,
 				99C00906300416F800CDF610 /* ShapeStyle+Colors.swift in Sources */,
 				99C008D13000B31F00CDF610 /* TabsCoordinator+ViewModel.swift in Sources */,
+				99D2D5C730217588007A65C3 /* Placeholders.swift in Sources */,
 				99C0096E30089B5E00CDF610 /* UserDefaultsManager.swift in Sources */,
 				99C008F03002A17600CDF610 /* DefaultCardStyle.swift in Sources */,
+				99021A85301555A900D7DC8D /* AppToggle.swift in Sources */,
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,
+				99D2D5C530212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift in Sources */,
+				99021A823015123300D7DC8D /* OnFirstTask.swift in Sources */,
+				99C009B130114CE000CDF610 /* Receipt.swift in Sources */,
+				99D2D5C9302175CE007A65C3 /* String+Extensions.swift in Sources */,
 				99C00908300417EA00CDF610 /* Spacing.swift in Sources */,
 				99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */,
 				99C00991300D873E00CDF610 /* AddReceiptCoordinator.swift in Sources */,
 				99C0090A3004197100CDF610 /* Theme.swift in Sources */,
+				99021ABF301D3DC900D7DC8D /* ErrorBanner+Action.swift in Sources */,
+				99B98D8730130DEE00A45554 /* AppDatePicker.swift in Sources */,
+				99B98D7F3012F5F500A45554 /* ReceiptExtractionRequest.swift in Sources */,
 				99C00981300AC7A000CDF610 /* RootCoordinator+ViewModel.swift in Sources */,
 				99C0090F3004477100CDF610 /* HomeView+Overview+BalanceCard.swift in Sources */,
 				99C0096030049B6300CDF610 /* OnboardingView.swift in Sources */,
 				99C008F33002A24800CDF610 /* HomeView+SyncAccountsView.swift in Sources */,
+				99021AAA30171E2D00D7DC8D /* RemoteConfigClient.swift in Sources */,
+				99C009BD3011A75700CDF610 /* AIClient.swift in Sources */,
+				99021AA53016FB7300D7DC8D /* DateFormatter+Extensions.swift in Sources */,
 				99C0099B300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift in Sources */,
+				99021AB830186AAD00D7DC8D /* ReceiptExtractionResponse+Payload+Fields.swift in Sources */,
+				99C009AA3010091D00CDF610 /* Container+Services.swift in Sources */,
+				99021AC7301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift in Sources */,
 				99C0090030032B7A00CDF610 /* Badge.swift in Sources */,
 				99C009743008A73700CDF610 /* Container+Managers.swift in Sources */,
+				99B98D813012F62100A45554 /* FirebaseAIClient.swift in Sources */,
+				99C009A83010014500CDF610 /* TextRecognizer.swift in Sources */,
 				99C0097C3009EFD800CDF610 /* OnboardingView+ProgressPills.swift in Sources */,
+				99021A9C3016E42800D7DC8D /* RedactedShimmer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,9 +1264,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "HSA Archive/HSA Archive.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZYCTKRR744;
+				DEVELOPMENT_TEAM = ZDYU833639;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HSA-Archive-Info.plist";
@@ -869,9 +1298,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "HSA Archive/HSA Archive.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZYCTKRR744;
+				DEVELOPMENT_TEAM = ZDYU833639;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HSA-Archive-Info.plist";
@@ -1023,6 +1453,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		99021A973016E35A00D7DC8D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 		99C008BA3000AE6100CDF610 /* XCRemoteSwiftPackageReference "Navigation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cnimcheski/Navigation.git";
@@ -1055,9 +1493,27 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.16.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		99021A983016E35A00D7DC8D /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99021A973016E35A00D7DC8D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+		99021AAC30171E9200D7DC8D /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		99C008BB3000AE6100CDF610 /* Navigation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99C008BA3000AE6100CDF610 /* XCRemoteSwiftPackageReference "Navigation" */;
@@ -1077,6 +1533,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99C0099C300F22F900CDF610 /* XCRemoteSwiftPackageReference "Dialogs" */;
 			productName = Dialogs;
+		};
+		99C009B5301159E400CDF610 /* FirebaseAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAI;
+		};
+		99C009B7301159E400CDF610 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

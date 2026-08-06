@@ -9,7 +9,6 @@ import FactoryKit
 import Observation
 
 extension OnboardingView {
-    @MainActor
     @Observable
     final class ViewModel {
         private let userDefaultsManager = Container.shared.userDefaultsManager()

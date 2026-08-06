@@ -8,7 +8,6 @@
 import Navigation
 import SwiftUI
 
-@MainActor
 @Observable
 final class ReceiptsCoordinator: StackCoordinator {
     enum Page: CoordinatedPage {
@@ -16,8 +15,10 @@ final class ReceiptsCoordinator: StackCoordinator {
     }
     
     var path: [Page] = []
-    var sheet: Modal<Page>?
-    var fullScreenCover: Modal<Page>?
+    var sheet: Page?
+    var sheetOnDismiss: (() -> Void)?
+    var fullScreenCover: Page?
+    var fullScreenCoverOnDismiss: (() -> Void)?
     
     var rootView: some View {
         ReceiptsView()

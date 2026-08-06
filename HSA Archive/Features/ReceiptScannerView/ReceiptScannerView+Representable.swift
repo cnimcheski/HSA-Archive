@@ -10,14 +10,12 @@ import VisionKit
 
 extension ReceiptScannerView {
     struct Representable: UIViewControllerRepresentable {
-        @Environment(\.presentationMode) private var presentationMode
-        
-        private let onCompletion: (Result<[UIImage], Error>) -> Void
+        private let viewModel: ReceiptScannerView.ViewModel
         
         /// Creates a scanner that scans receipts.
-        /// - Parameter onCompletion: A callback that will be invoked when the scanning operation has succeeded or failed.
-        init(onCompletion: @escaping (Result<[UIImage], Error>) -> Void) {
-            self.onCompletion = onCompletion
+        /// - Parameter viewModel: The ViewModel for the `ReceiptScannerView`.
+        init(viewModel: ReceiptScannerView.ViewModel) {
+            self.viewModel = viewModel
         }
         
         func makeUIViewController(context: Context) -> VNDocumentCameraViewController {
@@ -37,14 +35,6 @@ extension ReceiptScannerView {
     }
 }
 
-// MARK: - Private Methods
-
-private extension ReceiptScannerView.Representable {
-    func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-    }
-}
-
 // MARK: - ReceiptScanner+Representable+Coordinator
 
 extension ReceiptScannerView.Representable {
@@ -59,22 +49,20 @@ extension ReceiptScannerView.Representable {
             _ controller: VNDocumentCameraViewController,
             didFinishWith scan: VNDocumentCameraScan
         ) {
-            parent.onCompletion(.success(scan.images))
-            parent.dismiss()
+            parent.viewModel.onCompletion(result: .success(scan.images))
         }
         
         func documentCameraViewControllerDidCancel(
             _ controller: VNDocumentCameraViewController
         ) {
-            parent.dismiss()
+            parent.viewModel.dismiss()
         }
         
         func documentCameraViewController(
             _ controller: VNDocumentCameraViewController,
             didFailWithError error: Error
         ) {
-            parent.onCompletion(.failure(error))
-            parent.dismiss()
+            parent.viewModel.onCompletion(result: .failure(error))
         }
     }
 }

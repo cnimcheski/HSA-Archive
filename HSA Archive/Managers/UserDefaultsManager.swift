@@ -8,7 +8,6 @@
 import Foundation
 import ObservableDefaults
 
-@MainActor
 @ObservableDefaults
 final class UserDefaultsManager {
     private(set) var didFinishOnboarding = false

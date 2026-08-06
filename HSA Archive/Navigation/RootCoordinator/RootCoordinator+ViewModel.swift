@@ -9,7 +9,6 @@ import FactoryKit
 import Observation
 
 extension RootCoordinator {
-    @MainActor
     @Observable
     final class ViewModel {
         enum RootViewType {

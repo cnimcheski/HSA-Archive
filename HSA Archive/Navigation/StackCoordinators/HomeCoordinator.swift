@@ -8,16 +8,17 @@
 import Navigation
 import SwiftUI
 
-@MainActor
 @Observable
 final class HomeCoordinator: StackCoordinator {
     enum Page: CoordinatedPage {
-        case addReceipt(AddReceiptCoordinator.Page)
+        case addReceiptCoordinator(AddReceiptCoordinator.Page)
     }
     
     var path: [Page] = []
-    var sheet: Modal<Page>?
-    var fullScreenCover: Modal<Page>?
+    var sheet: Page?
+    var sheetOnDismiss: (() -> Void)?
+    var fullScreenCover: Page?
+    var fullScreenCoverOnDismiss: (() -> Void)?
     
     var rootView: some View {
         HomeView(viewModel: homeViewModel)
@@ -33,7 +34,7 @@ final class HomeCoordinator: StackCoordinator {
     
     func build(page: Page) -> some View {
         switch page {
-        case let .addReceipt(page):
+        case let .addReceiptCoordinator(page):
             addReceiptCoordinator.build(page: page)
         }
     }
@@ -44,17 +45,14 @@ final class HomeCoordinator: StackCoordinator {
 extension HomeCoordinator: HomeView.NavigationDelegate {
     func navigate(to destination: HomeView.ViewModel.Destination) {
         switch destination {
-        case let .addReceipt(viewModel):
-            push(
-                .addReceipt(.scanner(viewModel)),
-                type: .fullScreenCover(onDismiss: viewModel.onDismiss)
-            )
+        case .addReceipt:
+            push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
         }
     }
 }
 
 extension HomeCoordinator: AddReceiptCoordinator.NavigationDelegate {
     func push(_ page: AddReceiptCoordinator.Page, type: Navigation.PushType) {
-        push(.addReceipt(page), type: type)
+        push(.addReceiptCoordinator(page), type: type)
     }
 }

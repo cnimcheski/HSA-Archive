@@ -16,11 +16,10 @@ extension HomeView {
 }
 
 extension HomeView {
-    @MainActor
     @Observable
     final class ViewModel: Navigating {
         enum Destination {
-            case addReceipt(ReceiptScannerView.ViewModel)
+            case addReceipt
         }
         
         weak var delegate: NavigationDelegate?
@@ -28,15 +27,7 @@ extension HomeView {
         var alertViewModel: AlertViewModel?
         
         func showReceiptScanner() {
-            delegate?.navigate(to: .addReceipt(.init(onError: showScannerErrorAlert)))
+            delegate?.navigate(to: .addReceipt)
         }
-    }
-}
-
-// MARK: - Private Methods
-
-private extension HomeView.ViewModel {
-    func showScannerErrorAlert() {
-        alertViewModel = .scannerError
     }
 }

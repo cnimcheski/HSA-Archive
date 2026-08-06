@@ -13,26 +13,27 @@ extension AddReceiptCoordinator {
         @MainActor func pop(_ last: Int)
         @MainActor func popToRoot()
         @MainActor func push(_ page: Page, type: PushType)
-        @MainActor func dismissSheet()
-        @MainActor func dismissFullScreenCover()
+        @MainActor func dismissSheet(onDismiss: (() -> Void)?)
+        @MainActor func dismissFullScreenCover(onDismiss: (() -> Void)?)
     }
 }
 
-@MainActor
 final class AddReceiptCoordinator: ChildCoordinator {
     enum Page: CoordinatedPage {
-        case scanner(ReceiptScannerView.ViewModel)
-        case review(ReceiptReviewView.ViewModel)
+        case review(ReceiptReviewCoordinator)
+        case scanner
     }
     
     weak var delegate: NavigationDelegate?
     
+    private var receiptReviewCoordinator: ReceiptReviewCoordinator?
+    
     func build(page: Page) -> some View {
         switch page {
-        case let .scanner(viewModel):
-            ReceiptScannerView(viewModel: viewModel.setup(delegate: self))
-        case let .review(viewModel):
-            ReceiptReviewView(viewModel: viewModel.setup(delegate: self))
+        case let .review(receiptReviewCoordinator):
+            NavigationStackCoordinator(for: receiptReviewCoordinator.setup(delegate: self))
+        case .scanner:
+            ReceiptScannerView(viewModel: .init().setup(delegate: self))
         }
     }
     
@@ -48,12 +49,12 @@ final class AddReceiptCoordinator: ChildCoordinator {
         delegate?.push(page, type: type)
     }
     
-    func dismissSheet() {
-        delegate?.dismissSheet()
+    func dismissSheet(onDismiss: (() -> Void)? = nil) {
+        delegate?.dismissSheet(onDismiss: onDismiss)
     }
     
-    func dismissFullScreenCover() {
-        delegate?.dismissFullScreenCover()
+    func dismissFullScreenCover(onDismiss: (() -> Void)? = nil) {
+        delegate?.dismissFullScreenCover(onDismiss: onDismiss)
     }
 }
 
@@ -62,17 +63,22 @@ final class AddReceiptCoordinator: ChildCoordinator {
 extension AddReceiptCoordinator: ReceiptScannerView.NavigationDelegate {
     func navigate(to destination: ReceiptScannerView.ViewModel.Destination) {
         switch destination {
-        case let .review(viewModel):
-            push(.review(viewModel), type: .sheet())
+        case let .dismiss(uiImage):
+            dismissFullScreenCover { [weak self] in
+                guard let self, let uiImage else { return }
+                push(.review(.init(receiptReviewViewModel: .init(uiImage: uiImage))), type: .sheet)
+            }
         }
     }
 }
 
-extension AddReceiptCoordinator: ReceiptReviewView.NavigationDelegate {
-    func navigate(to destination: ReceiptReviewView.ViewModel.Destination) {
+extension AddReceiptCoordinator: ReceiptReviewCoordinator.NavigationDelegate {
+    func navigate(to destination: ReceiptReviewCoordinator.Destination) {
         switch destination {
-        case .dismiss:
-            dismissSheet()
+        case let .dismiss(shouldShowScanner):
+            dismissSheet(
+                onDismiss: shouldShowScanner ? { self.push(.scanner, type: .fullScreenCover) } : nil
+            )
         }
     }
 }

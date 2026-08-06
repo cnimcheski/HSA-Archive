@@ -15,7 +15,6 @@ extension ReceiptsView {
 }
 
 extension ReceiptsView {
-    @MainActor
     @Observable
     final class ViewModel: Navigating {
         enum Destination {

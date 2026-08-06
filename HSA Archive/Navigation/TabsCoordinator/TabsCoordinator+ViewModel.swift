@@ -9,7 +9,6 @@ import Navigation
 import SwiftUI
 
 extension TabsCoordinator {
-    @MainActor
     @Observable
     final class ViewModel {
         enum Tab {

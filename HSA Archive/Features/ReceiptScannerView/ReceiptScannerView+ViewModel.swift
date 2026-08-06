@@ -5,6 +5,7 @@
 //  Created by Steve Nimcheski on 7/19/26.
 //
 
+import Dialogs
 import Navigation
 import UIKit
 
@@ -15,37 +16,36 @@ extension ReceiptScannerView {
 }
 
 extension ReceiptScannerView {
-    @MainActor
+    @Observable
     final class ViewModel: NavigationModel, Navigating {
         enum Destination {
-            case review(ReceiptReviewView.ViewModel)
+            case dismiss(uiImage: UIImage? = nil)
         }
-        
-        private let onError: () -> Void
         
         weak var delegate: NavigationDelegate?
         
-        private var images: [UIImage]?
-        
-        init(onError: @escaping () -> Void) {
-            self.onError = onError
-        }
+        var alertViewModel: AlertViewModel?
         
         func onCompletion(result: Result<[UIImage], Error>) {
-            // Delaying success/failure until the fullScreenCover's onDismiss runs
-            if case let .success(images) = result {
-                self.images = images
+            switch result {
+            case let .success(uiImages):
+                dismiss(uiImages: uiImages)
+            case .failure:
+                handleError()
             }
         }
         
-        func onDismiss() {
-            // Runs when the fullScreenCover's onDismiss runs
-            // TODO: - Don't just use the first image at some point.
-            guard let images, let first = images.first else {
-                onError()
-                return
-            }
-            self.delegate?.navigate(to: .review(.init(uiImage: first)))
+        /// Dismisses this screen and pushes on the `ReceiptReviewView` when passing an actual UIImage.
+        func dismiss(uiImages: [UIImage]? = nil) {
+            delegate?.navigate(to: .dismiss(uiImage: uiImages?.first))
         }
+    }
+}
+
+// MARK: - Private Methods
+
+private extension ReceiptScannerView.ViewModel {
+    func handleError() {
+        alertViewModel = .scannerError { self.dismiss() }
     }
 }
