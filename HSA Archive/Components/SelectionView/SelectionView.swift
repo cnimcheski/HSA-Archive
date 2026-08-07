@@ -16,7 +16,7 @@ struct SelectionView: View {
     }
     
     var body: some View {
-        List(viewModel.filteredItems, id: \.self) { item in
+        List(viewModel.filteredItems) { item in
             itemButton(item)
         }
         .navigationTitle(viewModel.navigationTitle)
@@ -36,13 +36,16 @@ struct SelectionView: View {
 // MARK: - Private Views
 
 private extension SelectionView {
-    func itemButton(_ item: String) -> some View {
+    func itemButton(_ item: Selection) -> some View {
         Button {
             viewModel.selectItem(item)
         } label: {
             HStack {
-                Text(item)
-                if item == viewModel.selection {
+                if let systemImage = item.systemImage {
+                    Image(systemName: systemImage)
+                }
+                Text(item.title)
+                if item.title == viewModel.selection {
                     Spacer()
                     Image(systemName: "checkmark")
                 }
@@ -58,8 +61,12 @@ private extension SelectionView {
         viewModel: .init(
             navigationTitle: "Title",
             searchPlaceholder: "Placeholder",
-            items: ["", "hi", "hello"],
-            initialSelection: "hi",
+            items: [
+                .init(title: "Dog", systemImage: "dog.fill"),
+                .init(title: "Car", systemImage: "car.fill"),
+                .init(title: "Person", systemImage: "person.fill")
+            ],
+            initialSelection: "Person",
             onSelect: { selection in
                 // Do something with selection
             }

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SearchableMenu: View {
     private let prompt: String
-    private let selection: String
+    private let selection: Selection
     private let isLoading: Bool
     private let action: () -> Void
     
     /// Provides a custom Menu with action callback to be used to present a `SelectionView`.
     init(
         _ prompt: String,
-        selection: String,
+        selection: Selection,
         isLoading: Bool = false,
         action: @escaping () -> Void
     ) {
@@ -39,14 +39,10 @@ struct SearchableMenu: View {
 
 #Preview {
     PreviewInput {
-        SearchableMenu(
-            "Title",
-            selection: "Selection",
-            isLoading: true
-        ) {
+        SearchableMenu("Title", selection: .mock, isLoading: true) {
             // Do some action
         }
-        SearchableMenu("Title", selection: "Selection") {
+        SearchableMenu("Title", selection: .mock) {
             // Do some action
         }
     }

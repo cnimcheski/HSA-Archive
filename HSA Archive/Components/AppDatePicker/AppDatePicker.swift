@@ -15,6 +15,10 @@ struct AppDatePicker: View {
     private let isLoading: Bool
     private let viewID = UUID().uuidString
     
+    private var menuLabelSelection: Selection {
+        .init(title: selection.formatted(date: .abbreviated, time: .omitted))
+    }
+    
     init(
         _ prompt: String,
         selection: Binding<Date>,
@@ -51,7 +55,7 @@ private extension AppDatePicker {
                 isFocused = true
             }
         ) {
-            MenuLabel(selection: selection.formatted(date: .abbreviated, time: .omitted))
+            MenuLabel(selection: menuLabelSelection)
                 .background(focusProxy)
                 .redactedShimmer(isShimmering: isLoading)
         }

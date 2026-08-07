@@ -77,11 +77,11 @@ extension ReceiptReviewView {
                     .init(
                         navigationTitle: AppConstants.categoryPrompt,
                         searchPlaceholder: AppConstants.categorySearchPlaceholder,
-                        items: Category.allCases.map { $0.rawValue },
+                        items: Category.allCases.map { $0.selection },
                         initialSelection: receipt.category.rawValue,
                         onSelect: { [weak self] selection in
                             // TODO: - Maybe a better default here...
-                            self?.receipt.category = .init(rawValue: selection) ?? .other
+                            self?.receipt.category = .init(rawValue: selection.title) ?? .other
                         }
                     )
                 )

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct DefaultMenu<Content: View>: View {
-    @Binding private var selection: String
+    @Binding private var selection: Selection
     private let prompt: String
     private let isLoading: Bool
     private let content: Content
     
     init(
         _ prompt: String,
-        selection: Binding<String>,
+        selection: Binding<Selection>,
         isLoading: Bool = false,
         @ViewBuilder content: () -> Content
     ) {
@@ -44,7 +44,7 @@ struct DefaultMenu<Content: View>: View {
 // MARK: - Previews
 
 #Preview {
-    @Previewable @State var selection = "hello"
+    @Previewable @State var selection = Selection.mock
     let items = ["", "hi", "hello"]
     
     PreviewInput {

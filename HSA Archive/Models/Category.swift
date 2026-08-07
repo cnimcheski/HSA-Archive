@@ -6,20 +6,61 @@
 //
 
 import FirebaseAI
+import Foundation
 
 enum Category: String, AIResponse, CaseIterable, Decodable {
-    case other = "Other"
+    case prescription = "Prescription"
+    case overTheCounter = "Over-the-Counter"
+    case doctorVisit = "Doctor Visit"
+    case dental = "Dental"
+    case vision = "Vision"
+    case mentalHealth = "Mental Health"
+    case hospital = "Hospital"
     case urgentCare = "Urgent Care"
-    case surgery = "Surgery"
+    case laboratory = "Laboratory"
+    case medicalEquipment = "Medical Equipment"
+    case medicalSupplies = "Medical Supplies"
+    case womensHealth = "Women's Health"
+    case physicalTherapy = "Physical Therapy"
+    case pharmacy = "Pharmacy"
+    case other = "Other"
     
-    var systemImage: String {
+    var selection: Selection {
+        .init(title: rawValue, systemImage: systemImage)
+    }
+    
+    private var systemImage: String {
         switch self {
+        case .prescription:
+            "pills.fill"
+        case .overTheCounter:
+            "cross.case.fill"
+        case .doctorVisit:
+            "stethoscope"
+        case .dental:
+            "mouth.fill"
+        case .vision:
+            "eye.fill"
+        case .mentalHealth:
+            "brain.head.profile"
+        case .hospital:
+            "cross.case"
+        case .urgentCare:
+            "cross.case.circle.fill"
+        case .laboratory:
+            "testtube.2"
+        case .medicalEquipment:
+            "figure.roll"
+        case .medicalSupplies:
+            "bandage.fill"
+        case .womensHealth:
+            "figure.and.child.holdinghands"
+        case .physicalTherapy:
+            "figure.walk.motion"
+        case .pharmacy:
+            "cross.vial.fill"
         case .other:
             "square.grid.2x2"
-        case .urgentCare:
-            "cross.case.fill"
-        case .surgery:
-            "stethoscope"
         }
     }
     

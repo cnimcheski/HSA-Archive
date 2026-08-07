@@ -113,7 +113,7 @@ private extension ReceiptReviewView {
     var categoryMenu: some View {
         SearchableMenu(
             AppConstants.categoryPrompt,
-            selection: viewModel.displayedReceipt.category.wrappedValue.rawValue,
+            selection: viewModel.displayedReceipt.category.wrappedValue.selection,
             isLoading: viewModel.isLoading,
             action: viewModel.showCategorySelectionView
         )

@@ -23,18 +23,18 @@ extension SelectionView {
         
         let navigationTitle: String
         let searchPlaceholder: String
-        private let items: [String]
-        private let onSelect: (String) -> Void
+        private let items: [Selection]
+        private let onSelect: (Selection) -> Void
         
         weak var delegate: NavigationDelegate?
         
         var searchText: String = ""
         
-        var filteredItems: [String] {
+        var filteredItems: [Selection] {
             let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
             return trimmedSearchText.isEmpty
                 ? items
-                : items.filter { $0.localizedStandardContains(trimmedSearchText) }
+                : items.filter { $0.title.localizedStandardContains(trimmedSearchText) }
         }
         
         private(set) var selection: String
@@ -42,9 +42,9 @@ extension SelectionView {
         init(
             navigationTitle: String,
             searchPlaceholder: String,
-            items: [String],
+            items: [Selection],
             initialSelection: String = "",
-            onSelect: @escaping (String) -> Void
+            onSelect: @escaping (Selection) -> Void
         ) {
             self.navigationTitle = navigationTitle
             self.searchPlaceholder = searchPlaceholder
@@ -53,7 +53,7 @@ extension SelectionView {
             self.onSelect = onSelect
         }
         
-        func selectItem(_ item: String) {
+        func selectItem(_ item: Selection) {
             onSelect(item)
             delegate?.navigate(to: .pop)
         }

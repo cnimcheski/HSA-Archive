@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct MenuLabel: View {
-    private let selection: String
+    private let selection: Selection
     
-    init(selection: String) {
+    init(selection: Selection) {
         self.selection = selection
     }
     
     var body: some View {
         HStack {
-            Text(selection)
+            if let systemImage = selection.systemImage {
+                Image(systemName: systemImage)
+                    .font(.caption)
+            }
+            Text(selection.title)
             Image(systemName: "chevron.down")
                 .font(.caption)
         }
@@ -24,5 +28,5 @@ struct MenuLabel: View {
 }
 
 #Preview {
-    MenuLabel(selection: "Selection")
+    MenuLabel(selection: .mock)
 }
