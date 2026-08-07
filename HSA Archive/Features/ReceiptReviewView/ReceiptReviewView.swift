@@ -39,7 +39,7 @@ struct ReceiptReviewView: View {
 private extension ReceiptReviewView {
     var content: some View {
         List {
-            receiptImage
+            previewImage
             errorBanner
             merchantField
             descriptionField
@@ -57,13 +57,8 @@ private extension ReceiptReviewView {
         .listStyle(.plain)
     }
     
-    var receiptImage: some View {
-        Image(uiImage: viewModel.uiImage)
-            .resizable()
-            .scaledToFill()
-            .frame(height: 200)
-            .clipShape(RoundedRectangle(cornerRadius: Theme.Spacing.large))
-            .clipped()
+    var previewImage: some View {
+        PreviewImage(uiImage: viewModel.uiImage)
     }
     
     @ViewBuilder
