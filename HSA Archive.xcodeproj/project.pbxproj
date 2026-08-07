@@ -109,6 +109,7 @@
 		99D2D5D230252570007A65C3 /* PreviewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D130252570007A65C3 /* PreviewInput.swift */; };
 		99D2D5D4302581EB007A65C3 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D3302581EB007A65C3 /* Selection.swift */; };
 		99D2D5D730264A14007A65C3 /* PreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D630264A14007A65C3 /* PreviewImage.swift */; };
+		99D2D5DA30266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D930266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift */; };
 		99D554073014229900E937BB /* SearchableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554003014229900E937BB /* SearchableMenu.swift */; };
 		99D5540A3014229900E937BB /* MenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554033014229900E937BB /* MenuLabel.swift */; };
 		99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D553FD3014229900E937BB /* DefaultMenu.swift */; };
@@ -231,6 +232,7 @@
 		99D2D5D130252570007A65C3 /* PreviewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInput.swift; sourceTree = "<group>"; };
 		99D2D5D3302581EB007A65C3 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		99D2D5D630264A14007A65C3 /* PreviewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImage.swift; sourceTree = "<group>"; };
+		99D2D5D930266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfirmationDialogViewModel+HomeView.swift"; sourceTree = "<group>"; };
 		99D553FD3014229900E937BB /* DefaultMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenu.swift; sourceTree = "<group>"; };
 		99D554003014229900E937BB /* SearchableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableMenu.swift; sourceTree = "<group>"; };
 		99D554033014229900E937BB /* MenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLabel.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				99C008E730029F7700CDF610 /* Overview */,
 				99C008F63002A8C500CDF610 /* RecentActivitySection */,
 				99C008F13002A22D00CDF610 /* SyncAccountsView */,
+				99D2D5D830266A29007A65C3 /* UserFacing */,
 				99C008DC3001A4AE00CDF610 /* HomeView.swift */,
 				99C008DA3001A4A900CDF610 /* HomeView+ViewModel.swift */,
 			);
@@ -847,6 +850,14 @@
 			path = PreviewImage;
 			sourceTree = "<group>";
 		};
+		99D2D5D830266A29007A65C3 /* UserFacing */ = {
+			isa = PBXGroup;
+			children = (
+				99D2D5D930266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift */,
+			);
+			path = UserFacing;
+			sourceTree = "<group>";
+		};
 		99D553FF3014229900E937BB /* DefaultMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1079,6 +1090,7 @@
 				99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */,
 				99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */,
 				99C0097730096CCD00CDF610 /* OnboardingView+PageView.swift in Sources */,
+				99D2D5DA30266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift in Sources */,
 				99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */,
 				99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */,
 				99C00906300416F800CDF610 /* ShapeStyle+Colors.swift in Sources */,

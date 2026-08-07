@@ -19,7 +19,6 @@ struct HomeView: View {
         content
             .navigationTitle("HSA Archive")
             .toolbar { uploadReceiptButton }
-            .alert(viewModel: $viewModel.alertViewModel)
     }
 }
 
@@ -39,10 +38,11 @@ private extension HomeView {
     
     var uploadReceiptButton: some View {
         Button {
-            viewModel.showReceiptScanner()
+            viewModel.showUploadReceiptConfirmationDialog()
         } label: {
             Label("Scan a receipt", systemImage: "plus")
         }
+        .confirmationDialog(viewModel: $viewModel.confirmationDialogViewModel)
     }
 }
 

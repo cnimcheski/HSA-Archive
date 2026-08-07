@@ -24,10 +24,30 @@ extension HomeView {
         
         weak var delegate: NavigationDelegate?
         
-        var alertViewModel: AlertViewModel?
+        var confirmationDialogViewModel: ConfirmationDialogViewModel?
         
-        func showReceiptScanner() {
-            delegate?.navigate(to: .addReceipt)
+        func showUploadReceiptConfirmationDialog() {
+            confirmationDialogViewModel = .uploadReceipt(
+                showReceiptScanner: showReceiptScanner,
+                showFileImporter: showFileImporter,
+                showPhotosPicker: showPhotosPicker
+            )
         }
+    }
+}
+
+// MARK: - Private Methods
+
+private extension HomeView.ViewModel {
+    func showReceiptScanner() {
+        delegate?.navigate(to: .addReceipt)
+    }
+    
+    func showFileImporter() {
+        // TODO: - Implement file importer
+    }
+    
+    func showPhotosPicker() {
+        // TODO: - Implement Photos Picker
     }
 }
