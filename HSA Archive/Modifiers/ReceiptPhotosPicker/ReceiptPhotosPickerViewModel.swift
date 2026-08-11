@@ -11,8 +11,8 @@ import Toast
 
 @Observable
 final class ReceiptPhotosPickerViewModel {
-    let onCompletion: ([UIImage]) -> Void
     let onDismiss: (() -> Void)?
+    private let onCompletion: ([UIImage]) -> Void
     
     var selection: [PhotosPickerItem] {
         didSet { handleNewSelection(selection) }
@@ -46,9 +46,7 @@ private extension ReceiptPhotosPickerViewModel {
             for item in selection {
                 group.addTask {
                     guard let data = try? await item.loadTransferable(type: Data.self),
-                        let image = UIImage(data: data) else {
-                        return nil
-                    }
+                        let image = UIImage(data: data) else { return nil }
                     return image
                 }
             }

@@ -19,6 +19,7 @@ extension HomeView {
     @Observable
     final class ViewModel: Navigating {
         enum Destination {
+            case filePicker
             case photosPicker
             case scanner
         }
@@ -45,7 +46,7 @@ private extension HomeView.ViewModel {
     }
     
     func showFileImporter() {
-        // TODO: - Implement file importer
+        delegate?.navigate(to: .filePicker)
     }
     
     func showPhotosPicker() {

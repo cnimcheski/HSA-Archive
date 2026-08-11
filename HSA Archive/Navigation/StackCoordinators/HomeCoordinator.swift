@@ -19,16 +19,18 @@ final class HomeCoordinator: StackCoordinator {
     var sheetOnDismiss: (() -> Void)?
     var fullScreenCover: Page?
     var fullScreenCoverOnDismiss: (() -> Void)?
-    var photosPickerViewModel: ReceiptPhotosPickerViewModel?
     
     var rootView: some View {
         @Bindable var coordinator = self
         return HomeView(viewModel: homeViewModel)
+            .receiptFileImporter(viewModel: $coordinator.fileImporterViewModel)
             .receiptPhotosPicker(viewModel: $coordinator.photosPickerViewModel)
     }
     
     private var homeViewModel = HomeView.ViewModel()
     private var addReceiptCoordinator = AddReceiptCoordinator()
+    private var fileImporterViewModel: ReceiptFileImporterViewModel?
+    private var photosPickerViewModel: ReceiptPhotosPickerViewModel?
     
     init() {
         homeViewModel = homeViewModel.setup(delegate: self)
@@ -46,7 +48,7 @@ final class HomeCoordinator: StackCoordinator {
 // MARK: - Private Methods
 
 private extension HomeCoordinator {
-    func handlePhotosPickerSelections(_ uiImages: [UIImage]) {
+    func handleSelectedImages(_ uiImages: [UIImage]) {
         // TODO: - Use all images instead of just first
         guard let uiImage = uiImages.first else { return }
         push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: .init(uiImage: uiImage)))), type: .sheet)
@@ -58,8 +60,10 @@ private extension HomeCoordinator {
 extension HomeCoordinator: HomeView.NavigationDelegate {
     func navigate(to destination: HomeView.ViewModel.Destination) {
         switch destination {
+        case .filePicker:
+            fileImporterViewModel = .init(onCompletion: handleSelectedImages)
         case .photosPicker:
-            photosPickerViewModel = .init(onCompletion: handlePhotosPickerSelections)
+            photosPickerViewModel = .init(onCompletion: handleSelectedImages)
         case .scanner:
             push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
         }

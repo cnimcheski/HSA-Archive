@@ -114,6 +114,8 @@
 		99D2D5E5302847C3007A65C3 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 99D2D5E4302847C3007A65C3 /* Toast */; };
 		99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5E730284936007A65C3 /* DefaultToastType.swift */; };
 		99D2D5EC302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5EB302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift */; };
+		99D2D5EF302B70CE007A65C3 /* ReceiptFileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5EE302B70CE007A65C3 /* ReceiptFileImporter.swift */; };
+		99D2D5F1302B7138007A65C3 /* ReceiptFileImporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5F0302B7138007A65C3 /* ReceiptFileImporterViewModel.swift */; };
 		99D554073014229900E937BB /* SearchableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554003014229900E937BB /* SearchableMenu.swift */; };
 		99D5540A3014229900E937BB /* MenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554033014229900E937BB /* MenuLabel.swift */; };
 		99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D553FD3014229900E937BB /* DefaultMenu.swift */; };
@@ -240,6 +242,8 @@
 		99D2D5E13027C637007A65C3 /* ReceiptPhotosPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptPhotosPicker.swift; sourceTree = "<group>"; };
 		99D2D5E730284936007A65C3 /* DefaultToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultToastType.swift; sourceTree = "<group>"; };
 		99D2D5EB302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptPhotosPickerViewModel.swift; sourceTree = "<group>"; };
+		99D2D5EE302B70CE007A65C3 /* ReceiptFileImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptFileImporter.swift; sourceTree = "<group>"; };
+		99D2D5F0302B7138007A65C3 /* ReceiptFileImporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptFileImporterViewModel.swift; sourceTree = "<group>"; };
 		99D553FD3014229900E937BB /* DefaultMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenu.swift; sourceTree = "<group>"; };
 		99D554003014229900E937BB /* SearchableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableMenu.swift; sourceTree = "<group>"; };
 		99D554033014229900E937BB /* MenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLabel.swift; sourceTree = "<group>"; };
@@ -588,6 +592,7 @@
 			children = (
 				99C008EE3002A16B00CDF610 /* CardStyle */,
 				99021A813015123300D7DC8D /* OnFirstTask */,
+				99D2D5ED302B70B0007A65C3 /* ReceiptFileImporter */,
 				99D2D5E03027C613007A65C3 /* ReceiptPhotosPicker */,
 				99021A9A3016E41900D7DC8D /* RedactedShimmer */,
 				99C00901300345C400CDF610 /* ScaledFont */,
@@ -885,6 +890,15 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		99D2D5ED302B70B0007A65C3 /* ReceiptFileImporter */ = {
+			isa = PBXGroup;
+			children = (
+				99D2D5EE302B70CE007A65C3 /* ReceiptFileImporter.swift */,
+				99D2D5F0302B7138007A65C3 /* ReceiptFileImporterViewModel.swift */,
+			);
+			path = ReceiptFileImporter;
+			sourceTree = "<group>";
+		};
 		99D553FF3014229900E937BB /* DefaultMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1122,6 +1136,7 @@
 				99C0097730096CCD00CDF610 /* OnboardingView+PageView.swift in Sources */,
 				99D2D5DA30266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift in Sources */,
 				99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */,
+				99D2D5EF302B70CE007A65C3 /* ReceiptFileImporter.swift in Sources */,
 				99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */,
 				99C00906300416F800CDF610 /* ShapeStyle+Colors.swift in Sources */,
 				99C008D13000B31F00CDF610 /* TabsCoordinator+ViewModel.swift in Sources */,
@@ -1134,6 +1149,7 @@
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,
 				99D2D5C530212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift in Sources */,
 				99021A823015123300D7DC8D /* OnFirstTask.swift in Sources */,
+				99D2D5F1302B7138007A65C3 /* ReceiptFileImporterViewModel.swift in Sources */,
 				99C009B130114CE000CDF610 /* Receipt.swift in Sources */,
 				99D2D5C9302175CE007A65C3 /* String+Extensions.swift in Sources */,
 				99C00908300417EA00CDF610 /* Spacing.swift in Sources */,

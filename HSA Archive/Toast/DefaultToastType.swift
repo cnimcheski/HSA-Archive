@@ -9,10 +9,13 @@ import SwiftUI
 import Toast
 
 enum DefaultToastType: ToastType {
+    case fileImporterFailed(count: Int)
     case photoPickerFailed(count: Int)
     
     var message: LocalizedStringKey {
         switch self {
+        case let .fileImporterFailed(count):
+            "^[\(count) file](inflect: true) couldn't be loaded."
         case let .photoPickerFailed(count):
             "^[\(count) photo](inflect: true) couldn't be loaded."
         }
