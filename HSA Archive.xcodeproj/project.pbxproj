@@ -110,6 +110,10 @@
 		99D2D5D4302581EB007A65C3 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D3302581EB007A65C3 /* Selection.swift */; };
 		99D2D5D730264A14007A65C3 /* PreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D630264A14007A65C3 /* PreviewImage.swift */; };
 		99D2D5DA30266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5D930266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift */; };
+		99D2D5E23027C637007A65C3 /* ReceiptPhotosPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5E13027C637007A65C3 /* ReceiptPhotosPicker.swift */; };
+		99D2D5E5302847C3007A65C3 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 99D2D5E4302847C3007A65C3 /* Toast */; };
+		99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5E730284936007A65C3 /* DefaultToastType.swift */; };
+		99D2D5EC302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5EB302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift */; };
 		99D554073014229900E937BB /* SearchableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554003014229900E937BB /* SearchableMenu.swift */; };
 		99D5540A3014229900E937BB /* MenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554033014229900E937BB /* MenuLabel.swift */; };
 		99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D553FD3014229900E937BB /* DefaultMenu.swift */; };
@@ -233,6 +237,9 @@
 		99D2D5D3302581EB007A65C3 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		99D2D5D630264A14007A65C3 /* PreviewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImage.swift; sourceTree = "<group>"; };
 		99D2D5D930266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfirmationDialogViewModel+HomeView.swift"; sourceTree = "<group>"; };
+		99D2D5E13027C637007A65C3 /* ReceiptPhotosPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptPhotosPicker.swift; sourceTree = "<group>"; };
+		99D2D5E730284936007A65C3 /* DefaultToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultToastType.swift; sourceTree = "<group>"; };
+		99D2D5EB302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptPhotosPickerViewModel.swift; sourceTree = "<group>"; };
 		99D553FD3014229900E937BB /* DefaultMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenu.swift; sourceTree = "<group>"; };
 		99D554003014229900E937BB /* SearchableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableMenu.swift; sourceTree = "<group>"; };
 		99D554033014229900E937BB /* MenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLabel.swift; sourceTree = "<group>"; };
@@ -246,6 +253,7 @@
 				99021AAD30171E9200D7DC8D /* FirebaseRemoteConfig in Frameworks */,
 				99C009B6301159E400CDF610 /* FirebaseAI in Frameworks */,
 				99C0096C30089B5300CDF610 /* FactoryKit in Frameworks */,
+				99D2D5E5302847C3007A65C3 /* Toast in Frameworks */,
 				99C009B8301159E400CDF610 /* FirebaseAnalytics in Frameworks */,
 				99C009713008A61900CDF610 /* ObservableDefaults in Frameworks */,
 				99021A993016E35A00D7DC8D /* Shimmer in Frameworks */,
@@ -449,6 +457,7 @@
 				99D2D5D03025255A007A65C3 /* Previews */,
 				99C009A5301000EE00CDF610 /* Services */,
 				99C00904300415A000CDF610 /* Theme */,
+				99D2D5E63028491A007A65C3 /* Toast */,
 				99C009613005ED1E00CDF610 /* AppIcon.icon */,
 				99C008BD3000B26400CDF610 /* Assets.xcassets */,
 				99C009C33012C1BB00CDF610 /* GoogleService-Info.plist */,
@@ -577,11 +586,12 @@
 		99C008ED3002A16100CDF610 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				99021A883015980B00D7DC8D /* Sync */,
 				99C008EE3002A16B00CDF610 /* CardStyle */,
 				99021A813015123300D7DC8D /* OnFirstTask */,
+				99D2D5E03027C613007A65C3 /* ReceiptPhotosPicker */,
 				99021A9A3016E41900D7DC8D /* RedactedShimmer */,
 				99C00901300345C400CDF610 /* ScaledFont */,
+				99021A883015980B00D7DC8D /* Sync */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -858,6 +868,23 @@
 			path = UserFacing;
 			sourceTree = "<group>";
 		};
+		99D2D5E03027C613007A65C3 /* ReceiptPhotosPicker */ = {
+			isa = PBXGroup;
+			children = (
+				99D2D5E13027C637007A65C3 /* ReceiptPhotosPicker.swift */,
+				99D2D5EB302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift */,
+			);
+			path = ReceiptPhotosPicker;
+			sourceTree = "<group>";
+		};
+		99D2D5E63028491A007A65C3 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				99D2D5E730284936007A65C3 /* DefaultToastType.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		99D553FF3014229900E937BB /* DefaultMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -909,6 +936,7 @@
 				99C009B7301159E400CDF610 /* FirebaseAnalytics */,
 				99021A983016E35A00D7DC8D /* Shimmer */,
 				99021AAC30171E9200D7DC8D /* FirebaseRemoteConfig */,
+				99D2D5E4302847C3007A65C3 /* Toast */,
 			);
 			productName = "HSA Archive";
 			productReference = 99C008903000ADED00CDF610 /* HSA Archive.app */;
@@ -993,6 +1021,7 @@
 				99C0099C300F22F900CDF610 /* XCRemoteSwiftPackageReference "Dialogs" */,
 				99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				99021A973016E35A00D7DC8D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				99D2D5E3302847C3007A65C3 /* XCRemoteSwiftPackageReference "Toast" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 99C008913000ADED00CDF610 /* Products */;
@@ -1080,6 +1109,7 @@
 				99B98D843012F92B00A45554 /* InputContainer.swift in Sources */,
 				99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */,
 				99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */,
+				99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */,
 				99C0090C30043A3400CDF610 /* CornerRadius.swift in Sources */,
 				99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */,
 				99D2D5CF3024312B007A65C3 /* Debug+LogCategory.swift in Sources */,
@@ -1100,6 +1130,7 @@
 				99C0096E30089B5E00CDF610 /* UserDefaultsManager.swift in Sources */,
 				99C008F03002A17600CDF610 /* DefaultCardStyle.swift in Sources */,
 				99021A85301555A900D7DC8D /* AppToggle.swift in Sources */,
+				99D2D5E23027C637007A65C3 /* ReceiptPhotosPicker.swift in Sources */,
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,
 				99D2D5C530212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift in Sources */,
 				99021A823015123300D7DC8D /* OnFirstTask.swift in Sources */,
@@ -1128,6 +1159,7 @@
 				99C009743008A73700CDF610 /* Container+Managers.swift in Sources */,
 				99B98D813012F62100A45554 /* FirebaseAIClient.swift in Sources */,
 				99C009A83010014500CDF610 /* TextRecognizer.swift in Sources */,
+				99D2D5EC302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift in Sources */,
 				99C0097C3009EFD800CDF610 /* OnboardingView+ProgressPills.swift in Sources */,
 				99021A9C3016E42800D7DC8D /* RedactedShimmer.swift in Sources */,
 			);
@@ -1529,6 +1561,14 @@
 				minimumVersion = 12.16.0;
 			};
 		};
+		99D2D5E3302847C3007A65C3 /* XCRemoteSwiftPackageReference "Toast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cnimcheski/Toast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1571,6 +1611,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		99D2D5E4302847C3007A65C3 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99D2D5E3302847C3007A65C3 /* XCRemoteSwiftPackageReference "Toast" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

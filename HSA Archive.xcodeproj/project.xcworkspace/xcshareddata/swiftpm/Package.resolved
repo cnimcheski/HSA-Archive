@@ -1,5 +1,5 @@
 {
-  "originHash" : "621afd8afdca2dc21b258c1ea5baaeca540be47c9514f72491a39bdd4bb5a07d",
+  "originHash" : "0755e34fbcdc0017092dc68d4147edbb55f930ebb4a3705bb249307d95ac00b7",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -170,6 +170,15 @@
       "state" : {
         "revision" : "0226e21f9bf355d40e07e5f5e1c33679d50e167f",
         "version" : "1.5.1"
+      }
+    },
+    {
+      "identity" : "toast",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cnimcheski/Toast.git",
+      "state" : {
+        "revision" : "f4e0e0d60ebfb61de8efa9bed2fd1bb2480e0653",
+        "version" : "1.0.2"
       }
     }
   ],

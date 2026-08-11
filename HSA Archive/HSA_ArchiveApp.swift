@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import Toast
 
 @main
 struct HSA_ArchiveApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
     
     var body: some Scene {
         WindowGroup {
-            RootCoordinator()
+            ToastCoordinator {
+                DefaultToastView()
+            } content: {
+                RootCoordinator()
+            }
         }
     }
 }

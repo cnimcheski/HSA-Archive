@@ -19,9 +19,12 @@ final class HomeCoordinator: StackCoordinator {
     var sheetOnDismiss: (() -> Void)?
     var fullScreenCover: Page?
     var fullScreenCoverOnDismiss: (() -> Void)?
+    var photosPickerViewModel: ReceiptPhotosPickerViewModel?
     
     var rootView: some View {
-        HomeView(viewModel: homeViewModel)
+        @Bindable var coordinator = self
+        return HomeView(viewModel: homeViewModel)
+            .receiptPhotosPicker(viewModel: $coordinator.photosPickerViewModel)
     }
     
     private var homeViewModel = HomeView.ViewModel()
@@ -40,12 +43,24 @@ final class HomeCoordinator: StackCoordinator {
     }
 }
 
+// MARK: - Private Methods
+
+private extension HomeCoordinator {
+    func handlePhotosPickerSelections(_ uiImages: [UIImage]) {
+        // TODO: - Use all images instead of just first
+        guard let uiImage = uiImages.first else { return }
+        push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: .init(uiImage: uiImage)))), type: .sheet)
+    }
+}
+
 // MARK: - Delegate Handlers
 
 extension HomeCoordinator: HomeView.NavigationDelegate {
     func navigate(to destination: HomeView.ViewModel.Destination) {
         switch destination {
-        case .addReceipt:
+        case .photosPicker:
+            photosPickerViewModel = .init(onCompletion: handlePhotosPickerSelections)
+        case .scanner:
             push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
         }
     }

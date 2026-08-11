@@ -19,7 +19,8 @@ extension HomeView {
     @Observable
     final class ViewModel: Navigating {
         enum Destination {
-            case addReceipt
+            case photosPicker
+            case scanner
         }
         
         weak var delegate: NavigationDelegate?
@@ -40,7 +41,7 @@ extension HomeView {
 
 private extension HomeView.ViewModel {
     func showReceiptScanner() {
-        delegate?.navigate(to: .addReceipt)
+        delegate?.navigate(to: .scanner)
     }
     
     func showFileImporter() {
@@ -48,6 +49,6 @@ private extension HomeView.ViewModel {
     }
     
     func showPhotosPicker() {
-        // TODO: - Implement Photos Picker
+        delegate?.navigate(to: .photosPicker)
     }
 }
