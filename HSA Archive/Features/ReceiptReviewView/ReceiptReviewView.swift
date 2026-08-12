@@ -58,7 +58,10 @@ private extension ReceiptReviewView {
     }
     
     var previewImage: some View {
-        PreviewImage(uiImage: viewModel.uiImage)
+        Button(action: viewModel.showFullImageView) {
+            PreviewImage(uiImage: viewModel.uiImage)
+        }
+        .buttonStyle(.plain)
     }
     
     @ViewBuilder

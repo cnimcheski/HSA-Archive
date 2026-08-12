@@ -20,6 +20,7 @@ extension ReceiptReviewCoordinator {
 final class ReceiptReviewCoordinator: StackCoordinator, Navigating, NavigationModel {
     enum Page: CoordinatedPage {
         case categorySelection(SelectionView.ViewModel)
+        case fullImage(FullImageView.ViewModel)
     }
     
     enum Destination {
@@ -48,6 +49,8 @@ final class ReceiptReviewCoordinator: StackCoordinator, Navigating, NavigationMo
         switch page {
         case let .categorySelection(viewModel):
             SelectionView(viewModel: viewModel.setup(delegate: self))
+        case let .fullImage(viewModel):
+            FullImageView(viewModel: viewModel.setup(delegate: self))
         }
     }
 }
@@ -61,6 +64,8 @@ extension ReceiptReviewCoordinator: ReceiptReviewView.NavigationDelegate {
             push(.categorySelection(viewModel))
         case let .dismiss(shouldShowScanner):
             delegate?.navigate(to: .dismiss(shouldShowScanner: shouldShowScanner))
+        case let .fullImage(viewModel):
+            push(.fullImage(viewModel), type: .fullScreenCover)
         }
     }
 }
@@ -70,6 +75,15 @@ extension ReceiptReviewCoordinator: SelectionView.NavigationDelegate {
         switch destination {
         case .pop:
             pop()
+        }
+    }
+}
+
+extension ReceiptReviewCoordinator: FullImageView.NavigationDelegate {
+    func navigate(to destination: FullImageView.ViewModel.Destination) {
+        switch destination {
+        case .dismiss:
+            dismissFullScreenCover()
         }
     }
 }

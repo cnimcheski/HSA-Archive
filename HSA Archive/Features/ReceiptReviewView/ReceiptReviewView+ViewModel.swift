@@ -22,6 +22,7 @@ extension ReceiptReviewView {
         enum Destination {
             case categorySelection(SelectionView.ViewModel)
             case dismiss(shouldShowScanner: Bool)
+            case fullImage(FullImageView.ViewModel)
         }
         
         enum Constants {
@@ -69,6 +70,10 @@ extension ReceiptReviewView {
             } catch {
                 handleUnknownError()
             }
+        }
+        
+        func showFullImageView() {
+            delegate?.navigate(to: .fullImage(.init(uiImage: uiImage)))
         }
         
         func showCategorySelectionView() {
