@@ -23,6 +23,7 @@ extension ReceiptReviewView {
             case categorySelection(SelectionView.ViewModel)
             case dismiss(shouldShowScanner: Bool)
             case fullImage(FullImageView.ViewModel)
+            case signIn(SignInView.ViewModel)
         }
         
         enum Constants {
@@ -30,6 +31,8 @@ extension ReceiptReviewView {
         }
         
         private let aiClient = Container.shared.aiClient()
+        private let googleAuthService = Container.shared.googleAuthService()
+        private let receiptRepository = Container.shared.receiptRepository()
         private let textRecognizer = Container.shared.textRecognizer()
         
         let uiImage: UIImage
@@ -48,6 +51,7 @@ extension ReceiptReviewView {
         }
         
         private(set) var isLoading = true
+        private(set) var isSaving = false
         private(set) var errorBannerViewModel: ErrorBanner.ViewModel?
         private var receipt = Receipt.empty
         
@@ -91,6 +95,18 @@ extension ReceiptReviewView {
                     )
                 )
             )
+        }
+        
+        func save() async {
+            defer { isSaving = false }
+            isSaving = true
+            
+            guard googleAuthService.isSignedIn else {
+                showSignInView()
+                return
+            }
+            guard await receiptRepository.add(receipt, uiImage: uiImage) != nil else { return }
+            dismiss()
         }
         
         func dismiss(shouldShowScanner: Bool = false) {
@@ -174,5 +190,19 @@ private extension ReceiptReviewView.ViewModel {
     
     func handleScanAgain() {
         dismiss(shouldShowScanner: true)
+    }
+    
+    func showSignInView() {
+        delegate?.navigate(
+            to: .signIn(
+                .init(
+                    onSuccess: {
+                        Task {
+                            await self.save()
+                        }
+                    }
+                )
+            )
+        )
     }
 }

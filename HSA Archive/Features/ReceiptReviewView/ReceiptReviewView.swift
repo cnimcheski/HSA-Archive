@@ -165,10 +165,13 @@ private extension ReceiptReviewView {
     
     var saveButton: some View {
         Button {
-            // TODO: - Add save functionality later...
+            Task {
+                await viewModel.save()
+            }
         } label: {
             Label("Save", systemImage: "checkmark")
         }
+        .disabled(viewModel.isSaving)
     }
 }
 

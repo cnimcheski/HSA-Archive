@@ -5,9 +5,10 @@
 //  Created by Steve Nimcheski on 8/5/26.
 //
 
-extension Debug {
+nonisolated extension Debug {
     enum LogCategory: String {
         case ai
+        case network
         case ocr
     }
 }

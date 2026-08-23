@@ -14,7 +14,6 @@ struct Receipt {
     var transactionDate: Date
     var category: Category
     var reimbursementDate: Date?
-    let submissionDate: Date
     var notes: String
     var fileName: String
     
@@ -30,7 +29,6 @@ struct Receipt {
         transactionDate: Date,
         category: Category,
         reimbursementDate: Date? = nil,
-        submissionDate: Date,
         notes: String,
         fileName: String
     ) {
@@ -40,7 +38,6 @@ struct Receipt {
         self.transactionDate = transactionDate
         self.category = category
         self.reimbursementDate = reimbursementDate
-        self.submissionDate = submissionDate
         self.notes = notes
         self.fileName = fileName
     }
@@ -56,7 +53,6 @@ extension Receipt {
         self.transactionDate = fields.transactionDate
         self.category = fields.category
         self.reimbursementDate = nil
-        self.submissionDate = .now
         self.notes = ""
         self.fileName = "\(fields.transactionDate.formatted()) \(fields.merchant) \(fields.amount)"
     }
@@ -72,7 +68,6 @@ extension Receipt {
             amount: 0,
             transactionDate: .now,
             category: .other,
-            submissionDate: .now,
             notes: "",
             fileName: ""
         )

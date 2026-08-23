@@ -97,7 +97,6 @@
 		99C009B8301159E400CDF610 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99C009B7301159E400CDF610 /* FirebaseAnalytics */; };
 		99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009B930115A1300CDF610 /* AppDelegate.swift */; };
 		99C009BD3011A75700CDF610 /* AIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009BC3011A75700CDF610 /* AIClient.swift */; };
-		99C009C43012C1BB00CDF610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99C009C33012C1BB00CDF610 /* GoogleService-Info.plist */; };
 		99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5BC301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift */; };
 		99D2D5BF301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5BE301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift */; };
 		99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5C230212B18007A65C3 /* ErrorBanner+ViewModel.swift */; };
@@ -121,6 +120,45 @@
 		99D554073014229900E937BB /* SearchableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554003014229900E937BB /* SearchableMenu.swift */; };
 		99D5540A3014229900E937BB /* MenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D554033014229900E937BB /* MenuLabel.swift */; };
 		99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D553FD3014229900E937BB /* DefaultMenu.swift */; };
+		99DD444D303177C700843826 /* ReceiptRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD444C303177C700843826 /* ReceiptRepository.swift */; };
+		99DD4450303179EA00843826 /* Container+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD444F303179EA00843826 /* Container+Repositories.swift */; };
+		99DD44533031893C00843826 /* BatchUpdateSpreadsheetEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD44523031893C00843826 /* BatchUpdateSpreadsheetEndpoint.swift */; };
+		99DD4455303189AC00843826 /* BatchUpdateSpreadsheetEndpoint+Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4454303189AC00843826 /* BatchUpdateSpreadsheetEndpoint+Body.swift */; };
+		99DD4457303245DC00843826 /* BatchUpdateSpreadsheetEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4456303245DC00843826 /* BatchUpdateSpreadsheetEndpoint+Response.swift */; };
+		99DD445A3033A14D00843826 /* FetchSpreadsheetEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD44593033A14D00843826 /* FetchSpreadsheetEndpoint.swift */; };
+		99DD445C3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD445B3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift */; };
+		99DD445F3035762600843826 /* ReceiptSpreadsheetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD445E3035762600843826 /* ReceiptSpreadsheetService.swift */; };
+		99DD446330363C9900843826 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99DD446230363C9900843826 /* GoogleService-Info.plist */; };
+		99DD4466303A255000843826 /* UploadFileEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4465303A255000843826 /* UploadFileEndpoint.swift */; };
+		99DD4468303A299B00843826 /* UploadFileEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4467303A299B00843826 /* UploadFileEndpoint+Response.swift */; };
+		99DD446A303A8F0200843826 /* ReceiptSpreadsheetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4469303A8F0200843826 /* ReceiptSpreadsheetRow.swift */; };
+		99DD446C303A95DC00843826 /* UploadFileEndpoint+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD446B303A95DC00843826 /* UploadFileEndpoint+Metadata.swift */; };
+		99DD446E303A9E6300843826 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD446D303A9E6300843826 /* Data+Extensions.swift */; };
+		99DD4470303AC44900843826 /* SpreadsheetFailureConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD446F303AC44900843826 /* SpreadsheetFailureConvertible.swift */; };
+		99F2DD18302C075B00A4B653 /* GoogleAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD17302C075B00A4B653 /* GoogleAuthService.swift */; };
+		99F2DD1A302C087A00A4B653 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD19302C087A00A4B653 /* UIApplication+Extensions.swift */; };
+		99F2DD1F302D22DE00A4B653 /* GoogleDriveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD1E302D22DE00A4B653 /* GoogleDriveService.swift */; };
+		99F2DD21302D3A0100A4B653 /* GoogleSheetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD20302D3A0100A4B653 /* GoogleSheetsService.swift */; };
+		99F2DD24302D45C200A4B653 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 99F2DD23302D45C200A4B653 /* GoogleSignIn */; };
+		99F2DD27302D7F8300A4B653 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD26302D7F8300A4B653 /* SignInView.swift */; };
+		99F2DD29302D7F8E00A4B653 /* SignInView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD28302D7F8E00A4B653 /* SignInView+ViewModel.swift */; };
+		99F2DD2B302D85BF00A4B653 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 99F2DD2A302D85BF00A4B653 /* GoogleSignInSwift */; };
+		99F2DD2E302D8CFC00A4B653 /* SignInView+BenefitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD2D302D8CFC00A4B653 /* SignInView+BenefitsView.swift */; };
+		99F2DD30302D8D3500A4B653 /* SignInView+BenefitsView+Benefit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD2F302D8D3500A4B653 /* SignInView+BenefitsView+Benefit.swift */; };
+		99F2DD3A302EBA6C00A4B653 /* CreateSpreadsheetEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD39302EBA6C00A4B653 /* CreateSpreadsheetEndpoint.swift */; };
+		99F2DD3C302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD3B302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift */; };
+		99F2DD3E302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD3D302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift */; };
+		99F2DD41302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD40302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift */; };
+		99F2DD43302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD42302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift */; };
+		99F2DD45302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD44302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift */; };
+		99F2DD48302F737B00A4B653 /* NetworkingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD47302F737B00A4B653 /* NetworkingLogger.swift */; };
+		99F2DD4B302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD4A302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift */; };
+		99F2DD4D302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD4C302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift */; };
+		99F2DD50302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD4F302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift */; };
+		99F2DD52302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD51302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift */; };
+		99F2DD5530302E5E00A4B653 /* GoogleAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD5430302E5E00A4B653 /* GoogleAPIErrorHandler.swift */; };
+		99F2DD5830302E9500A4B653 /* Container+GoogleAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD5730302E9500A4B653 /* Container+GoogleAPIErrorHandler.swift */; };
+		99F2DD5B30314A2B00A4B653 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 99F2DD5A30314A2B00A4B653 /* Networking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,7 +265,6 @@
 		99C009B030114CE000CDF610 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		99C009B930115A1300CDF610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99C009BC3011A75700CDF610 /* AIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIClient.swift; sourceTree = "<group>"; };
-		99C009C33012C1BB00CDF610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99C009C53012C63C00CDF610 /* HSA Archive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HSA Archive.entitlements"; sourceTree = "<group>"; };
 		99D2D5BC301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextRecognizer+ScannedTextResponse.swift"; sourceTree = "<group>"; };
 		99D2D5BE301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextRecognizer+TextRecognitionError.swift"; sourceTree = "<group>"; };
@@ -251,6 +288,42 @@
 		99D553FD3014229900E937BB /* DefaultMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenu.swift; sourceTree = "<group>"; };
 		99D554003014229900E937BB /* SearchableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableMenu.swift; sourceTree = "<group>"; };
 		99D554033014229900E937BB /* MenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLabel.swift; sourceTree = "<group>"; };
+		99DD444C303177C700843826 /* ReceiptRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptRepository.swift; sourceTree = "<group>"; };
+		99DD444F303179EA00843826 /* Container+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Repositories.swift"; sourceTree = "<group>"; };
+		99DD44523031893C00843826 /* BatchUpdateSpreadsheetEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchUpdateSpreadsheetEndpoint.swift; sourceTree = "<group>"; };
+		99DD4454303189AC00843826 /* BatchUpdateSpreadsheetEndpoint+Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BatchUpdateSpreadsheetEndpoint+Body.swift"; sourceTree = "<group>"; };
+		99DD4456303245DC00843826 /* BatchUpdateSpreadsheetEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BatchUpdateSpreadsheetEndpoint+Response.swift"; sourceTree = "<group>"; };
+		99DD44593033A14D00843826 /* FetchSpreadsheetEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSpreadsheetEndpoint.swift; sourceTree = "<group>"; };
+		99DD445B3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FetchSpreadsheetEndpoint+Response.swift"; sourceTree = "<group>"; };
+		99DD445E3035762600843826 /* ReceiptSpreadsheetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSpreadsheetService.swift; sourceTree = "<group>"; };
+		99DD446230363C9900843826 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		99DD4465303A255000843826 /* UploadFileEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileEndpoint.swift; sourceTree = "<group>"; };
+		99DD4467303A299B00843826 /* UploadFileEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadFileEndpoint+Response.swift"; sourceTree = "<group>"; };
+		99DD4469303A8F0200843826 /* ReceiptSpreadsheetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSpreadsheetRow.swift; sourceTree = "<group>"; };
+		99DD446B303A95DC00843826 /* UploadFileEndpoint+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadFileEndpoint+Metadata.swift"; sourceTree = "<group>"; };
+		99DD446D303A9E6300843826 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		99DD446F303AC44900843826 /* SpreadsheetFailureConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetFailureConvertible.swift; sourceTree = "<group>"; };
+		99F2DD17302C075B00A4B653 /* GoogleAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthService.swift; sourceTree = "<group>"; };
+		99F2DD19302C087A00A4B653 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		99F2DD1E302D22DE00A4B653 /* GoogleDriveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveService.swift; sourceTree = "<group>"; };
+		99F2DD20302D3A0100A4B653 /* GoogleSheetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSheetsService.swift; sourceTree = "<group>"; };
+		99F2DD26302D7F8300A4B653 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		99F2DD28302D7F8E00A4B653 /* SignInView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInView+ViewModel.swift"; sourceTree = "<group>"; };
+		99F2DD2D302D8CFC00A4B653 /* SignInView+BenefitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInView+BenefitsView.swift"; sourceTree = "<group>"; };
+		99F2DD2F302D8D3500A4B653 /* SignInView+BenefitsView+Benefit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInView+BenefitsView+Benefit.swift"; sourceTree = "<group>"; };
+		99F2DD39302EBA6C00A4B653 /* CreateSpreadsheetEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpreadsheetEndpoint.swift; sourceTree = "<group>"; };
+		99F2DD3B302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSpreadsheetEndpoint+Body.swift"; sourceTree = "<group>"; };
+		99F2DD3D302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSpreadsheetEndpoint+Response.swift"; sourceTree = "<group>"; };
+		99F2DD40302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendSpreadsheetRowsEndpoint.swift; sourceTree = "<group>"; };
+		99F2DD42302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppendSpreadsheetRowsEndpoint+Body.swift"; sourceTree = "<group>"; };
+		99F2DD44302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppendSpreadsheetRowsEndpoint+Response.swift"; sourceTree = "<group>"; };
+		99F2DD47302F737B00A4B653 /* NetworkingLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLogger.swift; sourceTree = "<group>"; };
+		99F2DD4A302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSpreadsheetRowsEndpoint.swift; sourceTree = "<group>"; };
+		99F2DD4C302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FetchSpreadsheetRowsEndpoint+Response.swift"; sourceTree = "<group>"; };
+		99F2DD4F302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindSpreadsheetIDEndpoint.swift; sourceTree = "<group>"; };
+		99F2DD51302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FindSpreadsheetIDEndpoint+Response.swift"; sourceTree = "<group>"; };
+		99F2DD5430302E5E00A4B653 /* GoogleAPIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIErrorHandler.swift; sourceTree = "<group>"; };
+		99F2DD5730302E9500A4B653 /* Container+GoogleAPIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+GoogleAPIErrorHandler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,14 +332,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				99021AAD30171E9200D7DC8D /* FirebaseRemoteConfig in Frameworks */,
+				99F2DD24302D45C200A4B653 /* GoogleSignIn in Frameworks */,
 				99C009B6301159E400CDF610 /* FirebaseAI in Frameworks */,
 				99C0096C30089B5300CDF610 /* FactoryKit in Frameworks */,
 				99D2D5E5302847C3007A65C3 /* Toast in Frameworks */,
 				99C009B8301159E400CDF610 /* FirebaseAnalytics in Frameworks */,
+				99F2DD5B30314A2B00A4B653 /* Networking in Frameworks */,
 				99C009713008A61900CDF610 /* ObservableDefaults in Frameworks */,
 				99021A993016E35A00D7DC8D /* Shimmer in Frameworks */,
 				99C0099E300F22F900CDF610 /* Dialogs in Frameworks */,
 				99C008BC3000AE6100CDF610 /* Navigation in Frameworks */,
+				99F2DD2B302D85BF00A4B653 /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +462,7 @@
 		99021AC1301DAAEF00D7DC8D /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				99F2DD46302F737400A4B653 /* NetworkingLogger */,
 				99021AC0301DAAEF00D7DC8D /* Debug.swift */,
 				99D2D5CE3024312B007A65C3 /* Debug+LogCategory.swift */,
 			);
@@ -455,6 +532,7 @@
 				99C008BF3000B26400CDF610 /* HSA_ArchiveApp.swift */,
 				99021A7B30147E8700D7DC8D /* Constants */,
 				99C008E23001DE6B00CDF610 /* Components */,
+				99F2DD37302EBA4400A4B653 /* Endpoints */,
 				99C00999300DCF3C00CDF610 /* Extensions */,
 				99C008D73001A49000CDF610 /* Features */,
 				99021AC1301DAAEF00D7DC8D /* Logging */,
@@ -462,13 +540,15 @@
 				99C009AF30114CCA00CDF610 /* Models */,
 				99C008ED3002A16100CDF610 /* Modifiers */,
 				99C008CC3000B28200CDF610 /* Navigation */,
+				99F2DD5330302E2E00A4B653 /* Networking */,
 				99D2D5D03025255A007A65C3 /* Previews */,
+				99DD444B3031743C00843826 /* Repositories */,
 				99C009A5301000EE00CDF610 /* Services */,
 				99C00904300415A000CDF610 /* Theme */,
 				99D2D5E63028491A007A65C3 /* Toast */,
 				99C009613005ED1E00CDF610 /* AppIcon.icon */,
 				99C008BD3000B26400CDF610 /* Assets.xcassets */,
-				99C009C33012C1BB00CDF610 /* GoogleService-Info.plist */,
+				99DD446230363C9900843826 /* GoogleService-Info.plist */,
 				99C009633005F19900CDF610 /* HSA-Archive-Info.plist */,
 				99021AB0301720B500D7DC8D /* RemoteConfigDefaults.plist */,
 				99C009C53012C63C00CDF610 /* HSA Archive.entitlements */,
@@ -531,6 +611,7 @@
 				99C00992300D97B900CDF610 /* ReceiptReviewView */,
 				99C0098A300D503700CDF610 /* ReceiptScannerView */,
 				99C008D93001A49F00CDF610 /* ReceiptsView */,
+				99F2DD25302D7F7400A4B653 /* SignInView */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -775,6 +856,8 @@
 				99021AA43016FB7300D7DC8D /* DateFormatter+Extensions.swift */,
 				99D2D5C8302175CE007A65C3 /* String+Extensions.swift */,
 				99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */,
+				99F2DD19302C087A00A4B653 /* UIApplication+Extensions.swift */,
+				99DD446D303A9E6300843826 /* Data+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -782,9 +865,13 @@
 		99C009A5301000EE00CDF610 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				99DD445D3035761800843826 /* ReceiptSpreadsheetService */,
 				99C009BB3011A74400CDF610 /* AI */,
 				99D2D5CA302386EC007A65C3 /* AppCheck */,
 				99C009AB3010092600CDF610 /* DI */,
+				99F2DD16302C074C00A4B653 /* GoogleAuth */,
+				99F2DD1D302D22D100A4B653 /* GoogleDrive */,
+				99F2DD22302D3A0200A4B653 /* GoogleSheets */,
 				99021AA830171E0E00D7DC8D /* RemoteConfig */,
 				99C009A63010012D00CDF610 /* TextRecognition */,
 			);
@@ -822,6 +909,7 @@
 			children = (
 				99B98D7B3012F58400A45554 /* Category.swift */,
 				99C009B030114CE000CDF610 /* Receipt.swift */,
+				99DD4469303A8F0200843826 /* ReceiptSpreadsheetRow.swift */,
 				99D2D5D3302581EB007A65C3 /* Selection.swift */,
 			);
 			path = Models;
@@ -939,6 +1027,181 @@
 			path = AppMenu;
 			sourceTree = "<group>";
 		};
+		99DD444B3031743C00843826 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				99DD444E303179E200843826 /* DI */,
+				99DD444C303177C700843826 /* ReceiptRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		99DD444E303179E200843826 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				99DD444F303179EA00843826 /* Container+Repositories.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		99DD44513031892900843826 /* BatchUpdateSpreadsheetEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99DD44523031893C00843826 /* BatchUpdateSpreadsheetEndpoint.swift */,
+				99DD4454303189AC00843826 /* BatchUpdateSpreadsheetEndpoint+Body.swift */,
+				99DD4456303245DC00843826 /* BatchUpdateSpreadsheetEndpoint+Response.swift */,
+			);
+			path = BatchUpdateSpreadsheetEndpoint;
+			sourceTree = "<group>";
+		};
+		99DD44583033A13500843826 /* FetchSpreadsheetEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99DD44593033A14D00843826 /* FetchSpreadsheetEndpoint.swift */,
+				99DD445B3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift */,
+			);
+			path = FetchSpreadsheetEndpoint;
+			sourceTree = "<group>";
+		};
+		99DD445D3035761800843826 /* ReceiptSpreadsheetService */ = {
+			isa = PBXGroup;
+			children = (
+				99DD445E3035762600843826 /* ReceiptSpreadsheetService.swift */,
+			);
+			path = ReceiptSpreadsheetService;
+			sourceTree = "<group>";
+		};
+		99DD4464303A254700843826 /* UploadFileEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99DD4465303A255000843826 /* UploadFileEndpoint.swift */,
+				99DD446B303A95DC00843826 /* UploadFileEndpoint+Metadata.swift */,
+				99DD4467303A299B00843826 /* UploadFileEndpoint+Response.swift */,
+			);
+			path = UploadFileEndpoint;
+			sourceTree = "<group>";
+		};
+		99F2DD16302C074C00A4B653 /* GoogleAuth */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD17302C075B00A4B653 /* GoogleAuthService.swift */,
+			);
+			path = GoogleAuth;
+			sourceTree = "<group>";
+		};
+		99F2DD1D302D22D100A4B653 /* GoogleDrive */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD1E302D22DE00A4B653 /* GoogleDriveService.swift */,
+			);
+			path = GoogleDrive;
+			sourceTree = "<group>";
+		};
+		99F2DD22302D3A0200A4B653 /* GoogleSheets */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD20302D3A0100A4B653 /* GoogleSheetsService.swift */,
+			);
+			path = GoogleSheets;
+			sourceTree = "<group>";
+		};
+		99F2DD25302D7F7400A4B653 /* SignInView */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD2C302D8CED00A4B653 /* BenefitsView */,
+				99F2DD26302D7F8300A4B653 /* SignInView.swift */,
+				99F2DD28302D7F8E00A4B653 /* SignInView+ViewModel.swift */,
+			);
+			path = SignInView;
+			sourceTree = "<group>";
+		};
+		99F2DD2C302D8CED00A4B653 /* BenefitsView */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD2D302D8CFC00A4B653 /* SignInView+BenefitsView.swift */,
+				99F2DD2F302D8D3500A4B653 /* SignInView+BenefitsView+Benefit.swift */,
+			);
+			path = BenefitsView;
+			sourceTree = "<group>";
+		};
+		99F2DD37302EBA4400A4B653 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD3F302ECF1400A4B653 /* AppendSpreadsheetRowsEndpoint */,
+				99DD44513031892900843826 /* BatchUpdateSpreadsheetEndpoint */,
+				99F2DD38302EBA4F00A4B653 /* CreateSpreadsheetEndpoint */,
+				99DD44583033A13500843826 /* FetchSpreadsheetEndpoint */,
+				99F2DD49302F78D100A4B653 /* FetchSpreadsheetRowsEndpoint */,
+				99F2DD4E302F87B200A4B653 /* FindSpreadsheetIDEndpoint */,
+				99DD4464303A254700843826 /* UploadFileEndpoint */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		99F2DD38302EBA4F00A4B653 /* CreateSpreadsheetEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD39302EBA6C00A4B653 /* CreateSpreadsheetEndpoint.swift */,
+				99F2DD3B302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift */,
+				99F2DD3D302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift */,
+			);
+			path = CreateSpreadsheetEndpoint;
+			sourceTree = "<group>";
+		};
+		99F2DD3F302ECF1400A4B653 /* AppendSpreadsheetRowsEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD40302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift */,
+				99F2DD42302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift */,
+				99F2DD44302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift */,
+			);
+			path = AppendSpreadsheetRowsEndpoint;
+			sourceTree = "<group>";
+		};
+		99F2DD46302F737400A4B653 /* NetworkingLogger */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD47302F737B00A4B653 /* NetworkingLogger.swift */,
+			);
+			path = NetworkingLogger;
+			sourceTree = "<group>";
+		};
+		99F2DD49302F78D100A4B653 /* FetchSpreadsheetRowsEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD4A302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift */,
+				99F2DD4C302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift */,
+			);
+			path = FetchSpreadsheetRowsEndpoint;
+			sourceTree = "<group>";
+		};
+		99F2DD4E302F87B200A4B653 /* FindSpreadsheetIDEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD4F302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift */,
+				99F2DD51302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift */,
+			);
+			path = FindSpreadsheetIDEndpoint;
+			sourceTree = "<group>";
+		};
+		99F2DD5330302E2E00A4B653 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD5630302E8800A4B653 /* DI */,
+				99F2DD5430302E5E00A4B653 /* GoogleAPIErrorHandler.swift */,
+				99DD446F303AC44900843826 /* SpreadsheetFailureConvertible.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		99F2DD5630302E8800A4B653 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD5730302E9500A4B653 /* Container+GoogleAPIErrorHandler.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -965,6 +1228,9 @@
 				99021A983016E35A00D7DC8D /* Shimmer */,
 				99021AAC30171E9200D7DC8D /* FirebaseRemoteConfig */,
 				99D2D5E4302847C3007A65C3 /* Toast */,
+				99F2DD23302D45C200A4B653 /* GoogleSignIn */,
+				99F2DD2A302D85BF00A4B653 /* GoogleSignInSwift */,
+				99F2DD5A30314A2B00A4B653 /* Networking */,
 			);
 			productName = "HSA Archive";
 			productReference = 99C008903000ADED00CDF610 /* HSA Archive.app */;
@@ -1050,6 +1316,8 @@
 				99C009B4301159E400CDF610 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				99021A973016E35A00D7DC8D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				99D2D5E3302847C3007A65C3 /* XCRemoteSwiftPackageReference "Toast" */,
+				99F2DD22302D45C200A4B653 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				99F2DD5930314A2B00A4B653 /* XCRemoteSwiftPackageReference "Networking" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 99C008913000ADED00CDF610 /* Products */;
@@ -1069,9 +1337,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				99C008C33000B26400CDF610 /* Assets.xcassets in Resources */,
+				99DD446330363C9900843826 /* GoogleService-Info.plist in Resources */,
 				99C009623005ED1F00CDF610 /* AppIcon.icon in Resources */,
 				99021AB1301720B500D7DC8D /* RemoteConfigDefaults.plist in Resources */,
-				99C009C43012C1BB00CDF610 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,39 +1366,55 @@
 			files = (
 				99C00984300C423100CDF610 /* AppButton.swift in Sources */,
 				99C0096830089A7B00CDF610 /* OnboardingView+ViewModel.swift in Sources */,
+				99DD446C303A95DC00843826 /* UploadFileEndpoint+Metadata.swift in Sources */,
 				99C008CF3000B2F900CDF610 /* TabsCoordinator.swift in Sources */,
+				99F2DD5830302E9500A4B653 /* Container+GoogleAPIErrorHandler.swift in Sources */,
 				99D2D5CC3023DAFD007A65C3 /* CaseIterable+RawValues.swift in Sources */,
 				99C008F83002A8E000CDF610 /* HomeView+RecentActivitySection.swift in Sources */,
 				99021ABD301B0BCF00D7DC8D /* ErrorBanner.swift in Sources */,
 				99C009793009E7DB00CDF610 /* OnboardingView+Page.swift in Sources */,
 				99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */,
+				99F2DD18302C075B00A4B653 /* GoogleAuthService.swift in Sources */,
+				99DD4455303189AC00843826 /* BatchUpdateSpreadsheetEndpoint+Body.swift in Sources */,
 				99B98D7C3012F58400A45554 /* Category.swift in Sources */,
+				99F2DD1A302C087A00A4B653 /* UIApplication+Extensions.swift in Sources */,
 				99021A9E3016FA7700D7DC8D /* AIRequest.swift in Sources */,
+				99DD4470303AC44900843826 /* SpreadsheetFailureConvertible.swift in Sources */,
 				99C008DB3001A4A900CDF610 /* HomeView+ViewModel.swift in Sources */,
 				99C009A4300F290600CDF610 /* AlertViewModel+ReceiptScannerView.swift in Sources */,
+				99F2DD5530302E5E00A4B653 /* GoogleAPIErrorHandler.swift in Sources */,
 				99C009113004549900CDF610 /* FormatStyle.swift in Sources */,
 				99D2D5BF301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift in Sources */,
 				99D554073014229900E937BB /* SearchableMenu.swift in Sources */,
 				99021A8A3015981900D7DC8D /* Sync.swift in Sources */,
 				99D5540A3014229900E937BB /* MenuLabel.swift in Sources */,
+				99DD4450303179EA00843826 /* Container+Repositories.swift in Sources */,
 				99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */,
+				99F2DD3C302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift in Sources */,
+				99DD4466303A255000843826 /* UploadFileEndpoint.swift in Sources */,
 				99021AA13016FAC400D7DC8D /* AIResponse.swift in Sources */,
 				99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */,
 				99C00903300345D300CDF610 /* ScaledFont.swift in Sources */,
 				99021AC4301DB73300D7DC8D /* GeminiError.swift in Sources */,
 				99021AC2301DAAEF00D7DC8D /* Debug.swift in Sources */,
 				99D2D5D230252570007A65C3 /* PreviewInput.swift in Sources */,
+				99F2DD3E302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift in Sources */,
+				99F2DD48302F737B00A4B653 /* NetworkingLogger.swift in Sources */,
 				99C009AE301088AA00CDF610 /* AppTextField.swift in Sources */,
 				99021AA33016FB0500D7DC8D /* ReceiptExtractionResponse.swift in Sources */,
 				99D2D5F6302BB3E4007A65C3 /* FullImageView+ViewModel.swift in Sources */,
+				99F2DD3A302EBA6C00A4B653 /* CreateSpreadsheetEndpoint.swift in Sources */,
 				99C00994300D97D600CDF610 /* ReceiptReviewView.swift in Sources */,
 				99021A7930147A9600D7DC8D /* SelectionView+ViewModel.swift in Sources */,
+				99DD4468303A299B00843826 /* UploadFileEndpoint+Response.swift in Sources */,
+				99F2DD29302D7F8E00A4B653 /* SignInView+ViewModel.swift in Sources */,
 				99021A7A30147A9600D7DC8D /* SelectionView.swift in Sources */,
 				99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */,
 				99021A7D30147E9500D7DC8D /* AppConstants.swift in Sources */,
 				99C00996300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift in Sources */,
 				99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */,
 				99021AB33018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift in Sources */,
+				99F2DD43302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift in Sources */,
 				99021ABA301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift in Sources */,
 				99C008C23000B26400CDF610 /* HSA_ArchiveApp.swift in Sources */,
 				99C0098E300D508300CDF610 /* ReceiptScannerView+ViewModel.swift in Sources */,
@@ -1141,7 +1425,10 @@
 				99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */,
 				99C0090C30043A3400CDF610 /* CornerRadius.swift in Sources */,
 				99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */,
+				99F2DD50302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift in Sources */,
+				99DD445A3033A14D00843826 /* FetchSpreadsheetEndpoint.swift in Sources */,
 				99D2D5CF3024312B007A65C3 /* Debug+LogCategory.swift in Sources */,
+				99F2DD2E302D8CFC00A4B653 /* SignInView+BenefitsView.swift in Sources */,
 				99021AB6301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift in Sources */,
 				99021AA730171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift in Sources */,
 				99C008DD3001A4AE00CDF610 /* HomeView.swift in Sources */,
@@ -1149,20 +1436,26 @@
 				99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */,
 				99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */,
 				99C0097730096CCD00CDF610 /* OnboardingView+PageView.swift in Sources */,
+				99F2DD45302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift in Sources */,
+				99DD4457303245DC00843826 /* BatchUpdateSpreadsheetEndpoint+Response.swift in Sources */,
 				99D2D5F4302B9884007A65C3 /* FullImageView.swift in Sources */,
 				99D2D5DA30266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift in Sources */,
 				99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */,
 				99D2D5EF302B70CE007A65C3 /* ReceiptFileImporter.swift in Sources */,
+				99F2DD27302D7F8300A4B653 /* SignInView.swift in Sources */,
 				99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */,
 				99C00906300416F800CDF610 /* ShapeStyle+Colors.swift in Sources */,
 				99C008D13000B31F00CDF610 /* TabsCoordinator+ViewModel.swift in Sources */,
 				99D2D5D4302581EB007A65C3 /* Selection.swift in Sources */,
 				99D2D5C730217588007A65C3 /* Placeholders.swift in Sources */,
+				99F2DD4B302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift in Sources */,
 				99C0096E30089B5E00CDF610 /* UserDefaultsManager.swift in Sources */,
 				99C008F03002A17600CDF610 /* DefaultCardStyle.swift in Sources */,
 				99021A85301555A900D7DC8D /* AppToggle.swift in Sources */,
+				99DD44533031893C00843826 /* BatchUpdateSpreadsheetEndpoint.swift in Sources */,
 				99D2D5E23027C637007A65C3 /* ReceiptPhotosPicker.swift in Sources */,
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,
+				99F2DD52302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift in Sources */,
 				99D2D5C530212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift in Sources */,
 				99021A823015123300D7DC8D /* OnFirstTask.swift in Sources */,
 				99D2D5F1302B7138007A65C3 /* ReceiptFileImporterViewModel.swift in Sources */,
@@ -1170,6 +1463,8 @@
 				99D2D5C9302175CE007A65C3 /* String+Extensions.swift in Sources */,
 				99C00908300417EA00CDF610 /* Spacing.swift in Sources */,
 				99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */,
+				99F2DD41302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift in Sources */,
+				99F2DD30302D8D3500A4B653 /* SignInView+BenefitsView+Benefit.swift in Sources */,
 				99C00991300D873E00CDF610 /* AddReceiptCoordinator.swift in Sources */,
 				99C0090A3004197100CDF610 /* Theme.swift in Sources */,
 				99021ABF301D3DC900D7DC8D /* ErrorBanner+Action.swift in Sources */,
@@ -1179,6 +1474,9 @@
 				99C00981300AC7A000CDF610 /* RootCoordinator+ViewModel.swift in Sources */,
 				99C0090F3004477100CDF610 /* HomeView+Overview+BalanceCard.swift in Sources */,
 				99C0096030049B6300CDF610 /* OnboardingView.swift in Sources */,
+				99F2DD1F302D22DE00A4B653 /* GoogleDriveService.swift in Sources */,
+				99DD444D303177C700843826 /* ReceiptRepository.swift in Sources */,
+				99F2DD21302D3A0100A4B653 /* GoogleSheetsService.swift in Sources */,
 				99C008F33002A24800CDF610 /* HomeView+SyncAccountsView.swift in Sources */,
 				99021AAA30171E2D00D7DC8D /* RemoteConfigClient.swift in Sources */,
 				99C009BD3011A75700CDF610 /* AIClient.swift in Sources */,
@@ -1188,11 +1486,16 @@
 				99C009AA3010091D00CDF610 /* Container+Services.swift in Sources */,
 				99021AC7301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift in Sources */,
 				99C0090030032B7A00CDF610 /* Badge.swift in Sources */,
+				99F2DD4D302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift in Sources */,
 				99C009743008A73700CDF610 /* Container+Managers.swift in Sources */,
 				99B98D813012F62100A45554 /* FirebaseAIClient.swift in Sources */,
+				99DD445F3035762600843826 /* ReceiptSpreadsheetService.swift in Sources */,
+				99DD445C3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift in Sources */,
 				99C009A83010014500CDF610 /* TextRecognizer.swift in Sources */,
 				99D2D5EC302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift in Sources */,
 				99C0097C3009EFD800CDF610 /* OnboardingView+ProgressPills.swift in Sources */,
+				99DD446E303A9E6300843826 /* Data+Extensions.swift in Sources */,
+				99DD446A303A8F0200843826 /* ReceiptSpreadsheetRow.swift in Sources */,
 				99021A9C3016E42800D7DC8D /* RedactedShimmer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1601,6 +1904,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		99F2DD22302D45C200A4B653 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
+		99F2DD5930314A2B00A4B653 /* XCRemoteSwiftPackageReference "Networking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cnimcheski/Networking.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.21;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1648,6 +1967,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99D2D5E3302847C3007A65C3 /* XCRemoteSwiftPackageReference "Toast" */;
 			productName = Toast;
+		};
+		99F2DD23302D45C200A4B653 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99F2DD22302D45C200A4B653 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		99F2DD2A302D85BF00A4B653 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99F2DD22302D45C200A4B653 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		99F2DD5A30314A2B00A4B653 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99F2DD5930314A2B00A4B653 /* XCRemoteSwiftPackageReference "Networking" */;
+			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -9,10 +9,19 @@ import Foundation
 import ObservableDefaults
 
 @ObservableDefaults
-final class UserDefaultsManager {
+nonisolated final class UserDefaultsManager {
     private(set) var didFinishOnboarding = false
+    private(set) var spreadsheetID: String?
     
     func hasFinishedOnboarding() {
         didFinishOnboarding = true
+    }
+    
+    func setSpreadsheetID(_ spreadsheetID: String) {
+        self.spreadsheetID = spreadsheetID
+    }
+    
+    func clearSpreadsheetID() {
+        spreadsheetID = nil
     }
 }

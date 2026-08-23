@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension DateFormatter {
+nonisolated extension DateFormatter {
     /// A shared `DateFormatter` for parsing and formatting ISO 8601 dates without a time component.
     static let iso8601DateOnly: DateFormatter = {
         let formatter = DateFormatter()

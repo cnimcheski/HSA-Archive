@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AppFormatStyle {
+nonisolated enum AppFormatStyle {
     enum Currency {
         /// Gets the current `TextFormat` currency code based on the users settings.
         static var current: FloatingPointFormatStyle<Double>.Currency {

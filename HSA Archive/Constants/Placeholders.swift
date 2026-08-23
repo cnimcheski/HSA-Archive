@@ -19,7 +19,6 @@ enum Placeholders {
             amount: 100.00,
             transactionDate: .now,
             category: .other,
-            submissionDate: .now,
             notes: .placeholder(count: Int.random(in: 12...18)),
             fileName: .placeholder(count: Int.random(in: 24...32))
         )
