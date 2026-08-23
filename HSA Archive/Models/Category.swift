@@ -29,7 +29,7 @@ enum Category: String, AIResponse, CaseIterable, Decodable {
         .init(title: rawValue, systemImage: systemImage)
     }
     
-    private var systemImage: String {
+    var systemImage: String {
         switch self {
         case .prescription:
             "pills.fill"

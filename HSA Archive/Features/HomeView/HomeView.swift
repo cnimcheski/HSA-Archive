@@ -26,14 +26,12 @@ struct HomeView: View {
 
 private extension HomeView {
     var content: some View {
-        ScrollView {
-            VStack(spacing: Theme.Spacing.xLarge) {
-                Overview()
-                SyncAccountsView()
-                RecentActivitySection()
-            }
-            .padding()
+        List {
+            Overview()
+            SyncAccountsView()
+            RecentActivitySection()
         }
+        .listStyle(.plain)
     }
     
     var uploadReceiptButton: some View {

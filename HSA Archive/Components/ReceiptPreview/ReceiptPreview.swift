@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct ReceiptPreview: View {
-    // TODO: - Maybe add like a Category enum or something that changes the systemImage as well
-    // TODO: - Add inputs for all hardcoded things
-    private let merchant: String
+    private let receipt: Receipt
     
-    init(merchant: String) {
-        self.merchant = merchant
+    init(receipt: Receipt) {
+        self.receipt = receipt
     }
     
     var body: some View {
@@ -23,7 +21,6 @@ struct ReceiptPreview: View {
             Spacer()
             amountStatusView
         }
-        .defaultCardStyle()
     }
 }
 
@@ -31,20 +28,21 @@ struct ReceiptPreview: View {
 
 private extension ReceiptPreview {
     var leadingImage: some View {
-        Image(systemName: "receipt")
+        Image(systemName: receipt.category.systemImage)
             .foregroundStyle(.accent)
             .defaultCardStyle(backgroundColor: .accentBackground)
     }
     
     var descriptionView: some View {
-        VStack(alignment: .leading, spacing: Theme.Spacing.xSmall) {
-            Text(merchant)
+        VStack(alignment: .leading, spacing: Theme.Spacing.small) {
+            Text(receipt.merchant)
                 .font(.headline)
             
-            DotSeparator(
-                leftText: "July 8",
-                rightText: "Prescription"
-            )
+            VStack(alignment: .leading, spacing: Theme.Spacing.xxSmall) {
+                Text(receipt.transactionDate.formatted(.dateTime.month(.abbreviated).day()))
+                Text(receipt.category.rawValue)
+            }
+            .font(.subheadline)
             .foregroundStyle(.secondary)
         }
     }
@@ -61,5 +59,5 @@ private extension ReceiptPreview {
 // MARK: - Previews
 
 #Preview {
-    ReceiptPreview(merchant: "Target")
+    ReceiptPreview(receipt: .mock)
 }

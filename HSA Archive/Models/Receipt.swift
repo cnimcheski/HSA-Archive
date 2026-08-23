@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Receipt {
+nonisolated struct Receipt: Identifiable {
+    let id = UUID()
     var merchant: String
     var description: String
     var amount: Double
@@ -45,7 +46,7 @@ struct Receipt {
 
 // MARK: - ReceiptExtractionResponse Initializer
 
-extension Receipt {
+nonisolated extension Receipt {
     init(from fields: ReceiptExtractionResponse.Payload.Fields) {
         self.merchant = fields.merchant
         self.description = fields.description
@@ -60,7 +61,7 @@ extension Receipt {
 
 // MARK: - Empty Receipt
 
-extension Receipt {
+nonisolated extension Receipt {
     static var empty: Self {
         .init(
             merchant: "",
@@ -68,6 +69,22 @@ extension Receipt {
             amount: 0,
             transactionDate: .now,
             category: .other,
+            notes: "",
+            fileName: ""
+        )
+    }
+}
+
+// MARK: - Mock Receipt
+
+nonisolated extension Receipt {
+    static var mock: Self {
+        .init(
+            merchant: "Target",
+            description: "Tampons",
+            amount: 12.95,
+            transactionDate: .now,
+            category: .womensHealth,
             notes: "",
             fileName: ""
         )

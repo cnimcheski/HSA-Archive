@@ -16,6 +16,7 @@ extension HomeView {
                 statusBarView
             }
             .defaultCardStyle()
+            .listRowSeparator(.hidden)
         }
     }
 }

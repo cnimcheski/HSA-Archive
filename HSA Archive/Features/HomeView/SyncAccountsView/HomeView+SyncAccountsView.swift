@@ -17,6 +17,7 @@ extension HomeView {
                 chevronImage
             }
             .defaultCardStyle(backgroundColor: .accentBackground)
+            .listRowSeparator(.hidden)
         }
     }
 }

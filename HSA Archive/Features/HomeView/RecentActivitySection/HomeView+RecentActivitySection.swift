@@ -10,17 +10,14 @@ import SwiftUI
 extension HomeView {
     struct RecentActivitySection: View {
         // TODO: - This is hardcoded temporarily
-        let recentActivities = [
-            "CVS Pharmacy",
-            "Dr Alvarez",
-            "Target"
-        ]
+        let receipts = [Receipt.mock, Receipt.mock, Receipt.mock]
         
         var body: some View {
-            VStack(alignment: .leading, spacing: Theme.Spacing.small) {
-                headerView
-                recentActivityList
+            Section {
+                receiptPreviewList
                 viewAllReceiptsButton
+            } header: {
+                Text("RECENT ACTIVITY")
             }
         }
     }
@@ -29,17 +26,9 @@ extension HomeView {
 // MARK: - Private Views
 
 private extension HomeView.RecentActivitySection {
-    var headerView: some View {
-        Text("RECENT ACTIVITY")
-            .font(.headline)
-            .foregroundStyle(.secondary)
-    }
-    
-    var recentActivityList: some View {
-        VStack(spacing: Theme.Spacing.medium) {
-            ForEach(recentActivities, id: \.self) { merchant in
-                ReceiptPreview(merchant: merchant)
-            }
+    var receiptPreviewList: some View {
+        ForEach(receipts) { receipt in
+            ReceiptPreview(receipt: receipt)
         }
     }
     
@@ -50,6 +39,7 @@ private extension HomeView.RecentActivitySection {
         .font(.caption)
         .foregroundStyle(.secondary)
         .frame(maxWidth: .infinity, alignment: .center)
+        .listRowSeparator(.hidden, edges: .bottom)
     }
 }
 
