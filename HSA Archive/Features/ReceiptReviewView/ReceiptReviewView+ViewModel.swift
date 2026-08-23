@@ -52,6 +52,7 @@ extension ReceiptReviewView {
         
         var isSaveDisabled: Bool {
             isSaving
+                || isLoading
                 || receipt.merchant.isEmpty
                 || receipt.amount.isZero
         }
