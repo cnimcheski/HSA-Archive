@@ -171,7 +171,7 @@ private extension ReceiptReviewView {
         } label: {
             Label("Save", systemImage: "checkmark")
         }
-        .disabled(viewModel.isSaving)
+        .disabled(viewModel.isSaveDisabled)
     }
 }
 

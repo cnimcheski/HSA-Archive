@@ -50,9 +50,15 @@ extension ReceiptReviewView {
                 )
         }
         
-        private(set) var isLoading = true
-        private(set) var isSaving = false
+        var isSaveDisabled: Bool {
+            isSaving
+                || receipt.merchant.isEmpty
+                || receipt.amount.isZero
+        }
+        
         private(set) var errorBannerViewModel: ErrorBanner.ViewModel?
+        private(set) var isLoading = true
+        private var isSaving = false
         private var receipt = Receipt.empty
         
         init(uiImage: UIImage) {
