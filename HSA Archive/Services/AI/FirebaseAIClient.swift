@@ -8,13 +8,14 @@
 import FactoryKit
 import FirebaseAI
 import Foundation
+import Toast
 
 nonisolated final class FirebaseAIClient: AIClient {
     private let remoteConfigClient = Container.shared.remoteConfigClient()
     
     func generate<Request: AIRequest>(
         _ request: Request
-    ) async throws(GeminiError) -> Request.Response {
+    ) async throws(GeminiError) -> Request.Response? {
         let model = FirebaseAI
             .firebaseAI(backend: .googleAI())
             .generativeModel(
@@ -34,9 +35,11 @@ nonisolated final class FirebaseAIClient: AIClient {
         } catch is DecodingError {
             throw .invalidResponse
         } catch let error as GenerateContentError {
-            throw map(generateContentError: error)
+            guard let geminiError = map(generateContentError: error) else { return nil }
+            throw geminiError
         } catch {
-            throw map(genericError: error)
+            guard let geminiError = map(genericError: error) else { return nil }
+            throw geminiError
         }
     }
 }
@@ -44,7 +47,7 @@ nonisolated final class FirebaseAIClient: AIClient {
 // MARK: - Private Methods
 
 private extension FirebaseAIClient {
-    func map(generateContentError: GenerateContentError) -> GeminiError {
+    func map(generateContentError: GenerateContentError) -> GeminiError? {
         switch generateContentError {
         case let .internalError(underlying):
             map(genericError: underlying)
@@ -57,21 +60,23 @@ private extension FirebaseAIClient {
         }
     }
     
-    func map(genericError: Error) -> GeminiError {
+    func map(genericError: Error) -> GeminiError? {
         let nsError = genericError as NSError
-        return switch nsError.code {
+        switch nsError.code {
         case NSURLErrorNotConnectedToInternet:
-            .network
+            ToastManager.shared.show(DefaultToastType.offline)
+            return nil
         case 400,
             403,
             404:
-            .configuration
+            return .configuration
         case 429:
-            .rateLimited
+            return .rateLimited
         case 500...599:
-            .serverError
+            ToastManager.shared.show(DefaultToastType.serverUnavailable)
+            return nil
         default:
-            .unknown
+            return .unknown
         }
     }
 }

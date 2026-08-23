@@ -87,7 +87,7 @@ private extension ErrorBanner {
 #Preview {
     ScrollView {
         ErrorBanner(
-            viewModel: .network(
+            viewModel: .general(
                 onClose: {
                     // Handle close action
                 }, onRetry: {

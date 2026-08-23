@@ -9,18 +9,6 @@ extension ErrorBanner.ViewModel {
     
     // MARK: - Gemini Errors
     
-    static func network(
-        onClose: @escaping () -> Void,
-        onRetry: @escaping () -> Void
-    ) -> Self {
-        .init(
-            "Connection Error",
-            message: "Check your internet connection and try again.",
-            onClose: onClose,
-            action: .retry(onRetry)
-        )
-    }
-    
     static func rateLimited(
         onClose: @escaping () -> Void,
         onRetry: @escaping () -> Void
@@ -28,18 +16,6 @@ extension ErrorBanner.ViewModel {
         .init(
             "AI Temporarily Unavailable",
             message: "Too many requests are being processed. Please try again in a moment.",
-            onClose: onClose,
-            action: .retry(onRetry)
-        )
-    }
-    
-    static func serverError(
-        onClose: @escaping () -> Void,
-        onRetry: @escaping () -> Void
-    ) -> Self {
-        .init(
-            "Something Went Wrong",
-            message: "The AI service is temporarily unavailable. Please try again.",
             onClose: onClose,
             action: .retry(onRetry)
         )
@@ -77,7 +53,7 @@ extension ErrorBanner.ViewModel {
         )
     }
     
-    static func unknown(
+    static func general(
         onClose: @escaping () -> Void,
         onRetry: @escaping () -> Void
     ) -> Self {

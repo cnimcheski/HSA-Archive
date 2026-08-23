@@ -70,16 +70,19 @@ extension ReceiptReviewView {
             defer { isLoading = false }
             do {
                 let receiptText = try await textRecognizer.recognizeText(from: uiImage).text
-                let response = try await aiClient.generate(
+                guard let response = try await aiClient.generate(
                     ReceiptExtractionRequest(text: receiptText)
-                )
+                ) else {
+                    handleGeneralError()
+                    return
+                }
                 handleReceiptExtractionResponse(response)
             } catch let error as TextRecognitionError {
                 handleTextRecognitionError(error)
             } catch let error as GeminiError {
                 handleGeminiError(error)
             } catch {
-                handleUnknownError()
+                handleGeneralError()
             }
         }
         
@@ -149,12 +152,8 @@ private extension ReceiptReviewView.ViewModel {
     
     func handleGeminiError(_ error: GeminiError) {
         switch error {
-        case .network:
-            showErrorBanner(.network(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
         case .rateLimited:
             showErrorBanner(.rateLimited(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
-        case .serverError:
-            showErrorBanner(.serverError(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
         case .invalidResponse:
             showErrorBanner(.invalidResponse(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
         case .configuration:
@@ -162,12 +161,12 @@ private extension ReceiptReviewView.ViewModel {
         case .blockedBySafety:
             showErrorBanner(.blockedBySafety(onClose: dismissErrorBanner))
         case .unknown:
-            showErrorBanner(.unknown(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
+            showErrorBanner(.general(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
         }
     }
     
-    func handleUnknownError() {
-        showErrorBanner(.unknown(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
+    func handleGeneralError() {
+        showErrorBanner(.general(onClose: dismissErrorBanner, onRetry: retryExtractReceiptDetails))
     }
     
     func handleTextRecognitionError(_ error: TextRecognitionError) {
