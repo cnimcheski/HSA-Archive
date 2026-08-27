@@ -19,6 +19,7 @@ struct HomeView: View {
         content
             .navigationTitle("HSA Archive")
             .toolbar { uploadReceiptButton }
+            .onFirstTask(viewModel.fetchReceipts)
     }
 }
 
@@ -28,10 +29,31 @@ private extension HomeView {
     var content: some View {
         List {
             Overview()
-            SyncAccountsView()
-            RecentActivitySection()
+            if viewModel.failedRows.count > 0 {
+                invalidReceiptsBanner
+            }
+            recentActivitySection
         }
         .listStyle(.plain)
+    }
+    
+    var invalidReceiptsBanner: some View {
+        NavigationBanner(
+            "^[\(viewModel.failedRows.count) receipt row](inflect: true) couldn't be read",
+            message: "Tap to review the failed rows",
+            iconName: "exclamationmark.triangle",
+            tint: .red,
+            action: viewModel.showInvalidReceipts
+        )
+        .listRowSeparator(.hidden)
+    }
+    
+    var recentActivitySection: some View {
+        RecentActivitySection(
+            recentReceipts: viewModel.recentReceipts,
+            showViewAllButton: viewModel.shouldShowViewAllReceiptsButton,
+            onReceiptSelected: viewModel.onReceiptSelected
+        )
     }
     
     var uploadReceiptButton: some View {

@@ -15,6 +15,7 @@ nonisolated struct Receipt: Identifiable {
     var transactionDate: Date
     var category: Category
     var reimbursementDate: Date?
+    var submissionDate: Date? = nil
     var notes: String
     var fileName: String
     
@@ -30,6 +31,7 @@ nonisolated struct Receipt: Identifiable {
         transactionDate: Date,
         category: Category,
         reimbursementDate: Date? = nil,
+        submissionDate: Date? = nil,
         notes: String,
         fileName: String
     ) {
@@ -39,6 +41,7 @@ nonisolated struct Receipt: Identifiable {
         self.transactionDate = transactionDate
         self.category = category
         self.reimbursementDate = reimbursementDate
+        self.submissionDate = submissionDate
         self.notes = notes
         self.fileName = fileName
     }

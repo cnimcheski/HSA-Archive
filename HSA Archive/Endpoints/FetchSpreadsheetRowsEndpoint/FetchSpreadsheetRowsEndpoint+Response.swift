@@ -7,9 +7,8 @@
 
 nonisolated extension FetchSpreadsheetRowsEndpoint {
     struct Response: Decodable {
-        let spreadsheetID: String
         let range: String
         let majorDimension: String
-        let values: [[String]]
+        let values: [[String]]?
     }
 }

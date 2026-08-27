@@ -12,6 +12,7 @@ import SwiftUI
 final class HomeCoordinator: StackCoordinator {
     enum Page: CoordinatedPage {
         case addReceiptCoordinator(AddReceiptCoordinator.Page)
+        case invalidReceipts(InvalidReceiptsView.ViewModel)
     }
     
     var path: [Page] = []
@@ -41,6 +42,8 @@ final class HomeCoordinator: StackCoordinator {
         switch page {
         case let .addReceiptCoordinator(page):
             addReceiptCoordinator.build(page: page)
+        case let .invalidReceipts(viewModel):
+            InvalidReceiptsView(viewModel: viewModel)
         }
     }
 }
@@ -66,6 +69,8 @@ extension HomeCoordinator: HomeView.NavigationDelegate {
             photosPickerViewModel = .init(onCompletion: handleSelectedImages)
         case .scanner:
             push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
+        case let .invalidReceipts(viewModel):
+            push(.invalidReceipts(viewModel))
         }
     }
 }

@@ -15,11 +15,34 @@ final class ReceiptRepository {
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let receiptSpreadsheetService = Container.shared.receiptSpreadsheetService()
     
-    private(set) var receipts = [Receipt]()
+    // TODO: - Sort by submission date instead?
+    var sortedReceipts: [Receipt] {
+        receipts.sorted { $0.transactionDate > $1.transactionDate }
+    }
     
-    func fetchAll() async throws -> [Receipt] {
-        // TODO: - Implement this
-        return [] // TODO: - Placeholder for now...
+    private(set) var failedRows = [ReceiptSpreadsheetDecoder.Response.FailedRow]()
+    // TODO: - We need some way to clear out the receipts if the spreadsheet is lost..
+    private var receipts = [Receipt]()
+    
+    /// Fetches every single row from the app spreadsheet exclusing headers.
+    func fetchAll() async -> [Receipt]? {
+        do {
+            guard let values = try await receiptSpreadsheetService.withSpreadsheetRecovery({ spreadsheetID in
+                try await googleSheetsService.fetchRows(
+                    spreadsheetID: spreadsheetID,
+                    range: AppConstants.worksheetName + "!A2:Z"
+                )
+            }) else { return nil }
+            let response = ReceiptSpreadsheetDecoder.decode(values)
+            failedRows = response.failedRows
+            receipts = response.receipts
+            return receipts
+        } catch let error as FetchSpreadsheetRowsEndpoint.EndpointError {
+            handleFetchSpreadsheetRowsError(error)
+        } catch {
+            handleUnknownError()
+        }
+        return nil
     }
     
     func add(
@@ -32,7 +55,7 @@ final class ReceiptRepository {
                 try await googleSheetsService.appendRows(
                     spreadsheetID: spreadsheetID,
                     range: AppConstants.worksheetName,
-                    values: [ReceiptSpreadsheetRow(receipt: receipt, imageID: imageID).values]
+                    values: [ReceiptSpreadsheetEncoder.encode(receipt, imageID: imageID)]
                 )
             }) else { return nil }
             receipts.insert(receipt, at: 0)
@@ -80,6 +103,13 @@ private extension ReceiptRepository {
 // MARK: - Private Error Handlers
 
 private extension ReceiptRepository {
+    func handleFetchSpreadsheetRowsError(_ error: FetchSpreadsheetRowsEndpoint.EndpointError) {
+        switch error {
+        case .spreadsheetNotFound:
+            ToastManager.shared.show(DefaultToastType.receiptsFetchFailed)
+        }
+    }
+    
     func handleAppendSpreadsheetRowsError(_ error: AppendSpreadsheetRowsEndpoint.EndpointError) {
         switch error {
         case .spreadsheetNotFound:

@@ -9,13 +9,26 @@ import SwiftUI
 
 extension HomeView {
     struct RecentActivitySection: View {
-        // TODO: - This is hardcoded temporarily
-        let receipts = [Receipt.mock, Receipt.mock, Receipt.mock]
+        private let recentReceipts: [Receipt]
+        private let showViewAllButton: Bool
+        private let onReceiptSelected: (Receipt) -> Void
+        
+        init(
+            recentReceipts: [Receipt],
+            showViewAllButton: Bool,
+            onReceiptSelected: @escaping (Receipt) -> Void
+        ) {
+            self.recentReceipts = recentReceipts
+            self.showViewAllButton = showViewAllButton
+            self.onReceiptSelected = onReceiptSelected
+        }
         
         var body: some View {
             Section {
                 receiptPreviewList
-                viewAllReceiptsButton
+                if showViewAllButton {
+                    viewAllReceiptsButton
+                }
             } header: {
                 Text("RECENT ACTIVITY")
             }
@@ -27,8 +40,10 @@ extension HomeView {
 
 private extension HomeView.RecentActivitySection {
     var receiptPreviewList: some View {
-        ForEach(receipts) { receipt in
-            ReceiptPreview(receipt: receipt)
+        ForEach(recentReceipts) { receipt in
+            ReceiptPreview(receipt: receipt) {
+                onReceiptSelected(receipt)
+            }
         }
     }
     
@@ -39,6 +54,7 @@ private extension HomeView.RecentActivitySection {
         .font(.caption)
         .foregroundStyle(.secondary)
         .frame(maxWidth: .infinity, alignment: .center)
+        .buttonStyle(.plain)
         .listRowSeparator(.hidden, edges: .bottom)
     }
 }
@@ -46,5 +62,10 @@ private extension HomeView.RecentActivitySection {
 // MARK: - Previews
 
 #Preview {
-    HomeView.RecentActivitySection()
+    HomeView.RecentActivitySection(
+        recentReceipts: [.mock, .mock, .mock],
+        showViewAllButton: true
+    ) { receipt in
+        // Do something with the selected receipt
+    }
 }

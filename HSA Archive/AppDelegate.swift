@@ -5,11 +5,14 @@
 //  Created by Steve Nimcheski on 7/22/26.
 //
 
+import FactoryKit
 import FirebaseAppCheck
 import FirebaseCore
 import GoogleSignIn
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+final class AppDelegate: NSObject, UIApplicationDelegate {
+    private let googleAuthService = Container.shared.googleAuthService()
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
@@ -17,11 +20,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let providerFactory = DefaultAppCheckProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
         
-        /// Ensure the user's sign in state is restored.
-        GIDSignIn.sharedInstance.restorePreviousSignIn()
-        
         /// Configures App Check for Google Sign In use.
         GIDSignIn.sharedInstance.configure()
+        
+        /// Ensure the user's sign in state is restored.
+        googleAuthService.restorePreviousSignIn()
         
         FirebaseApp.configure()
         return true

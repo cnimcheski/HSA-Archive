@@ -17,11 +17,25 @@ nonisolated final class GoogleAuthService {
     private let scopes = ["https://www.googleapis.com/auth/drive.file"]
 
     var isSignedIn: Bool {
-        currentUser != nil
+        get async {
+            await currentUser != nil
+        }
     }
     
     private var currentUser: GIDGoogleUser? {
-        GIDSignIn.sharedInstance.currentUser
+        get async {
+            guard let restorationTask else { return GIDSignIn.sharedInstance.currentUser }
+            return try? await restorationTask.value
+        }
+    }
+    
+    private var restorationTask: Task<GIDGoogleUser?, Error>?
+    
+    func restorePreviousSignIn() {
+        guard restorationTask == nil else { return }
+        restorationTask = Task {
+            try await GIDSignIn.sharedInstance.restorePreviousSignIn()
+        }
     }
 
     /// Attempts to sign the user in with Google and returns the `GIDSignInResult` if possible, nil if failed.
@@ -66,12 +80,12 @@ nonisolated private extension GoogleAuthService {
 
 nonisolated extension GoogleAuthService: APIAuthenticator {
     func getAccessToken() async throws -> String {
-        guard let currentUser else { throw URLError(.userAuthenticationRequired) }
+        guard let currentUser = await currentUser else { throw URLError(.userAuthenticationRequired) }
         return try await currentUser.refreshTokensIfNeeded().accessToken.tokenString
     }
     
     func refreshAccessToken() async throws {
-        guard let currentUser else { throw URLError(.userAuthenticationRequired) }
+        guard let currentUser = await currentUser else { throw URLError(.userAuthenticationRequired) }
         try await currentUser.refreshTokensIfNeeded()
     }
 }

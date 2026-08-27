@@ -9,17 +9,21 @@ import SwiftUI
 
 struct ReceiptPreview: View {
     private let receipt: Receipt
+    private let action: () -> Void
     
-    init(receipt: Receipt) {
+    init(receipt: Receipt, action: @escaping () -> Void) {
         self.receipt = receipt
+        self.action = action
     }
     
     var body: some View {
-        HStack(spacing: Theme.Spacing.medium) {
-            leadingImage
-            descriptionView
-            Spacer()
-            amountStatusView
+        Button(action: action) {
+            HStack(spacing: Theme.Spacing.medium) {
+                leadingImage
+                descriptionView
+                Spacer()
+                amountStatusView
+            }
         }
     }
 }
@@ -49,8 +53,18 @@ private extension ReceiptPreview {
     
     var amountStatusView: some View {
         VStack(alignment: .trailing) {
-            Text(64.20, format: AppFormatStyle.Currency.current)
+            Text(receipt.amount, format: AppFormatStyle.Currency.current)
                 .font(.headline)
+            Spacer()
+            reimbursementBadge
+        }
+    }
+    
+    @ViewBuilder
+    var reimbursementBadge: some View {
+        if receipt.isReimbursed {
+            Badge("Reimbursed", color: .accentColor)
+        } else {
             Badge("Available")
         }
     }
@@ -59,5 +73,7 @@ private extension ReceiptPreview {
 // MARK: - Previews
 
 #Preview {
-    ReceiptPreview(receipt: .mock)
+    ReceiptPreview(receipt: .mock) {
+        // Do something when the receipt is tapped
+    }
 }

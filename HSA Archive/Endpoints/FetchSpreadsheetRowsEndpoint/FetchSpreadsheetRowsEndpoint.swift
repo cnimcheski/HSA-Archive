@@ -7,7 +7,6 @@
 
 import Networking
 
-// TODO: - Not called at all yet...
 nonisolated struct FetchSpreadsheetRowsEndpoint: Endpoint {
     enum EndpointError: APIError, SpreadsheetFailureConvertible {
         case spreadsheetNotFound

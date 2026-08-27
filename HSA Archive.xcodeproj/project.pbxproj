@@ -56,7 +56,6 @@
 		99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008E43001DECD00CDF610 /* DotSeparator.swift */; };
 		99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008E830029F8000CDF610 /* HomeView+Overview.swift */; };
 		99C008F03002A17600CDF610 /* DefaultCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008EF3002A17600CDF610 /* DefaultCardStyle.swift */; };
-		99C008F33002A24800CDF610 /* HomeView+SyncAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008F23002A24800CDF610 /* HomeView+SyncAccountsView.swift */; };
 		99C008F83002A8E000CDF610 /* HomeView+RecentActivitySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008F73002A8E000CDF610 /* HomeView+RecentActivitySection.swift */; };
 		99C008FD3002D78800CDF610 /* ReceiptPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008FC3002D78800CDF610 /* ReceiptPreview.swift */; };
 		99C0090030032B7A00CDF610 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008FF30032B7A00CDF610 /* Badge.swift */; };
@@ -131,10 +130,18 @@
 		99DD446330363C9900843826 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99DD446230363C9900843826 /* GoogleService-Info.plist */; };
 		99DD4466303A255000843826 /* UploadFileEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4465303A255000843826 /* UploadFileEndpoint.swift */; };
 		99DD4468303A299B00843826 /* UploadFileEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4467303A299B00843826 /* UploadFileEndpoint+Response.swift */; };
-		99DD446A303A8F0200843826 /* ReceiptSpreadsheetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4469303A8F0200843826 /* ReceiptSpreadsheetRow.swift */; };
 		99DD446C303A95DC00843826 /* UploadFileEndpoint+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD446B303A95DC00843826 /* UploadFileEndpoint+Metadata.swift */; };
 		99DD446E303A9E6300843826 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD446D303A9E6300843826 /* Data+Extensions.swift */; };
 		99DD4470303AC44900843826 /* SpreadsheetFailureConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD446F303AC44900843826 /* SpreadsheetFailureConvertible.swift */; };
+		99DD4472303CE2CD00843826 /* ReceiptSpreadsheetSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4471303CE2CD00843826 /* ReceiptSpreadsheetSchema.swift */; };
+		99DD4474303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4473303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift */; };
+		99DD4476303CE31A00843826 /* ReceiptSpreadsheetDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4475303CE31A00843826 /* ReceiptSpreadsheetDecoder.swift */; };
+		99DD447B303D54A000843826 /* ReceiptSpreadsheetDecoder+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD447A303D54A000843826 /* ReceiptSpreadsheetDecoder+Response.swift */; };
+		99DD447D303D54EB00843826 /* ReceiptSpreadsheetDecoder+RowDecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD447C303D54EB00843826 /* ReceiptSpreadsheetDecoder+RowDecodeError.swift */; };
+		99DD4482303E31DB00843826 /* NavigationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4481303E31DB00843826 /* NavigationBanner.swift */; };
+		99DD4485303E3BD200843826 /* InvalidReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4484303E3BD200843826 /* InvalidReceiptsView.swift */; };
+		99DD4487303E3D0700843826 /* InvalidReceiptsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4486303E3D0700843826 /* InvalidReceiptsView+ViewModel.swift */; };
+		99DD448A303FBCD800843826 /* InvalidReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD4489303FBCD800843826 /* InvalidReceiptView.swift */; };
 		99F2DD18302C075B00A4B653 /* GoogleAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD17302C075B00A4B653 /* GoogleAuthService.swift */; };
 		99F2DD1A302C087A00A4B653 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD19302C087A00A4B653 /* UIApplication+Extensions.swift */; };
 		99F2DD1F302D22DE00A4B653 /* GoogleDriveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD1E302D22DE00A4B653 /* GoogleDriveService.swift */; };
@@ -228,7 +235,6 @@
 		99C008E43001DECD00CDF610 /* DotSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotSeparator.swift; sourceTree = "<group>"; };
 		99C008E830029F8000CDF610 /* HomeView+Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview.swift"; sourceTree = "<group>"; };
 		99C008EF3002A17600CDF610 /* DefaultCardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCardStyle.swift; sourceTree = "<group>"; };
-		99C008F23002A24800CDF610 /* HomeView+SyncAccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+SyncAccountsView.swift"; sourceTree = "<group>"; };
 		99C008F73002A8E000CDF610 /* HomeView+RecentActivitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+RecentActivitySection.swift"; sourceTree = "<group>"; };
 		99C008FC3002D78800CDF610 /* ReceiptPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptPreview.swift; sourceTree = "<group>"; };
 		99C008FF30032B7A00CDF610 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -299,10 +305,18 @@
 		99DD446230363C9900843826 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99DD4465303A255000843826 /* UploadFileEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileEndpoint.swift; sourceTree = "<group>"; };
 		99DD4467303A299B00843826 /* UploadFileEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadFileEndpoint+Response.swift"; sourceTree = "<group>"; };
-		99DD4469303A8F0200843826 /* ReceiptSpreadsheetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSpreadsheetRow.swift; sourceTree = "<group>"; };
 		99DD446B303A95DC00843826 /* UploadFileEndpoint+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UploadFileEndpoint+Metadata.swift"; sourceTree = "<group>"; };
 		99DD446D303A9E6300843826 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		99DD446F303AC44900843826 /* SpreadsheetFailureConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetFailureConvertible.swift; sourceTree = "<group>"; };
+		99DD4471303CE2CD00843826 /* ReceiptSpreadsheetSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSpreadsheetSchema.swift; sourceTree = "<group>"; };
+		99DD4473303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSpreadsheetEncoder.swift; sourceTree = "<group>"; };
+		99DD4475303CE31A00843826 /* ReceiptSpreadsheetDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSpreadsheetDecoder.swift; sourceTree = "<group>"; };
+		99DD447A303D54A000843826 /* ReceiptSpreadsheetDecoder+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetDecoder+Response.swift"; sourceTree = "<group>"; };
+		99DD447C303D54EB00843826 /* ReceiptSpreadsheetDecoder+RowDecodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetDecoder+RowDecodeError.swift"; sourceTree = "<group>"; };
+		99DD4481303E31DB00843826 /* NavigationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBanner.swift; sourceTree = "<group>"; };
+		99DD4484303E3BD200843826 /* InvalidReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidReceiptsView.swift; sourceTree = "<group>"; };
+		99DD4486303E3D0700843826 /* InvalidReceiptsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InvalidReceiptsView+ViewModel.swift"; sourceTree = "<group>"; };
+		99DD4489303FBCD800843826 /* InvalidReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidReceiptView.swift; sourceTree = "<group>"; };
 		99F2DD17302C075B00A4B653 /* GoogleAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthService.swift; sourceTree = "<group>"; };
 		99F2DD19302C087A00A4B653 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		99F2DD1E302D22DE00A4B653 /* GoogleDriveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveService.swift; sourceTree = "<group>"; };
@@ -607,6 +621,7 @@
 			children = (
 				99D2D5F2302B9873007A65C3 /* FullImageView */,
 				99C008D83001A49A00CDF610 /* HomeView */,
+				99DD4483303E3BA800843826 /* InvalidReceiptsView */,
 				99C0095E30049B5100CDF610 /* OnboardingView */,
 				99C00992300D97B900CDF610 /* ReceiptReviewView */,
 				99C0098A300D503700CDF610 /* ReceiptScannerView */,
@@ -621,7 +636,6 @@
 			children = (
 				99C008E730029F7700CDF610 /* Overview */,
 				99C008F63002A8C500CDF610 /* RecentActivitySection */,
-				99C008F13002A22D00CDF610 /* SyncAccountsView */,
 				99D2D5D830266A29007A65C3 /* UserFacing */,
 				99C008DC3001A4AE00CDF610 /* HomeView.swift */,
 				99C008DA3001A4A900CDF610 /* HomeView+ViewModel.swift */,
@@ -651,6 +665,7 @@
 				99B98D823012F92200A45554 /* InputContainer */,
 				99C008FB3002D77800CDF610 /* ReceiptPreview */,
 				99021ABB301B0BB600D7DC8D /* ErrorBanner */,
+				99DD447E303E31B300843826 /* NavigationBanner */,
 				99021A7830147A9600D7DC8D /* SelectionView */,
 			);
 			path = Components;
@@ -693,14 +708,6 @@
 				99C008EF3002A17600CDF610 /* DefaultCardStyle.swift */,
 			);
 			path = CardStyle;
-			sourceTree = "<group>";
-		};
-		99C008F13002A22D00CDF610 /* SyncAccountsView */ = {
-			isa = PBXGroup;
-			children = (
-				99C008F23002A24800CDF610 /* HomeView+SyncAccountsView.swift */,
-			);
-			path = SyncAccountsView;
 			sourceTree = "<group>";
 		};
 		99C008F63002A8C500CDF610 /* RecentActivitySection */ = {
@@ -865,7 +872,7 @@
 		99C009A5301000EE00CDF610 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				99DD445D3035761800843826 /* ReceiptSpreadsheetService */,
+				99DD445D3035761800843826 /* ReceiptSpreadsheet */,
 				99C009BB3011A74400CDF610 /* AI */,
 				99D2D5CA302386EC007A65C3 /* AppCheck */,
 				99C009AB3010092600CDF610 /* DI */,
@@ -909,7 +916,6 @@
 			children = (
 				99B98D7B3012F58400A45554 /* Category.swift */,
 				99C009B030114CE000CDF610 /* Receipt.swift */,
-				99DD4469303A8F0200843826 /* ReceiptSpreadsheetRow.swift */,
 				99D2D5D3302581EB007A65C3 /* Selection.swift */,
 			);
 			path = Models;
@@ -1063,12 +1069,15 @@
 			path = FetchSpreadsheetEndpoint;
 			sourceTree = "<group>";
 		};
-		99DD445D3035761800843826 /* ReceiptSpreadsheetService */ = {
+		99DD445D3035761800843826 /* ReceiptSpreadsheet */ = {
 			isa = PBXGroup;
 			children = (
+				99DD4479303D548F00843826 /* ReceiptSpreadsheetDecoder */,
+				99DD4473303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift */,
+				99DD4471303CE2CD00843826 /* ReceiptSpreadsheetSchema.swift */,
 				99DD445E3035762600843826 /* ReceiptSpreadsheetService.swift */,
 			);
-			path = ReceiptSpreadsheetService;
+			path = ReceiptSpreadsheet;
 			sourceTree = "<group>";
 		};
 		99DD4464303A254700843826 /* UploadFileEndpoint */ = {
@@ -1079,6 +1088,42 @@
 				99DD4467303A299B00843826 /* UploadFileEndpoint+Response.swift */,
 			);
 			path = UploadFileEndpoint;
+			sourceTree = "<group>";
+		};
+		99DD4479303D548F00843826 /* ReceiptSpreadsheetDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				99DD4475303CE31A00843826 /* ReceiptSpreadsheetDecoder.swift */,
+				99DD447A303D54A000843826 /* ReceiptSpreadsheetDecoder+Response.swift */,
+				99DD447C303D54EB00843826 /* ReceiptSpreadsheetDecoder+RowDecodeError.swift */,
+			);
+			path = ReceiptSpreadsheetDecoder;
+			sourceTree = "<group>";
+		};
+		99DD447E303E31B300843826 /* NavigationBanner */ = {
+			isa = PBXGroup;
+			children = (
+				99DD4481303E31DB00843826 /* NavigationBanner.swift */,
+			);
+			path = NavigationBanner;
+			sourceTree = "<group>";
+		};
+		99DD4483303E3BA800843826 /* InvalidReceiptsView */ = {
+			isa = PBXGroup;
+			children = (
+				99DD4488303FBCC900843826 /* InvalidReceiptView */,
+				99DD4484303E3BD200843826 /* InvalidReceiptsView.swift */,
+				99DD4486303E3D0700843826 /* InvalidReceiptsView+ViewModel.swift */,
+			);
+			path = InvalidReceiptsView;
+			sourceTree = "<group>";
+		};
+		99DD4488303FBCC900843826 /* InvalidReceiptView */ = {
+			isa = PBXGroup;
+			children = (
+				99DD4489303FBCD800843826 /* InvalidReceiptView.swift */,
+			);
+			path = InvalidReceiptView;
 			sourceTree = "<group>";
 		};
 		99F2DD16302C074C00A4B653 /* GoogleAuth */ = {
@@ -1395,6 +1440,7 @@
 				99021AA13016FAC400D7DC8D /* AIResponse.swift in Sources */,
 				99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */,
 				99C00903300345D300CDF610 /* ScaledFont.swift in Sources */,
+				99DD447B303D54A000843826 /* ReceiptSpreadsheetDecoder+Response.swift in Sources */,
 				99021AC4301DB73300D7DC8D /* GeminiError.swift in Sources */,
 				99021AC2301DAAEF00D7DC8D /* Debug.swift in Sources */,
 				99D2D5D230252570007A65C3 /* PreviewInput.swift in Sources */,
@@ -1404,12 +1450,14 @@
 				99021AA33016FB0500D7DC8D /* ReceiptExtractionResponse.swift in Sources */,
 				99D2D5F6302BB3E4007A65C3 /* FullImageView+ViewModel.swift in Sources */,
 				99F2DD3A302EBA6C00A4B653 /* CreateSpreadsheetEndpoint.swift in Sources */,
+				99DD448A303FBCD800843826 /* InvalidReceiptView.swift in Sources */,
 				99C00994300D97D600CDF610 /* ReceiptReviewView.swift in Sources */,
 				99021A7930147A9600D7DC8D /* SelectionView+ViewModel.swift in Sources */,
 				99DD4468303A299B00843826 /* UploadFileEndpoint+Response.swift in Sources */,
 				99F2DD29302D7F8E00A4B653 /* SignInView+ViewModel.swift in Sources */,
 				99021A7A30147A9600D7DC8D /* SelectionView.swift in Sources */,
 				99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */,
+				99DD4474303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift in Sources */,
 				99021A7D30147E9500D7DC8D /* AppConstants.swift in Sources */,
 				99C00996300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift in Sources */,
 				99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */,
@@ -1419,6 +1467,7 @@
 				99C008C23000B26400CDF610 /* HSA_ArchiveApp.swift in Sources */,
 				99C0098E300D508300CDF610 /* ReceiptScannerView+ViewModel.swift in Sources */,
 				99021A7F301481BA00D7DC8D /* ReceiptReviewCoordinator.swift in Sources */,
+				99DD4482303E31DB00843826 /* NavigationBanner.swift in Sources */,
 				99B98D843012F92B00A45554 /* InputContainer.swift in Sources */,
 				99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */,
 				99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */,
@@ -1427,6 +1476,7 @@
 				99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */,
 				99F2DD50302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift in Sources */,
 				99DD445A3033A14D00843826 /* FetchSpreadsheetEndpoint.swift in Sources */,
+				99DD4487303E3D0700843826 /* InvalidReceiptsView+ViewModel.swift in Sources */,
 				99D2D5CF3024312B007A65C3 /* Debug+LogCategory.swift in Sources */,
 				99F2DD2E302D8CFC00A4B653 /* SignInView+BenefitsView.swift in Sources */,
 				99021AB6301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift in Sources */,
@@ -1439,6 +1489,7 @@
 				99F2DD45302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift in Sources */,
 				99DD4457303245DC00843826 /* BatchUpdateSpreadsheetEndpoint+Response.swift in Sources */,
 				99D2D5F4302B9884007A65C3 /* FullImageView.swift in Sources */,
+				99DD4472303CE2CD00843826 /* ReceiptSpreadsheetSchema.swift in Sources */,
 				99D2D5DA30266A4E007A65C3 /* ConfirmationDialogViewModel+HomeView.swift in Sources */,
 				99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */,
 				99D2D5EF302B70CE007A65C3 /* ReceiptFileImporter.swift in Sources */,
@@ -1448,12 +1499,14 @@
 				99C008D13000B31F00CDF610 /* TabsCoordinator+ViewModel.swift in Sources */,
 				99D2D5D4302581EB007A65C3 /* Selection.swift in Sources */,
 				99D2D5C730217588007A65C3 /* Placeholders.swift in Sources */,
+				99DD447D303D54EB00843826 /* ReceiptSpreadsheetDecoder+RowDecodeError.swift in Sources */,
 				99F2DD4B302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift in Sources */,
 				99C0096E30089B5E00CDF610 /* UserDefaultsManager.swift in Sources */,
 				99C008F03002A17600CDF610 /* DefaultCardStyle.swift in Sources */,
 				99021A85301555A900D7DC8D /* AppToggle.swift in Sources */,
 				99DD44533031893C00843826 /* BatchUpdateSpreadsheetEndpoint.swift in Sources */,
 				99D2D5E23027C637007A65C3 /* ReceiptPhotosPicker.swift in Sources */,
+				99DD4485303E3BD200843826 /* InvalidReceiptsView.swift in Sources */,
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,
 				99F2DD52302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift in Sources */,
 				99D2D5C530212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift in Sources */,
@@ -1477,7 +1530,6 @@
 				99F2DD1F302D22DE00A4B653 /* GoogleDriveService.swift in Sources */,
 				99DD444D303177C700843826 /* ReceiptRepository.swift in Sources */,
 				99F2DD21302D3A0100A4B653 /* GoogleSheetsService.swift in Sources */,
-				99C008F33002A24800CDF610 /* HomeView+SyncAccountsView.swift in Sources */,
 				99021AAA30171E2D00D7DC8D /* RemoteConfigClient.swift in Sources */,
 				99C009BD3011A75700CDF610 /* AIClient.swift in Sources */,
 				99021AA53016FB7300D7DC8D /* DateFormatter+Extensions.swift in Sources */,
@@ -1492,10 +1544,10 @@
 				99DD445F3035762600843826 /* ReceiptSpreadsheetService.swift in Sources */,
 				99DD445C3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift in Sources */,
 				99C009A83010014500CDF610 /* TextRecognizer.swift in Sources */,
+				99DD4476303CE31A00843826 /* ReceiptSpreadsheetDecoder.swift in Sources */,
 				99D2D5EC302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift in Sources */,
 				99C0097C3009EFD800CDF610 /* OnboardingView+ProgressPills.swift in Sources */,
 				99DD446E303A9E6300843826 /* Data+Extensions.swift in Sources */,
-				99DD446A303A8F0200843826 /* ReceiptSpreadsheetRow.swift in Sources */,
 				99021A9C3016E42800D7DC8D /* RedactedShimmer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

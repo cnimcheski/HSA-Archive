@@ -39,6 +39,7 @@ nonisolated enum DefaultToastType: ToastType {
     // MARK: - Receipt
     
     case receiptSaveFailed
+    case receiptsFetchFailed
     case receiptImageUploadFailed
     case fileEncodingFailed
     
@@ -68,6 +69,8 @@ nonisolated enum DefaultToastType: ToastType {
             "Unable to setup HSA Archive. Please try again."
         case .receiptSaveFailed:
             "Unable to save receipt. We couldn't access your HSA Archive spreadsheet. Please try again."
+        case .receiptsFetchFailed:
+            "Unable to fetch your receipts. We couldn't access your HSA Archive spreadsheet. Please try again."
         case .receiptImageUploadFailed:
             "Couldn't save receipt image to Google Drive. Please try again."
         }

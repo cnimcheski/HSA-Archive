@@ -97,7 +97,7 @@ nonisolated private extension ReceiptSpreadsheetService {
         try await googleSheetsService.appendRows(
             spreadsheetID: spreadsheetID,
             range: AppConstants.worksheetName,
-            values: [ReceiptSpreadsheetRow.headers]
+            values: [ReceiptSpreadsheetSchema.headers]
         )
     }
 }
