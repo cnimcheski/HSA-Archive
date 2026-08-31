@@ -168,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Networking.git",
       "state" : {
-        "revision" : "6babebd9ac5f029a6b73c11647af6b284361c6c1",
-        "version" : "1.0.29"
+        "revision" : "a550551c66e3268f843a51157385929fdd01993f",
+        "version" : "1.0.34"
       }
     },
     {

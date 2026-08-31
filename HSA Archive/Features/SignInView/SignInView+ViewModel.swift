@@ -33,7 +33,7 @@ extension SignInView {
         
         private(set) var isSigningIn = false
         
-        init(onSuccess: @escaping () -> Void) {
+        init(onSuccess: @escaping () -> Void = {}) {
             self.onSuccess = onSuccess
         }
         

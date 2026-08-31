@@ -34,6 +34,9 @@
 		99021AC2301DAAEF00D7DC8D /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AC0301DAAEF00D7DC8D /* Debug.swift */; };
 		99021AC4301DB73300D7DC8D /* GeminiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AC3301DB73300D7DC8D /* GeminiError.swift */; };
 		99021AC7301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AC6301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift */; };
+		99A541F93040035B001997B6 /* HomeView+Overview+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */; };
+		99A541FC304485B5001997B6 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FB304485B5001997B6 /* AppSession.swift */; };
+		99A541FF30461CD0001997B6 /* CurrentValueAsyncStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */; };
 		99B98D7C3012F58400A45554 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D7B3012F58400A45554 /* Category.swift */; };
 		99B98D7F3012F5F500A45554 /* ReceiptExtractionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D7E3012F5F500A45554 /* ReceiptExtractionRequest.swift */; };
 		99B98D813012F62100A45554 /* FirebaseAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B98D803012F62100A45554 /* FirebaseAIClient.swift */; };
@@ -211,6 +214,9 @@
 		99021AC0301DAAEF00D7DC8D /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		99021AC3301DB73300D7DC8D /* GeminiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiError.swift; sourceTree = "<group>"; };
 		99021AC6301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertViewModel+ReceiptReviewView.swift"; sourceTree = "<group>"; };
+		99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview+ViewModel.swift"; sourceTree = "<group>"; };
+		99A541FB304485B5001997B6 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
+		99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueAsyncStream.swift; sourceTree = "<group>"; };
 		99B98D7B3012F58400A45554 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		99B98D7E3012F5F500A45554 /* ReceiptExtractionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptExtractionRequest.swift; sourceTree = "<group>"; };
 		99B98D803012F62100A45554 /* FirebaseAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAIClient.swift; sourceTree = "<group>"; };
@@ -492,6 +498,22 @@
 			path = UserFacing;
 			sourceTree = "<group>";
 		};
+		99A541FA304485AE001997B6 /* AppSession */ = {
+			isa = PBXGroup;
+			children = (
+				99A541FB304485B5001997B6 /* AppSession.swift */,
+			);
+			path = AppSession;
+			sourceTree = "<group>";
+		};
+		99A541FD30461CB2001997B6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		99B98D7D3012F5E500A45554 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,6 +582,7 @@
 				99C009A5301000EE00CDF610 /* Services */,
 				99C00904300415A000CDF610 /* Theme */,
 				99D2D5E63028491A007A65C3 /* Toast */,
+				99A541FD30461CB2001997B6 /* Utilities */,
 				99C009613005ED1E00CDF610 /* AppIcon.icon */,
 				99C008BD3000B26400CDF610 /* Assets.xcassets */,
 				99DD446230363C9900843826 /* GoogleService-Info.plist */,
@@ -684,6 +707,7 @@
 			children = (
 				99C0090D3004475A00CDF610 /* BalanceCard */,
 				99C008E830029F8000CDF610 /* HomeView+Overview.swift */,
+				99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -872,6 +896,7 @@
 		99C009A5301000EE00CDF610 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				99A541FA304485AE001997B6 /* AppSession */,
 				99DD445D3035761800843826 /* ReceiptSpreadsheet */,
 				99C009BB3011A74400CDF610 /* AI */,
 				99D2D5CA302386EC007A65C3 /* AppCheck */,
@@ -1437,6 +1462,7 @@
 				99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */,
 				99F2DD3C302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift in Sources */,
 				99DD4466303A255000843826 /* UploadFileEndpoint.swift in Sources */,
+				99A541F93040035B001997B6 /* HomeView+Overview+ViewModel.swift in Sources */,
 				99021AA13016FAC400D7DC8D /* AIResponse.swift in Sources */,
 				99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */,
 				99C00903300345D300CDF610 /* ScaledFont.swift in Sources */,
@@ -1472,6 +1498,7 @@
 				99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */,
 				99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */,
 				99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */,
+				99A541FC304485B5001997B6 /* AppSession.swift in Sources */,
 				99C0090C30043A3400CDF610 /* CornerRadius.swift in Sources */,
 				99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */,
 				99F2DD50302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift in Sources */,
@@ -1529,6 +1556,7 @@
 				99C0096030049B6300CDF610 /* OnboardingView.swift in Sources */,
 				99F2DD1F302D22DE00A4B653 /* GoogleDriveService.swift in Sources */,
 				99DD444D303177C700843826 /* ReceiptRepository.swift in Sources */,
+				99A541FF30461CD0001997B6 /* CurrentValueAsyncStream.swift in Sources */,
 				99F2DD21302D3A0100A4B653 /* GoogleSheetsService.swift in Sources */,
 				99021AAA30171E2D00D7DC8D /* RemoteConfigClient.swift in Sources */,
 				99C009BD3011A75700CDF610 /* AIClient.swift in Sources */,

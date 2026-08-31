@@ -23,6 +23,7 @@ extension HomeView {
             case filePicker
             case photosPicker
             case scanner
+            case signIn(SignInView.ViewModel)
             case invalidReceipts(InvalidReceiptsView.ViewModel)
         }
         
@@ -34,7 +35,9 @@ extension HomeView {
         var confirmationDialogViewModel: ConfirmationDialogViewModel?
         
         var recentReceipts: [Receipt] {
-            Array(receiptRepository.sortedReceipts.prefix(3))
+            receiptRepository.isLoading
+                ? Placeholders.recentReceipts
+                : Array(receiptRepository.sortedReceipts.prefix(3))
         }
         
         var failedRows: [ReceiptSpreadsheetDecoder.Response.FailedRow] {
@@ -45,16 +48,8 @@ extension HomeView {
             receiptRepository.sortedReceipts.count > 3
         }
         
-        func fetchReceipts() async {
-            // TODO: - Adding loading state...
-            guard await googleAuthService.isSignedIn else {
-                // TODO: - Show not logged in state...
-                return
-            }
-            guard await receiptRepository.fetchAll() != nil else {
-                // TODO: - Show error state...
-                return
-            }
+        func showSignInView() {
+            delegate?.navigate(to: .signIn(.init()))
         }
         
         func showUploadReceiptConfirmationDialog() {

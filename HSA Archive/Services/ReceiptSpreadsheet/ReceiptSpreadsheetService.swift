@@ -9,6 +9,10 @@ import FactoryKit
 import Toast
 
 nonisolated final class ReceiptSpreadsheetService {
+    enum ReceiptSpreadsheetError: Error {
+        case spreadsheetNotFound
+    }
+    
     private let googleDriveService = Container.shared.googleDriveService()
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
@@ -28,18 +32,20 @@ nonisolated final class ReceiptSpreadsheetService {
     }
     
     /// Runs the given operation and handles any potential spreadsheet not found errors.
+    /// Throws a  `ReceiptSpreadsheetError.spreadsheetNotFound` when a spreadsheet cannot be found or recovered.
+    /// Other operation errors are propogated to the caller.
     func withSpreadsheetRecovery<T>(
-        _ operation: (String) async throws -> T?
-    ) async throws -> T? {
+        _ operation: (String) async throws -> T
+    ) async throws -> T {
         guard let spreadsheetID = userDefaultsManager.spreadsheetID else {
-            guard let recoveredSpreadsheetID = await handleSpreadsheetNotFound() else { return nil }
+            guard let recoveredSpreadsheetID = await handleSpreadsheetNotFound() else { throw ReceiptSpreadsheetError.spreadsheetNotFound }
             return try await operation(recoveredSpreadsheetID)
         }
         do {
             return try await operation(spreadsheetID)
         } catch {
             guard let error = error as? SpreadsheetFailureConvertible, error.spreadsheetFailureReason == .notFound else { throw error }
-            guard let recoveredSpreadsheetID = await handleSpreadsheetNotFound() else { return nil }
+            guard let recoveredSpreadsheetID = await handleSpreadsheetNotFound() else { throw ReceiptSpreadsheetError.spreadsheetNotFound }
             return try await operation(recoveredSpreadsheetID)
         }
     }

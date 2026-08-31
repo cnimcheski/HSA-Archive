@@ -9,6 +9,12 @@ import SwiftUI
 
 extension HomeView {
     struct Overview: View {
+        private let viewModel: ViewModel
+        
+        init(receipts: [Receipt], isLoading: Bool) {
+            viewModel = .init(receipts: receipts, isLoading: isLoading)
+        }
+        
         var body: some View {
             VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
                 totalPurchasesView
@@ -28,17 +34,25 @@ private extension HomeView.Overview {
         VStack(alignment: .leading, spacing: Theme.Spacing.xxSmall) {
             Text("Total receipts on file")
                 .foregroundStyle(.secondary)
-            Text(8420.15, format: AppFormatStyle.Currency.current)
+            Text(viewModel.totalAmount, format: AppFormatStyle.Currency.current)
                 .xLargeTitle()
                 .fontWeight(.bold)
+                .redactedShimmer(isShimmering: viewModel.isLoading)
         }
     }
     
     var balanceCards: some View {
         HStack {
-            // TODO: - Add actual amounts here...
-            BalanceCard(type: .reimbursed, amount: 2150)
-            BalanceCard(type: .available, amount: 6270.15)
+            BalanceCard(
+                type: .reimbursed,
+                amount: viewModel.reimbursedAmount,
+                isLoading: viewModel.isLoading
+            )
+            BalanceCard(
+                type: .available,
+                amount: viewModel.availableAmount,
+                isLoading: viewModel.isLoading
+            )
         }
     }
     
@@ -46,20 +60,32 @@ private extension HomeView.Overview {
         RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
             .fill(
                 LinearGradient(
-                    stops: [
-                        .init(color: .accent, location: 0.3),
-                        .init(color: .brandSecondary, location: 0.3)
-                    ],
+                    stops: viewModel.isLoading
+                        ? [.init(color: .secondary.opacity(0.3), location: 0)]
+                        : [
+                            .init(color: .accent, location: viewModel.statusLocation),
+                            .init(color: .brandSecondary, location: viewModel.statusLocation)
+                        ],
                     startPoint: .leading,
                     endPoint: .trailing
                 )
             )
             .frame(height: 6)
+            .redactedShimmer(isShimmering: viewModel.isLoading)
     }
 }
 
 // MARK: - Previews
 
 #Preview {
-    HomeView.Overview()
+    let mockReceipts = [
+        Receipt.mock(),
+        Receipt.mock(reimbursementDate: .now),
+        Receipt.mock()
+    ]
+    VStack {
+        HomeView.Overview(receipts: mockReceipts, isLoading: false)
+        HomeView.Overview(receipts: mockReceipts, isLoading: true)
+    }
+    .padding()
 }

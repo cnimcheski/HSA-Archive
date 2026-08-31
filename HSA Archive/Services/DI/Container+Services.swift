@@ -13,6 +13,11 @@ extension Container {
         self { FirebaseAIClient() }.singleton
     }
     
+    @MainActor
+    var appSession: Factory<AppSession> {
+        self { AppSession() }.singleton
+    }
+    
     var googleAuthService: Factory<GoogleAuthService> {
         self { GoogleAuthService() }.singleton
     }

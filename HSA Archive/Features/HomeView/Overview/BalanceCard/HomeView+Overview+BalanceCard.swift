@@ -25,10 +25,12 @@ extension HomeView.Overview {
         
         private let type: CardType
         private let amount: Double
+        private let isLoading: Bool
         
-        init(type: CardType, amount: Double) {
+        init(type: CardType, amount: Double, isLoading: Bool) {
             self.type = type
             self.amount = amount
+            self.isLoading = isLoading
         }
         
         var body: some View {
@@ -62,14 +64,22 @@ private extension HomeView.Overview.BalanceCard {
     var amountView: some View {
         Text(amount, format: AppFormatStyle.Currency.current)
             .font(.headline)
+            .redactedShimmer(isShimmering: isLoading)
     }
 }
 
 // MARK: - Previews
 
 #Preview {
-    HStack {
-        HomeView.Overview.BalanceCard(type: .reimbursed, amount: 1046.57)
-        HomeView.Overview.BalanceCard(type: .available, amount: 2112.34)
+    VStack {
+        HStack {
+            HomeView.Overview.BalanceCard(type: .reimbursed, amount: 1046.57, isLoading: false)
+            HomeView.Overview.BalanceCard(type: .available, amount: 2112.34, isLoading: false)
+        }
+        HStack {
+            HomeView.Overview.BalanceCard(type: .reimbursed, amount: 1046.57, isLoading: true)
+            HomeView.Overview.BalanceCard(type: .available, amount: 2112.34, isLoading: true)
+        }
     }
+    .padding()
 }

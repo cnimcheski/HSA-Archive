@@ -6,9 +6,12 @@
 //
 
 import Dialogs
+import FactoryKit
 import SwiftUI
 
 struct HomeView: View {
+    @InjectedObservable(\.googleAuthService) private var googleAuthService
+    @InjectedObservable(\.receiptRepository) private var receiptRepository
     @Bindable private var viewModel: ViewModel
     
     init(viewModel: ViewModel) {
@@ -19,22 +22,54 @@ struct HomeView: View {
         content
             .navigationTitle("HSA Archive")
             .toolbar { uploadReceiptButton }
-            .onFirstTask(viewModel.fetchReceipts)
+            .refreshable(action: receiptRepository.refreshReceipts)
     }
 }
 
 // MARK: - Private Views
 
 private extension HomeView {
+    @ViewBuilder
     var content: some View {
+        if receiptRepository.hasError {
+            errorView
+        } else {
+            listContent
+        }
+    }
+    
+    var errorView: some View {
+        ScrollView {
+            ContentUnavailableView(
+                "Something Went Wrong",
+                systemImage: "exclamationmark.triangle",
+                description: Text("There was an error loading your data. Please try again.")
+            )
+            .containerRelativeFrame(.vertical)
+        }
+    }
+    
+    var listContent: some View {
         List {
-            Overview()
+            Overview(receipts: receiptRepository.sortedReceipts, isLoading: receiptRepository.isLoading)
+            if !googleAuthService.isSignedIn {
+                signInBanner
+            }
             if viewModel.failedRows.count > 0 {
                 invalidReceiptsBanner
             }
             recentActivitySection
         }
         .listStyle(.plain)
+    }
+    
+    var signInBanner: some View {
+        NavigationBanner(
+            "Browsing as a guest",
+            message: "Sign in to save receipts and see your balance",
+            iconName: "person",
+            action: viewModel.showSignInView
+        )
     }
     
     var invalidReceiptsBanner: some View {
@@ -45,13 +80,13 @@ private extension HomeView {
             tint: .red,
             action: viewModel.showInvalidReceipts
         )
-        .listRowSeparator(.hidden)
     }
     
     var recentActivitySection: some View {
         RecentActivitySection(
             recentReceipts: viewModel.recentReceipts,
             showViewAllButton: viewModel.shouldShowViewAllReceiptsButton,
+            isLoading: receiptRepository.isLoading,
             onReceiptSelected: viewModel.onReceiptSelected
         )
     }

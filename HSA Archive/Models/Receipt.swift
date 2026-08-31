@@ -81,15 +81,26 @@ nonisolated extension Receipt {
 // MARK: - Mock Receipt
 
 nonisolated extension Receipt {
-    static var mock: Self {
+    /// Returns a fully customizable mock Receipt.
+    static func mock(
+        merchant: String = "Target",
+        description: String = "Tampons",
+        amount: Double = 12.95,
+        transactionDate: Date = .now,
+        category: Category = .womensHealth,
+        reimbursementDate: Date? = nil,
+        notes: String = "",
+        fileName: String = ""
+    ) -> Self {
         .init(
-            merchant: "Target",
-            description: "Tampons",
-            amount: 12.95,
-            transactionDate: .now,
-            category: .womensHealth,
-            notes: "",
-            fileName: ""
+            merchant: merchant,
+            description: description,
+            amount: amount,
+            transactionDate: transactionDate,
+            category: category,
+            reimbursementDate: reimbursementDate,
+            notes: notes,
+            fileName: fileName
         )
     }
 }

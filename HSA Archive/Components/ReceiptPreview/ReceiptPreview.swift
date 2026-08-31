@@ -73,7 +73,10 @@ private extension ReceiptPreview {
 // MARK: - Previews
 
 #Preview {
-    ReceiptPreview(receipt: .mock) {
-        // Do something when the receipt is tapped
+    List {
+        ReceiptPreview(receipt: .mock()) {
+            // Do something when the receipt is tapped
+        }
     }
+    .listStyle(.plain)
 }

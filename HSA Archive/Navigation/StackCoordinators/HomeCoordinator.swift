@@ -12,6 +12,7 @@ import SwiftUI
 final class HomeCoordinator: StackCoordinator {
     enum Page: CoordinatedPage {
         case addReceiptCoordinator(AddReceiptCoordinator.Page)
+        case signIn(SignInView.ViewModel)
         case invalidReceipts(InvalidReceiptsView.ViewModel)
     }
     
@@ -42,6 +43,8 @@ final class HomeCoordinator: StackCoordinator {
         switch page {
         case let .addReceiptCoordinator(page):
             addReceiptCoordinator.build(page: page)
+        case let .signIn(viewModel):
+            SignInView(viewModel: viewModel.setup(delegate: self))
         case let .invalidReceipts(viewModel):
             InvalidReceiptsView(viewModel: viewModel)
         }
@@ -69,6 +72,8 @@ extension HomeCoordinator: HomeView.NavigationDelegate {
             photosPickerViewModel = .init(onCompletion: handleSelectedImages)
         case .scanner:
             push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
+        case let .signIn(viewModel):
+            push(.signIn(viewModel), type: .fullScreenCover)
         case let .invalidReceipts(viewModel):
             push(.invalidReceipts(viewModel))
         }
@@ -78,5 +83,14 @@ extension HomeCoordinator: HomeView.NavigationDelegate {
 extension HomeCoordinator: AddReceiptCoordinator.NavigationDelegate {
     func push(_ page: AddReceiptCoordinator.Page, type: Navigation.PushType) {
         push(.addReceiptCoordinator(page), type: type)
+    }
+}
+
+extension HomeCoordinator: SignInView.NavigationDelegate {
+    func navigate(to destination: SignInView.ViewModel.Destination) {
+        switch destination {
+        case .dismiss:
+            dismissFullScreenCover()
+        }
     }
 }

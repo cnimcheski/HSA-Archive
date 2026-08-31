@@ -11,6 +11,12 @@ import UIKit
 
 @Observable
 final class ReceiptRepository {
+    enum State {
+        case loading
+        case loaded
+        case failed
+    }
+
     private let googleDriveService = Container.shared.googleDriveService()
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let receiptSpreadsheetService = Container.shared.receiptSpreadsheetService()
@@ -20,31 +26,30 @@ final class ReceiptRepository {
         receipts.sorted { $0.transactionDate > $1.transactionDate }
     }
     
-    private(set) var failedRows = [ReceiptSpreadsheetDecoder.Response.FailedRow]()
-    // TODO: - We need some way to clear out the receipts if the spreadsheet is lost..
-    private var receipts = [Receipt]()
-    
-    /// Fetches every single row from the app spreadsheet exclusing headers.
-    func fetchAll() async -> [Receipt]? {
-        do {
-            guard let values = try await receiptSpreadsheetService.withSpreadsheetRecovery({ spreadsheetID in
-                try await googleSheetsService.fetchRows(
-                    spreadsheetID: spreadsheetID,
-                    range: AppConstants.worksheetName + "!A2:Z"
-                )
-            }) else { return nil }
-            let response = ReceiptSpreadsheetDecoder.decode(values)
-            failedRows = response.failedRows
-            receipts = response.receipts
-            return receipts
-        } catch let error as FetchSpreadsheetRowsEndpoint.EndpointError {
-            handleFetchSpreadsheetRowsError(error)
-        } catch {
-            handleUnknownError()
-        }
-        return nil
+    var isLoading: Bool {
+        state == .loading
     }
     
+    var hasError: Bool {
+        state == .failed
+    }
+    
+    private(set) var failedRows = [ReceiptSpreadsheetDecoder.Response.FailedRow]()
+    private var receipts = [Receipt]()
+    private var state = State.loading
+    
+    /// Loads receipts by fetching all receipt rows, excluding headers, and updates the repository state.
+    func loadReceipts() async {
+        state = .loading
+        await fetchAll()
+    }
+    
+    /// Refreshes receipts by fetching all receipt rows, excluding headers, and updates the repository state.
+    func refreshReceipts() async {
+        await fetchAll()
+    }
+    
+    /// Uploads the receipt image, appends the receipt to the spreadsheet, and updates the local receipt list.
     func add(
         _ receipt: Receipt,
         uiImage: UIImage
@@ -75,11 +80,37 @@ final class ReceiptRepository {
     func delete(_ receipt: Receipt) async throws {
         // TODO: - Implement this
     }
+    
+    /// Clears all the stored receipt data.
+    func clear() {
+        receipts = []
+        state = .loaded
+    }
 }
 
 // MARK: - Private Methods
 
 private extension ReceiptRepository {
+    /// Fetches all receipt rows, excluding headers, and updates the repository state with the result.
+    func fetchAll() async {
+        do {
+            let values = try await receiptSpreadsheetService.withSpreadsheetRecovery { spreadsheetID in
+                try await googleSheetsService.fetchRows(
+                    spreadsheetID: spreadsheetID,
+                    range: AppConstants.worksheetName + "!A2:Z"
+                )
+            }
+            let response = ReceiptSpreadsheetDecoder.decode(values)
+            failedRows = response.failedRows
+            receipts = response.receipts
+            state = .loaded
+        } catch {
+            // Only set state to failed if we're loading since that means we aren't recoverable
+            guard state == .loading else { return }
+            state = .failed
+        }
+    }
+    
     /// Uploads the given UIImage to Drive and returns the ID of the image if successful, nil if failed.
     func uploadReceiptImage(fileName: String, uiImage: UIImage) async -> String? {
         guard let data = uiImage.jpegData(compressionQuality: 0.8) else {

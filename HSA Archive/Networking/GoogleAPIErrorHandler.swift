@@ -5,6 +5,7 @@
 //  Created by Steve Nimcheski on 8/14/26.
 //
 
+import FactoryKit
 import Networking
 import Toast
 
@@ -23,6 +24,12 @@ nonisolated struct GoogleAPIErrorHandler: APIErrorHandling {
         }
         
         var message: String? { nil }
+    }
+    
+    private let googleAuthService = Container.shared.googleAuthService()
+    
+    func handleAuthorizationError() async {
+        await googleAuthService.signOut()
     }
     
     func handleAPIGlobalError<T>(

@@ -10,22 +10,27 @@ import GoogleSignIn
 import Networking
 import Toast
 
+@Observable
 nonisolated final class GoogleAuthService {
     private let userDefaultsManager = Container.shared.userDefaultsManager()
     
     /// Covers Drive + Sheets API access only for files creates by this app or the user opens with the app.
     private let scopes = ["https://www.googleapis.com/auth/drive.file"]
-
+    
+    private let isSignedInState = CurrentValueAsyncStream(true)
+    
     var isSignedIn: Bool {
-        get async {
-            await currentUser != nil
-        }
+        isSignedInState.value
+    }
+    
+    var isSignedInValues: AsyncStream<Bool> {
+        isSignedInState.values
     }
     
     private var currentUser: GIDGoogleUser? {
         get async {
-            guard let restorationTask else { return GIDSignIn.sharedInstance.currentUser }
-            return try? await restorationTask.value
+            if let restorationTask { _ = try? await restorationTask.value }
+            return GIDSignIn.sharedInstance.currentUser
         }
     }
     
@@ -51,6 +56,7 @@ nonisolated final class GoogleAuthService {
                 hint: nil,
                 additionalScopes: scopes
             )
+            isSignedInState.send(true)
             return response
         } catch let error as GIDSignInError where error.code == .canceled {
             return nil
@@ -61,9 +67,10 @@ nonisolated final class GoogleAuthService {
     }
 
     // TODO: - Use this sign out method in the profile tab Sign Out button
+    @MainActor
     func signOut() {
+        isSignedInState.send(false)
         GIDSignIn.sharedInstance.signOut()
-        userDefaultsManager.clearSpreadsheetID()
     }
 }
 

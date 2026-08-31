@@ -20,16 +20,17 @@ nonisolated final class GoogleSheetsService {
         )
     }
     
-    // TODO: - Call this to fetch rows at some point. Caller will probably need to remove headers.
     /// Fetches the cell values for the given range in a spreadsheet.
+    /// Throws an `APIManagerError` so callers can react to any error in the UI.
+    /// - Note: Callers will need to remove headers from the range if necessary.
     func fetchRows(
         spreadsheetID: String,
         range: String
-    ) async throws(FetchSpreadsheetRowsEndpoint.EndpointError) -> [[String]]? {
-        guard let response: FetchSpreadsheetRowsEndpoint.Response = try await apiManager.performRequest(
+    ) async throws(APIManagerError) -> [[String]] {
+        let response: FetchSpreadsheetRowsEndpoint.Response = try await apiManager.performThrowingRequest(
             for: FetchSpreadsheetRowsEndpoint(spreadsheetID: spreadsheetID, range: range)
-        ) else { return nil }
-        return response.values
+        )
+        return response.values ?? []
     }
     
     /// Appends one or more rows to the end of the table defined by the given range.

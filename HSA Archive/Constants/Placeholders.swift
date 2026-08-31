@@ -23,4 +23,8 @@ enum Placeholders {
             fileName: .placeholder(count: Int.random(in: 24...32))
         )
     }
+    
+    static var recentReceipts: [Receipt] {
+        (0..<3).map { _ in Self.receipt }
+    }
 }
