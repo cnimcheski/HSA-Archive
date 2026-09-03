@@ -70,6 +70,9 @@ private extension HomeView.Overview {
                     endPoint: .trailing
                 )
             )
+            // The `redactedShimmer` modifier adds an animation modifier that causes a crash
+            // so this explicit nil animation is required to override it.
+            .animation(nil, value: viewModel.isLoading)
             .frame(height: 6)
             .redactedShimmer(isShimmering: viewModel.isLoading)
     }

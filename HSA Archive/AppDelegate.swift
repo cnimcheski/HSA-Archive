@@ -11,8 +11,6 @@ import FirebaseCore
 import GoogleSignIn
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
-    private let googleAuthService = Container.shared.googleAuthService()
-    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
@@ -24,7 +22,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         GIDSignIn.sharedInstance.configure()
         
         /// Ensure the user's sign in state is restored.
-        googleAuthService.restorePreviousSignIn()
+        Container.shared.googleAuthService().restorePreviousSignIn()
         
         FirebaseApp.configure()
         return true

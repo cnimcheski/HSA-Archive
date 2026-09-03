@@ -63,7 +63,7 @@ final class ReceiptRepository {
                     values: [ReceiptSpreadsheetEncoder.encode(receipt, imageID: imageID)]
                 )
             }) else { return nil }
-            receipts.insert(receipt, at: 0)
+            receipts.append(receipt)
             return response
         } catch let error as AppendSpreadsheetRowsEndpoint.EndpointError {
             handleAppendSpreadsheetRowsError(error)

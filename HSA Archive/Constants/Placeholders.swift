@@ -8,7 +8,7 @@
 import Foundation
 
 /// Defines all the placeholders used within the App for redacted shimmer loading
-enum Placeholders {
+nonisolated enum Placeholders {
     
     // MARK: - Receipt Placeholders
     
@@ -22,6 +22,10 @@ enum Placeholders {
             notes: .placeholder(count: Int.random(in: 12...18)),
             fileName: .placeholder(count: Int.random(in: 24...32))
         )
+    }
+    
+    static var receipts: [Receipt] {
+        (0..<10).map { _ in Self.receipt }
     }
     
     static var recentReceipts: [Receipt] {

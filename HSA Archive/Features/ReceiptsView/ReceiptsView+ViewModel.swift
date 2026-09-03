@@ -1,5 +1,5 @@
 //
-//  HomeView+ViewModel.swift
+//  ReceiptsView+ViewModel.swift
 //  HSA Archive
 //
 //  Created by Steve Nimcheski on 7/10/26.
@@ -7,41 +7,51 @@
 
 import Dialogs
 import FactoryKit
+import Foundation
 import Navigation
-import SwiftUI
 
-extension HomeView {
+extension ReceiptsView {
     protocol NavigationDelegate: AnyObject {
         @MainActor func navigate(to destination: ViewModel.Destination)
     }
 }
 
-extension HomeView {
+extension ReceiptsView {
     @Observable
     final class ViewModel: Navigating {
         enum Destination {
+            case scanner
             case filePicker
             case photosPicker
-            case scanner
-            case signIn(SignInView.ViewModel)
             case invalidReceipts(InvalidReceiptsView.ViewModel)
+            case signIn(SignInView.ViewModel)
         }
         
-        private let googleAuthService = Container.shared.googleAuthService()
         private let receiptRepository = Container.shared.receiptRepository()
         
         weak var delegate: NavigationDelegate?
         
+        var searchText = ""
         var confirmationDialogViewModel: ConfirmationDialogViewModel?
         
-        var recentReceipts: [Receipt] {
-            receiptRepository.isLoading
-                ? Placeholders.recentReceipts
-                : Array(receiptRepository.sortedReceipts.prefix(3))
+        var receiptSections: [ReceiptSection] {
+            Dictionary(grouping: filteredReceipts) { $0.transactionDate.startOfMonth }
+                .map(ReceiptSection.init)
+                .sorted { $0.date > $1.date }
         }
         
-        var shouldShowViewAllReceiptsButton: Bool {
-            receiptRepository.sortedReceipts.count > 3
+        private var filteredReceipts: [Receipt] {
+            guard !receiptRepository.isLoading else { return Placeholders.receipts }
+            let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !searchText.isEmpty else { return receiptRepository.sortedReceipts }
+            return receiptRepository.sortedReceipts.filter {
+                $0.merchant.localizedStandardContains(searchText)
+                    || $0.description.localizedStandardContains(searchText)
+            }
+        }
+        
+        func showFiltersView() {
+            // TODO: - Implement Receipt Filter View
         }
         
         func showSignInView() {
@@ -59,16 +69,12 @@ extension HomeView {
         func showInvalidReceipts() {
             delegate?.navigate(to: .invalidReceipts(.init(failedRows: receiptRepository.failedRows)))
         }
-        
-        func onReceiptSelected(_ receipt: Receipt) {
-            // TODO: - Navigate to the ReceiptReviewView
-        }
     }
 }
 
 // MARK: - Private Methods
 
-private extension HomeView.ViewModel {
+private extension ReceiptsView.ViewModel {
     func showReceiptScanner() {
         delegate?.navigate(to: .scanner)
     }

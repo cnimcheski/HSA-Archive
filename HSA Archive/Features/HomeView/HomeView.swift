@@ -21,7 +21,16 @@ struct HomeView: View {
     var body: some View {
         content
             .navigationTitle("HSA Archive")
-            .toolbar { uploadReceiptButton }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    uploadReceiptButton
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    if !receiptRepository.failedRows.isEmpty {
+                        invalidReceiptsButton
+                    }
+                }
+            }
             .refreshable(action: receiptRepository.refreshReceipts)
     }
 }
@@ -29,38 +38,22 @@ struct HomeView: View {
 // MARK: - Private Views
 
 private extension HomeView {
-    @ViewBuilder
     var content: some View {
-        if receiptRepository.hasError {
-            errorView
-        } else {
-            listContent
-        }
-    }
-    
-    var errorView: some View {
-        ScrollView {
-            ContentUnavailableView(
-                "Something Went Wrong",
-                systemImage: "exclamationmark.triangle",
-                description: Text("There was an error loading your data. Please try again.")
-            )
-            .containerRelativeFrame(.vertical)
-        }
-    }
-    
-    var listContent: some View {
         List {
-            Overview(receipts: receiptRepository.sortedReceipts, isLoading: receiptRepository.isLoading)
-            if !googleAuthService.isSignedIn {
-                signInBanner
+            if !receiptRepository.hasError {
+                Overview(receipts: receiptRepository.sortedReceipts, isLoading: receiptRepository.isLoading)
+                if !googleAuthService.isSignedIn {
+                    signInBanner
+                }
+                recentActivitySection
             }
-            if viewModel.failedRows.count > 0 {
-                invalidReceiptsBanner
-            }
-            recentActivitySection
         }
         .listStyle(.plain)
+        .overlay {
+            if receiptRepository.hasError {
+                DataLoadingErrorView()
+            }
+        }
     }
     
     var signInBanner: some View {
@@ -69,16 +62,6 @@ private extension HomeView {
             message: "Sign in to save receipts and see your balance",
             iconName: "person",
             action: viewModel.showSignInView
-        )
-    }
-    
-    var invalidReceiptsBanner: some View {
-        NavigationBanner(
-            "^[\(viewModel.failedRows.count) receipt row](inflect: true) couldn't be read",
-            message: "Tap to review the failed rows",
-            iconName: "exclamationmark.triangle",
-            tint: .red,
-            action: viewModel.showInvalidReceipts
         )
     }
     
@@ -98,6 +81,13 @@ private extension HomeView {
             Label("Scan a receipt", systemImage: "plus")
         }
         .confirmationDialog(viewModel: $viewModel.confirmationDialogViewModel)
+    }
+    
+    var invalidReceiptsButton: some View {
+        InvalidReceiptsButton(
+            count: receiptRepository.failedRows.count,
+            action: viewModel.showInvalidReceipts
+        )
     }
 }
 

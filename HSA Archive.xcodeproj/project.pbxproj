@@ -55,7 +55,7 @@
 		99C008DB3001A4A900CDF610 /* HomeView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DA3001A4A900CDF610 /* HomeView+ViewModel.swift */; };
 		99C008DD3001A4AE00CDF610 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DC3001A4AE00CDF610 /* HomeView.swift */; };
 		99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008DE3001A57300CDF610 /* ReceiptsView.swift */; };
-		99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008E03001A57900CDF610 /* ReceiptsViewModel.swift */; };
+		99C008E13001A57900CDF610 /* ReceiptsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008E03001A57900CDF610 /* ReceiptsView+ViewModel.swift */; };
 		99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008E43001DECD00CDF610 /* DotSeparator.swift */; };
 		99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008E830029F8000CDF610 /* HomeView+Overview.swift */; };
 		99C008F03002A17600CDF610 /* DefaultCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C008EF3002A17600CDF610 /* DefaultCardStyle.swift */; };
@@ -99,6 +99,11 @@
 		99C009B8301159E400CDF610 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 99C009B7301159E400CDF610 /* FirebaseAnalytics */; };
 		99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009B930115A1300CDF610 /* AppDelegate.swift */; };
 		99C009BD3011A75700CDF610 /* AIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C009BC3011A75700CDF610 /* AIClient.swift */; };
+		99D23190304755CE005F3B9E /* ReceiptsView+ViewModel+ReceiptSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2318F304755CE005F3B9E /* ReceiptsView+ViewModel+ReceiptSection.swift */; };
+		99D2319230475664005F3B9E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2319130475664005F3B9E /* Date+Extensions.swift */; };
+		99D2319B3048BDFA005F3B9E /* DataLoadingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2319A3048BDFA005F3B9E /* DataLoadingErrorView.swift */; };
+		99D2319E3048BF2C005F3B9E /* InvalidReceiptsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2319D3048BF2C005F3B9E /* InvalidReceiptsButton.swift */; };
+		99D231A130492017005F3B9E /* NoReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D231A030492017005F3B9E /* NoReceiptsView.swift */; };
 		99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5BC301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift */; };
 		99D2D5BF301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5BE301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift */; };
 		99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2D5C230212B18007A65C3 /* ErrorBanner+ViewModel.swift */; };
@@ -237,7 +242,7 @@
 		99C008DA3001A4A900CDF610 /* HomeView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+ViewModel.swift"; sourceTree = "<group>"; };
 		99C008DC3001A4AE00CDF610 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		99C008DE3001A57300CDF610 /* ReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsView.swift; sourceTree = "<group>"; };
-		99C008E03001A57900CDF610 /* ReceiptsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewModel.swift; sourceTree = "<group>"; };
+		99C008E03001A57900CDF610 /* ReceiptsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptsView+ViewModel.swift"; sourceTree = "<group>"; };
 		99C008E43001DECD00CDF610 /* DotSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotSeparator.swift; sourceTree = "<group>"; };
 		99C008E830029F8000CDF610 /* HomeView+Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview.swift"; sourceTree = "<group>"; };
 		99C008EF3002A17600CDF610 /* DefaultCardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCardStyle.swift; sourceTree = "<group>"; };
@@ -278,6 +283,11 @@
 		99C009B930115A1300CDF610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99C009BC3011A75700CDF610 /* AIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIClient.swift; sourceTree = "<group>"; };
 		99C009C53012C63C00CDF610 /* HSA Archive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HSA Archive.entitlements"; sourceTree = "<group>"; };
+		99D2318F304755CE005F3B9E /* ReceiptsView+ViewModel+ReceiptSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptsView+ViewModel+ReceiptSection.swift"; sourceTree = "<group>"; };
+		99D2319130475664005F3B9E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		99D2319A3048BDFA005F3B9E /* DataLoadingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingErrorView.swift; sourceTree = "<group>"; };
+		99D2319D3048BF2C005F3B9E /* InvalidReceiptsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidReceiptsButton.swift; sourceTree = "<group>"; };
+		99D231A030492017005F3B9E /* NoReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReceiptsView.swift; sourceTree = "<group>"; };
 		99D2D5BC301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextRecognizer+ScannedTextResponse.swift"; sourceTree = "<group>"; };
 		99D2D5BE301EF978007A65C3 /* TextRecognizer+TextRecognitionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextRecognizer+TextRecognitionError.swift"; sourceTree = "<group>"; };
 		99D2D5C230212B18007A65C3 /* ErrorBanner+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorBanner+ViewModel.swift"; sourceTree = "<group>"; };
@@ -670,7 +680,8 @@
 			isa = PBXGroup;
 			children = (
 				99C008DE3001A57300CDF610 /* ReceiptsView.swift */,
-				99C008E03001A57900CDF610 /* ReceiptsViewModel.swift */,
+				99C008E03001A57900CDF610 /* ReceiptsView+ViewModel.swift */,
+				99D2318F304755CE005F3B9E /* ReceiptsView+ViewModel+ReceiptSection.swift */,
 			);
 			path = ReceiptsView;
 			sourceTree = "<group>";
@@ -684,11 +695,14 @@
 				99C009AC3010889900CDF610 /* AppTextField */,
 				99021A833015557E00D7DC8D /* AppToggle */,
 				99C008FE30032B7400CDF610 /* Badge */,
+				99D231993048BDEC005F3B9E /* DataLoadingErrorView */,
 				99C008E33001DEB900CDF610 /* DotSeparator */,
 				99B98D823012F92200A45554 /* InputContainer */,
+				99D2319C3048BF1A005F3B9E /* InvalidReceiptsButton */,
 				99C008FB3002D77800CDF610 /* ReceiptPreview */,
 				99021ABB301B0BB600D7DC8D /* ErrorBanner */,
 				99DD447E303E31B300843826 /* NavigationBanner */,
+				99D2319F30492006005F3B9E /* NoReceiptsView */,
 				99021A7830147A9600D7DC8D /* SelectionView */,
 			);
 			path = Components;
@@ -884,6 +898,7 @@
 			children = (
 				99021A863015594100D7DC8D /* Binding+Optional.swift */,
 				99D2D5CB3023DAFD007A65C3 /* CaseIterable+RawValues.swift */,
+				99D2319130475664005F3B9E /* Date+Extensions.swift */,
 				99021AA43016FB7300D7DC8D /* DateFormatter+Extensions.swift */,
 				99D2D5C8302175CE007A65C3 /* String+Extensions.swift */,
 				99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */,
@@ -955,6 +970,30 @@
 				99021AC3301DB73300D7DC8D /* GeminiError.swift */,
 			);
 			path = AI;
+			sourceTree = "<group>";
+		};
+		99D231993048BDEC005F3B9E /* DataLoadingErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				99D2319A3048BDFA005F3B9E /* DataLoadingErrorView.swift */,
+			);
+			path = DataLoadingErrorView;
+			sourceTree = "<group>";
+		};
+		99D2319C3048BF1A005F3B9E /* InvalidReceiptsButton */ = {
+			isa = PBXGroup;
+			children = (
+				99D2319D3048BF2C005F3B9E /* InvalidReceiptsButton.swift */,
+			);
+			path = InvalidReceiptsButton;
+			sourceTree = "<group>";
+		};
+		99D2319F30492006005F3B9E /* NoReceiptsView */ = {
+			isa = PBXGroup;
+			children = (
+				99D231A030492017005F3B9E /* NoReceiptsView.swift */,
+			);
+			path = NoReceiptsView;
 			sourceTree = "<group>";
 		};
 		99D2D5CA302386EC007A65C3 /* AppCheck */ = {
@@ -1480,6 +1519,7 @@
 				99C00994300D97D600CDF610 /* ReceiptReviewView.swift in Sources */,
 				99021A7930147A9600D7DC8D /* SelectionView+ViewModel.swift in Sources */,
 				99DD4468303A299B00843826 /* UploadFileEndpoint+Response.swift in Sources */,
+				99D231A130492017005F3B9E /* NoReceiptsView.swift in Sources */,
 				99F2DD29302D7F8E00A4B653 /* SignInView+ViewModel.swift in Sources */,
 				99021A7A30147A9600D7DC8D /* SelectionView.swift in Sources */,
 				99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */,
@@ -1487,6 +1527,7 @@
 				99021A7D30147E9500D7DC8D /* AppConstants.swift in Sources */,
 				99C00996300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift in Sources */,
 				99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */,
+				99D2319230475664005F3B9E /* Date+Extensions.swift in Sources */,
 				99021AB33018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift in Sources */,
 				99F2DD43302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift in Sources */,
 				99021ABA301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift in Sources */,
@@ -1495,12 +1536,13 @@
 				99021A7F301481BA00D7DC8D /* ReceiptReviewCoordinator.swift in Sources */,
 				99DD4482303E31DB00843826 /* NavigationBanner.swift in Sources */,
 				99B98D843012F92B00A45554 /* InputContainer.swift in Sources */,
-				99C008E13001A57900CDF610 /* ReceiptsViewModel.swift in Sources */,
+				99C008E13001A57900CDF610 /* ReceiptsView+ViewModel.swift in Sources */,
 				99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */,
 				99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */,
 				99A541FC304485B5001997B6 /* AppSession.swift in Sources */,
 				99C0090C30043A3400CDF610 /* CornerRadius.swift in Sources */,
 				99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */,
+				99D23190304755CE005F3B9E /* ReceiptsView+ViewModel+ReceiptSection.swift in Sources */,
 				99F2DD50302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift in Sources */,
 				99DD445A3033A14D00843826 /* FetchSpreadsheetEndpoint.swift in Sources */,
 				99DD4487303E3D0700843826 /* InvalidReceiptsView+ViewModel.swift in Sources */,
@@ -1512,6 +1554,7 @@
 				99C008FD3002D78800CDF610 /* ReceiptPreview.swift in Sources */,
 				99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */,
 				99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */,
+				99D2319B3048BDFA005F3B9E /* DataLoadingErrorView.swift in Sources */,
 				99C0097730096CCD00CDF610 /* OnboardingView+PageView.swift in Sources */,
 				99F2DD45302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift in Sources */,
 				99DD4457303245DC00843826 /* BatchUpdateSpreadsheetEndpoint+Response.swift in Sources */,
@@ -1541,6 +1584,7 @@
 				99D2D5F1302B7138007A65C3 /* ReceiptFileImporterViewModel.swift in Sources */,
 				99C009B130114CE000CDF610 /* Receipt.swift in Sources */,
 				99D2D5C9302175CE007A65C3 /* String+Extensions.swift in Sources */,
+				99D2319E3048BF2C005F3B9E /* InvalidReceiptsButton.swift in Sources */,
 				99C00908300417EA00CDF610 /* Spacing.swift in Sources */,
 				99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */,
 				99F2DD41302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift in Sources */,

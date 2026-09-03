@@ -47,12 +47,8 @@ extension HomeView {
 
 private extension HomeView.RecentActivitySection {
     var noRecentReceiptsView: some View {
-        ContentUnavailableView(
-            "No Receipts Yet",
-            systemImage: "receipt",
-            description: Text("Add your first receipt using the plus button in the top right")
-        )
-        .listRowSeparator(.hidden)
+        NoReceiptsView()
+            .listRowSeparator(.hidden)
     }
     
     var receiptPreviewList: some View {

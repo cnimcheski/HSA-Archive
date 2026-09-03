@@ -7,7 +7,7 @@
 
 /// Used to create an arbitrary String with the given count.
 /// Especially useful when creating placeholder String's for redacted shimmer loaders.
-extension String {
+nonisolated extension String {
     static func placeholder(count: Int) -> String {
         .init(repeating: "x", count: count)
     }
