@@ -6,7 +6,7 @@
 //
 
 import Navigation
-import Observation
+import SwiftUI
 
 extension ReceiptFiltersView {
     protocol NavigationDelegate: AnyObject {
@@ -25,6 +25,13 @@ extension ReceiptFiltersView {
         private let onApply: (Receipt.Filters) -> Void
         
         weak var delegate: NavigationDelegate?
+        
+        var reimbursementStatus: Binding<Receipt.Filters.ReimbursementStatus> {
+            .init(
+                get: { self.filters.reimbursementStatus },
+                set: { self.filters.reimbursementStatus = $0 }
+            )
+        }
         
         private(set) var filters: Receipt.Filters
         

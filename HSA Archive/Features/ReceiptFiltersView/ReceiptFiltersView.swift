@@ -34,9 +34,23 @@ struct ReceiptFiltersView: View {
 private extension ReceiptFiltersView {
     var content: some View {
         List {
+            reimbursementStatusSection
             categoriesSection
         }
         .listStyle(.plain)
+    }
+    
+    var reimbursementStatusSection: some View {
+        Section {
+            Picker("", selection: viewModel.reimbursementStatus) {
+                ForEach(Receipt.Filters.ReimbursementStatus.allCases, id: \.self) { status in
+                    Text(status.title)
+                }
+            }
+            .pickerStyle(.segmented)
+        } header: {
+            Text("Reimbursement Status")
+        }
     }
     
     var categoriesSection: some View {
