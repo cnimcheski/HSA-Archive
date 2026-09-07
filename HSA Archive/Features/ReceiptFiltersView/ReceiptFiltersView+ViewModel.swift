@@ -68,6 +68,10 @@ extension ReceiptFiltersView {
             filters.categories.removeAll { $0 == category }
         }
         
+        func updateSortingOption(_ sortingOption: Receipt.Filters.SortingOption) {
+            filters.sortingOption = sortingOption
+        }
+        
         func close() {
             delegate?.navigate(to: .dismiss)
         }

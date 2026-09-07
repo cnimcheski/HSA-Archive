@@ -38,19 +38,21 @@ extension ReceiptsView {
         var receiptSections: [ReceiptSection] {
             Dictionary(grouping: filteredReceipts) { $0.transactionDate.startOfMonth }
                 .map(ReceiptSection.init)
-                .sorted { $0.date > $1.date }
+                .sorted(by: filters.sortingOption.areSectionsInOrder)
+        }
+        
+        var filteredReceipts: [Receipt] {
+            guard !receiptRepository.isLoading else { return Placeholders.receipts }
+            let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+            return receiptRepository.sortedReceipts
+                .filter {
+                    $0.matches(filters)
+                        && $0.matches(searchText: searchText)
+                }
+                .sorted(by: filters.sortingOption.areInOrder)
         }
         
         private(set) var filters = Receipt.Filters()
-        
-        private var filteredReceipts: [Receipt] {
-            guard !receiptRepository.isLoading else { return Placeholders.receipts }
-            let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-            return receiptRepository.sortedReceipts.filter {
-                $0.matches(filters)
-                    && $0.matches(searchText: searchText)
-            }
-        }
         
         func showFiltersView() {
             delegate?.navigate(

@@ -36,6 +36,7 @@ private extension ReceiptFiltersView {
         List {
             reimbursementStatusSection
             categoriesSection
+            sortBySection
         }
         .listStyle(.plain)
     }
@@ -68,6 +69,26 @@ private extension ReceiptFiltersView {
             }
         } header: {
             Text("Categories")
+        }
+    }
+    
+    var sortBySection: some View {
+        Section {
+            ForEach(Receipt.Filters.SortingOption.allCases, id: \.self) { option in
+                Button {
+                    viewModel.updateSortingOption(option)
+                } label: {
+                    HStack {
+                        Text(option.title)
+                        Spacer()
+                        if viewModel.filters.sortingOption == option {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                }
+            }
+        } header: {
+            Text("Sort By")
         }
     }
     

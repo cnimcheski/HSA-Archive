@@ -23,8 +23,7 @@ struct ReceiptsView: View {
             .navigationTitle("Receipts")
             .searchable(
                 text: $viewModel.searchText,
-                placement: .navigationBarDrawer(displayMode: .always),
-                prompt: "Merchant or description"
+                placement: .navigationBarDrawer(displayMode: .always)
             )
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -52,20 +51,39 @@ private extension ReceiptsView {
         .overlay { overlayContent }
     }
     
+    @ViewBuilder
     var receiptsContent: some View {
+        if viewModel.filters.sortingOption.groupsByMonth {
+            groupedReceipts
+        } else {
+            flatReceipts
+        }
+    }
+    
+    var groupedReceipts: some View {
         ForEach(viewModel.receiptSections) { section in
             Section {
                 ForEach(section.receipts) { receipt in
-                    ReceiptPreview(receipt: receipt) {
-                        // TODO: - Add an action...
-                    }
-                    .redactedShimmer(isShimmering: receiptRepository.isLoading)
+                    receiptRow(receipt)
                 }
             } header: {
                 Text(section.title)
                     .redactedShimmer(isShimmering: receiptRepository.isLoading)
             }
         }
+    }
+    
+    var flatReceipts: some View {
+        ForEach(viewModel.filteredReceipts) { receipt in
+            receiptRow(receipt)
+        }
+    }
+    
+    func receiptRow(_ receipt: Receipt) -> some View {
+        ReceiptPreview(receipt: receipt) {
+            // TODO: - Add an action...
+        }
+        .redactedShimmer(isShimmering: receiptRepository.isLoading)
     }
     
     @ViewBuilder

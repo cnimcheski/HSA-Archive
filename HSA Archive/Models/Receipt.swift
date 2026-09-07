@@ -113,5 +113,6 @@ nonisolated extension Receipt {
         searchText.isEmpty
             || merchant.localizedStandardContains(searchText)
             || description.localizedStandardContains(searchText)
+            || amount.formatted(AppFormatStyle.Currency.current).localizedStandardContains(searchText)
     }
 }
