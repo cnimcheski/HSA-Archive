@@ -6,6 +6,7 @@
 //
 
 import FactoryKit
+import FirebaseCore
 import GoogleSignIn
 import Networking
 import Toast
@@ -36,6 +37,18 @@ nonisolated final class GoogleAuthService {
     
     private var restorationTask: Task<GIDGoogleUser?, Error>?
     
+    /// Configures Google Sign In and its App Check provider.
+    func configure() {
+        #if targetEnvironment(simulator)
+        if let apiKey = FirebaseApp.app()?.options.apiKey {
+            GIDSignIn.sharedInstance.configureDebugProvider(withAPIKey: apiKey)
+        }
+        #else
+        GIDSignIn.sharedInstance.configure()
+        #endif
+    }
+    
+    /// Restores the user's previous Google Sign In session.
     func restorePreviousSignIn() {
         guard restorationTask == nil else { return }
         restorationTask = Task {

@@ -20,7 +20,7 @@ extension ReceiptReviewView {
     @Observable
     final class ViewModel: NavigationModel, Navigating {
         enum Destination {
-            case categorySelection(SelectionView.ViewModel)
+            case categorySelection(SingleSelectionView.ViewModel)
             case dismiss(shouldShowScanner: Bool)
             case fullImage(FullImageView.ViewModel)
             case signIn(SignInView.ViewModel)
@@ -97,9 +97,8 @@ extension ReceiptReviewView {
                         navigationTitle: AppConstants.categoryPrompt,
                         searchPlaceholder: AppConstants.categorySearchPlaceholder,
                         items: Category.allCases.map { $0.selection },
-                        initialSelection: receipt.category.rawValue,
+                        initialSelection: receipt.category.selection,
                         onSelect: { [weak self] selection in
-                            // TODO: - Maybe a better default here...
                             self?.receipt.category = .init(rawValue: selection.title) ?? .other
                         }
                     )

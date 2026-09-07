@@ -23,6 +23,7 @@ extension ReceiptsView {
             case scanner
             case filePicker
             case photosPicker
+            case filters(ReceiptFiltersView.ViewModel)
             case invalidReceipts(InvalidReceiptsView.ViewModel)
             case signIn(SignInView.ViewModel)
         }
@@ -40,18 +41,23 @@ extension ReceiptsView {
                 .sorted { $0.date > $1.date }
         }
         
+        private(set) var filters = Receipt.Filters()
+        
         private var filteredReceipts: [Receipt] {
             guard !receiptRepository.isLoading else { return Placeholders.receipts }
             let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !searchText.isEmpty else { return receiptRepository.sortedReceipts }
             return receiptRepository.sortedReceipts.filter {
-                $0.merchant.localizedStandardContains(searchText)
-                    || $0.description.localizedStandardContains(searchText)
+                $0.matches(filters)
+                    && $0.matches(searchText: searchText)
             }
         }
         
         func showFiltersView() {
-            // TODO: - Implement Receipt Filter View
+            delegate?.navigate(
+                to: .filters(
+                    .init(initialFilters: filters, onApply: applyFilters)
+                )
+            )
         }
         
         func showSignInView() {
@@ -85,5 +91,9 @@ private extension ReceiptsView.ViewModel {
     
     func showPhotosPicker() {
         delegate?.navigate(to: .photosPicker)
+    }
+    
+    func applyFilters(_ filters: Receipt.Filters) {
+        self.filters = filters
     }
 }

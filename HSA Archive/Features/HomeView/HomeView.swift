@@ -75,11 +75,11 @@ private extension HomeView {
     }
     
     var uploadReceiptButton: some View {
-        Button {
-            viewModel.showUploadReceiptConfirmationDialog()
-        } label: {
-            Label("Scan a receipt", systemImage: "plus")
-        }
+        Button(
+            "Scan a receipt",
+            systemImage: "plus",
+            action: viewModel.showUploadReceiptConfirmationDialog
+        )
         .confirmationDialog(viewModel: $viewModel.confirmationDialogViewModel)
     }
     

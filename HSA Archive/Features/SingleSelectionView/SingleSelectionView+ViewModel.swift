@@ -1,5 +1,5 @@
 //
-//  SelectionView+ViewModel.swift
+//  SingleSelectionView+ViewModel.swift
 //  climbto350
 //
 //  Created by Steve Nimcheski on 8/1/25.
@@ -8,13 +8,13 @@
 import Navigation
 import SwiftUI
 
-extension SelectionView {
+extension SingleSelectionView {
     protocol NavigationDelegate: AnyObject {
         @MainActor func navigate(to destination: ViewModel.Destination)
     }
 }
 
-extension SelectionView {
+extension SingleSelectionView {
     @Observable
     final class ViewModel: NavigationModel, Navigating {
         enum Destination {
@@ -37,19 +37,19 @@ extension SelectionView {
                 : items.filter { $0.title.localizedStandardContains(trimmedSearchText) }
         }
         
-        private(set) var selection: String
+        private(set) var initialSelection: Selection?
         
         init(
             navigationTitle: String,
             searchPlaceholder: String,
             items: [Selection],
-            initialSelection: String = "",
+            initialSelection: Selection?,
             onSelect: @escaping (Selection) -> Void
         ) {
             self.navigationTitle = navigationTitle
             self.searchPlaceholder = searchPlaceholder
             self.items = items
-            self.selection = initialSelection
+            self.initialSelection = initialSelection
             self.onSelect = onSelect
         }
         

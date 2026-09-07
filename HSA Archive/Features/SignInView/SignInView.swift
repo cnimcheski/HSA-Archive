@@ -97,10 +97,8 @@ private extension SignInView {
     }
     
     var closeButton: some View {
-        Button(action: viewModel.close) {
-            Label("Close", systemImage: "xmark")
-        }
-        .disabled(viewModel.isSigningIn)
+        Button("Close", systemImage: "xmark", action: viewModel.close)
+            .disabled(viewModel.isSigningIn)
     }
 }
 

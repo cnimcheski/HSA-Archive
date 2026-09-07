@@ -74,13 +74,6 @@
             ReferencedContainer = "container:HSA Archive.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "AppCheckDebugToken"
-            value = "A578258C-7196-40B4-BDFF-27BCB040DAE6"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

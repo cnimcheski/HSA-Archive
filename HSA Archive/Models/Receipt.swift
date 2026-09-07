@@ -104,3 +104,14 @@ nonisolated extension Receipt {
         )
     }
 }
+
+// MARK: - Matches Search Text
+
+nonisolated extension Receipt {
+    /// Returns whether the receipt matches the given search text.
+    func matches(searchText: String) -> Bool {
+        searchText.isEmpty
+            || merchant.localizedStandardContains(searchText)
+            || description.localizedStandardContains(searchText)
+    }
+}

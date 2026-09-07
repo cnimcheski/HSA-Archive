@@ -9,10 +9,12 @@ import SwiftUI
 
 struct AppButton: View {
     private let title: String
+    private let style: Style
     private let action: () -> Void
     
-    init(_ title: String, action: @escaping () -> Void) {
+    init(_ title: String, style: Style = .primary, action: @escaping () -> Void) {
         self.title = title
+        self.style = style
         self.action = action
     }
     
@@ -23,9 +25,9 @@ struct AppButton: View {
             Text(title)
                 .font(.headline)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, Theme.Spacing.medium)
+                .padding(.vertical, Theme.Spacing.small)
         }
-        .buttonStyle(.borderedProminent)
+        .buttonStyle(style.buttonStyle)
         .buttonBorderShape(.roundedRectangle(radius: Theme.CornerRadius.large))
     }
 }
@@ -33,7 +35,13 @@ struct AppButton: View {
 // MARK: - Previews
 
 #Preview {
-    AppButton("Continue") {
-        print("Do some action!")
+    VStack {
+        AppButton("Continue") {
+            // Do some action
+        }
+        AppButton("Continue", style: .secondary) {
+            // Do some action
+        }
     }
+    .padding()
 }

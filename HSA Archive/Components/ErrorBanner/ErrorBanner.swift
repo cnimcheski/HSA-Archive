@@ -59,13 +59,9 @@ private extension ErrorBanner {
     }
     
     var closeButton: some View {
-        Button {
-            viewModel.onClose()
-        } label: {
-            Label("Close", systemImage: "xmark")
-                .labelStyle(.iconOnly)
-        }
-        .tint(.primary)
+        Button("Close", systemImage: "xmark", action: viewModel.onClose)
+            .tint(.primary)
+            .labelStyle(.iconOnly)
     }
     
     func actionButton(_ action: Action) -> some View {

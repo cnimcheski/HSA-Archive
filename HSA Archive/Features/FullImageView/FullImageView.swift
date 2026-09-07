@@ -31,9 +31,7 @@ struct FullImageView: View {
 
 private extension FullImageView {
     var closeButton: some View {
-        Button(action: viewModel.close) {
-            Label("Close", systemImage: "xmark")
-        }
+        Button("Close", systemImage: "xmark", action: viewModel.close)
     }
 }
 

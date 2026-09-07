@@ -8,10 +8,11 @@
 import FirebaseAI
 import Foundation
 
-enum Category: String, AIResponse, CaseIterable, Decodable {
+nonisolated enum Category: String, AIResponse, CaseIterable, Decodable {
     case prescription = "Prescription"
     case overTheCounter = "Over-the-Counter"
     case doctorVisit = "Doctor Visit"
+    case emergencyRoom = "Emergency Room"
     case dental = "Dental"
     case vision = "Vision"
     case mentalHealth = "Mental Health"
@@ -37,6 +38,8 @@ enum Category: String, AIResponse, CaseIterable, Decodable {
             "cross.case.fill"
         case .doctorVisit:
             "stethoscope"
+        case .emergencyRoom:
+            "staroflife.fill"
         case .dental:
             "mouth.fill"
         case .vision:

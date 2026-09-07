@@ -12,6 +12,7 @@ import SwiftUI
 final class ReceiptsCoordinator: StackCoordinator {
     enum Page: CoordinatedPage {
         case addReceiptCoordinator(AddReceiptCoordinator.Page)
+        case filters(ReceiptFiltersCoordinator)
         case invalidReceipts(InvalidReceiptsView.ViewModel)
         case signIn(SignInView.ViewModel)
     }
@@ -43,6 +44,8 @@ final class ReceiptsCoordinator: StackCoordinator {
         switch page {
         case let .addReceiptCoordinator(page):
             addReceiptCoordinator.build(page: page)
+        case let .filters(filtersCoordinator):
+            NavigationStackCoordinator(for: filtersCoordinator.setup(delegate: self))
         case let .invalidReceipts(viewModel):
             InvalidReceiptsView(viewModel: viewModel)
         case let .signIn(viewModel):
@@ -72,6 +75,8 @@ extension ReceiptsCoordinator: ReceiptsView.NavigationDelegate {
             fileImporterViewModel = .init(onCompletion: handleSelectedImages)
         case .photosPicker:
             photosPickerViewModel = .init(onCompletion: handleSelectedImages)
+        case let .filters(receiptFiltersViewModel):
+            push(.filters(.init(receiptFiltersViewModel: receiptFiltersViewModel)), type: .sheet)
         case let .invalidReceipts(viewModel):
             push(.invalidReceipts(viewModel))
         case let .signIn(viewModel):
@@ -91,6 +96,15 @@ extension ReceiptsCoordinator: SignInView.NavigationDelegate {
         switch destination {
         case .dismiss:
             dismissFullScreenCover()
+        }
+    }
+}
+
+extension ReceiptsCoordinator: ReceiptFiltersCoordinator.NavigationDelegate {
+    func navigate(to destination: ReceiptFiltersCoordinator.Destination) {
+        switch destination {
+        case .dismiss:
+            dismissSheet()
         }
     }
 }

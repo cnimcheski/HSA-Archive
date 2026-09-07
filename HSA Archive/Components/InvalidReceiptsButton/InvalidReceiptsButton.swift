@@ -18,11 +18,8 @@ struct InvalidReceiptsButton: View {
     }
     
     var body: some View {
-        Button(action: action) {
-            Label("View invalid receipts", systemImage: "exclamationmark.triangle")
-        }
-        .tint(.red)
-        .badge(count)
+        Button("View invalid receipts", systemImage: "exclamationmark.triangle", action: action)
+            .adaptiveBadge(count, tint: .red)
     }
 }
 

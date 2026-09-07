@@ -18,13 +18,13 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         let providerFactory = DefaultAppCheckProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
         
+        FirebaseApp.configure()
+        
         /// Configures App Check for Google Sign In use.
-        GIDSignIn.sharedInstance.configure()
+        Container.shared.googleAuthService().configure()
         
         /// Ensure the user's sign in state is restored.
         Container.shared.googleAuthService().restorePreviousSignIn()
-        
-        FirebaseApp.configure()
         return true
     }
     

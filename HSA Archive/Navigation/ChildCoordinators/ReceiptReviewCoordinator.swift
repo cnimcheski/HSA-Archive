@@ -19,7 +19,7 @@ extension ReceiptReviewCoordinator {
 @Observable
 final class ReceiptReviewCoordinator: StackCoordinator, Navigating, NavigationModel {
     enum Page: CoordinatedPage {
-        case categorySelection(SelectionView.ViewModel)
+        case categorySelection(SingleSelectionView.ViewModel)
         case fullImage(FullImageView.ViewModel)
         case signIn(SignInView.ViewModel)
     }
@@ -49,7 +49,7 @@ final class ReceiptReviewCoordinator: StackCoordinator, Navigating, NavigationMo
     func build(page: Page) -> some View {
         switch page {
         case let .categorySelection(viewModel):
-            SelectionView(viewModel: viewModel.setup(delegate: self))
+            SingleSelectionView(viewModel: viewModel.setup(delegate: self))
         case let .fullImage(viewModel):
             FullImageView(viewModel: viewModel.setup(delegate: self))
         case let .signIn(viewModel):
@@ -75,8 +75,8 @@ extension ReceiptReviewCoordinator: ReceiptReviewView.NavigationDelegate {
     }
 }
 
-extension ReceiptReviewCoordinator: SelectionView.NavigationDelegate {
-    func navigate(to destination: SelectionView.ViewModel.Destination) {
+extension ReceiptReviewCoordinator: SingleSelectionView.NavigationDelegate {
+    func navigate(to destination: SingleSelectionView.ViewModel.Destination) {
         switch destination {
         case .pop:
             pop()

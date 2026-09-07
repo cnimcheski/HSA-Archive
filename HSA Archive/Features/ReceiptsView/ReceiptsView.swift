@@ -10,6 +10,7 @@ import FactoryKit
 import SwiftUI
 
 struct ReceiptsView: View {
+    @InjectedObservable(\.googleAuthService) private var googleAuthService
     @InjectedObservable(\.receiptRepository) private var receiptRepository
     @Bindable private var viewModel: ViewModel
     
@@ -20,7 +21,11 @@ struct ReceiptsView: View {
     var body: some View {
         content
             .navigationTitle("Receipts")
-            .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
+            .searchable(
+                text: $viewModel.searchText,
+                placement: .navigationBarDrawer(displayMode: .always),
+                prompt: "Merchant or description"
+            )
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     if !receiptRepository.failedRows.isEmpty {
@@ -70,9 +75,20 @@ private extension ReceiptsView {
         } else if !receiptRepository.isLoading && receiptRepository.sortedReceipts.isEmpty {
             NoReceiptsView()
         } else if viewModel.receiptSections.isEmpty {
-            // TODO: - As filters are added, this may need to change
-            // TODO: - There also seems to be an error when the search text is cleared
-            ContentUnavailableView.search
+            filteredReceiptsEmptyView
+        }
+    }
+    
+    @ViewBuilder
+    var filteredReceiptsEmptyView: some View {
+        if viewModel.searchText.isEmpty {
+            ContentUnavailableView(
+                "No Receipts Found",
+                systemImage: "line.3.horizontal.decrease.circle",
+                description: Text("Try adjusting your filters.")
+            )
+        } else {
+            ContentUnavailableView.search(text: viewModel.searchText)
         }
     }
     
@@ -83,20 +99,24 @@ private extension ReceiptsView {
         )
     }
     
+    @ViewBuilder
     var filtersButton: some View {
-        Button {
-            viewModel.showFiltersView()
-        } label: {
-            Label("Filter and sort", systemImage: "line.3.horizontal.decrease")
+        if googleAuthService.isSignedIn {
+            Button(
+                "Filter and sort",
+                systemImage: "line.3.horizontal.decrease",
+                action: viewModel.showFiltersView
+            )
+            .adaptiveBadge(viewModel.filters.activeFilterCount)
         }
     }
     
     var uploadReceiptButton: some View {
-        Button {
-            viewModel.showUploadReceiptConfirmationDialog()
-        } label: {
-            Label("Scan a receipt", systemImage: "plus")
-        }
+        Button(
+            "Scan a receipt",
+            systemImage: "plus",
+            action: viewModel.showUploadReceiptConfirmationDialog
+        )
         .confirmationDialog(viewModel: $viewModel.confirmationDialogViewModel)
     }
 }

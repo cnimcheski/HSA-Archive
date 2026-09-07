@@ -156,20 +156,16 @@ private extension ReceiptReviewView {
     }
     
     var cancelButton: some View {
-        Button {
+        Button("Cancel", systemImage: "xmark") {
             viewModel.dismiss()
-        } label: {
-            Label("Cancel", systemImage: "xmark")
         }
     }
     
     var saveButton: some View {
-        Button {
+        Button("Save", systemImage: "checkmark") {
             Task {
                 await viewModel.save()
             }
-        } label: {
-            Label("Save", systemImage: "checkmark")
         }
         .disabled(viewModel.isSaveDisabled)
     }

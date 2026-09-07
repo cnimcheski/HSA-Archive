@@ -10,6 +10,7 @@ import Foundation
 nonisolated final class AppConstants {
     // MARK: - Fields
     static let categoryPrompt = "Category"
+    static let categoriesPrompt = "Categories"
     static let categorySearchPlaceholder = "Search categories..."
     
     // MARK: - Networking

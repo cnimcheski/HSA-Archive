@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Selection: Identifiable, Hashable {
-    let id = UUID()
+nonisolated struct Selection: Identifiable, Hashable {
     let title: String
     let systemImage: String?
+    var id: Self { self }
 
     init(title: String, systemImage: String? = nil) {
         self.title = title
@@ -20,6 +20,6 @@ struct Selection: Identifiable, Hashable {
 
 // MARK: - Mock Selection
 
-extension Selection {
+nonisolated extension Selection {
     static let mock = Selection(title: "Dog", systemImage: "dog.fill")
 }
