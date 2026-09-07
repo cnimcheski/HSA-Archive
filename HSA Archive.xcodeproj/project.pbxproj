@@ -536,6 +536,15 @@
 			path = AdaptiveBadge;
 			sourceTree = "<group>";
 		};
+		990B5851304F720A00D8AB4E /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				99C009B030114CE000CDF610 /* Receipt.swift */,
+				990B584A304CC5EF00D8AB4E /* Receipt+Filters.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
 		99A541FA304485AE001997B6 /* AppSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -988,9 +997,8 @@
 		99C009AF30114CCA00CDF610 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				990B5851304F720A00D8AB4E /* Receipt */,
 				99B98D7B3012F58400A45554 /* Category.swift */,
-				99C009B030114CE000CDF610 /* Receipt.swift */,
-				990B584A304CC5EF00D8AB4E /* Receipt+Filters.swift */,
 				99D2D5D3302581EB007A65C3 /* Selection.swift */,
 			);
 			path = Models;

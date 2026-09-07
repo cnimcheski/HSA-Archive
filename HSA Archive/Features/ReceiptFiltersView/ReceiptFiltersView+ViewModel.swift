@@ -33,6 +33,20 @@ extension ReceiptFiltersView {
             )
         }
         
+        var customStartDate: Binding<Date> {
+            .init(
+                get: { self.filters.date.customStartDate },
+                set: { self.filters.date.customStartDate = $0 }
+            )
+        }
+        
+        var customEndDate: Binding<Date> {
+            .init(
+                get: { self.filters.date.customEndDate },
+                set: { self.filters.date.customEndDate = $0 }
+            )
+        }
+        
         private(set) var filters: Receipt.Filters
         
         init(initialFilters: Receipt.Filters, onApply: @escaping (Receipt.Filters) -> Void) {
@@ -66,6 +80,10 @@ extension ReceiptFiltersView {
         
         func removeCategory(_ category: Category) {
             filters.categories.removeAll { $0 == category }
+        }
+        
+        func updateDateRange(_ range: Receipt.Filters.DateFilter.Range) {
+            filters.date.range = range
         }
         
         func updateSortingOption(_ sortingOption: Receipt.Filters.SortingOption) {

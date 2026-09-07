@@ -36,6 +36,7 @@ private extension ReceiptFiltersView {
         List {
             reimbursementStatusSection
             categoriesSection
+            dateRangeSection
             sortBySection
         }
         .listStyle(.plain)
@@ -69,6 +70,34 @@ private extension ReceiptFiltersView {
             }
         } header: {
             Text("Categories")
+        }
+    }
+    
+    var dateRangeSection: some View {
+        Section {
+            ForEach(Receipt.Filters.DateFilter.Range.allCases, id: \.self) { range in
+                Button {
+                    withAnimation(.easeInOut) {
+                        viewModel.updateDateRange(range)
+                    }
+                } label: {
+                    HStack {
+                        Text(range.title)
+                        Spacer()
+                        if viewModel.filters.date.range == range {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                    // Prevents the checkmark from animating while the custom date pickers transition.
+                    .transaction { $0.animation = nil }
+                }
+            }
+            if viewModel.filters.date.range == .custom {
+                AppDatePicker("Start date", selection: viewModel.customStartDate)
+                AppDatePicker("End date", selection: viewModel.customEndDate)
+            }
+        } header: {
+            Text("Date Range")
         }
     }
     
