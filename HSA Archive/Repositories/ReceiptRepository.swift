@@ -6,6 +6,7 @@
 //
 
 import FactoryKit
+import Networking
 import Toast
 import UIKit
 
@@ -53,18 +54,14 @@ final class ReceiptRepository {
     func add(
         _ receipt: Receipt,
         uiImage: UIImage
-    ) async -> AppendSpreadsheetRowsEndpoint.Response? {
+    ) async -> [Receipt]? {
         do {
             guard let imageID = await uploadReceiptImage(fileName: receipt.fileName, uiImage: uiImage) else { return nil }
-            guard let response = try await receiptSpreadsheetService.withSpreadsheetRecovery({ spreadsheetID in
-                try await googleSheetsService.appendRows(
-                    spreadsheetID: spreadsheetID,
-                    range: AppConstants.worksheetName,
-                    values: [ReceiptSpreadsheetEncoder.encode(receipt, imageID: imageID)]
-                )
-            }) else { return nil }
-            receipts.append(receipt)
-            return response
+            var receipt = receipt
+            receipt.fileID = imageID
+            return try await withSpreadsheetRecovery { spreadsheetID in
+                try await self.appendRow(receipt, spreadsheetID: spreadsheetID)
+            }
         } catch let error as AppendSpreadsheetRowsEndpoint.EndpointError {
             handleAppendSpreadsheetRowsError(error)
         } catch {
@@ -73,8 +70,31 @@ final class ReceiptRepository {
         return nil
     }
     
-    func update(_ receipt: Receipt) async throws {
-        // TODO: - Implement this
+    /// Updates an existing receipt in the spreadsheet and local receipt list.
+    /// Appends the receipt to new spreadsheet and local receipt list after recovery.
+    func update(_ receipt: Receipt) async -> [Receipt]? {
+        do {
+            return try await withSpreadsheetRecovery { spreadsheetID in
+                guard let row = try await self.findRow(
+                    for: receipt.id,
+                    spreadsheetID: spreadsheetID
+                ), try await self.googleSheetsService.updateRows(
+                    spreadsheetID: spreadsheetID,
+                    range: ReceiptSpreadsheetSchema.rowRange(for: row),
+                    values: [try ReceiptSpreadsheetEncoder.encode(receipt)]
+                ) != nil else { return nil }
+                return self.replaceReceipt(receipt)
+            } onNewSpreadsheet: { spreadsheetID in
+                try await self.appendRow(receipt, spreadsheetID: spreadsheetID)
+            }
+        } catch let error as APIManagerError {
+            handleFetchSpreadsheetRowsAPIError(error)
+        } catch let error as UpdateSpreadsheetRowsEndpoint.EndpointError {
+            handleUpdateSpreadsheetRowsError(error)
+        } catch {
+            handleUnknownError()
+        }
+        return nil
     }
     
     func delete(_ receipt: Receipt) async throws {
@@ -91,15 +111,30 @@ final class ReceiptRepository {
 // MARK: - Private Methods
 
 private extension ReceiptRepository {
+    /// Runs a Sheets operation with spreadsheet recovery and clears stored receipts when a new spreadsheet is created.
+    func withSpreadsheetRecovery<T>(
+        _ operation: @escaping (String) async throws -> T,
+        onNewSpreadsheet: ((String) async throws -> T)? = nil
+    ) async throws -> T {
+        let onNewSpreadsheet = onNewSpreadsheet ?? operation
+        return try await receiptSpreadsheetService.withSpreadsheetRecovery(
+            operation,
+            onNewSpreadsheet: { [weak self] spreadsheetID in
+                self?.clear()
+                return try await onNewSpreadsheet(spreadsheetID)
+            }
+        )
+    }
+    
     /// Fetches all receipt rows, excluding headers, and updates the repository state with the result.
     func fetchAll() async {
         do {
-            let values = try await receiptSpreadsheetService.withSpreadsheetRecovery { spreadsheetID in
-                try await googleSheetsService.fetchRows(
+            guard let values = try await withSpreadsheetRecovery({ spreadsheetID in
+                try await self.googleSheetsService.fetchRows(
                     spreadsheetID: spreadsheetID,
                     range: AppConstants.worksheetName + "!A2:Z"
                 )
-            }
+            }, onNewSpreadsheet: { _ in return nil }) else { return }
             let response = ReceiptSpreadsheetDecoder.decode(values)
             failedRows = response.failedRows
             receipts = response.receipts
@@ -129,22 +164,73 @@ private extension ReceiptRepository {
             return nil
         }
     }
+    
+    /// Appends a receipt row to the spreadsheet and local receipt list.
+    func appendRow(
+        _ receipt: Receipt,
+        spreadsheetID: String
+    ) async throws -> [Receipt]? {
+        guard try await self.googleSheetsService.appendRows(
+            spreadsheetID: spreadsheetID,
+            range: AppConstants.worksheetName,
+            values: [try ReceiptSpreadsheetEncoder.encode(receipt)]
+        ) != nil else { return nil }
+        receipts.append(receipt)
+        return receipts
+    }
+    
+    /// Locally replaces the existing receipt with the updated receipt.
+    func replaceReceipt(_ receipt: Receipt) -> [Receipt] {
+        if let index = receipts.firstIndex(where: { $0.id == receipt.id }) {
+            receipts[index] = receipt
+        }
+        return receipts
+    }
+    
+    /// Returns the spreadsheet row containing the specified receipt, if found.
+    /// Ignores the first row since it's the header.
+    func findRow(for receiptID: Receipt.ID, spreadsheetID: String) async throws(APIManagerError) -> Int? {
+        let values = try await googleSheetsService.fetchRows(
+            spreadsheetID: spreadsheetID,
+            range: AppConstants.worksheetName
+        )
+        return values.firstIndex { row in
+            row.first == receiptID.uuidString
+        }.map { $0 + 1 }
+    }
 }
 
 // MARK: - Private Error Handlers
 
 private extension ReceiptRepository {
+    func handleFetchSpreadsheetRowsAPIError(_ error: APIManagerError) {
+        switch error {
+        case let .endpoint(error):
+            guard let error = error as? FetchSpreadsheetRowsEndpoint.EndpointError else { return }
+            handleFetchSpreadsheetRowsError(error)
+        default:
+            return
+        }
+    }
+    
     func handleFetchSpreadsheetRowsError(_ error: FetchSpreadsheetRowsEndpoint.EndpointError) {
         switch error {
         case .spreadsheetNotFound:
-            ToastManager.shared.show(DefaultToastType.receiptsFetchFailed)
+            ToastManager.shared.show(DefaultToastType.spreadsheetNotFound)
         }
     }
     
     func handleAppendSpreadsheetRowsError(_ error: AppendSpreadsheetRowsEndpoint.EndpointError) {
         switch error {
         case .spreadsheetNotFound:
-            ToastManager.shared.show(DefaultToastType.receiptSaveFailed)
+            ToastManager.shared.show(DefaultToastType.spreadsheetNotFound)
+        }
+    }
+    
+    func handleUpdateSpreadsheetRowsError(_ error: UpdateSpreadsheetRowsEndpoint.EndpointError) {
+        switch error {
+        case .spreadsheetNotFound:
+            ToastManager.shared.show(DefaultToastType.spreadsheetNotFound)
         }
     }
     

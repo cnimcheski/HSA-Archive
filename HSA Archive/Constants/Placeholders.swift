@@ -20,7 +20,7 @@ nonisolated enum Placeholders {
             transactionDate: .now,
             category: .other,
             notes: .placeholder(count: Int.random(in: 12...18)),
-            fileName: .placeholder(count: Int.random(in: 24...32))
+            fileID: .placeholder(count: Int.random(in: 24...32))
         )
     }
     

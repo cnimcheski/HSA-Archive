@@ -30,7 +30,7 @@ struct ReceiptReviewView: View {
             .interactiveDismissDisabled()
             .animation(.easeInOut, value: viewModel.displayedReceipt.isReimbursed.wrappedValue)
             .alert(viewModel: $viewModel.alertViewModel)
-            .onFirstTask(viewModel.extractReceiptDetails)
+            .onFirstTask(viewModel.onAppear)
     }
 }
 
@@ -51,15 +51,13 @@ private extension ReceiptReviewView {
                 reimbursementDatePicker
             }
             notesField
-            // TODO: - I don't think we want to show this to users...
-//            fileNameField
         }
         .listStyle(.plain)
     }
     
     var previewImage: some View {
         Button(action: viewModel.showFullImageView) {
-            PreviewImage(uiImage: viewModel.uiImage)
+            PreviewImage(imageState: viewModel.imageState)
         }
         .buttonStyle(.plain)
     }
@@ -76,7 +74,7 @@ private extension ReceiptReviewView {
             "Merchant",
             placeholder: "Merchant name...",
             text: viewModel.displayedReceipt.merchant,
-            isLoading: viewModel.isLoading
+            isLoading: viewModel.isExtractingReceiptDetails
         )
     }
     
@@ -85,7 +83,7 @@ private extension ReceiptReviewView {
             "Description",
             placeholder: "Brief description...",
             text: viewModel.displayedReceipt.description,
-            isLoading: viewModel.isLoading
+            isLoading: viewModel.isExtractingReceiptDetails
         )
     }
     
@@ -95,7 +93,7 @@ private extension ReceiptReviewView {
             placeholder: "$0.00",
             value: viewModel.displayedReceipt.amount,
             format: AppFormatStyle.Currency.current,
-            isLoading: viewModel.isLoading
+            isLoading: viewModel.isExtractingReceiptDetails
         )
         .keyboardType(.decimalPad)
     }
@@ -104,7 +102,7 @@ private extension ReceiptReviewView {
         AppDatePicker(
             "Transaction Date",
             selection: viewModel.displayedReceipt.transactionDate,
-            isLoading: viewModel.isLoading
+            isLoading: viewModel.isExtractingReceiptDetails
         )
     }
     
@@ -112,7 +110,7 @@ private extension ReceiptReviewView {
         SearchableMenu(
             AppConstants.categoryPrompt,
             selection: viewModel.displayedReceipt.category.wrappedValue.selection,
-            isLoading: viewModel.isLoading,
+            isLoading: viewModel.isExtractingReceiptDetails,
             action: viewModel.showCategorySelectionView
         )
     }
@@ -121,7 +119,7 @@ private extension ReceiptReviewView {
         AppToggle(
             "Reimbursed",
             isOn: viewModel.displayedReceipt.isReimbursed,
-            isLoading: viewModel.isLoading
+            isLoading: viewModel.isExtractingReceiptDetails
         )
     }
     
@@ -129,7 +127,7 @@ private extension ReceiptReviewView {
         AppDatePicker(
             "Reimbursed On",
             selection: viewModel.displayedReceipt.reimbursementDate ?? Date.now,
-            isLoading: viewModel.isLoading
+            isLoading: viewModel.isExtractingReceiptDetails
         )
     }
     
@@ -138,21 +136,8 @@ private extension ReceiptReviewView {
             "Notes",
             placeholder: "Add notes...",
             text: viewModel.displayedReceipt.notes,
-            isLoading: viewModel.isLoading
+            isLoading: viewModel.isExtractingReceiptDetails
         )
-    }
-    
-    var fileNameField: some View {
-        // TODO: - Do we want to give the user the option to change their file name...
-        HStack(spacing: .zero) {
-            AppTextField(
-                "File name",
-                placeholder: "Add file name...",
-                text: viewModel.displayedReceipt.fileName,
-                isLoading: viewModel.isLoading
-            )
-            Text(".jpg")
-        }
     }
     
     var cancelButton: some View {

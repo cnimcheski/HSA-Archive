@@ -1,13 +1,13 @@
 //
-//  AppendSpreadsheetRowsEndpoint.swift
+//  UpdateSpreadsheetRowsEndpoint.swift
 //  HSA Archive
 //
-//  Created by Steve Nimcheski on 8/13/26.
+//  Created by Steve Nimcheski on 9/8/26.
 //
 
 import Networking
 
-nonisolated struct AppendSpreadsheetRowsEndpoint: Endpoint {
+nonisolated struct UpdateSpreadsheetRowsEndpoint: Endpoint {
     enum EndpointError: APIError, SpreadsheetFailureConvertible {
         case spreadsheetNotFound
         
@@ -27,21 +27,14 @@ nonisolated struct AppendSpreadsheetRowsEndpoint: Endpoint {
     }
     
     var path: String
-    var queryParameters: [String: String] = [
-        "valueInputOption": "USER_ENTERED",
-        "insertDataOption": "INSERT_ROWS"
-    ]
+    var queryParameters: [String: String] = ["valueInputOption": "USER_ENTERED"]
     var body: Encodable?
-    var method: HTTPMethod = .post
+    var method: HTTPMethod = .put
     var dateDecodingFormat: DateFormat? = nil
     var requiresAuth: Bool = true
     
-    init(
-        body: Body,
-        spreadsheetID: String,
-        range: String
-    ) {
-        self.body = body
-        path = "\(spreadsheetID)/values/\(range):append"
+    init(spreadsheetID: String, range: String, values: [[String]]) {
+        path = "\(spreadsheetID)/values/\(range)"
+        body = ValuesRange(values: values)
     }
 }

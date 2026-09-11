@@ -28,6 +28,13 @@ nonisolated final class GoogleDriveService {
         )
     }
     
+    /// Downloads the file data for the specified Drive file.
+    func downloadFile(fileID: String) async throws(DownloadFileEndpoint.EndpointError) -> Data? {
+        try await apiManager.performRequest(
+            for: DownloadFileEndpoint(fileID: fileID)
+        )
+    }
+    
     /// Gets the ID of the existing spreadsheet in User Defaults, otherwise fetches it from Drive.
     func existingSpreadsheetID() async -> String? {
         if let spreadsheetID = userDefaultsManager.spreadsheetID { return spreadsheetID }

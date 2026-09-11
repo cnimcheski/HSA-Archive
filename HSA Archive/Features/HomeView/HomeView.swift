@@ -70,7 +70,7 @@ private extension HomeView {
             recentReceipts: viewModel.recentReceipts,
             showViewAllButton: viewModel.shouldShowViewAllReceiptsButton,
             isLoading: receiptRepository.isLoading,
-            onReceiptSelected: viewModel.onReceiptSelected
+            onReceiptSelected: viewModel.showReceiptReview
         )
     }
     

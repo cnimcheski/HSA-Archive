@@ -8,7 +8,7 @@
 import Foundation
 
 nonisolated struct Receipt: Identifiable {
-    let id = UUID()
+    let id: UUID
     var merchant: String
     var description: String
     var amount: Double
@@ -17,14 +17,24 @@ nonisolated struct Receipt: Identifiable {
     var reimbursementDate: Date?
     var submissionDate: Date? = nil
     var notes: String
-    var fileName: String
+    var fileID: String?
     
     var isReimbursed: Bool {
         get { reimbursementDate != nil }
         set { reimbursementDate = newValue ? .now : nil }
     }
     
+    var fileName: String {
+        "\(transactionDate.formatted()) \(merchant) \(amount)"
+    }
+    
+    /// Indicates whether the receipt has already been saved.
+    var hasBeenSaved: Bool {
+        fileID != nil
+    }
+    
     init(
+        id: UUID = UUID(),
         merchant: String,
         description: String,
         amount: Double,
@@ -33,8 +43,9 @@ nonisolated struct Receipt: Identifiable {
         reimbursementDate: Date? = nil,
         submissionDate: Date? = nil,
         notes: String,
-        fileName: String
+        fileID: String?
     ) {
+        self.id = id
         self.merchant = merchant
         self.description = description
         self.amount = amount
@@ -43,7 +54,7 @@ nonisolated struct Receipt: Identifiable {
         self.reimbursementDate = reimbursementDate
         self.submissionDate = submissionDate
         self.notes = notes
-        self.fileName = fileName
+        self.fileID = fileID
     }
 }
 
@@ -51,14 +62,14 @@ nonisolated struct Receipt: Identifiable {
 
 nonisolated extension Receipt {
     init(from fields: ReceiptExtractionResponse.Payload.Fields) {
+        self.id = UUID()
+        self.fileID = nil
         self.merchant = fields.merchant
         self.description = fields.description
         self.amount = fields.amount
         self.transactionDate = fields.transactionDate
         self.category = fields.category
-        self.reimbursementDate = nil
         self.notes = ""
-        self.fileName = "\(fields.transactionDate.formatted()) \(fields.merchant) \(fields.amount)"
     }
 }
 
@@ -73,7 +84,7 @@ nonisolated extension Receipt {
             transactionDate: .now,
             category: .other,
             notes: "",
-            fileName: ""
+            fileID: nil
         )
     }
 }
@@ -90,7 +101,7 @@ nonisolated extension Receipt {
         category: Category = .womensHealth,
         reimbursementDate: Date? = nil,
         notes: String = "",
-        fileName: String = ""
+        fileID: String? = nil
     ) -> Self {
         .init(
             merchant: merchant,
@@ -100,7 +111,7 @@ nonisolated extension Receipt {
             category: category,
             reimbursementDate: reimbursementDate,
             notes: notes,
-            fileName: fileName
+            fileID: fileID
         )
     }
 }

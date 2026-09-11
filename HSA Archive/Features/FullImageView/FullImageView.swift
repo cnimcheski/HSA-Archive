@@ -22,7 +22,11 @@ struct FullImageView: View {
                 .scaledToFit()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
-                .toolbar { closeButton }
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        closeButton
+                    }
+                }
         }
     }
 }

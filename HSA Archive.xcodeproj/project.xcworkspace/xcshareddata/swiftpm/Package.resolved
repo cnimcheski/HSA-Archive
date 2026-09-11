@@ -1,5 +1,5 @@
 {
-  "originHash" : "844c479e0df76b6a2b555a23040acee0e82e1fae946f4041f838b2daaa437592",
+  "originHash" : "5504524c9e22855e63658eaa74572ac561a1ef16abb76769c8d9d8885948690b",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -168,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Networking.git",
       "state" : {
-        "revision" : "a550551c66e3268f843a51157385929fdd01993f",
-        "version" : "1.0.34"
+        "revision" : "cf015278055b382514caf192711d55f76fc7eb31",
+        "version" : "1.0.35"
       }
     },
     {

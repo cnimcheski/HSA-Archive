@@ -28,19 +28,21 @@ nonisolated struct ReceiptSpreadsheetDecoder {
 nonisolated private extension ReceiptSpreadsheetDecoder {
     /// Decodes a single row of a Google Sheets response into our `Receipt` type.
     static func decodeRow(_ value: [String]) throws(RowDecodeError) -> Receipt {
-        guard value.count >= 9 else { throw RowDecodeError.wrongColumnCount(value.count) }
-        guard let amount = Double(value[2]) else { throw RowDecodeError.badAmount(value[2]) }
-        guard let date = DateFormatter.iso8601DateOnly.date(from: value[3]) else { throw RowDecodeError.badDate(value[3]) }
+        guard value.count >= ReceiptSpreadsheetSchema.columnCount else { throw RowDecodeError.wrongColumnCount(value.count) }
+        guard let id = UUID(uuidString: value[0]) else { throw RowDecodeError.badID(value[0]) }
+        guard let amount = Double(value[3]) else { throw RowDecodeError.badAmount(value[3]) }
+        guard let date = DateFormatter.iso8601DateOnly.date(from: value[4]) else { throw RowDecodeError.badDate(value[4]) }
         return .init(
-            merchant: value[0],
-            description: value[1],
+            id: id,
+            merchant: value[1],
+            description: value[2],
             amount: amount,
             transactionDate: date,
-            category: .init(rawValue: value[4]) ?? .other,
-            reimbursementDate: DateFormatter.iso8601DateOnly.date(from: value[5]),
-            submissionDate: DateFormatter.iso8601DateOnly.date(from: value[6]),
-            notes: value[7],
-            fileName: value[8]
+            category: .init(rawValue: value[5]) ?? .other,
+            reimbursementDate: DateFormatter.iso8601DateOnly.date(from: value[6]),
+            submissionDate: DateFormatter.iso8601DateOnly.date(from: value[7]),
+            notes: value[8],
+            fileID: value[9]
         )
     }
 }

@@ -32,17 +32,16 @@ extension ReceiptReviewView {
         
         private let aiClient = Container.shared.aiClient()
         private let googleAuthService = Container.shared.googleAuthService()
+        private let googleDriveService = Container.shared.googleDriveService()
         private let receiptRepository = Container.shared.receiptRepository()
         private let textRecognizer = Container.shared.textRecognizer()
-        
-        let uiImage: UIImage
         
         weak var delegate: NavigationDelegate?
         
         var alertViewModel: AlertViewModel?
         
         var displayedReceipt: Binding<Receipt> {
-            isLoading
+            isExtractingReceiptDetails
                 ? .constant(Placeholders.receipt)
                 : Binding(
                     get: { self.receipt },
@@ -52,41 +51,39 @@ extension ReceiptReviewView {
         
         var isSaveDisabled: Bool {
             isSaving
-                || isLoading
+                || isExtractingReceiptDetails
                 || receipt.merchant.isEmpty
                 || receipt.amount.isZero
         }
         
+        private(set) var imageState: PreviewImage.ImageState
         private(set) var errorBannerViewModel: ErrorBanner.ViewModel?
-        private(set) var isLoading = true
+        private(set) var isExtractingReceiptDetails = false
         private var isSaving = false
         private var receipt = Receipt.empty
         
+        /// Initializes a review for a new receipt with a captured image.
         init(uiImage: UIImage) {
-            self.uiImage = uiImage
+            imageState = .loaded(uiImage)
+            isExtractingReceiptDetails = true
         }
         
-        func extractReceiptDetails() async {
-            defer { isLoading = false }
-            do {
-                let receiptText = try await textRecognizer.recognizeText(from: uiImage).text
-                guard let response = try await aiClient.generate(
-                    ReceiptExtractionRequest(text: receiptText)
-                ) else {
-                    handleGeneralError()
-                    return
-                }
-                handleReceiptExtractionResponse(response)
-            } catch let error as TextRecognitionError {
-                handleTextRecognitionError(error)
-            } catch let error as GeminiError {
-                handleGeminiError(error)
-            } catch {
-                handleGeneralError()
+        /// Initializes a review for an existing receipt whose image must be loaded.
+        init(receipt: Receipt) {
+            imageState = .loading
+            self.receipt = receipt
+        }
+        
+        func onAppear() async {
+            if receipt.hasBeenSaved {
+                await loadImage()
+            } else {
+                await extractReceiptDetails()
             }
         }
         
         func showFullImageView() {
+            guard case let .loaded(uiImage) = imageState else { return }
             delegate?.navigate(to: .fullImage(.init(uiImage: uiImage)))
         }
         
@@ -114,8 +111,11 @@ extension ReceiptReviewView {
                 showSignInView()
                 return
             }
-            guard await receiptRepository.add(receipt, uiImage: uiImage) != nil else { return }
-            dismiss()
+            if receipt.hasBeenSaved {
+                await updateReceipt()
+            } else {
+                await addReceipt()
+            }
         }
         
         func dismiss(shouldShowScanner: Bool = false) {
@@ -127,13 +127,64 @@ extension ReceiptReviewView {
 // MARK: - Private Methods
 
 private extension ReceiptReviewView.ViewModel {
+    func loadImage() async {
+        do {
+            guard let fileID = receipt.fileID,
+                  let data = try await googleDriveService.downloadFile(fileID: fileID),
+                  let uiImage = UIImage(data: data) else {
+                imageState = .error(.unknown(retry: retryLoadImage))
+                return
+            }
+            imageState = .loaded(uiImage)
+        } catch {
+            handleDownloadFileError(error)
+        }
+    }
+    
+    func retryLoadImage() async {
+        imageState = .loading
+        await loadImage()
+    }
+    
+    func extractReceiptDetails() async {
+        defer { isExtractingReceiptDetails = false }
+        guard case let .loaded(uiImage) = imageState else { return }
+        do {
+            let receiptText = try await textRecognizer.recognizeText(from: uiImage).text
+            guard let response = try await aiClient.generate(
+                ReceiptExtractionRequest(text: receiptText)
+            ) else {
+                handleGeneralError()
+                return
+            }
+            handleReceiptExtractionResponse(response)
+        } catch let error as TextRecognitionError {
+            handleTextRecognitionError(error)
+        } catch let error as GeminiError {
+            handleGeminiError(error)
+        } catch {
+            handleGeneralError()
+        }
+    }
+    
     func retryExtractReceiptDetails() {
         // Resets error banner and loading state before launching Task so that banner disappears instantly
         dismissErrorBanner()
-        isLoading = true
+        isExtractingReceiptDetails = true
         Task {
             await extractReceiptDetails()
         }
+    }
+    
+    func addReceipt() async {
+        guard case let .loaded(uiImage) = imageState,
+              await receiptRepository.add(receipt, uiImage: uiImage) != nil else { return }
+        dismiss()
+    }
+    
+    func updateReceipt() async {
+        guard await receiptRepository.update(receipt) != nil else { return }
+        dismiss()
     }
     
     func handleReceiptExtractionResponse(_ response: ReceiptExtractionResponse) {
@@ -178,6 +229,13 @@ private extension ReceiptReviewView.ViewModel {
             alertViewModel = .notReceipt(handleScanAgain: handleScanAgain)
         case .noTextFound:
             alertViewModel = .unreadable(handleScanAgain: handleScanAgain)
+        }
+    }
+    
+    func handleDownloadFileError(_ error: DownloadFileEndpoint.EndpointError) {
+        switch error {
+        case .notFound:
+            imageState = .error(.notFound)
         }
     }
     

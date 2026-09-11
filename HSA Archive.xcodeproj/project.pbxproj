@@ -40,6 +40,14 @@
 		990B5853304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B5852304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift */; };
 		990B5855304F726900D8AB4E /* Receipt+Filters+DateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B5854304F726900D8AB4E /* Receipt+Filters+DateFilter.swift */; };
 		990B5857304F729400D8AB4E /* Receipt+Filters+SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B5856304F729400D8AB4E /* Receipt+Filters+SortingOption.swift */; };
+		990B585A304FA19900D8AB4E /* DownloadFileEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B5859304FA19900D8AB4E /* DownloadFileEndpoint.swift */; };
+		990B585C304FDD2300D8AB4E /* ReceiptReviewView+PreviewImage+ImageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B585B304FDD2300D8AB4E /* ReceiptReviewView+PreviewImage+ImageState.swift */; };
+		990B585F3050A37600D8AB4E /* UpdateSpreadsheetRowsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B585E3050A37600D8AB4E /* UpdateSpreadsheetRowsEndpoint.swift */; };
+		990B58633050A52C00D8AB4E /* ValuesRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B58623050A52C00D8AB4E /* ValuesRange.swift */; };
+		990B58653050B4FF00D8AB4E /* UpdateSpreadsheetRowsEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B58643050B4FF00D8AB4E /* UpdateSpreadsheetRowsEndpoint+Response.swift */; };
+		999ECB763053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */; };
+		999ECB783053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */; };
+		999ECB7B3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */; };
 		99A541F93040035B001997B6 /* HomeView+Overview+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */; };
 		99A541FC304485B5001997B6 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FB304485B5001997B6 /* AppSession.swift */; };
 		99A541FF30461CD0001997B6 /* CurrentValueAsyncStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */; };
@@ -177,11 +185,9 @@
 		99F2DD3C302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD3B302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift */; };
 		99F2DD3E302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD3D302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift */; };
 		99F2DD41302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD40302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift */; };
-		99F2DD43302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD42302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift */; };
 		99F2DD45302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD44302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift */; };
 		99F2DD48302F737B00A4B653 /* NetworkingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD47302F737B00A4B653 /* NetworkingLogger.swift */; };
 		99F2DD4B302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD4A302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift */; };
-		99F2DD4D302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD4C302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift */; };
 		99F2DD50302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD4F302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift */; };
 		99F2DD52302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD51302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift */; };
 		99F2DD5530302E5E00A4B653 /* GoogleAPIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2DD5430302E5E00A4B653 /* GoogleAPIErrorHandler.swift */; };
@@ -238,6 +244,14 @@
 		990B5852304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Filters+ReimbursementStatus.swift"; sourceTree = "<group>"; };
 		990B5854304F726900D8AB4E /* Receipt+Filters+DateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Filters+DateFilter.swift"; sourceTree = "<group>"; };
 		990B5856304F729400D8AB4E /* Receipt+Filters+SortingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Filters+SortingOption.swift"; sourceTree = "<group>"; };
+		990B5859304FA19900D8AB4E /* DownloadFileEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFileEndpoint.swift; sourceTree = "<group>"; };
+		990B585B304FDD2300D8AB4E /* ReceiptReviewView+PreviewImage+ImageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptReviewView+PreviewImage+ImageState.swift"; sourceTree = "<group>"; };
+		990B585E3050A37600D8AB4E /* UpdateSpreadsheetRowsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSpreadsheetRowsEndpoint.swift; sourceTree = "<group>"; };
+		990B58623050A52C00D8AB4E /* ValuesRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesRange.swift; sourceTree = "<group>"; };
+		990B58643050B4FF00D8AB4E /* UpdateSpreadsheetRowsEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateSpreadsheetRowsEndpoint+Response.swift"; sourceTree = "<group>"; };
+		999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift"; sourceTree = "<group>"; };
+		999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift"; sourceTree = "<group>"; };
+		999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetEncoder+EncodingError.swift"; sourceTree = "<group>"; };
 		99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview+ViewModel.swift"; sourceTree = "<group>"; };
 		99A541FB304485B5001997B6 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
 		99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueAsyncStream.swift; sourceTree = "<group>"; };
@@ -370,11 +384,9 @@
 		99F2DD3B302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSpreadsheetEndpoint+Body.swift"; sourceTree = "<group>"; };
 		99F2DD3D302ECC7500A4B653 /* CreateSpreadsheetEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateSpreadsheetEndpoint+Response.swift"; sourceTree = "<group>"; };
 		99F2DD40302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendSpreadsheetRowsEndpoint.swift; sourceTree = "<group>"; };
-		99F2DD42302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppendSpreadsheetRowsEndpoint+Body.swift"; sourceTree = "<group>"; };
 		99F2DD44302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppendSpreadsheetRowsEndpoint+Response.swift"; sourceTree = "<group>"; };
 		99F2DD47302F737B00A4B653 /* NetworkingLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLogger.swift; sourceTree = "<group>"; };
 		99F2DD4A302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSpreadsheetRowsEndpoint.swift; sourceTree = "<group>"; };
-		99F2DD4C302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FetchSpreadsheetRowsEndpoint+Response.swift"; sourceTree = "<group>"; };
 		99F2DD4F302F87CE00A4B653 /* FindSpreadsheetIDEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindSpreadsheetIDEndpoint.swift; sourceTree = "<group>"; };
 		99F2DD51302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FindSpreadsheetIDEndpoint+Response.swift"; sourceTree = "<group>"; };
 		99F2DD5430302E5E00A4B653 /* GoogleAPIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIErrorHandler.swift; sourceTree = "<group>"; };
@@ -552,6 +564,66 @@
 				990B5856304F729400D8AB4E /* Receipt+Filters+SortingOption.swift */,
 			);
 			path = Receipt;
+			sourceTree = "<group>";
+		};
+		990B5858304FA18300D8AB4E /* DownloadFileEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				990B5859304FA19900D8AB4E /* DownloadFileEndpoint.swift */,
+			);
+			path = DownloadFileEndpoint;
+			sourceTree = "<group>";
+		};
+		990B585D3050A36200D8AB4E /* UpdateSpreadsheetRowsEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				990B585E3050A37600D8AB4E /* UpdateSpreadsheetRowsEndpoint.swift */,
+				990B58643050B4FF00D8AB4E /* UpdateSpreadsheetRowsEndpoint+Response.swift */,
+			);
+			path = UpdateSpreadsheetRowsEndpoint;
+			sourceTree = "<group>";
+		};
+		990B58603050A44000D8AB4E /* GoogleSheets */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD3F302ECF1400A4B653 /* AppendSpreadsheetRowsEndpoint */,
+				99DD44513031892900843826 /* BatchUpdateSpreadsheetEndpoint */,
+				99DD44583033A13500843826 /* FetchSpreadsheetEndpoint */,
+				99F2DD49302F78D100A4B653 /* FetchSpreadsheetRowsEndpoint */,
+				990B585D3050A36200D8AB4E /* UpdateSpreadsheetRowsEndpoint */,
+				990B58623050A52C00D8AB4E /* ValuesRange.swift */,
+			);
+			path = GoogleSheets;
+			sourceTree = "<group>";
+		};
+		990B58613050A46800D8AB4E /* GoogleDrive */ = {
+			isa = PBXGroup;
+			children = (
+				99F2DD38302EBA4F00A4B653 /* CreateSpreadsheetEndpoint */,
+				990B5858304FA18300D8AB4E /* DownloadFileEndpoint */,
+				99F2DD4E302F87B200A4B653 /* FindSpreadsheetIDEndpoint */,
+				99DD4464303A254700843826 /* UploadFileEndpoint */,
+			);
+			path = GoogleDrive;
+			sourceTree = "<group>";
+		};
+		999ECB743053A4A100484B13 /* ReceiptSpreadsheetService */ = {
+			isa = PBXGroup;
+			children = (
+				99DD445E3035762600843826 /* ReceiptSpreadsheetService.swift */,
+				999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */,
+				999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */,
+			);
+			path = ReceiptSpreadsheetService;
+			sourceTree = "<group>";
+		};
+		999ECB793053D73300484B13 /* ReceiptSpreadsheetEncoder */ = {
+			isa = PBXGroup;
+			children = (
+				99DD4473303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift */,
+				999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */,
+			);
+			path = ReceiptSpreadsheetEncoder;
 			sourceTree = "<group>";
 		};
 		99A541FA304485AE001997B6 /* AppSession */ = {
@@ -1102,6 +1174,7 @@
 			isa = PBXGroup;
 			children = (
 				99D2D5D630264A14007A65C3 /* ReceiptReviewView+PreviewImage.swift */,
+				990B585B304FDD2300D8AB4E /* ReceiptReviewView+PreviewImage+ImageState.swift */,
 			);
 			path = PreviewImage;
 			sourceTree = "<group>";
@@ -1215,9 +1288,9 @@
 			isa = PBXGroup;
 			children = (
 				99DD4479303D548F00843826 /* ReceiptSpreadsheetDecoder */,
-				99DD4473303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift */,
+				999ECB793053D73300484B13 /* ReceiptSpreadsheetEncoder */,
+				999ECB743053A4A100484B13 /* ReceiptSpreadsheetService */,
 				99DD4471303CE2CD00843826 /* ReceiptSpreadsheetSchema.swift */,
-				99DD445E3035762600843826 /* ReceiptSpreadsheetService.swift */,
 			);
 			path = ReceiptSpreadsheet;
 			sourceTree = "<group>";
@@ -1314,13 +1387,8 @@
 		99F2DD37302EBA4400A4B653 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				99F2DD3F302ECF1400A4B653 /* AppendSpreadsheetRowsEndpoint */,
-				99DD44513031892900843826 /* BatchUpdateSpreadsheetEndpoint */,
-				99F2DD38302EBA4F00A4B653 /* CreateSpreadsheetEndpoint */,
-				99DD44583033A13500843826 /* FetchSpreadsheetEndpoint */,
-				99F2DD49302F78D100A4B653 /* FetchSpreadsheetRowsEndpoint */,
-				99F2DD4E302F87B200A4B653 /* FindSpreadsheetIDEndpoint */,
-				99DD4464303A254700843826 /* UploadFileEndpoint */,
+				990B58613050A46800D8AB4E /* GoogleDrive */,
+				990B58603050A44000D8AB4E /* GoogleSheets */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -1339,7 +1407,6 @@
 			isa = PBXGroup;
 			children = (
 				99F2DD40302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift */,
-				99F2DD42302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift */,
 				99F2DD44302F6B0600A4B653 /* AppendSpreadsheetRowsEndpoint+Response.swift */,
 			);
 			path = AppendSpreadsheetRowsEndpoint;
@@ -1357,7 +1424,6 @@
 			isa = PBXGroup;
 			children = (
 				99F2DD4A302F78F000A4B653 /* FetchSpreadsheetRowsEndpoint.swift */,
-				99F2DD4C302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift */,
 			);
 			path = FetchSpreadsheetRowsEndpoint;
 			sourceTree = "<group>";
@@ -1562,6 +1628,7 @@
 				99D2D5CC3023DAFD007A65C3 /* CaseIterable+RawValues.swift in Sources */,
 				99C008F83002A8E000CDF610 /* HomeView+RecentActivitySection.swift in Sources */,
 				99021ABD301B0BCF00D7DC8D /* ErrorBanner.swift in Sources */,
+				990B58633050A52C00D8AB4E /* ValuesRange.swift in Sources */,
 				99C009793009E7DB00CDF610 /* OnboardingView+Page.swift in Sources */,
 				99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */,
 				99F2DD18302C075B00A4B653 /* GoogleAuthService.swift in Sources */,
@@ -1588,6 +1655,7 @@
 				99F2DD3C302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift in Sources */,
 				99DD4466303A255000843826 /* UploadFileEndpoint.swift in Sources */,
 				99A541F93040035B001997B6 /* HomeView+Overview+ViewModel.swift in Sources */,
+				999ECB7B3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift in Sources */,
 				99D231B0304B52C8005F3B9E /* ReceiptFiltersCoordinator.swift in Sources */,
 				99021AA13016FAC400D7DC8D /* AIResponse.swift in Sources */,
 				99C008D43000BD4F00CDF610 /* HomeCoordinator.swift in Sources */,
@@ -1617,7 +1685,6 @@
 				99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */,
 				99D2319230475664005F3B9E /* Date+Extensions.swift in Sources */,
 				99021AB33018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift in Sources */,
-				99F2DD43302ED11A00A4B653 /* AppendSpreadsheetRowsEndpoint+Body.swift in Sources */,
 				99021ABA301AE9E800D7DC8D /* ReceiptExtractionResponse+Payload.swift in Sources */,
 				99C008C23000B26400CDF610 /* HSA_ArchiveApp.swift in Sources */,
 				99C0098E300D508300CDF610 /* ReceiptScannerView+ViewModel.swift in Sources */,
@@ -1641,6 +1708,7 @@
 				99021AB6301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift in Sources */,
 				99021AA730171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift in Sources */,
 				99C008DD3001A4AE00CDF610 /* HomeView.swift in Sources */,
+				990B585C304FDD2300D8AB4E /* ReceiptReviewView+PreviewImage+ImageState.swift in Sources */,
 				99C008FD3002D78800CDF610 /* ReceiptPreview.swift in Sources */,
 				99C009BA30115A1300CDF610 /* AppDelegate.swift in Sources */,
 				99C00998300DC87700CDF610 /* ReceiptScannerView+Representable.swift in Sources */,
@@ -1686,6 +1754,7 @@
 				99B98D7F3012F5F500A45554 /* ReceiptExtractionRequest.swift in Sources */,
 				99D2D5D730264A14007A65C3 /* ReceiptReviewView+PreviewImage.swift in Sources */,
 				99C00981300AC7A000CDF610 /* RootCoordinator+ViewModel.swift in Sources */,
+				990B585F3050A37600D8AB4E /* UpdateSpreadsheetRowsEndpoint.swift in Sources */,
 				99C0090F3004477100CDF610 /* HomeView+Overview+BalanceCard.swift in Sources */,
 				99C0096030049B6300CDF610 /* OnboardingView.swift in Sources */,
 				99F2DD1F302D22DE00A4B653 /* GoogleDriveService.swift in Sources */,
@@ -1695,6 +1764,7 @@
 				99021AAA30171E2D00D7DC8D /* RemoteConfigClient.swift in Sources */,
 				99C009BD3011A75700CDF610 /* AIClient.swift in Sources */,
 				99021AA53016FB7300D7DC8D /* DateFormatter+Extensions.swift in Sources */,
+				999ECB763053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift in Sources */,
 				99C0099B300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift in Sources */,
 				99021AB830186AAD00D7DC8D /* ReceiptExtractionResponse+Payload+Fields.swift in Sources */,
 				99C009AA3010091D00CDF610 /* Container+Services.swift in Sources */,
@@ -1702,14 +1772,16 @@
 				99C0090030032B7A00CDF610 /* Badge.swift in Sources */,
 				990B5853304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift in Sources */,
 				990B584B304CC5F000D8AB4E /* Receipt+Filters.swift in Sources */,
-				99F2DD4D302F7AC900A4B653 /* FetchSpreadsheetRowsEndpoint+Response.swift in Sources */,
 				99C009743008A73700CDF610 /* Container+Managers.swift in Sources */,
 				99B98D813012F62100A45554 /* FirebaseAIClient.swift in Sources */,
 				99DD445F3035762600843826 /* ReceiptSpreadsheetService.swift in Sources */,
+				999ECB783053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift in Sources */,
+				990B585A304FA19900D8AB4E /* DownloadFileEndpoint.swift in Sources */,
 				99DD445C3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift in Sources */,
 				99C009A83010014500CDF610 /* TextRecognizer.swift in Sources */,
 				99DD4476303CE31A00843826 /* ReceiptSpreadsheetDecoder.swift in Sources */,
 				99D2D5EC302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift in Sources */,
+				990B58653050B4FF00D8AB4E /* UpdateSpreadsheetRowsEndpoint+Response.swift in Sources */,
 				99C0097C3009EFD800CDF610 /* OnboardingView+ProgressPills.swift in Sources */,
 				99DD446E303A9E6300843826 /* Data+Extensions.swift in Sources */,
 				99021A9C3016E42800D7DC8D /* RedactedShimmer.swift in Sources */,

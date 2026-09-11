@@ -26,8 +26,6 @@ final class AddReceiptCoordinator: ChildCoordinator {
     
     weak var delegate: NavigationDelegate?
     
-    private var receiptReviewCoordinator: ReceiptReviewCoordinator?
-    
     func build(page: Page) -> some View {
         switch page {
         case let .review(receiptReviewCoordinator):

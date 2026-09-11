@@ -33,13 +33,12 @@ nonisolated enum DefaultToastType: ToastType {
     // MARK: - Spreadsheet
     
     case spreadsheetCreated
+    case spreadsheetNotFound
     case spreadsheetRecreated
     case spreadsheetSetupFailed
     
     // MARK: - Receipt
     
-    case receiptSaveFailed
-    case receiptsFetchFailed
     case receiptImageUploadFailed
     case fileEncodingFailed
     
@@ -63,14 +62,12 @@ nonisolated enum DefaultToastType: ToastType {
             "Google is temporarily unavailable. Please try again."
         case .spreadsheetCreated:
             "Your HSA Archive spreadsheet was created! Your receipts will be saved there."
+        case .spreadsheetNotFound:
+            "We couldn't access your HSA Archive spreadsheet. Please try again."
         case .spreadsheetRecreated:
             "We couldn't access your previous spreadsheet, so a new one was created. Any receipts stored in the previous spreadsheet will no longer appear in the app."
         case .spreadsheetSetupFailed:
             "Unable to setup HSA Archive. Please try again."
-        case .receiptSaveFailed:
-            "Unable to save receipt. We couldn't access your HSA Archive spreadsheet. Please try again."
-        case .receiptsFetchFailed:
-            "Unable to fetch your receipts. We couldn't access your HSA Archive spreadsheet. Please try again."
         case .receiptImageUploadFailed:
             "Couldn't save receipt image to Google Drive. Please try again."
         }

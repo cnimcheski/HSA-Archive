@@ -27,7 +27,7 @@ nonisolated final class GoogleSheetsService {
         spreadsheetID: String,
         range: String
     ) async throws(APIManagerError) -> [[String]] {
-        let response: FetchSpreadsheetRowsEndpoint.Response = try await apiManager.performThrowingRequest(
+        let response: ValuesRange = try await apiManager.performThrowingRequest(
             for: FetchSpreadsheetRowsEndpoint(spreadsheetID: spreadsheetID, range: range)
         )
         return response.values ?? []
@@ -53,7 +53,7 @@ nonisolated final class GoogleSheetsService {
         spreadsheetID: String,
         requests: [BatchUpdateSpreadsheetEndpoint.Body.Request]
     ) async throws(BatchUpdateSpreadsheetEndpoint.EndpointError) -> BatchUpdateSpreadsheetEndpoint.Response? {
-        try await Container.shared.googleSheetsAPIManager().performRequest(
+        try await apiManager.performRequest(
             for: BatchUpdateSpreadsheetEndpoint(
                 body: .init(requests: requests),
                 spreadsheetID: spreadsheetID
@@ -61,8 +61,19 @@ nonisolated final class GoogleSheetsService {
         )
     }
     
-    func updateRows() async throws {
-        // TODO: - Implement this
+    /// Updates the specified range of rows in a spreadsheet.
+    func updateRows(
+        spreadsheetID: String,
+        range: String,
+        values: [[String]]
+    ) async throws(UpdateSpreadsheetRowsEndpoint.EndpointError) -> UpdateSpreadsheetRowsEndpoint.Response? {
+        try await apiManager.performRequest(
+            for: UpdateSpreadsheetRowsEndpoint(
+                spreadsheetID: spreadsheetID,
+                range: range,
+                values: values
+            )
+        )
     }
     
     func deleteRows() async throws {

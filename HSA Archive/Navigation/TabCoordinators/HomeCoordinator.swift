@@ -72,6 +72,8 @@ extension HomeCoordinator: HomeView.NavigationDelegate {
             photosPickerViewModel = .init(onCompletion: handleSelectedImages)
         case .scanner:
             push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
+        case let .reviewReceipt(receiptReviewViewModel):
+            push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: receiptReviewViewModel))), type: .sheet)
         case let .signIn(viewModel):
             push(.signIn(viewModel), type: .fullScreenCover)
         case let .invalidReceipts(viewModel):

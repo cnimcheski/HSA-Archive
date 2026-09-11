@@ -9,10 +9,6 @@ import FactoryKit
 import Toast
 
 nonisolated final class ReceiptSpreadsheetService {
-    enum ReceiptSpreadsheetError: Error {
-        case spreadsheetNotFound
-    }
-    
     private let googleDriveService = Container.shared.googleDriveService()
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
@@ -31,22 +27,29 @@ nonisolated final class ReceiptSpreadsheetService {
         }
     }
     
-    /// Runs the given operation and handles any potential spreadsheet not found errors.
-    /// Throws a  `ReceiptSpreadsheetError.spreadsheetNotFound` when a spreadsheet cannot be found or recovered.
-    /// Other operation errors are propogated to the caller.
+    /// Runs a Sheets operation using the stored spreadsheet ID.
+    /// If the spreadsheet can't be found, recovers an existing spreadsheet or creates a new one,
+    /// then runs the appropriate operation against the recovered spreadsheet ID.
+    ///
+    /// - Parameters:
+    ///   - operation: The API call to perform against the current spreadsheet ID.
+    ///   - onNewSpreadsheet: What to run against a newly created spreadsheet, defaults to `operation` when nil.
+    /// - Returns: The result of whichever closure ends up running.
+    /// - Throws: `ReceiptSpreadsheetError.spreadsheetNotFound` if recovery fails, otherwise
+    ///   whatever `operation` or `onNewSpreadsheet` throws.
     func withSpreadsheetRecovery<T>(
-        _ operation: (String) async throws -> T
+        _ operation: @escaping (String) async throws -> T,
+        onNewSpreadsheet: ((String) async throws -> T)? = nil
     ) async throws -> T {
+        let onNewSpreadsheet = onNewSpreadsheet ?? operation
         guard let spreadsheetID = userDefaultsManager.spreadsheetID else {
-            guard let recoveredSpreadsheetID = await handleSpreadsheetNotFound() else { throw ReceiptSpreadsheetError.spreadsheetNotFound }
-            return try await operation(recoveredSpreadsheetID)
+            return try await handleSpreadsheetRecovery(operation, onNewSpreadsheet: onNewSpreadsheet)
         }
         do {
             return try await operation(spreadsheetID)
         } catch {
             guard let error = error as? SpreadsheetFailureConvertible, error.spreadsheetFailureReason == .notFound else { throw error }
-            guard let recoveredSpreadsheetID = await handleSpreadsheetNotFound() else { throw ReceiptSpreadsheetError.spreadsheetNotFound }
-            return try await operation(recoveredSpreadsheetID)
+            return try await handleSpreadsheetRecovery(operation, onNewSpreadsheet: onNewSpreadsheet)
         }
     }
 }
@@ -116,16 +119,30 @@ private extension ReceiptSpreadsheetService {
         ToastManager.shared.show(DefaultToastType.spreadsheetSetupFailed)
     }
     
+    /// Runs the appropriate operation for the recovered spreadsheet.
+    func handleSpreadsheetRecovery<T>(
+        _ operation: @escaping (String) async throws -> T,
+        onNewSpreadsheet: (String) async throws -> T
+    ) async throws -> T {
+        guard let recovery = await recoverSpreadsheet() else { throw ReceiptSpreadsheetError.spreadsheetNotFound }
+        return switch recovery {
+        case let .existing(spreadsheetID):
+            try await operation(spreadsheetID)
+        case let .new(spreadsheetID):
+            try await onNewSpreadsheet(spreadsheetID)
+        }
+    }
+    
     /// Recovers the spreadsheet by finding an existing one or creating a new one, otherwise returns nil.
-    func handleSpreadsheetNotFound() async -> String? {
+    func recoverSpreadsheet() async -> SpreadsheetRecoveryResult? {
         userDefaultsManager.clearSpreadsheetID()
         if let spreadsheetID = await googleDriveService.findExistingSpreadsheetID() {
             userDefaultsManager.setSpreadsheetID(spreadsheetID)
-            return spreadsheetID
+            return .existing(spreadsheetID)
         } else {
             guard let response = await setupSpreadsheet() else { return nil }
             ToastManager.shared.show(DefaultToastType.spreadsheetRecreated)
-            return response.spreadsheetID
+            return .new(response.spreadsheetID)
         }
     }
 }
