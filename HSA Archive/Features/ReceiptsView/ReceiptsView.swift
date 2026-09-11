@@ -81,7 +81,7 @@ private extension ReceiptsView {
     
     func receiptRow(_ receipt: Receipt) -> some View {
         ReceiptPreview(receipt: receipt) {
-            // TODO: - Add an action...
+            viewModel.showReceiptReview(receipt)
         }
         .redactedShimmer(isShimmering: receiptRepository.isLoading)
     }

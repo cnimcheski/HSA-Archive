@@ -25,6 +25,7 @@ extension ReceiptsView {
             case photosPicker
             case filters(ReceiptFiltersView.ViewModel)
             case invalidReceipts(InvalidReceiptsView.ViewModel)
+            case reviewReceipt(ReceiptReviewView.ViewModel)
             case signIn(SignInView.ViewModel)
         }
         
@@ -53,6 +54,10 @@ extension ReceiptsView {
         }
         
         private(set) var filters = Receipt.Filters()
+        
+        func showReceiptReview(_ receipt: Receipt) {
+            delegate?.navigate(to: .reviewReceipt(.init(receipt: receipt)))
+        }
         
         func showFiltersView() {
             delegate?.navigate(
