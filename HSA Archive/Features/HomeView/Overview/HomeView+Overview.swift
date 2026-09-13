@@ -19,7 +19,7 @@ extension HomeView {
             VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
                 totalPurchasesView
                 balanceCards
-                statusBarView
+                statusCapsule
             }
             .defaultCardStyle()
             .listRowSeparator(.hidden)
@@ -37,6 +37,7 @@ private extension HomeView.Overview {
             Text(viewModel.totalAmount, format: AppFormatStyle.Currency.current)
                 .xLargeTitle()
                 .fontWeight(.bold)
+                .contentTransition(.numericText())
                 .redactedShimmer(isShimmering: viewModel.isLoading)
         }
     }
@@ -54,27 +55,11 @@ private extension HomeView.Overview {
                 isLoading: viewModel.isLoading
             )
         }
+        .contentTransition(.numericText())
     }
     
-    var statusBarView: some View {
-        RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-            .fill(
-                LinearGradient(
-                    stops: viewModel.isLoading
-                        ? [.init(color: .secondary.opacity(0.3), location: 0)]
-                        : [
-                            .init(color: .accent, location: viewModel.statusLocation),
-                            .init(color: .brandSecondary, location: viewModel.statusLocation)
-                        ],
-                    startPoint: .leading,
-                    endPoint: .trailing
-                )
-            )
-            // The `redactedShimmer` modifier adds an animation modifier that causes a crash
-            // so this explicit nil animation is required to override it.
-            .animation(nil, value: viewModel.isLoading)
-            .frame(height: 6)
-            .redactedShimmer(isShimmering: viewModel.isLoading)
+    var statusCapsule: some View {
+        StatusCapsule(location: viewModel.statusLocation, isLoading: viewModel.isLoading)
     }
 }
 

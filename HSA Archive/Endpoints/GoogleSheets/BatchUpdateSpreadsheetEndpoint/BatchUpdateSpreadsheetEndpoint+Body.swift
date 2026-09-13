@@ -16,11 +16,13 @@ nonisolated extension BatchUpdateSpreadsheetEndpoint {
 nonisolated extension BatchUpdateSpreadsheetEndpoint.Body {
     enum Request: Encodable {
         case addSheet(AddSheet)
+        case deleteDimension(DeleteDimension)
         case deleteSheet(DeleteSheet)
         case updateSheetProperties(UpdateSheetProperties)
 
         private enum CodingKeys: String, CodingKey {
             case addSheet
+            case deleteDimension
             case deleteSheet
             case updateSheetProperties
         }
@@ -28,11 +30,13 @@ nonisolated extension BatchUpdateSpreadsheetEndpoint.Body {
         func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
             switch self {
-            case .addSheet(let request):
+            case let .addSheet(request):
                 try container.encode(request, forKey: .addSheet)
-            case .deleteSheet(let request):
+            case let .deleteDimension(request):
+                try container.encode(request, forKey: .deleteDimension)
+            case let .deleteSheet(request):
                 try container.encode(request, forKey: .deleteSheet)
-            case .updateSheetProperties(let request):
+            case let .updateSheetProperties(request):
                 try container.encode(request, forKey: .updateSheetProperties)
             }
         }
@@ -50,6 +54,42 @@ nonisolated extension BatchUpdateSpreadsheetEndpoint.Body.Request {
 nonisolated extension BatchUpdateSpreadsheetEndpoint.Body.Request.AddSheet {
     struct Properties: Encodable {
         let title: String
+    }
+}
+
+// MARK: - Body+Request+DeleteDimension
+
+nonisolated extension BatchUpdateSpreadsheetEndpoint.Body.Request {
+    struct DeleteDimension: Encodable {
+        let range: Range
+    }
+}
+
+nonisolated extension BatchUpdateSpreadsheetEndpoint.Body.Request.DeleteDimension {
+    struct Range: Encodable {
+        let sheetID: Int
+        let dimension: String
+        let startIndex: Int
+        let endIndex: Int
+        
+        init(
+            sheetID: Int,
+            dimension: String = "ROWS",
+            startIndex: Int,
+            endIndex: Int
+        ) {
+            self.sheetID = sheetID
+            self.dimension = dimension
+            self.startIndex = startIndex
+            self.endIndex = endIndex
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case sheetID = "sheetId"
+            case dimension
+            case startIndex
+            case endIndex
+        }
     }
 }
 

@@ -57,6 +57,7 @@ private extension HomeView.RecentActivitySection {
                 onReceiptSelected(receipt)
             }
             .redactedShimmer(isShimmering: isLoading)
+            .receiptSwipeActions(receipt: receipt)
         }
     }
     
@@ -86,7 +87,7 @@ private extension HomeView.RecentActivitySection {
             showViewAllButton: true,
             isLoading: false
         ) { receipt in
-            // Do something with the selected receipt
+            // Do something with selected receipt
         }
         HomeView.RecentActivitySection(
             recentReceipts: recentReceiptMocks,

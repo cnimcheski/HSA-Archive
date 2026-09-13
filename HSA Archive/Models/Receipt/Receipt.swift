@@ -7,7 +7,7 @@
 
 import Foundation
 
-nonisolated struct Receipt: Identifiable {
+nonisolated struct Receipt: Hashable, Identifiable {
     let id: UUID
     var merchant: String
     var description: String

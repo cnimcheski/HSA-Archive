@@ -24,8 +24,9 @@ extension HomeView.Overview {
             receipts.filter { !$0.isReimbursed }.map { $0.amount }.reduce(0, +)
         }
         
-        var statusLocation: CGFloat {
-            reimbursedAmount / totalAmount
+        var statusLocation: CGFloat? {
+            guard totalAmount > 0 else { return nil }
+            return reimbursedAmount / totalAmount
         }
         
         init(receipts: [Receipt], isLoading: Bool) {

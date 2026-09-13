@@ -130,7 +130,7 @@ private extension ReceiptReviewView.ViewModel {
     func loadImage() async {
         do {
             guard let fileID = receipt.fileID,
-                  let data = try await googleDriveService.downloadFile(fileID: fileID),
+                  let data = try await googleDriveService.downloadFile(id: fileID),
                   let uiImage = UIImage(data: data) else {
                 imageState = .error(.unknown(retry: retryLoadImage))
                 return

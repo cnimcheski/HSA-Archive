@@ -68,17 +68,8 @@ nonisolated private extension ReceiptSpreadsheetService {
     func renameFirstSheet(
         spreadsheetID: String
     ) async throws -> BatchUpdateSpreadsheetEndpoint.Response? {
-        guard let sheetID = try await fetchFirstSheetID(spreadsheetID: spreadsheetID) else { return nil }
+        guard let sheetID = try await googleSheetsService.fetchFirstSheetID(spreadsheetID: spreadsheetID) else { return nil }
         return try await updateSheetName(spreadsheetID: spreadsheetID, sheetID: sheetID)
-    }
-    
-    /// Fetches the ID of the first sheet in the given spreadsheet.
-    func fetchFirstSheetID(
-        spreadsheetID: String
-    ) async throws(FetchSpreadsheetEndpoint.EndpointError) -> Int? {
-        try await googleSheetsService.fetchSpreadsheet(
-            spreadsheetID: spreadsheetID
-        )?.sheets.first?.properties.sheetID
     }
     
     /// Updates the given sheet's name to the app's worksheet name.

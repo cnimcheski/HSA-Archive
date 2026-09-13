@@ -48,6 +48,11 @@
 		999ECB763053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */; };
 		999ECB783053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */; };
 		999ECB7B3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */; };
+		999ECB7E3055F2E100484B13 /* UpdateFileEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB7D3055F2E100484B13 /* UpdateFileEndpoint.swift */; };
+		999ECB803055F3D200484B13 /* UpdateFileEndpoint+Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB7F3055F3D200484B13 /* UpdateFileEndpoint+Body.swift */; };
+		999ECB823055F66700484B13 /* UpdateFileEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB813055F66700484B13 /* UpdateFileEndpoint+Response.swift */; };
+		999ECB853056772D00484B13 /* ReceiptSwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB843056772D00484B13 /* ReceiptSwipeActions.swift */; };
+		999ECB88305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB87305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift */; };
 		99A541F93040035B001997B6 /* HomeView+Overview+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */; };
 		99A541FC304485B5001997B6 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FB304485B5001997B6 /* AppSession.swift */; };
 		99A541FF30461CD0001997B6 /* CurrentValueAsyncStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */; };
@@ -252,6 +257,11 @@
 		999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift"; sourceTree = "<group>"; };
 		999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift"; sourceTree = "<group>"; };
 		999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetEncoder+EncodingError.swift"; sourceTree = "<group>"; };
+		999ECB7D3055F2E100484B13 /* UpdateFileEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFileEndpoint.swift; sourceTree = "<group>"; };
+		999ECB7F3055F3D200484B13 /* UpdateFileEndpoint+Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateFileEndpoint+Body.swift"; sourceTree = "<group>"; };
+		999ECB813055F66700484B13 /* UpdateFileEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateFileEndpoint+Response.swift"; sourceTree = "<group>"; };
+		999ECB843056772D00484B13 /* ReceiptSwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSwipeActions.swift; sourceTree = "<group>"; };
+		999ECB87305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview+StatusCapsule.swift"; sourceTree = "<group>"; };
 		99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview+ViewModel.swift"; sourceTree = "<group>"; };
 		99A541FB304485B5001997B6 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
 		99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueAsyncStream.swift; sourceTree = "<group>"; };
@@ -602,6 +612,7 @@
 				99F2DD38302EBA4F00A4B653 /* CreateSpreadsheetEndpoint */,
 				990B5858304FA18300D8AB4E /* DownloadFileEndpoint */,
 				99F2DD4E302F87B200A4B653 /* FindSpreadsheetIDEndpoint */,
+				999ECB7C3055F2D200484B13 /* UpdateFileEndpoint */,
 				99DD4464303A254700843826 /* UploadFileEndpoint */,
 			);
 			path = GoogleDrive;
@@ -624,6 +635,32 @@
 				999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */,
 			);
 			path = ReceiptSpreadsheetEncoder;
+			sourceTree = "<group>";
+		};
+		999ECB7C3055F2D200484B13 /* UpdateFileEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				999ECB7D3055F2E100484B13 /* UpdateFileEndpoint.swift */,
+				999ECB7F3055F3D200484B13 /* UpdateFileEndpoint+Body.swift */,
+				999ECB813055F66700484B13 /* UpdateFileEndpoint+Response.swift */,
+			);
+			path = UpdateFileEndpoint;
+			sourceTree = "<group>";
+		};
+		999ECB833056771300484B13 /* ReceiptSwipeActions */ = {
+			isa = PBXGroup;
+			children = (
+				999ECB843056772D00484B13 /* ReceiptSwipeActions.swift */,
+			);
+			path = ReceiptSwipeActions;
+			sourceTree = "<group>";
+		};
+		999ECB86305742F100484B13 /* StatusCapsule */ = {
+			isa = PBXGroup;
+			children = (
+				999ECB87305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift */,
+			);
+			path = StatusCapsule;
 			sourceTree = "<group>";
 		};
 		99A541FA304485AE001997B6 /* AppSession */ = {
@@ -841,6 +878,7 @@
 			isa = PBXGroup;
 			children = (
 				99C0090D3004475A00CDF610 /* BalanceCard */,
+				999ECB86305742F100484B13 /* StatusCapsule */,
 				99C008E830029F8000CDF610 /* HomeView+Overview.swift */,
 				99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */,
 			);
@@ -855,6 +893,7 @@
 				99021A813015123300D7DC8D /* OnFirstTask */,
 				99D2D5ED302B70B0007A65C3 /* ReceiptFileImporter */,
 				99D2D5E03027C613007A65C3 /* ReceiptPhotosPicker */,
+				999ECB833056771300484B13 /* ReceiptSwipeActions */,
 				99021A9A3016E41900D7DC8D /* RedactedShimmer */,
 				99C00901300345C400CDF610 /* ScaledFont */,
 				99021A883015980B00D7DC8D /* Sync */,
@@ -1678,6 +1717,7 @@
 				99D231A130492017005F3B9E /* NoReceiptsView.swift in Sources */,
 				99F2DD29302D7F8E00A4B653 /* SignInView+ViewModel.swift in Sources */,
 				99021A7A30147A9600D7DC8D /* SingleSelectionView.swift in Sources */,
+				999ECB853056772D00484B13 /* ReceiptSwipeActions.swift in Sources */,
 				99D2D5BD301E8D14007A65C3 /* TextRecognizer+ScannedTextResponse.swift in Sources */,
 				99DD4474303CE2FA00843826 /* ReceiptSpreadsheetEncoder.swift in Sources */,
 				99021A7D30147E9500D7DC8D /* AppConstants.swift in Sources */,
@@ -1704,6 +1744,7 @@
 				99DD445A3033A14D00843826 /* FetchSpreadsheetEndpoint.swift in Sources */,
 				99DD4487303E3D0700843826 /* InvalidReceiptsView+ViewModel.swift in Sources */,
 				99D2D5CF3024312B007A65C3 /* Debug+LogCategory.swift in Sources */,
+				999ECB803055F3D200484B13 /* UpdateFileEndpoint+Body.swift in Sources */,
 				99F2DD2E302D8CFC00A4B653 /* SignInView+BenefitsView.swift in Sources */,
 				99021AB6301869D400D7DC8D /* ReceiptExtractionResponse+Payload+Status.swift in Sources */,
 				99021AA730171AF500D7DC8D /* DefaultAppCheckProviderFactory.swift in Sources */,
@@ -1743,6 +1784,7 @@
 				99C009B130114CE000CDF610 /* Receipt.swift in Sources */,
 				99D2D5C9302175CE007A65C3 /* String+Extensions.swift in Sources */,
 				99D2319E3048BF2C005F3B9E /* InvalidReceiptsButton.swift in Sources */,
+				999ECB823055F66700484B13 /* UpdateFileEndpoint+Response.swift in Sources */,
 				99C00908300417EA00CDF610 /* Spacing.swift in Sources */,
 				99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */,
 				99F2DD41302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift in Sources */,
@@ -1755,6 +1797,7 @@
 				99D2D5D730264A14007A65C3 /* ReceiptReviewView+PreviewImage.swift in Sources */,
 				99C00981300AC7A000CDF610 /* RootCoordinator+ViewModel.swift in Sources */,
 				990B585F3050A37600D8AB4E /* UpdateSpreadsheetRowsEndpoint.swift in Sources */,
+				999ECB7E3055F2E100484B13 /* UpdateFileEndpoint.swift in Sources */,
 				99C0090F3004477100CDF610 /* HomeView+Overview+BalanceCard.swift in Sources */,
 				99C0096030049B6300CDF610 /* OnboardingView.swift in Sources */,
 				99F2DD1F302D22DE00A4B653 /* GoogleDriveService.swift in Sources */,
@@ -1772,6 +1815,7 @@
 				99C0090030032B7A00CDF610 /* Badge.swift in Sources */,
 				990B5853304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift in Sources */,
 				990B584B304CC5F000D8AB4E /* Receipt+Filters.swift in Sources */,
+				999ECB88305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift in Sources */,
 				99C009743008A73700CDF610 /* Container+Managers.swift in Sources */,
 				99B98D813012F62100A45554 /* FirebaseAIClient.swift in Sources */,
 				99DD445F3035762600843826 /* ReceiptSpreadsheetService.swift in Sources */,

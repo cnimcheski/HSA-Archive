@@ -222,8 +222,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Toast.git",
       "state" : {
-        "revision" : "f4e0e0d60ebfb61de8efa9bed2fd1bb2480e0653",
-        "version" : "1.0.2"
+        "revision" : "3ff13314e73e72c0f544415f1cacc6443e9259e5",
+        "version" : "1.0.5"
       }
     }
   ],

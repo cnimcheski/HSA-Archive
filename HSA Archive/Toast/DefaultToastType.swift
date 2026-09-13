@@ -41,6 +41,9 @@ nonisolated enum DefaultToastType: ToastType {
     
     case receiptImageUploadFailed
     case fileEncodingFailed
+    case receiptDeleted(undo: () -> Void)
+    
+    // MARK: - Message
     
     var message: LocalizedStringKey {
         switch self {
@@ -70,6 +73,8 @@ nonisolated enum DefaultToastType: ToastType {
             "Unable to setup HSA Archive. Please try again."
         case .receiptImageUploadFailed:
             "Couldn't save receipt image to Google Drive. Please try again."
+        case .receiptDeleted:
+            "Receipt deleted."
         }
     }
     
@@ -83,6 +88,17 @@ nonisolated enum DefaultToastType: ToastType {
             7
         default:
             5
+        }
+    }
+    
+    // MARK: - Action
+    
+    var action: ToastAction? {
+        switch self {
+        case let .receiptDeleted(undo):
+            .init(title: "Undo", handler: undo)
+        default:
+            nil
         }
     }
 }

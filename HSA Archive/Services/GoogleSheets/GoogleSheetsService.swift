@@ -11,15 +11,6 @@ import Networking
 nonisolated final class GoogleSheetsService {
     private let apiManager = Container.shared.googleSheetsAPIManager()
     
-    /// Fetches a spreadsheets details by its ID.
-    func fetchSpreadsheet(
-        spreadsheetID: String
-    ) async throws(FetchSpreadsheetEndpoint.EndpointError) -> FetchSpreadsheetEndpoint.Response? {
-        try await apiManager.performRequest(
-            for: FetchSpreadsheetEndpoint(spreadsheetID: spreadsheetID)
-        )
-    }
-    
     /// Fetches the cell values for the given range in a spreadsheet.
     /// Throws an `APIManagerError` so callers can react to any error in the UI.
     /// - Note: Callers will need to remove headers from the range if necessary.
@@ -76,7 +67,58 @@ nonisolated final class GoogleSheetsService {
         )
     }
     
-    func deleteRows() async throws {
-        // TODO: - Implement this
+    /// Deletes rows from the first sheet using a zero-based, half-open index range.
+    /// 
+    /// - Parameters:
+    ///   - spreadsheetID: The ID of the spreadsheet containing the rows.
+    ///   - startIndex: The zero-based index of the first row to delete.
+    ///   - endIndex: The zero-based index immediately after the last row to delete.
+    func deleteRows(
+        spreadsheetID: String,
+        startIndex: Int,
+        endIndex: Int
+    ) async throws -> BatchUpdateSpreadsheetEndpoint.Response? {
+        guard let sheetID = try await fetchFirstSheetID(spreadsheetID: spreadsheetID) else { return nil }
+        return try await apiManager.performRequest(
+            for: BatchUpdateSpreadsheetEndpoint(
+                body: .init(
+                    requests: [
+                        .deleteDimension(
+                            .init(
+                                range: .init(
+                                    sheetID: sheetID,
+                                    startIndex: startIndex,
+                                    endIndex: endIndex
+                                )
+                            )
+                        )
+                    ]
+                ),
+                spreadsheetID: spreadsheetID
+            )
+        )
+    }
+    
+    /// Fetches the ID of the first sheet in the given spreadsheet.
+    func fetchFirstSheetID(
+        spreadsheetID: String
+    ) async throws(FetchSpreadsheetEndpoint.EndpointError) -> Int? {
+        try await fetchSpreadsheet(
+            spreadsheetID: spreadsheetID
+        )?.sheets.first?.properties.sheetID
+    }
+}
+
+// MARK: - Private Methods
+
+nonisolated private extension GoogleSheetsService {
+    // TODO: - This was simply moved so doesn't need reviewing..
+    /// Fetches a spreadsheets details by its ID.
+    func fetchSpreadsheet(
+        spreadsheetID: String
+    ) async throws(FetchSpreadsheetEndpoint.EndpointError) -> FetchSpreadsheetEndpoint.Response? {
+        try await apiManager.performRequest(
+            for: FetchSpreadsheetEndpoint(spreadsheetID: spreadsheetID)
+        )
     }
 }

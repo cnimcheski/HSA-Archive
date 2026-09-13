@@ -36,6 +36,8 @@ struct ReceiptsView: View {
                     uploadReceiptButton
                 }
             }
+            .animation(.easeInOut, value: viewModel.receiptSections)
+            .animation(.easeInOut, value: viewModel.filteredReceipts)
             .refreshable(action: receiptRepository.refreshReceipts)
     }
 }
@@ -84,6 +86,7 @@ private extension ReceiptsView {
             viewModel.showReceiptReview(receipt)
         }
         .redactedShimmer(isShimmering: receiptRepository.isLoading)
+        .receiptSwipeActions(receipt: receipt)
     }
     
     @ViewBuilder

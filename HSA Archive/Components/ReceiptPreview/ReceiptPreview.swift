@@ -43,7 +43,7 @@ private extension ReceiptPreview {
                 .font(.headline)
             
             VStack(alignment: .leading, spacing: Theme.Spacing.xxSmall) {
-                Text(receipt.transactionDate.formatted(.dateTime.month(.abbreviated).day()))
+                Text(receipt.transactionDate, format: .dateTime.month(.abbreviated).day())
                 Text(receipt.category.rawValue)
             }
             .font(.subheadline)

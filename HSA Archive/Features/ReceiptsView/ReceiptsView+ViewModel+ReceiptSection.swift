@@ -7,9 +7,9 @@
 
 import Foundation
 
-extension ReceiptsView.ViewModel {
+nonisolated extension ReceiptsView.ViewModel {
     /// A section of receipts grouped by their transaction date.
-    struct ReceiptSection: Identifiable {
+    struct ReceiptSection: Equatable, Identifiable {
         let date: Date
         let receipts: [Receipt]
         

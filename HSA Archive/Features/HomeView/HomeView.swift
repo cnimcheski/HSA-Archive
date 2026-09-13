@@ -31,6 +31,7 @@ struct HomeView: View {
                     }
                 }
             }
+            .animation(.easeInOut, value: receiptRepository.sortedReceipts)
             .refreshable(action: receiptRepository.refreshReceipts)
     }
 }

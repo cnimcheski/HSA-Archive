@@ -29,9 +29,29 @@ nonisolated final class GoogleDriveService {
     }
     
     /// Downloads the file data for the specified Drive file.
-    func downloadFile(fileID: String) async throws(DownloadFileEndpoint.EndpointError) -> Data? {
+    func downloadFile(
+        id: String
+    ) async throws(DownloadFileEndpoint.EndpointError) -> Data? {
         try await apiManager.performRequest(
-            for: DownloadFileEndpoint(fileID: fileID)
+            for: DownloadFileEndpoint(fileID: id)
+        )
+    }
+    
+    /// Moves the specified file to the trash.
+    func trashFile(
+        id: String
+    ) async throws(UpdateFileEndpoint.EndpointError) -> UpdateFileEndpoint.Response? {
+        try await apiManager.performRequest(
+            for: UpdateFileEndpoint(fileID: id, body: .init(trashed: true))
+        )
+    }
+    
+    /// Restores the specified file from the trash.
+    func untrashFile(
+        id: String
+    ) async throws(UpdateFileEndpoint.EndpointError) -> UpdateFileEndpoint.Response? {
+        try await apiManager.performRequest(
+            for: UpdateFileEndpoint(fileID: id, body: .init(trashed: false))
         )
     }
     
