@@ -23,6 +23,9 @@ struct ReceiptReviewView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     cancelButton
                 }
+                ToolbarItem(placement: .destructiveAction) {
+                    deleteButton
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     saveButton
                 }
@@ -143,6 +146,16 @@ private extension ReceiptReviewView {
     var cancelButton: some View {
         Button("Cancel", systemImage: "xmark") {
             viewModel.dismiss()
+        }
+    }
+    
+    @ViewBuilder
+    var deleteButton: some View {
+        if viewModel.displayedReceipt.wrappedValue.hasBeenSaved {
+            Button("Delete Receipt", systemImage: "trash", role: .destructive) {
+                // TODO: - Add Action
+            }
+            .tint(.red)
         }
     }
     

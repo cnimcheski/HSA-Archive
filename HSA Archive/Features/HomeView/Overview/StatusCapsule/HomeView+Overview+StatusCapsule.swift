@@ -28,11 +28,11 @@ extension HomeView.Overview {
 
 private extension HomeView.Overview.StatusCapsule {
     var content: some View {
-        ZStack(alignment: .leading) {
+        HStack(spacing: .zero) {
             if let location {
-                Color.brandSecondary
-                Color.accentColor
+                Color.accent
                     .frame(width: accentColorWidth(location))
+                Color.brandSecondary
             } else {
                 Color.secondary.opacity(0.3)
             }

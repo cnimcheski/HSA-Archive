@@ -43,7 +43,7 @@ nonisolated struct Receipt: Hashable, Identifiable {
         reimbursementDate: Date? = nil,
         submissionDate: Date? = nil,
         notes: String,
-        fileID: String?
+        fileID: String? = nil
     ) {
         self.id = id
         self.merchant = merchant
