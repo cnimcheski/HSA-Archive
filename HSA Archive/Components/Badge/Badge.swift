@@ -7,32 +7,36 @@
 
 import SwiftUI
 
-struct Badge: View {
+struct Badge<S: ShapeStyle>: View {
     private let content: String
-    private let color: Color
+    private let color: S
+    private let isLoading: Bool
     
     init(
         _ content: String,
-        color: Color = .brandSecondary
+        color: S = .brandSecondary,
+        isLoading: Bool
     ) {
         self.content = content
         self.color = color
+        self.isLoading = isLoading
     }
     
     var body: some View {
         Text(content)
-            .font(.subheadline)
+            .font(.caption)
             .fontWeight(.bold)
-            .foregroundStyle(color)
+            .foregroundStyle(isLoading ? AnyShapeStyle(.primary) : AnyShapeStyle(color))
             .padding(.vertical, Theme.Spacing.xxSmall)
             .padding(.horizontal, Theme.Spacing.small)
-            .background(color.withBackgroundOpacity)
-            .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.large))
+            .background(isLoading ? AnyShapeStyle(.secondary.withBackgroundOpacity) : AnyShapeStyle(color.withBackgroundOpacity))
+            .clipShape(.rect(cornerRadius: Theme.CornerRadius.large))
     }
 }
 
 // MARK: - Previews
 
 #Preview {
-    Badge("Available")
+    Badge("Available", isLoading: false)
+    Badge("Available", isLoading: true)
 }

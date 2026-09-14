@@ -19,6 +19,7 @@ nonisolated enum Placeholders {
             amount: 100.00,
             transactionDate: .now,
             category: .other,
+            reimbursementDate: Bool.random() ? .now : nil,
             notes: .placeholder(count: Int.random(in: 12...18))
         )
     }

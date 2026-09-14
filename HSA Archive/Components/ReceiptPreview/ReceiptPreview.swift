@@ -9,14 +9,26 @@ import SwiftUI
 
 struct ReceiptPreview: View {
     private let receipt: Receipt
+    private let isLoading: Bool
     private let action: () -> Void
     
-    init(receipt: Receipt, action: @escaping () -> Void) {
+    init(receipt: Receipt, isLoading: Bool, action: @escaping () -> Void) {
         self.receipt = receipt
+        self.isLoading = isLoading
         self.action = action
     }
     
     var body: some View {
+        content
+            .redactedShimmer(isShimmering: isLoading)
+            .receiptSwipeActions(receipt: receipt)
+    }
+}
+
+// MARK: - Private Views
+
+private extension ReceiptPreview {
+    var content: some View {
         Button(action: action) {
             HStack(spacing: Theme.Spacing.medium) {
                 leadingImage
@@ -26,11 +38,7 @@ struct ReceiptPreview: View {
             }
         }
     }
-}
-
-// MARK: - Private Views
-
-private extension ReceiptPreview {
+    
     var leadingImage: some View {
         Image(systemName: receipt.category.systemImage)
             .foregroundStyle(.accent)
@@ -63,9 +71,9 @@ private extension ReceiptPreview {
     @ViewBuilder
     var reimbursementBadge: some View {
         if receipt.isReimbursed {
-            Badge("Reimbursed", color: .accentColor)
+            Badge("Reimbursed", color: .accent, isLoading: isLoading)
         } else {
-            Badge("Available")
+            Badge("Available", isLoading: isLoading)
         }
     }
 }
@@ -74,7 +82,10 @@ private extension ReceiptPreview {
 
 #Preview {
     List {
-        ReceiptPreview(receipt: .mock()) {
+        ReceiptPreview(receipt: .mock(), isLoading: false) {
+            // Do something when the receipt is tapped
+        }
+        ReceiptPreview(receipt: .mock(), isLoading: true) {
             // Do something when the receipt is tapped
         }
     }

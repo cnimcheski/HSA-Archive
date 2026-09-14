@@ -53,11 +53,9 @@ private extension HomeView.RecentActivitySection {
     
     var receiptPreviewList: some View {
         ForEach(recentReceipts) { receipt in
-            ReceiptPreview(receipt: receipt) {
+            ReceiptPreview(receipt: receipt, isLoading: isLoading) {
                 onReceiptSelected(receipt)
             }
-            .redactedShimmer(isShimmering: isLoading)
-            .receiptSwipeActions(receipt: receipt)
         }
     }
     

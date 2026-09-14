@@ -23,13 +23,11 @@ struct ReceiptReviewView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     cancelButton
                 }
-                ToolbarItem(placement: .destructiveAction) {
-                    deleteButton
-                }
                 ToolbarItem(placement: .confirmationAction) {
                     saveButton
                 }
             }
+            .safeAreaInset(edge: .bottom) { deleteButton }
             .interactiveDismissDisabled()
             .animation(.easeInOut, value: viewModel.displayedReceipt.isReimbursed.wrappedValue)
             .alert(viewModel: $viewModel.alertViewModel)
@@ -153,12 +151,13 @@ private extension ReceiptReviewView {
     @ViewBuilder
     var deleteButton: some View {
         if viewModel.displayedReceipt.wrappedValue.hasBeenSaved {
-            Button("Delete Receipt", systemImage: "trash", role: .destructive) {
+            AppButton("Delete Receipt") {
                 Task {
                     await viewModel.delete()
                 }
             }
             .tint(.red)
+            .padding()
             .disabled(viewModel.isDeleteDisabled)
         }
     }
