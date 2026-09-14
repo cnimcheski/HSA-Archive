@@ -10,7 +10,7 @@ import Navigation
 import SwiftUI
 
 struct TabsCoordinator: View {
-    @InjectedObservable(\.receiptRepository) var receiptRepository
+    @Injected(\.receiptRepository) private var receiptRepository
     private let viewModel: ViewModel
     
     init(viewModel: ViewModel) {
