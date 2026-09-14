@@ -53,6 +53,9 @@
 		999ECB823055F66700484B13 /* UpdateFileEndpoint+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB813055F66700484B13 /* UpdateFileEndpoint+Response.swift */; };
 		999ECB853056772D00484B13 /* ReceiptSwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB843056772D00484B13 /* ReceiptSwipeActions.swift */; };
 		999ECB88305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB87305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift */; };
+		999ECB8C3057B42800484B13 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB8B3057B42800484B13 /* ProfileCoordinator.swift */; };
+		999ECB8F3057B57D00484B13 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB8E3057B57D00484B13 /* ProfileView.swift */; };
+		999ECB913057B59D00484B13 /* ProfileView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB903057B59D00484B13 /* ProfileView+ViewModel.swift */; };
 		99A541F93040035B001997B6 /* HomeView+Overview+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */; };
 		99A541FC304485B5001997B6 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FB304485B5001997B6 /* AppSession.swift */; };
 		99A541FF30461CD0001997B6 /* CurrentValueAsyncStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */; };
@@ -262,6 +265,9 @@
 		999ECB813055F66700484B13 /* UpdateFileEndpoint+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateFileEndpoint+Response.swift"; sourceTree = "<group>"; };
 		999ECB843056772D00484B13 /* ReceiptSwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSwipeActions.swift; sourceTree = "<group>"; };
 		999ECB87305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview+StatusCapsule.swift"; sourceTree = "<group>"; };
+		999ECB8B3057B42800484B13 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		999ECB8E3057B57D00484B13 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		999ECB903057B59D00484B13 /* ProfileView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView+ViewModel.swift"; sourceTree = "<group>"; };
 		99A541F83040035B001997B6 /* HomeView+Overview+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView+Overview+ViewModel.swift"; sourceTree = "<group>"; };
 		99A541FB304485B5001997B6 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
 		99A541FE30461CD0001997B6 /* CurrentValueAsyncStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueAsyncStream.swift; sourceTree = "<group>"; };
@@ -663,6 +669,15 @@
 			path = StatusCapsule;
 			sourceTree = "<group>";
 		};
+		999ECB8D3057B56C00484B13 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				999ECB8E3057B57D00484B13 /* ProfileView.swift */,
+				999ECB903057B59D00484B13 /* ProfileView+ViewModel.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
 		99A541FA304485AE001997B6 /* AppSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -799,6 +814,7 @@
 			isa = PBXGroup;
 			children = (
 				99C008D33000BD4F00CDF610 /* HomeCoordinator.swift */,
+				999ECB8B3057B42800484B13 /* ProfileCoordinator.swift */,
 				99C008D53000BD5600CDF610 /* ReceiptsCoordinator.swift */,
 			);
 			path = TabCoordinators;
@@ -812,6 +828,7 @@
 				99DD4483303E3BA800843826 /* InvalidReceiptsView */,
 				99D231A2304A4920005F3B9E /* MultiSelectionView */,
 				99C0095E30049B5100CDF610 /* OnboardingView */,
+				999ECB8D3057B56C00484B13 /* ProfileView */,
 				99D231AA304A8C7C005F3B9E /* ReceiptFiltersView */,
 				99C00992300D97B900CDF610 /* ReceiptReviewView */,
 				99C0098A300D503700CDF610 /* ReceiptScannerView */,
@@ -1677,6 +1694,7 @@
 				99F2DD1A302C087A00A4B653 /* UIApplication+Extensions.swift in Sources */,
 				99021A9E3016FA7700D7DC8D /* AIRequest.swift in Sources */,
 				99DD4470303AC44900843826 /* SpreadsheetFailureConvertible.swift in Sources */,
+				999ECB913057B59D00484B13 /* ProfileView+ViewModel.swift in Sources */,
 				990B584E304CDA9600D8AB4E /* AdaptiveBadge.swift in Sources */,
 				99D231A6304A496E005F3B9E /* MultiSelectionView+ViewModel.swift in Sources */,
 				99C008DB3001A4A900CDF610 /* HomeView+ViewModel.swift in Sources */,
@@ -1824,8 +1842,10 @@
 				99DD445C3033A19200843826 /* FetchSpreadsheetEndpoint+Response.swift in Sources */,
 				99C009A83010014500CDF610 /* TextRecognizer.swift in Sources */,
 				99DD4476303CE31A00843826 /* ReceiptSpreadsheetDecoder.swift in Sources */,
+				999ECB8F3057B57D00484B13 /* ProfileView.swift in Sources */,
 				99D2D5EC302A5E5A007A65C3 /* ReceiptPhotosPickerViewModel.swift in Sources */,
 				990B58653050B4FF00D8AB4E /* UpdateSpreadsheetRowsEndpoint+Response.swift in Sources */,
+				999ECB8C3057B42800484B13 /* ProfileCoordinator.swift in Sources */,
 				99C0097C3009EFD800CDF610 /* OnboardingView+ProgressPills.swift in Sources */,
 				99DD446E303A9E6300843826 /* Data+Extensions.swift in Sources */,
 				99021A9C3016E42800D7DC8D /* RedactedShimmer.swift in Sources */,

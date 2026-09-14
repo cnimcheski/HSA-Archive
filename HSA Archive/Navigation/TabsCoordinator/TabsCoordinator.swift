@@ -21,6 +21,7 @@ struct TabsCoordinator: View {
         TabView(selection: viewModel.tabSelection) {
             homeCoordinator
             receiptsCoordinator
+            profileCoordinator
         }
         .onFirstTask(receiptRepository.loadReceipts)
     }
@@ -46,6 +47,16 @@ private extension TabsCoordinator {
             value: ViewModel.Tab.receipts
         ) {
             NavigationStackCoordinator(for: viewModel.receiptsCoordinator)
+        }
+    }
+    
+    var profileCoordinator: some TabContent<ViewModel.Tab> {
+        Tab(
+            "Profile",
+            systemImage: "person.fill",
+            value: ViewModel.Tab.profile
+        ) {
+            NavigationStackCoordinator(for: viewModel.profileCoordinator)
         }
     }
 }

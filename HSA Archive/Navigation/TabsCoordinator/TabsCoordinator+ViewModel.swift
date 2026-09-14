@@ -14,12 +14,14 @@ extension TabsCoordinator {
         enum Tab {
             case home
             case receipts
+            case profile
         }
         
         private var activeTab = Tab.home
         
         let homeCoordinator = HomeCoordinator()
         let receiptsCoordinator = ReceiptsCoordinator()
+        let profileCoordinator = ProfileCoordinator()
         
         var tabSelection: Binding<Tab> {
             Binding(
@@ -44,6 +46,8 @@ private extension TabsCoordinator.ViewModel {
             homeCoordinator.popToRoot()
         case .receipts:
             receiptsCoordinator.popToRoot()
+        case .profile:
+            profileCoordinator.popToRoot()
         }
     }
 }
