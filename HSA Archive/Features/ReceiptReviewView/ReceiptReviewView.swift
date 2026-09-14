@@ -147,15 +147,19 @@ private extension ReceiptReviewView {
         Button("Cancel", systemImage: "xmark") {
             viewModel.dismiss()
         }
+        .disabled(viewModel.areToolbarActionsDisabled)
     }
     
     @ViewBuilder
     var deleteButton: some View {
         if viewModel.displayedReceipt.wrappedValue.hasBeenSaved {
             Button("Delete Receipt", systemImage: "trash", role: .destructive) {
-                // TODO: - Add Action
+                Task {
+                    await viewModel.delete()
+                }
             }
             .tint(.red)
+            .disabled(viewModel.isDeleteDisabled)
         }
     }
     

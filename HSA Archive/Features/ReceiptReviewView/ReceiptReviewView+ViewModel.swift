@@ -49,17 +49,28 @@ extension ReceiptReviewView {
                 )
         }
         
-        var isSaveDisabled: Bool {
+        var areToolbarActionsDisabled: Bool {
             isSaving
+                || isDeleting
+        }
+        
+        var isSaveDisabled: Bool {
+            areToolbarActionsDisabled
                 || isExtractingReceiptDetails
                 || receipt.merchant.isEmpty
                 || receipt.amount.isZero
+        }
+        
+        var isDeleteDisabled: Bool {
+            areToolbarActionsDisabled
+                || isExtractingReceiptDetails
         }
         
         private(set) var imageState: PreviewImage.ImageState
         private(set) var errorBannerViewModel: ErrorBanner.ViewModel?
         private(set) var isExtractingReceiptDetails = false
         private var isSaving = false
+        private var isDeleting = false
         private var receipt = Receipt.empty
         
         /// Initializes a review for a new receipt with a captured image.
@@ -116,6 +127,14 @@ extension ReceiptReviewView {
             } else {
                 await addReceipt()
             }
+        }
+        
+        func delete() async {
+            defer { isDeleting = false }
+            isDeleting = true
+            
+            guard await receiptRepository.delete(receipt) != nil else { return }
+            dismiss()
         }
         
         func dismiss(shouldShowScanner: Bool = false) {
