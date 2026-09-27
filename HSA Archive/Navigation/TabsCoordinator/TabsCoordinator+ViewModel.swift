@@ -14,6 +14,7 @@ extension TabsCoordinator {
         enum Tab {
             case home
             case receipts
+            case growth
             case profile
         }
         
@@ -21,6 +22,7 @@ extension TabsCoordinator {
         
         let homeCoordinator = HomeCoordinator()
         let receiptsCoordinator = ReceiptsCoordinator()
+        let growthCoordinator = GrowthCoordinator()
         let profileCoordinator = ProfileCoordinator()
         
         var tabSelection: Binding<Tab> {
@@ -46,6 +48,8 @@ private extension TabsCoordinator.ViewModel {
             homeCoordinator.popToRoot()
         case .receipts:
             receiptsCoordinator.popToRoot()
+        case .growth:
+            growthCoordinator.popToRoot()
         case .profile:
             profileCoordinator.popToRoot()
         }

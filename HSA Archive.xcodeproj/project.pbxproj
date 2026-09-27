@@ -61,6 +61,9 @@
 		995F9D12306397CC0096CEB9 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F9D11306397CC0096CEB9 /* ShareView.swift */; };
 		995F9D14306398900096CEB9 /* ShareView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F9D13306398900096CEB9 /* ShareView+ViewModel.swift */; };
 		995F9D173064AF7C0096CEB9 /* ListLoadingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F9D163064AF7C0096CEB9 /* ListLoadingRow.swift */; };
+		995F9D193068EFE90096CEB9 /* GrowthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F9D183068EFE90096CEB9 /* GrowthCoordinator.swift */; };
+		995F9D1C3068F1070096CEB9 /* GrowthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F9D1B3068F1070096CEB9 /* GrowthView.swift */; };
+		995F9D1E3068F1360096CEB9 /* GrowthView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995F9D1D3068F1360096CEB9 /* GrowthView+ViewModel.swift */; };
 		999ECB763053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */; };
 		999ECB783053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */; };
 		999ECB7B3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */; };
@@ -288,6 +291,9 @@
 		995F9D11306397CC0096CEB9 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		995F9D13306398900096CEB9 /* ShareView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareView+ViewModel.swift"; sourceTree = "<group>"; };
 		995F9D163064AF7C0096CEB9 /* ListLoadingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLoadingRow.swift; sourceTree = "<group>"; };
+		995F9D183068EFE90096CEB9 /* GrowthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCoordinator.swift; sourceTree = "<group>"; };
+		995F9D1B3068F1070096CEB9 /* GrowthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthView.swift; sourceTree = "<group>"; };
+		995F9D1D3068F1360096CEB9 /* GrowthView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrowthView+ViewModel.swift"; sourceTree = "<group>"; };
 		999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift"; sourceTree = "<group>"; };
 		999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift"; sourceTree = "<group>"; };
 		999ECB7A3053D75A00484B13 /* ReceiptSpreadsheetEncoder+EncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetEncoder+EncodingError.swift"; sourceTree = "<group>"; };
@@ -736,6 +742,15 @@
 			path = ListLoadingRow;
 			sourceTree = "<group>";
 		};
+		995F9D1A3068F0FA0096CEB9 /* GrowthView */ = {
+			isa = PBXGroup;
+			children = (
+				995F9D1B3068F1070096CEB9 /* GrowthView.swift */,
+				995F9D1D3068F1360096CEB9 /* GrowthView+ViewModel.swift */,
+			);
+			path = GrowthView;
+			sourceTree = "<group>";
+		};
 		999ECB743053A4A100484B13 /* ReceiptSpreadsheetService */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,6 +951,7 @@
 		99C008D23000BD4000CDF610 /* TabCoordinators */ = {
 			isa = PBXGroup;
 			children = (
+				995F9D183068EFE90096CEB9 /* GrowthCoordinator.swift */,
 				99C008D33000BD4F00CDF610 /* HomeCoordinator.swift */,
 				999ECB8B3057B42800484B13 /* ProfileCoordinator.swift */,
 				99C008D53000BD5600CDF610 /* ReceiptsCoordinator.swift */,
@@ -947,6 +963,7 @@
 			isa = PBXGroup;
 			children = (
 				99D2D5F2302B9873007A65C3 /* FullImageView */,
+				995F9D1A3068F0FA0096CEB9 /* GrowthView */,
 				99C008D83001A49A00CDF610 /* HomeView */,
 				99DD4483303E3BA800843826 /* InvalidReceiptsView */,
 				99D231A2304A4920005F3B9E /* MultiSelectionView */,
@@ -1831,6 +1848,7 @@
 				99D5540A3014229900E937BB /* MenuLabel.swift in Sources */,
 				99DD4450303179EA00843826 /* Container+Repositories.swift in Sources */,
 				99D5540B3014229900E937BB /* DefaultMenu.swift in Sources */,
+				995F9D193068EFE90096CEB9 /* GrowthCoordinator.swift in Sources */,
 				99F2DD3C302EBBCF00A4B653 /* CreateSpreadsheetEndpoint+Body.swift in Sources */,
 				99DD4466303A255000843826 /* UploadFileEndpoint.swift in Sources */,
 				99A541F93040035B001997B6 /* HomeView+Overview+ViewModel.swift in Sources */,
@@ -1925,6 +1943,7 @@
 				99DD44533031893C00843826 /* BatchUpdateSpreadsheetEndpoint.swift in Sources */,
 				99D2D5E23027C637007A65C3 /* ReceiptPhotosPicker.swift in Sources */,
 				99DD4485303E3BD200843826 /* InvalidReceiptsView.swift in Sources */,
+				995F9D1E3068F1360096CEB9 /* GrowthView+ViewModel.swift in Sources */,
 				99C008DF3001A57300CDF610 /* ReceiptsView.swift in Sources */,
 				99F2DD52302F892300A4B653 /* FindSpreadsheetIDEndpoint+Response.swift in Sources */,
 				99D2D5C530212C7D007A65C3 /* ErrorBanner+ViewModel+ReceiptReviewView.swift in Sources */,
@@ -1938,6 +1957,7 @@
 				99C00908300417EA00CDF610 /* Spacing.swift in Sources */,
 				99C008D63000BD5600CDF610 /* ReceiptsCoordinator.swift in Sources */,
 				99F2DD41302ECF4400A4B653 /* AppendSpreadsheetRowsEndpoint.swift in Sources */,
+				995F9D1C3068F1070096CEB9 /* GrowthView.swift in Sources */,
 				99F2DD30302D8D3500A4B653 /* SignInView+BenefitsView+Benefit.swift in Sources */,
 				99C00991300D873E00CDF610 /* AddReceiptCoordinator.swift in Sources */,
 				99C0090A3004197100CDF610 /* Theme.swift in Sources */,

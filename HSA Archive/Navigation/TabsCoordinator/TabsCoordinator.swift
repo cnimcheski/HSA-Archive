@@ -21,6 +21,7 @@ struct TabsCoordinator: View {
         TabView(selection: viewModel.tabSelection) {
             homeCoordinator
             receiptsCoordinator
+            growthCoordinator
             profileCoordinator
         }
     }
@@ -46,6 +47,16 @@ private extension TabsCoordinator {
             value: ViewModel.Tab.receipts
         ) {
             NavigationStackCoordinator(for: viewModel.receiptsCoordinator)
+        }
+    }
+    
+    var growthCoordinator: some TabContent<ViewModel.Tab> {
+        Tab(
+            "Growth",
+            systemImage: "chart.line.uptrend.xyaxis",
+            value: ViewModel.Tab.growth
+        ) {
+            NavigationStackCoordinator(for: viewModel.growthCoordinator)
         }
     }
     
