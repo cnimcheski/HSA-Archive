@@ -18,24 +18,17 @@ nonisolated final class GoogleAuthService {
     /// Covers Drive + Sheets API access only for files creates by this app or the user opens with the app.
     private let scopes = ["https://www.googleapis.com/auth/drive.file"]
     
-    private let isSignedInState = CurrentValueAsyncStream(true)
+    private let authStateStream = CurrentValueAsyncStream(AuthState.restoring)
     
-    var isSignedIn: Bool {
-        isSignedInState.value
+    var authState: AuthState {
+        authStateStream.value
     }
     
-    var isSignedInValues: AsyncStream<Bool> {
-        isSignedInState.values
+    var authStateValues: AsyncStream<AuthState> {
+        authStateStream.values
     }
     
-    private var currentUser: GIDGoogleUser? {
-        get async {
-            if let restorationTask { _ = try? await restorationTask.value }
-            return GIDSignIn.sharedInstance.currentUser
-        }
-    }
-    
-    private var restorationTask: Task<GIDGoogleUser?, Error>?
+    private var restorationTask: Task<GIDGoogleUser?, Never>?
     
     /// Configures Google Sign In and its App Check provider.
     func configure() {
@@ -52,7 +45,12 @@ nonisolated final class GoogleAuthService {
     func restorePreviousSignIn() {
         guard restorationTask == nil else { return }
         restorationTask = Task {
-            try await GIDSignIn.sharedInstance.restorePreviousSignIn()
+            guard let currentUser = try? await GIDSignIn.sharedInstance.restorePreviousSignIn() else {
+                authStateStream.send(.signedOut)
+                return nil
+            }
+            authStateStream.send(.signedIn(currentUser))
+            return currentUser
         }
     }
 
@@ -69,7 +67,7 @@ nonisolated final class GoogleAuthService {
                 hint: nil,
                 additionalScopes: scopes
             )
-            isSignedInState.send(true)
+            authStateStream.send(.signedIn(response.user))
             return response
         } catch let error as GIDSignInError where error.code == .canceled {
             return nil
@@ -79,10 +77,9 @@ nonisolated final class GoogleAuthService {
         }
     }
 
-    // TODO: - Use this sign out method in the profile tab Sign Out button
     @MainActor
     func signOut() {
-        isSignedInState.send(false)
+        authStateStream.send(.signedOut)
         GIDSignIn.sharedInstance.signOut()
     }
 }
@@ -90,6 +87,13 @@ nonisolated final class GoogleAuthService {
 // MARK: - Private Methods
 
 nonisolated private extension GoogleAuthService {
+    /// Returns the authenticated user after waiting for sign-in restoration to complete.
+    func authenticatedUser() async throws -> GIDGoogleUser {
+        if let restorationTask { _ = await restorationTask.value }
+        guard let currentUser = authState.currentUser else { throw URLError(.userAuthenticationRequired) }
+        return currentUser
+    }
+    
     @MainActor
     func handleSignInError() {
         ToastManager.shared.show(DefaultToastType.googleSignInFailed)
@@ -100,12 +104,12 @@ nonisolated private extension GoogleAuthService {
 
 nonisolated extension GoogleAuthService: APIAuthenticator {
     func getAccessToken() async throws -> String {
-        guard let currentUser = await currentUser else { throw URLError(.userAuthenticationRequired) }
+        let currentUser = try await authenticatedUser()
         return try await currentUser.refreshTokensIfNeeded().accessToken.tokenString
     }
     
     func refreshAccessToken() async throws {
-        guard let currentUser = await currentUser else { throw URLError(.userAuthenticationRequired) }
+        let currentUser = try await authenticatedUser()
         try await currentUser.refreshTokensIfNeeded()
     }
 }

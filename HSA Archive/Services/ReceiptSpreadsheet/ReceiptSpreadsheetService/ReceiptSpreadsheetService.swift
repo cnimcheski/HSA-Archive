@@ -13,20 +13,6 @@ nonisolated final class ReceiptSpreadsheetService {
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
     
-    /// Creates and configures the app's spreadsheet with the required worksheet and header row.
-    func setupSpreadsheet() async -> AppendSpreadsheetRowsEndpoint.Response? {
-        guard let spreadsheetID = await createSpreadsheet() else { return nil }
-        do {
-            guard try await renameFirstSheet(spreadsheetID: spreadsheetID) != nil else { return nil }
-            guard let response = try await addHeaderRow(spreadsheetID: spreadsheetID) else { return nil }
-            userDefaultsManager.setSpreadsheetID(spreadsheetID)
-            return response
-        } catch {
-            await handleSetupSpreadsheetFailure()
-            return nil
-        }
-    }
-    
     /// Runs a Sheets operation using the stored spreadsheet ID.
     /// If the spreadsheet can't be found, recovers an existing spreadsheet or creates a new one,
     /// then runs the appropriate operation against the recovered spreadsheet ID.
@@ -57,6 +43,20 @@ nonisolated final class ReceiptSpreadsheetService {
 // MARK: - Private Methods
 
 nonisolated private extension ReceiptSpreadsheetService {
+    /// Creates and configures the app's spreadsheet with the required worksheet and header row.
+    func setupSpreadsheet() async -> AppendSpreadsheetRowsEndpoint.Response? {
+        guard let spreadsheetID = await createSpreadsheet() else { return nil }
+        do {
+            guard try await renameFirstSheet(spreadsheetID: spreadsheetID) != nil else { return nil }
+            guard let response = try await addHeaderRow(spreadsheetID: spreadsheetID) else { return nil }
+            userDefaultsManager.setSpreadsheetID(spreadsheetID)
+            return response
+        } catch {
+            await handleSetupSpreadsheetFailure()
+            return nil
+        }
+    }
+    
     /// Creates an app receipt spreadsheet.
     func createSpreadsheet() async -> String? {
         await googleDriveService.createSpreadsheet(
@@ -126,13 +126,17 @@ private extension ReceiptSpreadsheetService {
     
     /// Recovers the spreadsheet by finding an existing one or creating a new one, otherwise returns nil.
     func recoverSpreadsheet() async -> SpreadsheetRecoveryResult? {
+        let hadStoredSpreadsheetID = userDefaultsManager.spreadsheetID != nil
         userDefaultsManager.clearSpreadsheetID()
         if let spreadsheetID = await googleDriveService.findExistingSpreadsheetID() {
             userDefaultsManager.setSpreadsheetID(spreadsheetID)
             return .existing(spreadsheetID)
         } else {
             guard let response = await setupSpreadsheet() else { return nil }
-            ToastManager.shared.show(DefaultToastType.spreadsheetRecreated)
+            let toastType = hadStoredSpreadsheetID
+                ? DefaultToastType.spreadsheetRecreated
+                : DefaultToastType.spreadsheetCreated
+            ToastManager.shared.show(toastType)
             return .new(response.spreadsheetID)
         }
     }

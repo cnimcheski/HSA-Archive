@@ -120,7 +120,7 @@ private extension ReceiptsView {
     
     @ViewBuilder
     var filtersButton: some View {
-        if googleAuthService.isSignedIn {
+        if googleAuthService.authState.isSignedIn {
             Button(
                 "Filter and sort",
                 systemImage: "line.3.horizontal.decrease",

@@ -16,12 +16,13 @@ extension HomeView {
         }
         
         var body: some View {
-            VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
-                totalPurchasesView
-                balanceCards
-                statusCapsule
+            AppGroupBox("Total receipts on file") {
+                VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
+                    totalPurchasesView
+                    balanceCards
+                    statusCapsule
+                }
             }
-            .defaultCardStyle()
             .listRowSeparator(.hidden)
         }
     }
@@ -32,8 +33,6 @@ extension HomeView {
 private extension HomeView.Overview {
     var totalPurchasesView: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xxSmall) {
-            Text("Total receipts on file")
-                .foregroundStyle(.secondary)
             Text(viewModel.totalAmount, format: AppFormatStyle.Currency.current)
                 .xLargeTitle()
                 .fontWeight(.bold)

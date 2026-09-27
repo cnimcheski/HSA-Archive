@@ -42,10 +42,6 @@ extension SignInView {
             isSigningIn = true
             
             guard await googleAuthService.signIn() != nil else { return }
-            if await googleDriveService.existingSpreadsheetID() == nil {
-                guard await receiptSpreadsheetService.setupSpreadsheet() != nil else { return }
-                ToastManager.shared.show(DefaultToastType.spreadsheetCreated)
-            }
             onSuccess()
             close()
         }

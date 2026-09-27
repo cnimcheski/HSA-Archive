@@ -26,9 +26,10 @@ struct InvalidReceiptView: View {
 
 private extension InvalidReceiptView {
     var failureIcon: some View {
-        Image(systemName: "exclamationmark.triangle")
-            .foregroundStyle(.red)
-            .defaultCardStyle(backgroundColor: .red.withBackgroundOpacity)
+        AppGroupBox {
+            Image(systemName: "exclamationmark.triangle")
+                .foregroundStyle(.red)
+        }
     }
     
     var failureDescription: some View {

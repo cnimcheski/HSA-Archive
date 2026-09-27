@@ -22,13 +22,8 @@ nonisolated struct UploadFileEndpoint: Endpoint {
     var dateDecodingFormat: DateFormat? = nil
     var requiresAuth: Bool = true
     
-    init(
-        name: String,
-        mimeType: String,
-        data: Data
-    ) throws(BodyError) {
+    init(metadata: Metadata, data: Data) throws(BodyError) {
         let boundary = "Boundary-\(UUID().uuidString)"
-        let metadata = Metadata(name: name, mimeType: mimeType)
         guard let encodedMetadata = try? JSONEncoder().encode(metadata) else { throw .encodingFailed }
         
         var rawBody = Data()
@@ -37,7 +32,7 @@ nonisolated struct UploadFileEndpoint: Endpoint {
         rawBody.append(encodedMetadata)
         rawBody.append("\r\n")
         rawBody.append("--\(boundary)\r\n")
-        rawBody.append("Content-Type: \(mimeType)\r\n\r\n")
+        rawBody.append("Content-Type: \(metadata.mimeType)\r\n\r\n")
         rawBody.append(data)
         rawBody.append("\r\n")
         rawBody.append("--\(boundary)--\r\n")

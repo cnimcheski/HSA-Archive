@@ -43,7 +43,7 @@ private extension HomeView {
         List {
             if !receiptRepository.hasError {
                 Overview(receipts: receiptRepository.sortedReceipts, isLoading: receiptRepository.isLoading)
-                if !googleAuthService.isSignedIn {
+                if googleAuthService.authState.isSignedOut {
                     signInBanner
                 }
                 recentActivitySection

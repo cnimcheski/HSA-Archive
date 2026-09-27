@@ -35,6 +35,7 @@ extension ReceiptReviewView {
         private let googleDriveService = Container.shared.googleDriveService()
         private let receiptRepository = Container.shared.receiptRepository()
         private let textRecognizer = Container.shared.textRecognizer()
+        private let userDefaultsManager = Container.shared.userDefaultsManager()
         
         weak var delegate: NavigationDelegate?
         
@@ -42,7 +43,7 @@ extension ReceiptReviewView {
         
         var displayedReceipt: Binding<Receipt> {
             isExtractingReceiptDetails
-                ? .constant(Placeholders.receipt)
+                ? .constant(Placeholders.receipt(isReimbursed: false))
                 : Binding(
                     get: { self.receipt },
                     set: { self.receipt = $0 }
@@ -76,7 +77,7 @@ extension ReceiptReviewView {
         /// Initializes a review for a new receipt with a captured image.
         init(uiImage: UIImage) {
             imageState = .loaded(uiImage)
-            isExtractingReceiptDetails = true
+            isExtractingReceiptDetails = userDefaultsManager.isAIReceiptExtractionEnabled
         }
         
         /// Initializes a review for an existing receipt whose image must be loaded.
@@ -88,7 +89,7 @@ extension ReceiptReviewView {
         func onAppear() async {
             if receipt.hasBeenSaved {
                 await loadImage()
-            } else {
+            } else if userDefaultsManager.isAIReceiptExtractionEnabled {
                 await extractReceiptDetails()
             }
         }
@@ -118,7 +119,7 @@ extension ReceiptReviewView {
             defer { isSaving = false }
             isSaving = true
             
-            guard googleAuthService.isSignedIn else {
+            guard googleAuthService.authState.isSignedIn else {
                 showSignInView()
                 return
             }

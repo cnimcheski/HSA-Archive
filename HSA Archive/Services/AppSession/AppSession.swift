@@ -26,8 +26,8 @@ private extension AppSession {
     /// Observes auth state changes and updates the app session accordingly.
     func observeAuthChanges() {
         authObservationTask = Task {
-            for await isSignedIn in googleAuthService.isSignedInValues {
-                await handleAuthChange(isSignedIn)
+            for await authState in googleAuthService.authStateValues {
+                await handleAuthChange(authState.isSignedIn)
             }
         }
     }
@@ -43,7 +43,9 @@ private extension AppSession {
     
     /// Loads the authenticated user's data into the app session.
     func loadUserData() async {
-        await receiptRepository.loadReceipts()
+        async let loadReceiptsTask: Void = receiptRepository.loadReceipts()
+        async let ensureReceiptsFolderTask = receiptRepository.loadReceiptsFolderID()
+        _ = await (loadReceiptsTask, ensureReceiptsFolderTask)
     }
     
     /// Clears the authenticated user's data from the app session.
@@ -51,5 +53,6 @@ private extension AppSession {
         // TODO: - Is there anything else that needs to happen when user becomes unauthenticated?
         receiptRepository.clear()
         userDefaultsManager.clearSpreadsheetID()
+        userDefaultsManager.clearReceiptsFolderID()
     }
 }

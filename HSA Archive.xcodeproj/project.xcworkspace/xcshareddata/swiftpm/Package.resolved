@@ -1,5 +1,5 @@
 {
-  "originHash" : "5504524c9e22855e63658eaa74572ac561a1ef16abb76769c8d9d8885948690b",
+  "originHash" : "7cd73a5c84df1736b0099c04d6259c3f5aee3f5648adf3432f66858082fe5f7e",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Dialogs.git",
       "state" : {
-        "revision" : "4e3d27749f4fb9019d342993b8713a715a738c14",
-        "version" : "1.0.0"
+        "revision" : "aacf5792786958e712580ae4721de3791171c43c",
+        "version" : "1.0.1"
       }
     },
     {
@@ -168,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cnimcheski/Networking.git",
       "state" : {
-        "revision" : "cf015278055b382514caf192711d55f76fc7eb31",
-        "version" : "1.0.35"
+        "revision" : "5084d484b54226950d9f0103811f8bec4a204be6",
+        "version" : "1.0.36"
       }
     },
     {
@@ -224,6 +224,15 @@
       "state" : {
         "revision" : "3ff13314e73e72c0f544415f1cacc6443e9259e5",
         "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/weichsel/ZIPFoundation.git",
+      "state" : {
+        "revision" : "22787ffb59de99e5dc1fbfe80b19c97a904ad48d",
+        "version" : "0.9.20"
       }
     }
   ],

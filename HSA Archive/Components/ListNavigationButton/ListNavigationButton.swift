@@ -10,6 +10,7 @@ import SwiftUI
 enum ListNavigationButtonType {
     case link
     case dropDown
+    case externalLink
     
     var imageString: String {
         switch self {
@@ -17,6 +18,8 @@ enum ListNavigationButtonType {
             "chevron.right"
         case .dropDown:
             "chevron.down"
+        case .externalLink:
+            "arrow.up.right"
         }
     }
 }

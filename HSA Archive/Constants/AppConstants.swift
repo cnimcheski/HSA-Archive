@@ -22,4 +22,7 @@ nonisolated final class AppConstants {
     static let worksheetName = "Receipts"
     static let spreadsheetAppPropertyKey = "HSA_Archive"
     static let spreadsheetAppPropertyValue = "true"
+    
+    // MARK: - Drive
+    static let receiptsFolderName = "Receipts"
 }

@@ -12,23 +12,23 @@ nonisolated enum Placeholders {
     
     // MARK: - Receipt Placeholders
     
-    static var receipt: Receipt {
+    static func receipt(isReimbursed: Bool = Bool.random()) -> Receipt {
         .init(
             merchant: .placeholder(count: Int.random(in: 8...14)),
             description: .placeholder(count: Int.random(in: 10...18)),
             amount: 100.00,
             transactionDate: .now,
             category: .other,
-            reimbursementDate: Bool.random() ? .now : nil,
+            reimbursementDate: isReimbursed ? .now : nil,
             notes: .placeholder(count: Int.random(in: 12...18))
         )
     }
     
     static var receipts: [Receipt] {
-        (0..<10).map { _ in Self.receipt }
+        (0..<10).map { _ in Self.receipt() }
     }
     
     static var recentReceipts: [Receipt] {
-        (0..<3).map { _ in Self.receipt }
+        (0..<3).map { _ in Self.receipt() }
     }
 }

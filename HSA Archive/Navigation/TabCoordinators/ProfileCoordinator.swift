@@ -11,7 +11,8 @@ import SwiftUI
 @Observable
 final class ProfileCoordinator: StackCoordinator {
     enum Page: CoordinatedPage {
-        case temp
+        case share(ShareView.ViewModel)
+        case signIn(SignInView.ViewModel)
     }
     
     var path: [Page] = []
@@ -32,8 +33,10 @@ final class ProfileCoordinator: StackCoordinator {
     
     func build(page: Page) -> some View {
         switch page {
-        case .temp:
-            Text("Temp")
+        case let .share(viewModel):
+            ShareView(viewModel: viewModel)
+        case let .signIn(viewModel):
+            SignInView(viewModel: viewModel.setup(delegate: self))
         }
     }
 }
@@ -43,8 +46,19 @@ final class ProfileCoordinator: StackCoordinator {
 extension ProfileCoordinator: ProfileView.NavigationDelegate {
     func navigate(to destination: ProfileView.ViewModel.Destination) {
         switch destination {
-        case .temp:
-            print("temp") // TODO: - Add actual handling...
+        case let .share(viewModel):
+            push(.share(viewModel), type: .sheet)
+        case let .signIn(viewModel):
+            push(.signIn(viewModel), type: .fullScreenCover)
+        }
+    }
+}
+
+extension ProfileCoordinator: SignInView.NavigationDelegate {
+    func navigate(to destination: SignInView.ViewModel.Destination) {
+        switch destination {
+        case .dismiss:
+            dismissFullScreenCover()
         }
     }
 }

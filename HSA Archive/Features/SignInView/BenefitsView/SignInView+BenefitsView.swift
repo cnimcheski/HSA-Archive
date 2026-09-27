@@ -32,9 +32,10 @@ private extension SignInView.BenefitsView {
     }
     
     func iconView(_ benefit: Benefit) -> some View {
-        Image(systemName: benefit.systemImage)
-            .font(.headline)
-            .defaultCardStyle(backgroundColor: .accentBackground)
+        AppGroupBox {
+            Image(systemName: benefit.systemImage)
+                .font(.headline)
+        }
     }
     
     func descriptionView(_ benefit: Benefit) -> some View {

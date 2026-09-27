@@ -9,6 +9,7 @@ import FactoryKit
 import Networking
 import Toast
 import UIKit
+import ZIPFoundation
 
 @Observable
 final class ReceiptRepository {
@@ -21,6 +22,7 @@ final class ReceiptRepository {
     private let googleDriveService = Container.shared.googleDriveService()
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let receiptSpreadsheetService = Container.shared.receiptSpreadsheetService()
+    private let userDefaultsManager = Container.shared.userDefaultsManager()
     
     // TODO: - Sort by submission date instead?
     var sortedReceipts: [Receipt] {
@@ -48,6 +50,14 @@ final class ReceiptRepository {
     /// Refreshes receipts by fetching all receipt rows, excluding headers, and updates the repository state.
     func refreshReceipts() async {
         await fetchAll()
+    }
+    
+    /// Loads the receipts folder ID from user defaults or Drive and caches it locally.
+    func loadReceiptsFolderID() async -> String? {
+        if let folderID = userDefaultsManager.receiptsFolderID { return folderID }
+        guard let folderID = await googleDriveService.getFolder(named: AppConstants.receiptsFolderName) else { return nil }
+        userDefaultsManager.setReceiptsFolderID(folderID)
+        return folderID
     }
     
     /// Uploads the receipt image, appends the receipt to the spreadsheet, and updates the local receipt list.
@@ -135,6 +145,30 @@ final class ReceiptRepository {
         return nil
     }
     
+    /// Exports all saved receipts as a compressed ZIP archive.
+    func exportReceipts() async -> URL? {
+        let fileManager = FileManager.default
+        let exportDirectory = fileManager.temporaryDirectory.appending(path: UUID().uuidString)
+        let receiptsDirectory = exportDirectory.appending(path: "Receipts")
+        let archiveURL = fileManager.temporaryDirectory.appending(path: "HSA Archive.zip")
+        defer { try? fileManager.removeItem(at: exportDirectory) }
+        do {
+            try fileManager.createDirectory(at: receiptsDirectory, withIntermediateDirectories: true)
+            guard let csvRows = await exportReceiptFiles(to: receiptsDirectory) else { return nil }
+            try writeCSV(rows: csvRows, to: exportDirectory)
+            try? fileManager.removeItem(at: archiveURL)
+            try fileManager.zipItem(
+                at: exportDirectory,
+                to: archiveURL,
+                shouldKeepParent: false,
+                compressionMethod: .deflate
+            )
+            return archiveURL
+        } catch {
+            return nil
+        }
+    }
+    
     /// Clears all the stored receipt data.
     func clear() {
         receipts = []
@@ -187,9 +221,11 @@ private extension ReceiptRepository {
             return nil
         }
         do {
+            guard let folderID = await loadReceiptsFolderID() else { return nil }
             guard let response = try await googleDriveService.uploadFile(
                 name: fileName,
                 mimeType: "image/jpeg",
+                parents: [folderID],
                 data: data
             ) else { return nil }
             return response.id
@@ -308,6 +344,55 @@ private extension ReceiptRepository {
                 handleUnknownError()
             }
         }
+    }
+    
+    /// Exports all local receipt images and returns their corresponding csv rows.
+    func exportReceiptFiles(to directory: URL) async -> [[String]]? {
+        await withTaskGroup { group in
+            for receipt in receipts {
+                group.addTask {
+                    await self.exportReceiptFile(receipt, to: directory)
+                }
+            }
+            var rows = [[String]]()
+            for await csvRow in group {
+                guard let csvRow else { return nil }
+                rows.append(csvRow)
+            }
+            return [ReceiptSpreadsheetSchema.headers] + rows
+        }
+    }
+    
+    /// Exports a receipt's image file and returns its corresponding csv row.
+    func exportReceiptFile(_ receipt: Receipt, to directory: URL) async -> [String]? {
+        var receiptPath = ""
+        var values: [String] { ReceiptSpreadsheetEncoder.values(for: receipt) + [receiptPath] }
+        do {
+            guard let fileID = receipt.fileID else { return values }
+            guard let data = try await googleDriveService.downloadFile(id: fileID) else { return nil }
+            let fileName = receipt.fileName.appending(".jpg")
+            let fileURL = directory.appending(path: fileName)
+            try data.write(to: fileURL)
+            receiptPath = "Receipts/\(fileName)"
+            return values
+        } catch {
+            return values
+        }
+    }
+    
+    /// Writes the provided receipt rows as a CSV file to the specified directory.
+    func writeCSV(rows: [[String]], to directory: URL) throws {
+        let csv = rows
+            .map { $0.map(csvEscaped).joined(separator: ",") }
+            .joined(separator: "\n")
+        let url = directory.appending(path: "Receipts.csv")
+        try Data(csv.utf8).write(to: url)
+    }
+    
+    /// Escapes a CSV field by wrapping it in quotes and escaping embedded quotes when necessary.
+    func csvEscaped(_ value: String) -> String {
+        guard value.contains(where: { ",\"\n\r".contains($0) }) else { return value }
+        return "\"\(value.replacingOccurrences(of: "\"", with: "\"\""))\""
     }
 }
 

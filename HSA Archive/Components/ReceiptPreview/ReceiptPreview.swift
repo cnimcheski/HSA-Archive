@@ -40,9 +40,10 @@ private extension ReceiptPreview {
     }
     
     var leadingImage: some View {
-        Image(systemName: receipt.category.systemImage)
-            .foregroundStyle(.accent)
-            .defaultCardStyle(backgroundColor: .accentBackground)
+        AppGroupBox {
+            Image(systemName: receipt.category.systemImage)
+                .foregroundStyle(.accent)
+        }
     }
     
     var descriptionView: some View {

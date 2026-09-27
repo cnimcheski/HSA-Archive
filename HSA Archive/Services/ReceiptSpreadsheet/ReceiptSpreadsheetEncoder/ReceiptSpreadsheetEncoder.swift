@@ -11,7 +11,14 @@ nonisolated struct ReceiptSpreadsheetEncoder {
     /// Encodes our `Receipt` type into the values that Google Sheets expects.
     static func encode(_ receipt: Receipt) throws(EncodingError) -> [String] {
         guard let fileID = receipt.fileID else { throw .missingFileID }
-        return [
+        return values(for: receipt) + [
+            "=HYPERLINK(\"https://drive.google.com/file/d/\(fileID)/view\", \"\(fileID)\")"
+        ]
+    }
+    
+    /// Returns the raw values for a `Receipt` that Google Sheets expects.
+    static func values(for receipt: Receipt) -> [String] {
+        [
             receipt.id.uuidString,
             receipt.merchant,
             receipt.description,
@@ -20,8 +27,7 @@ nonisolated struct ReceiptSpreadsheetEncoder {
             receipt.category.rawValue,
             receipt.reimbursementDate.map { DateFormatter.iso8601DateOnly.string(from: $0) } ?? "",
             DateFormatter.iso8601DateOnly.string(from: receipt.submissionDate ?? .now),
-            receipt.notes,
-            "=HYPERLINK(\"https://drive.google.com/file/d/\(fileID)/view\", \"\(fileID)\")"
+            receipt.notes
         ]
     }
 }

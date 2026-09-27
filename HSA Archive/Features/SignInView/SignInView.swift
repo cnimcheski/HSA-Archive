@@ -49,8 +49,7 @@ private extension SignInView {
     var logoImage: some View {
         Image(.logo)
             .resizable()
-            .frame(width: 65, height: 65)
-            .defaultCardStyle(padding: Theme.Spacing.xSmall)
+            .frame(width: 80, height: 80)
     }
     
     var introductionText: some View {

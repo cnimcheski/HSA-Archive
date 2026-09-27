@@ -17,5 +17,20 @@ extension ShapeStyle where Self == Color {
 
 extension ShapeStyle {
     /// Shared background opacity theming throughout the app.
-    var withBackgroundOpacity: some ShapeStyle { opacity(0.1) }
+    var withBackgroundOpacity: some ShapeStyle { BackgroundOpacityShapeStyle(base: self) }
+}
+
+// MARK: - BackgroundOpacityShapeStyle
+
+/// A shape style that applies a color-scheme-dependent opacity to a base style.
+private struct BackgroundOpacityShapeStyle<Base: ShapeStyle>: ShapeStyle {
+    private let base: Base
+    
+    init(base: Base) {
+        self.base = base
+    }
+
+    func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        base.opacity(environment.colorScheme == .light ? 0.1 : 0.2)
+    }
 }

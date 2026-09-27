@@ -7,20 +7,23 @@
 
 import SwiftUI
 
-struct DefaultMenu<Content: View>: View {
+struct DefaultMenu<Content: View, Style: ShapeStyle>: View {
     @Binding private var selection: Selection
     private let prompt: String
+    private let foregroundStyle: Style
     private let isLoading: Bool
     private let content: Content
     
     init(
         _ prompt: String,
         selection: Binding<Selection>,
+        foregroundStyle: Style = .secondary,
         isLoading: Bool = false,
         @ViewBuilder content: () -> Content
     ) {
         self._selection = selection
         self.prompt = prompt
+        self.foregroundStyle = foregroundStyle
         self.isLoading = isLoading
         self.content = content()
     }
@@ -31,7 +34,7 @@ struct DefaultMenu<Content: View>: View {
                 content
             }
         } label: {
-            InputContainer(prompt) {
+            InputContainer(prompt, foregroundStyle: foregroundStyle) {
                 MenuLabel(selection: selection)
                     .redactedShimmer(isShimmering: isLoading)
             }

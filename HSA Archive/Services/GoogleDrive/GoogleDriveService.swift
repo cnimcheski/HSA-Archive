@@ -13,16 +13,44 @@ nonisolated final class GoogleDriveService {
     private let apiManager = Container.shared.googleDriveAPIManager()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
     
+    /// Lists all files in Drive matching the optional query.
+    func listFiles(
+        query: String? = nil
+    ) async -> [ListFilesEndpoint.Response.DriveFile]? {
+        var pageToken: String?
+        var files = [ListFilesEndpoint.Response.DriveFile]()
+        repeat {
+            guard let response: ListFilesEndpoint.Response = await apiManager.performRequest(
+                for: ListFilesEndpoint(query: query, pageToken: pageToken)
+            ) else { return nil }
+            files.append(contentsOf: response.files)
+            pageToken = response.nextPageToken
+        } while pageToken != nil
+        return files
+    }
+    
+    /// Returns the named folder in Drive, creating it if it doesn't exist.
+    func getFolder(named name: String) async -> String? {
+        let query = """
+            mimeType = 'application/vnd.google-apps.folder'
+            and appProperties has { key = '\(AppConstants.spreadsheetAppPropertyKey)' and value = '\(AppConstants.spreadsheetAppPropertyValue)' }
+            and trashed = false
+            """
+        guard let files = await listFiles(query: query) else { return nil }
+        if let folder = files.first { return folder.id }
+        return await createFolder(name: name)?.id
+    }
+    
     /// Uploads a file to Google Drive.
     func uploadFile(
         name: String,
         mimeType: String,
+        parents: [String],
         data: Data
     ) async throws(UploadFileEndpoint.BodyError) -> UploadFileEndpoint.Response? {
         await apiManager.performRequest(
             for: try UploadFileEndpoint(
-                name: name,
-                mimeType: mimeType,
+                metadata: .init(name: name, mimeType: mimeType, parents: parents),
                 data: data
             )
         )
@@ -35,6 +63,13 @@ nonisolated final class GoogleDriveService {
         try await apiManager.performRequest(
             for: DownloadFileEndpoint(fileID: id)
         )
+    }
+    
+    /// Deletes a file from Drive by its ID.
+    func deleteFile(
+        id: String
+    ) async throws(DeleteFileEndpoint.EndpointError) -> EmptyResponse? {
+        try await apiManager.performRequest(for: DeleteFileEndpoint(fileID: id))
     }
     
     /// Moves the specified file to the trash.
@@ -77,5 +112,25 @@ nonisolated final class GoogleDriveService {
             )
         ) else { return nil }
         return response.id
+    }
+}
+
+// MARK: Private Methods
+
+nonisolated private extension GoogleDriveService {
+    /// Creates a folder in Drive with the app's properties.
+    func createFolder(name: String) async -> CreateFolderEndpoint.Response? {
+        await apiManager.performRequest(
+            for: CreateFolderEndpoint(
+                metadata: .init(
+                    name: name,
+                    mimeType: "application/vnd.google-apps.folder",
+                    appProperties: [
+                        AppConstants.spreadsheetAppPropertyKey:
+                            AppConstants.spreadsheetAppPropertyValue
+                    ]
+                )
+            )
+        )
     }
 }

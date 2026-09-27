@@ -15,14 +15,15 @@ struct ErrorBanner: View {
     }
     
     var body: some View {
-        HStack(alignment: .top, spacing: Theme.Spacing.medium) {
-            leadingImage
-            errorText
-            Spacer()
-            trailingButtons
+        AppGroupBox(background: .red.withBackgroundOpacity) {
+            HStack(alignment: .top, spacing: Theme.Spacing.medium) {
+                leadingImage
+                errorText
+                Spacer()
+                trailingButtons
+            }
+            .buttonStyle(.plain)
         }
-        .defaultCardStyle(backgroundColor: .red.withBackgroundOpacity)
-        .buttonStyle(.plain)
     }
 }
 

@@ -7,24 +7,28 @@
 
 import SwiftUI
 
-struct AppToggle: View {
+struct AppToggle<Style: ShapeStyle>: View {
     @Binding private var isOn: Bool
     private let prompt: String
+    private let foregroundStyle: Style
     private let isLoading: Bool
     
     init(
         _ prompt: String,
         isOn: Binding<Bool>,
+        foregroundStyle: Style = .secondary,
         isLoading: Bool = false
     ) {
         self._isOn = isOn
         self.prompt = prompt
+        self.foregroundStyle = foregroundStyle
         self.isLoading = isLoading
     }
     
     var body: some View {
-        InputContainer(prompt) {
+        InputContainer(prompt, foregroundStyle: foregroundStyle) {
             Toggle("", isOn: $isOn)
+                .tint(.accent)
                 .disabled(isLoading)
         }
     }

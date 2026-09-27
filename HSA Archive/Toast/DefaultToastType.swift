@@ -43,6 +43,10 @@ nonisolated enum DefaultToastType: ToastType {
     case fileEncodingFailed
     case receiptDeleted(undo: () -> Void)
     
+    // MARK: - Account
+
+    case accountDeleted
+    
     // MARK: - Message
     
     var message: LocalizedStringKey {
@@ -75,6 +79,8 @@ nonisolated enum DefaultToastType: ToastType {
             "Couldn't save receipt image to Google Drive. Please try again."
         case .receiptDeleted:
             "Receipt deleted."
+        case .accountDeleted:
+            "Your account has been deleted."
         }
     }
     

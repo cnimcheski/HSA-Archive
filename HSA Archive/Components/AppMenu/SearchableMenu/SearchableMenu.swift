@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct SearchableMenu: View {
+struct SearchableMenu<Style: ShapeStyle>: View {
     private let prompt: String
     private let selection: Selection
+    private let foregroundStyle: Style
     private let isLoading: Bool
     private let action: () -> Void
     
@@ -17,17 +18,19 @@ struct SearchableMenu: View {
     init(
         _ prompt: String,
         selection: Selection,
+        foregroundStyle: Style = .secondary,
         isLoading: Bool = false,
         action: @escaping () -> Void
     ) {
         self.prompt = prompt
         self.selection = selection
+        self.foregroundStyle = foregroundStyle
         self.isLoading = isLoading
         self.action = action
     }
     
     var body: some View {
-        InputContainer(prompt) {
+        InputContainer(prompt, foregroundStyle: foregroundStyle) {
             guard !isLoading else { return }
             action()
         } content: {

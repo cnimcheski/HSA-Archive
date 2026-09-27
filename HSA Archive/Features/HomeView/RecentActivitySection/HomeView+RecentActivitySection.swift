@@ -37,7 +37,7 @@ extension HomeView {
                     viewAllReceiptsButton
                 }
             } header: {
-                Text("RECENT ACTIVITY")
+                Text("Recent Activity")
             }
         }
     }

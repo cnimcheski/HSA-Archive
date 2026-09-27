@@ -18,6 +18,10 @@ extension Container {
         self { AppSession() }.singleton
     }
     
+    var googleAccountService: Factory<GoogleAccountService> {
+        self { GoogleAccountService() }.singleton
+    }
+    
     var googleAuthService: Factory<GoogleAuthService> {
         self { GoogleAuthService() }.singleton
     }

@@ -7,17 +7,20 @@
 
 import SwiftUI
 
-struct InputContainer<T: View>: View {
+struct InputContainer<T: View, Style: ShapeStyle>: View {
     private let prompt: String
+    private let foregroundStyle: Style
     private let action: () -> Void
     private let content: T
     
     init(
         _ prompt: String,
+        foregroundStyle: Style,
         action: @escaping () -> Void = {},
         @ViewBuilder content: () -> T
     ) {
         self.prompt = prompt
+        self.foregroundStyle = foregroundStyle
         self.action = action
         self.content = content()
     }
@@ -25,7 +28,7 @@ struct InputContainer<T: View>: View {
     var body: some View {
         HStack {
             Text(prompt)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(foregroundStyle)
             Spacer()
             content
         }
@@ -38,7 +41,7 @@ struct InputContainer<T: View>: View {
 // MARK: - Previews
 
 #Preview {
-    InputContainer("Title") {
+    InputContainer("Title", foregroundStyle: .secondary) {
         Text("Content")
     }
     .padding()

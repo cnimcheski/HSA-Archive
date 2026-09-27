@@ -34,15 +34,11 @@ extension HomeView.Overview {
         }
         
         var body: some View {
-            VStack(alignment: .leading, spacing: Theme.Spacing.xSmall) {
-                headerView(type: type)
+            AppGroupBox(padding: Theme.Spacing.medium) {
                 amountView
+            } label: {
+                headerLabel
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .defaultCardStyle(
-                backgroundColor: .accentBackground,
-                padding: Theme.Spacing.medium
-            )
         }
     }
 }
@@ -50,20 +46,24 @@ extension HomeView.Overview {
 // MARK: - Private Views
 
 private extension HomeView.Overview.BalanceCard {
-    func headerView(type: CardType) -> some View {
-        HStack {
-            Circle()
-                .fill(type.fillColor)
-                .frame(width: 8)
+    var headerLabel: some View {
+        Label {
             Text(type.rawValue.capitalized)
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .bold()
+        } icon: {
+            Image(systemName: "circle.fill")
+                .resizable()
+                .frame(width: 8, height: 8)
+                .foregroundStyle(type.fillColor)
         }
+        .labelStyle(.customSpacing(Theme.Spacing.small))
     }
     
     var amountView: some View {
         Text(amount, format: AppFormatStyle.Currency.current)
             .font(.headline)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .redactedShimmer(isShimmering: isLoading)
     }
 }

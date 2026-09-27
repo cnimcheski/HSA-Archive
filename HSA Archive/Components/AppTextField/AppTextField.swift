@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct AppTextField: View {
+struct AppTextField<Style: ShapeStyle>: View {
     @FocusState private var isFocused: Bool
     private let prompt: String
+    private let foregroundStyle: Style
     private let loadingText: String?
     private let textField: AnyView
     
@@ -17,9 +18,11 @@ struct AppTextField: View {
         _ prompt: String,
         placeholder: String,
         text: Binding<String>,
+        foregroundStyle: Style = .secondary,
         isLoading: Bool = false
     ) {
         self.prompt = prompt
+        self.foregroundStyle = foregroundStyle
         loadingText = isLoading ? text.wrappedValue : nil
         textField = AnyView(
             TextField(
@@ -34,9 +37,11 @@ struct AppTextField: View {
         placeholder: String,
         value: Binding<Format.FormatInput>,
         format: Format,
+        foregroundStyle: Style = .secondary,
         isLoading: Bool = false
     ) where Format: ParseableFormatStyle, Format.FormatOutput == String {
         self.prompt = prompt
+        self.foregroundStyle = foregroundStyle
         loadingText = isLoading ? format.format(value.wrappedValue) : nil
         textField = AnyView(
             TextField(
@@ -50,6 +55,7 @@ struct AppTextField: View {
     var body: some View {
         InputContainer(
             prompt,
+            foregroundStyle: foregroundStyle,
             action: { isFocused = true }
         ) {
             // Show a Text view when isLoading is true so that the shimmer matches other inputs

@@ -29,17 +29,18 @@ struct NavigationBanner<C: ShapeStyle>: View {
     }
     
     var body: some View {
-        Button(action: action) {
-            HStack(spacing: Theme.Spacing.medium) {
-                leadingIcon
-                detailText
-                Spacer()
-                navigationIndicator
+        AppGroupBox(background: .accentBackground) {
+            Button(action: action) {
+                HStack(spacing: Theme.Spacing.medium) {
+                    leadingIcon
+                    detailText
+                    Spacer()
+                    navigationIndicator
+                }
+                .contentShape(.rect)
             }
-            .contentShape(.rect)
+            .buttonStyle(.plain)
         }
-        .buttonStyle(.plain)
-        .defaultCardStyle(backgroundColor: tint.withBackgroundOpacity)
         .listRowSeparator(.hidden)
     }
 }

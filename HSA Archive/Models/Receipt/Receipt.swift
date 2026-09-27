@@ -26,6 +26,7 @@ nonisolated struct Receipt: Hashable, Identifiable {
     
     var fileName: String {
         "\(transactionDate.formatted()) \(merchant) \(amount)"
+            .replacingOccurrences(of: "/", with: "-")
     }
     
     /// Indicates whether the receipt has already been saved.

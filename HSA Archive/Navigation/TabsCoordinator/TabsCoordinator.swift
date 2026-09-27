@@ -23,7 +23,6 @@ struct TabsCoordinator: View {
             receiptsCoordinator
             profileCoordinator
         }
-        .onFirstTask(receiptRepository.loadReceipts)
     }
 }
 

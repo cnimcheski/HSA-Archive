@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct AppDatePicker: View {
+struct AppDatePicker<Style: ShapeStyle>: View {
     @Binding private var selection: Date
     @FocusState private var isFocused: Bool
     private let prompt: String
     private let displayedComponents: DatePicker.Components
+    private let foregroundStyle: Style
     private let isLoading: Bool
     private let viewID = UUID().uuidString
     
@@ -23,11 +24,13 @@ struct AppDatePicker: View {
         _ prompt: String,
         selection: Binding<Date>,
         displayedComponents: DatePicker.Components = .date,
+        foregroundStyle: Style = .secondary,
         isLoading: Bool = false
     ) {
         self._selection = selection
         self.prompt = prompt
         self.displayedComponents = displayedComponents
+        self.foregroundStyle = foregroundStyle
         self.isLoading = isLoading
     }
     
@@ -50,6 +53,7 @@ private extension AppDatePicker {
     var content: some View {
         InputContainer(
             prompt,
+            foregroundStyle: foregroundStyle,
             action: {
                 guard !isLoading else { return }
                 isFocused = true

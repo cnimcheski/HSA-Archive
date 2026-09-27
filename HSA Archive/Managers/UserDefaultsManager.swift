@@ -10,8 +10,10 @@ import ObservableDefaults
 
 @ObservableDefaults
 nonisolated final class UserDefaultsManager {
+    var isAIReceiptExtractionEnabled = true
     private(set) var didFinishOnboarding = false
     private(set) var spreadsheetID: String?
+    private(set) var receiptsFolderID: String?
     
     func hasFinishedOnboarding() {
         didFinishOnboarding = true
@@ -23,5 +25,13 @@ nonisolated final class UserDefaultsManager {
     
     func clearSpreadsheetID() {
         spreadsheetID = nil
+    }
+    
+    func setReceiptsFolderID(_ receiptFoldersID: String) {
+        self.receiptsFolderID = receiptFoldersID
+    }
+    
+    func clearReceiptsFolderID() {
+        receiptsFolderID = nil
     }
 }
