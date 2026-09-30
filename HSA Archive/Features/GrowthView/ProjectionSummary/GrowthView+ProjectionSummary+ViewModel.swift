@@ -10,15 +10,17 @@ extension GrowthView.ProjectionSummary {
         let years: Int
         let currentAmount: Double
         let projectedAmount: Double
+        let isLoading: Bool
         
         var growthAmount: Double {
             projectedAmount - currentAmount
         }
         
-        init(years: Int, currentAmount: Double, projectedAmount: Double) {
+        init(years: Int, currentAmount: Double, projectedAmount: Double, isLoading: Bool) {
             self.years = years
             self.currentAmount = currentAmount
             self.projectedAmount = projectedAmount
+            self.isLoading = isLoading
         }
     }
 }

@@ -11,11 +11,12 @@ extension GrowthView {
     struct ProjectionSummary: View {
         private let viewModel: ViewModel
         
-        init(years: Int, currentAmount: Double, projectedAmount: Double) {
+        init(years: Int, currentAmount: Double, projectedAmount: Double, isLoading: Bool) {
             self.viewModel = .init(
                 years: years,
                 currentAmount: currentAmount,
-                projectedAmount: projectedAmount
+                projectedAmount: projectedAmount,
+                isLoading: isLoading
             )
         }
         
@@ -48,6 +49,7 @@ private extension GrowthView.ProjectionSummary {
         Text(viewModel.projectedAmount.formatted(AppFormatStyle.Currency.current))
             .font(.largeTitle)
             .bold()
+            .redactedShimmer(isShimmering: viewModel.isLoading)
     }
     
     func amountRow<S: ShapeStyle>(
@@ -61,6 +63,7 @@ private extension GrowthView.ProjectionSummary {
             Spacer()
             Text(amount)
                 .foregroundStyle(amountStyle)
+                .redactedShimmer(isShimmering: viewModel.isLoading)
         }
     }
     
@@ -83,5 +86,9 @@ private extension GrowthView.ProjectionSummary {
 // MARK: - Previews
 
 #Preview {
-    GrowthView.ProjectionSummary(years: 30, currentAmount: 21.34, projectedAmount: 100)
+    List {
+        GrowthView.ProjectionSummary(years: 30, currentAmount: 21.34, projectedAmount: 100, isLoading: false)
+        GrowthView.ProjectionSummary(years: 30, currentAmount: 21.34, projectedAmount: 100, isLoading: true)
+    }
+    .listStyle(.plain)
 }

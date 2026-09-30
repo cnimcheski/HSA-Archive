@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GrowthView: View {
     @Bindable private var viewModel: ViewModel
+    @InjectedObservable(\.receiptRepository) private var receiptRepository
     @InjectedObservable(\.userDefaultsManager) private var userDefaultsManager
     
     init(viewModel: ViewModel) {
@@ -39,7 +40,8 @@ private extension GrowthView {
             ProjectionSummary(
                 years: Int(userDefaultsManager.yearsUntilRetirement),
                 currentAmount: viewModel.currentAmount,
-                projectedAmount: viewModel.projectedAmount
+                projectedAmount: viewModel.projectedAmount,
+                isLoading: receiptRepository.isLoading
             )
             GrowthChart(series: viewModel.series)
         }
@@ -52,7 +54,8 @@ private extension GrowthView {
             value: $userDefaultsManager.assumedAnnualReturn,
             in: 0...0.2,
             step: 0.005,
-            displayValue: "\(userDefaultsManager.assumedAnnualReturn.formatted(.percent))"
+            displayValue: "\(userDefaultsManager.assumedAnnualReturn.formatted(.percent))",
+            isLoading: receiptRepository.isLoading
         )
     }
     
@@ -61,7 +64,8 @@ private extension GrowthView {
             "Years until retirement",
             value: $userDefaultsManager.yearsUntilRetirement,
             in: 1...50,
-            displayValue: "^[\(Int(userDefaultsManager.yearsUntilRetirement)) year](inflect: true)"
+            displayValue: "^[\(Int(userDefaultsManager.yearsUntilRetirement)) year](inflect: true)",
+            isLoading: receiptRepository.isLoading
         )
     }
 }
