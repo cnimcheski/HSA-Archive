@@ -11,6 +11,8 @@ import ObservableDefaults
 @ObservableDefaults
 nonisolated final class UserDefaultsManager {
     var isAIReceiptExtractionEnabled = true
+    var yearsUntilRetirement = 30.0
+    var assumedAnnualReturn = 0.07
     private(set) var didFinishOnboarding = false
     private(set) var spreadsheetID: String?
     private(set) var receiptsFolderID: String?
