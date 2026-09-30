@@ -20,6 +20,7 @@ struct GrowthView: View {
     var body: some View {
         content
             .navigationTitle("Growth")
+            .refreshable(action: receiptRepository.refreshReceipts)
     }
 }
 
