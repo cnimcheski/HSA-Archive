@@ -29,11 +29,18 @@ struct GrowthView: View {
 private extension GrowthView {
     var content: some View {
         List {
-            projectionContent
-            annualReturnSlider
-            yearsSlider
+            if !receiptRepository.hasError {
+                projectionContent
+                annualReturnSlider
+                yearsSlider
+            }
         }
         .listStyle(.plain)
+        .overlay {
+            if receiptRepository.hasError {
+                DataLoadingErrorView()
+            }
+        }
     }
     
     var projectionContent: some View {
