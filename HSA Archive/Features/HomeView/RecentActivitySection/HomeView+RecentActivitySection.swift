@@ -12,17 +12,20 @@ extension HomeView {
         private let recentReceipts: [Receipt]
         private let showViewAllButton: Bool
         private let isLoading: Bool
+        private let viewAllReceipts: () -> Void
         private let onReceiptSelected: (Receipt) -> Void
         
         init(
             recentReceipts: [Receipt],
             showViewAllButton: Bool,
             isLoading: Bool,
+            viewAllReceipts: @escaping () -> Void,
             onReceiptSelected: @escaping (Receipt) -> Void
         ) {
             self.recentReceipts = recentReceipts
             self.showViewAllButton = showViewAllButton
             self.isLoading = isLoading
+            self.viewAllReceipts = viewAllReceipts
             self.onReceiptSelected = onReceiptSelected
         }
         
@@ -60,14 +63,12 @@ private extension HomeView.RecentActivitySection {
     }
     
     var viewAllReceiptsButton: some View {
-        Button("View all receipts") {
-            // TODO: - Fill this in...
-        }
-        .font(.caption)
-        .foregroundStyle(.secondary)
-        .frame(maxWidth: .infinity, alignment: .center)
-        .buttonStyle(.plain)
-        .listRowSeparator(.hidden, edges: .bottom)
+        Button("View all receipts", action: viewAllReceipts)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .buttonStyle(.plain)
+            .listRowSeparator(.hidden, edges: .bottom)
     }
 }
 
@@ -83,17 +84,25 @@ private extension HomeView.RecentActivitySection {
         HomeView.RecentActivitySection(
             recentReceipts: recentReceiptMocks,
             showViewAllButton: true,
-            isLoading: false
-        ) { receipt in
-            // Do something with selected receipt
-        }
+            isLoading: false,
+            viewAllReceipts: {
+                // Do something when view all receipts button is pressed
+            },
+            onReceiptSelected: { receipt in
+                // Do something with the selected receipt
+            }
+        )
         HomeView.RecentActivitySection(
             recentReceipts: recentReceiptMocks,
             showViewAllButton: true,
-            isLoading: true
-        ) { receipt in
-            // Do something with the selected receipt
-        }
+            isLoading: true,
+            viewAllReceipts: {
+                // Do something when view all receipts button is pressed
+            },
+            onReceiptSelected: { receipt in
+                // Do something with the selected receipt
+            }
+        )
     }
     .listStyle(.plain)
 }

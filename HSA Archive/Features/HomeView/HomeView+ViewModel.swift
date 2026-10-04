@@ -23,6 +23,7 @@ extension HomeView {
             case filePicker
             case photosPicker
             case scanner
+            case receiptsTab
             case reviewReceipt(ReceiptReviewView.ViewModel)
             case signIn(SignInView.ViewModel)
             case invalidReceipts(InvalidReceiptsView.ViewModel)
@@ -59,6 +60,10 @@ extension HomeView {
         
         func showInvalidReceipts() {
             delegate?.navigate(to: .invalidReceipts(.init(failedRows: receiptRepository.failedRows)))
+        }
+        
+        func switchToReceiptsTab() {
+            delegate?.navigate(to: .receiptsTab)
         }
         
         func showReceiptReview(_ receipt: Receipt) {

@@ -8,13 +8,25 @@
 import Navigation
 import SwiftUI
 
+extension HomeCoordinator {
+    protocol NavigationDelegate: AnyObject {
+        @MainActor func navigate(to destination: Destination)
+    }
+}
+
 @Observable
-final class HomeCoordinator: StackCoordinator {
+final class HomeCoordinator: Navigating, StackCoordinator {
+    enum Destination {
+        case receiptsTab
+    }
+    
     enum Page: CoordinatedPage {
         case addReceiptCoordinator(AddReceiptCoordinator.Page)
         case signIn(SignInView.ViewModel)
         case invalidReceipts(InvalidReceiptsView.ViewModel)
     }
+    
+    weak var delegate: NavigationDelegate?
     
     var path: [Page] = []
     var sheet: Page?
@@ -72,6 +84,8 @@ extension HomeCoordinator: HomeView.NavigationDelegate {
             photosPickerViewModel = .init(onCompletion: handleSelectedImages)
         case .scanner:
             push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
+        case .receiptsTab:
+            delegate?.navigate(to: .receiptsTab)
         case let .reviewReceipt(receiptReviewViewModel):
             push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: receiptReviewViewModel))), type: .sheet)
         case let .signIn(viewModel):

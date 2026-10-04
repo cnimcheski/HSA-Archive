@@ -21,9 +21,6 @@ extension TabsCoordinator {
         
         private let deepLinkManager = Container.shared.deepLinkManager()
         
-        private var activeTab = Tab.home
-        
-        let homeCoordinator = HomeCoordinator()
         let receiptsCoordinator = ReceiptsCoordinator()
         let growthCoordinator = GrowthCoordinator()
         let profileCoordinator = ProfileCoordinator()
@@ -35,7 +32,12 @@ extension TabsCoordinator {
             )
         }
         
+        private(set) var homeCoordinator = HomeCoordinator()
+        
+        private var activeTab = Tab.home
+        
         init() {
+            homeCoordinator = homeCoordinator.setup(delegate: self)
             observeDeepLinkPublisher()
         }
     }
@@ -93,6 +95,17 @@ private extension TabsCoordinator.ViewModel {
             growthCoordinator.popToRoot()
         case .profile:
             profileCoordinator.popToRoot()
+        }
+    }
+}
+
+// MARK: - Delegate Handlers
+
+extension TabsCoordinator.ViewModel: HomeCoordinator.NavigationDelegate {
+    func navigate(to destination: HomeCoordinator.Destination) {
+        switch destination {
+        case .receiptsTab:
+            resetActiveTab(.receipts)
         }
     }
 }
