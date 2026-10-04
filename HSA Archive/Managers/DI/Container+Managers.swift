@@ -6,9 +6,14 @@
 //
 
 import FactoryKit
+import Navigation
 import Networking
 
 extension Container {
+    var deepLinkManager: Factory<DeepLinkManager<DeepLinkRegistry>> {
+        self { DeepLinkManager() }.singleton
+    }
+    
     var googleDriveAPIManager: Factory<APIManager<GoogleAPIErrorHandler.APIGlobalError>> {
         self {
             APIManager(

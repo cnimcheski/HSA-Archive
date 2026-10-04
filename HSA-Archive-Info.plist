@@ -14,6 +14,16 @@
 				<string>com.googleusercontent.apps.533799117263-5ocpsocb6in1q1hruq71jl46rismidt8</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>me.nimcheski.chris.HSA-Archive</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>hsaarchive</string>
+			</array>
+		</dict>
 	</array>
 	<key>GIDClientID</key>
 	<string>533799117263-5ocpsocb6in1q1hruq71jl46rismidt8.apps.googleusercontent.com</string>

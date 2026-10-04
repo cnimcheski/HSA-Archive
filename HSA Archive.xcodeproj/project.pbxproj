@@ -226,6 +226,14 @@
 		99F2DD5B30314A2B00A4B653 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 99F2DD5A30314A2B00A4B653 /* Networking */; };
 		99FC0EF4306B7583004FFFFB /* GrowthView+GrowthChart+Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0EF3306B7583004FFFFB /* GrowthView+GrowthChart+Series.swift */; };
 		99FC0EF6306C0D38004FFFFB /* GrowthView+GrowthChart+Series+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0EF5306C0D38004FFFFB /* GrowthView+GrowthChart+Series+Mock.swift */; };
+		99FC0F05306DF00D004FFFFB /* HSA ArchiveShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 99FC0EFB306DF00D004FFFFB /* HSA ArchiveShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		99FC0F10306DF032004FFFFB /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F0E306DF032004FFFFB /* ShareViewController.swift */; };
+		99FC0F15306E050E004FFFFB /* DeepLinkRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F14306E050E004FFFFB /* DeepLinkRegistry.swift */; };
+		99FC0F18306E05A2004FFFFB /* ImportReceiptsDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F17306E05A2004FFFFB /* ImportReceiptsDeepLink.swift */; };
+		99FC0F1A306ED467004FFFFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F19306ED467004FFFFB /* SceneDelegate.swift */; };
+		99FC0F1C3070C2AC004FFFFB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A7C30147E9500D7DC8D /* AppConstants.swift */; };
+		99FC0F1E3070C6D1004FFFFB /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */; };
+		99FC0F1F30715412004FFFFB /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,7 +251,28 @@
 			remoteGlobalIDString = 99C0088F3000ADED00CDF610;
 			remoteInfo = "HSA Archive";
 		};
+		99FC0F03306DF00D004FFFFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99C008883000ADED00CDF610 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99FC0EFA306DF00D004FFFFB;
+			remoteInfo = "HSA ArchiveShareExtension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		99FC0F0A306DF00D004FFFFB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				99FC0F05306DF00D004FFFFB /* HSA ArchiveShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		99021A7630147A9600D7DC8D /* SingleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionView.swift; sourceTree = "<group>"; };
@@ -456,6 +485,14 @@
 		99F2DD5730302E9500A4B653 /* Container+GoogleAPIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+GoogleAPIErrorHandler.swift"; sourceTree = "<group>"; };
 		99FC0EF3306B7583004FFFFB /* GrowthView+GrowthChart+Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrowthView+GrowthChart+Series.swift"; sourceTree = "<group>"; };
 		99FC0EF5306C0D38004FFFFB /* GrowthView+GrowthChart+Series+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GrowthView+GrowthChart+Series+Mock.swift"; sourceTree = "<group>"; };
+		99FC0EFB306DF00D004FFFFB /* HSA ArchiveShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HSA ArchiveShareExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99FC0F0B306DF032004FFFFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99FC0F0E306DF032004FFFFB /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		99FC0F14306E050E004FFFFB /* DeepLinkRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRegistry.swift; sourceTree = "<group>"; };
+		99FC0F17306E05A2004FFFFB /* ImportReceiptsDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReceiptsDeepLink.swift; sourceTree = "<group>"; };
+		99FC0F19306ED467004FFFFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		99FC0F1B306F5F23004FFFFB /* HSA ArchiveShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HSA ArchiveShareExtension.entitlements"; sourceTree = "<group>"; };
+		99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +525,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		99C008A43000ADEF00CDF610 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99FC0EF8306DF00D004FFFFB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -904,6 +948,7 @@
 				99C008C03000B26400CDF610 /* HSA Archive */,
 				99C008C53000B26800CDF610 /* HSA ArchiveTests */,
 				99C008C93000B26C00CDF610 /* HSA ArchiveUITests */,
+				99FC0F0F306DF032004FFFFB /* HSA ArchiveShareExtension */,
 				99021AAB30171E9200D7DC8D /* Frameworks */,
 				99C008913000ADED00CDF610 /* Products */,
 			);
@@ -915,6 +960,7 @@
 				99C008903000ADED00CDF610 /* HSA Archive.app */,
 				99C0089D3000ADEF00CDF610 /* HSA ArchiveTests.xctest */,
 				99C008A73000ADEF00CDF610 /* HSA ArchiveUITests.xctest */,
+				99FC0EFB306DF00D004FFFFB /* HSA ArchiveShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -923,6 +969,7 @@
 			isa = PBXGroup;
 			children = (
 				99C009B930115A1300CDF610 /* AppDelegate.swift */,
+				99FC0F19306ED467004FFFFB /* SceneDelegate.swift */,
 				99C008BF3000B26400CDF610 /* HSA_ArchiveApp.swift */,
 				99021A7B30147E8700D7DC8D /* Constants */,
 				99C008E23001DE6B00CDF610 /* Components */,
@@ -973,6 +1020,7 @@
 			isa = PBXGroup;
 			children = (
 				99C0098F300D75E100CDF610 /* ChildCoordinators */,
+				99FC0F13306E0500004FFFFB /* DeepLinking */,
 				99C0097D300AC78600CDF610 /* RootCoordinator */,
 				99C008D23000BD4000CDF610 /* TabCoordinators */,
 				99C008CD3000B28E00CDF610 /* TabsCoordinator */,
@@ -1254,13 +1302,14 @@
 			children = (
 				99021A863015594100D7DC8D /* Binding+Optional.swift */,
 				99D2D5CB3023DAFD007A65C3 /* CaseIterable+RawValues.swift */,
+				99DD446D303A9E6300843826 /* Data+Extensions.swift */,
 				99D2319130475664005F3B9E /* Date+Extensions.swift */,
 				99021AA43016FB7300D7DC8D /* DateFormatter+Extensions.swift */,
-				99D2D5C8302175CE007A65C3 /* String+Extensions.swift */,
-				99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */,
-				99F2DD19302C087A00A4B653 /* UIApplication+Extensions.swift */,
-				99DD446D303A9E6300843826 /* Data+Extensions.swift */,
 				999ECB9430590E8F00484B13 /* GIDProfileData+Extensions.swift */,
+				99D2D5C8302175CE007A65C3 /* String+Extensions.swift */,
+				99F2DD19302C087A00A4B653 /* UIApplication+Extensions.swift */,
+				99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */,
+				99C0099A300DCF6D00CDF610 /* VNDocumentCameraScan+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1689,6 +1738,33 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		99FC0F0F306DF032004FFFFB /* HSA ArchiveShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				99FC0F1B306F5F23004FFFFB /* HSA ArchiveShareExtension.entitlements */,
+				99FC0F0B306DF032004FFFFB /* Info.plist */,
+				99FC0F0E306DF032004FFFFB /* ShareViewController.swift */,
+			);
+			path = "HSA ArchiveShareExtension";
+			sourceTree = "<group>";
+		};
+		99FC0F13306E0500004FFFFB /* DeepLinking */ = {
+			isa = PBXGroup;
+			children = (
+				99FC0F16306E0590004FFFFB /* DeepLinks */,
+				99FC0F14306E050E004FFFFB /* DeepLinkRegistry.swift */,
+			);
+			path = DeepLinking;
+			sourceTree = "<group>";
+		};
+		99FC0F16306E0590004FFFFB /* DeepLinks */ = {
+			isa = PBXGroup;
+			children = (
+				99FC0F17306E05A2004FFFFB /* ImportReceiptsDeepLink.swift */,
+			);
+			path = DeepLinks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1699,10 +1775,12 @@
 				99C0088C3000ADED00CDF610 /* Sources */,
 				99C0088D3000ADED00CDF610 /* Frameworks */,
 				99C0088E3000ADED00CDF610 /* Resources */,
+				99FC0F0A306DF00D004FFFFB /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				99FC0F04306DF00D004FFFFB /* PBXTargetDependency */,
 			);
 			name = "HSA Archive";
 			packageProductDependencies = (
@@ -1765,6 +1843,25 @@
 			productReference = 99C008A73000ADEF00CDF610 /* HSA ArchiveUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		99FC0EFA306DF00D004FFFFB /* HSA ArchiveShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99FC0F07306DF00D004FFFFB /* Build configuration list for PBXNativeTarget "HSA ArchiveShareExtension" */;
+			buildPhases = (
+				99FC0EF7306DF00D004FFFFB /* Sources */,
+				99FC0EF8306DF00D004FFFFB /* Frameworks */,
+				99FC0EF9306DF00D004FFFFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HSA ArchiveShareExtension";
+			packageProductDependencies = (
+			);
+			productName = "HSA ArchiveShareExtension";
+			productReference = 99FC0EFB306DF00D004FFFFB /* HSA ArchiveShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1785,6 +1882,9 @@
 					99C008A63000ADEF00CDF610 = {
 						CreatedOnToolsVersion = 26.0.1;
 						TestTargetID = 99C0088F3000ADED00CDF610;
+					};
+					99FC0EFA306DF00D004FFFFB = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
@@ -1818,6 +1918,7 @@
 				99C0088F3000ADED00CDF610 /* HSA Archive */,
 				99C0089C3000ADEF00CDF610 /* HSA ArchiveTests */,
 				99C008A63000ADEF00CDF610 /* HSA ArchiveUITests */,
+				99FC0EFA306DF00D004FFFFB /* HSA ArchiveShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1848,6 +1949,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		99FC0EF9306DF00D004FFFFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1863,6 +1971,7 @@
 				99F2DD5830302E9500A4B653 /* Container+GoogleAPIErrorHandler.swift in Sources */,
 				995F9D01305E45B40096CEB9 /* DeleteFileEndpoint.swift in Sources */,
 				99D2D5CC3023DAFD007A65C3 /* CaseIterable+RawValues.swift in Sources */,
+				99FC0F1A306ED467004FFFFB /* SceneDelegate.swift in Sources */,
 				99FC0EF6306C0D38004FFFFB /* GrowthView+GrowthChart+Series+Mock.swift in Sources */,
 				99C008F83002A8E000CDF610 /* HomeView+RecentActivitySection.swift in Sources */,
 				99021ABD301B0BCF00D7DC8D /* ErrorBanner.swift in Sources */,
@@ -1876,6 +1985,7 @@
 				99F2DD1A302C087A00A4B653 /* UIApplication+Extensions.swift in Sources */,
 				99021A9E3016FA7700D7DC8D /* AIRequest.swift in Sources */,
 				99DD4470303AC44900843826 /* SpreadsheetFailureConvertible.swift in Sources */,
+				99FC0F18306E05A2004FFFFB /* ImportReceiptsDeepLink.swift in Sources */,
 				995F9D27306A296E0096CEB9 /* GrowthView+GrowthChart.swift in Sources */,
 				999ECB913057B59D00484B13 /* ProfileView+ViewModel.swift in Sources */,
 				990B584E304CDA9600D8AB4E /* AdaptiveBadge.swift in Sources */,
@@ -1976,6 +2086,7 @@
 				99D2D5C330212B18007A65C3 /* ErrorBanner+ViewModel.swift in Sources */,
 				99D2D5EF302B70CE007A65C3 /* ReceiptFileImporter.swift in Sources */,
 				99F2DD27302D7F8300A4B653 /* SignInView.swift in Sources */,
+				99FC0F1E3070C6D1004FFFFB /* URL+Extensions.swift in Sources */,
 				99FC0EF4306B7583004FFFFB /* GrowthView+GrowthChart+Series.swift in Sources */,
 				99C008E930029F8000CDF610 /* HomeView+Overview.swift in Sources */,
 				99C00906300416F800CDF610 /* ShapeStyle+Colors.swift in Sources */,
@@ -2033,6 +2144,7 @@
 				99C009AA3010091D00CDF610 /* Container+Services.swift in Sources */,
 				99021AC7301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift in Sources */,
 				99C0090030032B7A00CDF610 /* Badge.swift in Sources */,
+				99FC0F15306E050E004FFFFB /* DeepLinkRegistry.swift in Sources */,
 				990B5853304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift in Sources */,
 				990B584B304CC5F000D8AB4E /* Receipt+Filters.swift in Sources */,
 				999ECB88305742FE00484B13 /* HomeView+Overview+StatusCapsule.swift in Sources */,
@@ -2073,6 +2185,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		99FC0EF7306DF00D004FFFFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99FC0F10306DF032004FFFFB /* ShareViewController.swift in Sources */,
+				99FC0F1F30715412004FFFFB /* URL+Extensions.swift in Sources */,
+				99FC0F1C3070C2AC004FFFFB /* AppConstants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2085,6 +2207,11 @@
 			isa = PBXTargetDependency;
 			target = 99C0088F3000ADED00CDF610 /* HSA Archive */;
 			targetProxy = 99C008A83000ADEF00CDF610 /* PBXContainerItemProxy */;
+		};
+		99FC0F04306DF00D004FFFFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99FC0EFA306DF00D004FFFFB /* HSA ArchiveShareExtension */;
+			targetProxy = 99FC0F03306DF00D004FFFFB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2362,6 +2489,68 @@
 			};
 			name = Release;
 		};
+		99FC0F08306DF00D004FFFFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "HSA ArchiveShareExtension/HSA ArchiveShareExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZDYU833639;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HSA ArchiveShareExtension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "HSA ArchiveShareExtension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.nimcheski.chris.HSA-Archive.HSAArchiveShareExtension";
+				PRODUCT_MODULE_NAME = HSAArchiveShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		99FC0F09306DF00D004FFFFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "HSA ArchiveShareExtension/HSA ArchiveShareExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZDYU833639;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HSA ArchiveShareExtension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "HSA ArchiveShareExtension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.nimcheski.chris.HSA-Archive.HSAArchiveShareExtension";
+				PRODUCT_MODULE_NAME = HSAArchiveShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2397,6 +2586,15 @@
 			buildConfigurations = (
 				99C008B83000ADEF00CDF610 /* Debug */,
 				99C008B93000ADEF00CDF610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99FC0F07306DF00D004FFFFB /* Build configuration list for PBXNativeTarget "HSA ArchiveShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99FC0F08306DF00D004FFFFB /* Debug */,
+				99FC0F09306DF00D004FFFFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

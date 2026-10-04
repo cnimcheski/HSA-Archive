@@ -23,7 +23,7 @@ final class ReceiptFileImporterViewModel {
     
     func handleImportResult(_ result: Result<[URL], any Error>) {
         guard case let .success(urls) = result, !urls.isEmpty else { return }
-        let images = getUIImages(from: urls)
+        let images = urls.securityScopedUIImages
         handleFileLoadFailures(failedCount: urls.count - images.count)
         onCompletion(images)
     }
@@ -32,17 +32,6 @@ final class ReceiptFileImporterViewModel {
 // MARK: - Private Methods
 
 private extension ReceiptFileImporterViewModel {
-    /// Converts the `[URL]` into `[UIImage]`.
-    nonisolated func getUIImages(from urls: [URL]) -> [UIImage] {
-        urls.compactMap { url in
-            guard url.startAccessingSecurityScopedResource() else { return nil }
-            defer { url.stopAccessingSecurityScopedResource() }
-            guard let data = try? Data(contentsOf: url),
-                  let image = UIImage(data: data) else { return nil }
-            return image
-        }
-    }
-
     /// Shows a Toast if any of the selected files failed to load.
     func handleFileLoadFailures(failedCount: Int) {
         guard failedCount > 0 else { return }

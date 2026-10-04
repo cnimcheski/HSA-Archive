@@ -52,11 +52,7 @@ final class ReceiptsCoordinator: StackCoordinator {
             SignInView(viewModel: viewModel.setup(delegate: self))
         }
     }
-}
-
-// MARK: - Private Methods
-
-private extension ReceiptsCoordinator {
+    
     func handleSelectedImages(_ uiImages: [UIImage]) {
         // TODO: - Use all images instead of just first
         guard let uiImage = uiImages.first else { return }

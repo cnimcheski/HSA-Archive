@@ -5,6 +5,7 @@
 //  Created by Steve Nimcheski on 7/9/26.
 //
 
+import FactoryKit
 import Navigation
 import SwiftUI
 
@@ -17,6 +18,8 @@ extension TabsCoordinator {
             case growth
             case profile
         }
+        
+        private let deepLinkManager = Container.shared.deepLinkManager()
         
         private var activeTab = Tab.home
         
@@ -31,12 +34,50 @@ extension TabsCoordinator {
                 set: { self.tabTapped($0) }
             )
         }
+        
+        init() {
+            observeDeepLinkPublisher()
+        }
     }
 }
 
 // MARK: - Private Methods
 
 private extension TabsCoordinator.ViewModel {
+    func observeDeepLinkPublisher() {
+        Task {
+            for await deepLink in deepLinkManager.deepLinks {
+                await handle(deepLink: deepLink)
+            }
+        }
+    }
+    
+    func resetActiveTab(_ activeTab: Tab) {
+        self.activeTab = activeTab
+        popTabToRoot(activeTab)
+    }
+    
+    func popTabToRoot(_ activeTab: Tab) {
+        switch activeTab {
+        case .home:
+            homeCoordinator.popToRoot()
+        case .receipts:
+            receiptsCoordinator.popToRoot()
+        case .growth:
+            growthCoordinator.popToRoot()
+        case .profile:
+            profileCoordinator.popToRoot()
+        }
+    }
+    
+    // TODO: - Use this once we start listening to auth state changes...
+    func popAllTabsToRoot() {
+        homeCoordinator.popToRoot()
+        receiptsCoordinator.popToRoot()
+        growthCoordinator.popToRoot()
+        profileCoordinator.popToRoot()
+    }
+    
     func tabTapped(_ newTab: Tab) {
         guard newTab == activeTab else {
             activeTab = newTab
@@ -53,5 +94,43 @@ private extension TabsCoordinator.ViewModel {
         case .profile:
             profileCoordinator.popToRoot()
         }
+    }
+}
+
+// MARK: - DeepLink Handlers
+
+private extension TabsCoordinator.ViewModel {
+    func handle(deepLink: DeepLink) async {
+        switch deepLink {
+        case let link as ImportReceiptsDeepLink:
+            handleImportReceiptsDeepLink(batch: link.batch)
+        default: break
+        }
+    }
+    
+    func handleImportReceiptsDeepLink(batch: String) {
+        resetActiveTab(.receipts)
+        receiptsCoordinator.handleSelectedImages(loadImages(for: batch))
+        delete(batch: batch)
+    }
+    
+    /// Loads receipt images from the specified App Group inbox batch.
+    func loadImages(for batch: String) -> [UIImage] {
+        let root = FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: AppConstants.appGroupID)
+        guard let dir = root?
+            .appendingPathComponent("\(AppConstants.inboxDirectoryName)/\(batch)") else { return [] }
+        let files = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil)
+        return files?
+            .sorted { $0.lastPathComponent < $1.lastPathComponent }
+            .compactMap { UIImage(contentsOfFile: $0.path) } ?? []
+    }
+
+    /// Deletes the specified App Group inbox batch.
+    func delete(batch: String) {
+        guard let dir = FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: AppConstants.appGroupID)?
+            .appendingPathComponent("\(AppConstants.inboxDirectoryName)/\(batch)") else { return }
+        try? FileManager.default.removeItem(at: dir)
     }
 }

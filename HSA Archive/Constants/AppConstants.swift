@@ -25,4 +25,8 @@ nonisolated final class AppConstants {
     
     // MARK: - Drive
     static let receiptsFolderName = "Receipts"
+    
+    // MARK: - App Configuration
+    static let appGroupID = "group.me.nimcheski.chris.HSA-Archive"
+    static let inboxDirectoryName = "Inbox"
 }
