@@ -284,22 +284,37 @@ private extension ReceiptRepository {
         _ receipt: Receipt
     ) async throws -> [Receipt]? {
         try await withSpreadsheetRecovery { spreadsheetID in
-            guard let row = try await self.findRow(
-                for: receipt.id,
-                spreadsheetID: spreadsheetID
-            ), try await self.googleSheetsService.deleteRows(
-                spreadsheetID: spreadsheetID,
-                startIndex: row - 1,
-                endIndex: row
-            ) != nil else { return nil }
-            guard let fileID = receipt.fileID,
-                  let trashedFile = try? await self.googleDriveService.trashFile(id: fileID) else {
+            async let deletedReceiptRow = self.deleteReceiptRow(receipt, spreadsheetID: spreadsheetID)
+            async let trashedReceiptFile = self.trashReceiptFile(receipt)
+            let (deletedRow, trashedFile) = try await (deletedReceiptRow, trashedReceiptFile)
+            guard deletedRow != nil else { return nil }
+            guard let trashedFile else {
                 self.showReceiptDeletedToast(receipt, spreadsheetID: spreadsheetID)
                 return self.receipts
             }
             self.showReceiptDeletedToast(receipt, fileID: trashedFile.id, spreadsheetID: spreadsheetID)
             return self.receipts
         } onNewSpreadsheet: { _ in self.receipts }
+    }
+    
+    /// Deletes the spreadsheet row for the given receipt.
+    /// Returns the deleted spreadsheet row, if found.
+    func deleteReceiptRow(_ receipt: Receipt, spreadsheetID: String) async throws -> Int? {
+        guard let row = try await findRow(
+            for: receipt.id,
+            spreadsheetID: spreadsheetID
+        ), try await googleSheetsService.deleteRows(
+            spreadsheetID: spreadsheetID,
+            startIndex: row - 1,
+            endIndex: row
+        ) != nil else { return nil }
+        return row
+    }
+    
+    /// Trashes the given receipt's image in Drive.
+    func trashReceiptFile(_ receipt: Receipt) async -> UpdateFileEndpoint.Response? {
+        guard let fileID = receipt.fileID else { return nil }
+        return try? await googleDriveService.trashFile(id: fileID)
     }
     
     /// Shows a toast confirming the receipt deletion and providing an Undo action to restore it.
