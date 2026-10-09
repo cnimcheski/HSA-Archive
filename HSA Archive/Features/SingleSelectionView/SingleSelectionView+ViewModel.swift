@@ -28,7 +28,7 @@ extension SingleSelectionView {
         
         weak var delegate: NavigationDelegate?
         
-        var searchText: String = ""
+        var searchText = ""
         
         var filteredItems: [Selection] {
             let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)

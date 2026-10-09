@@ -26,7 +26,6 @@ struct SingleSelectionView: View {
             )
             .searchFocused($isFocused)
             .searchPresentationToolbarBehavior(.avoidHidingContent)
-            .onAppear { isFocused = true }
     }
 }
 
