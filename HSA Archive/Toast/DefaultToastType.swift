@@ -40,6 +40,7 @@ nonisolated enum DefaultToastType: ToastType {
     // MARK: - Receipt
     
     case receiptImageUploadFailed
+    case uploadFileFailed
     case fileEncodingFailed
     case receiptDeleted(undo: () -> Void)
     
@@ -55,6 +56,7 @@ nonisolated enum DefaultToastType: ToastType {
             "You are currently offline. Please reconnect to the internet."
         case .serverUnavailable,
             .unexpectedError,
+            .uploadFileFailed,
             .fileEncodingFailed:
             "Something went wrong. Please try again."
         case let .fileImporterFailed(count):

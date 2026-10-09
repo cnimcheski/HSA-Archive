@@ -52,14 +52,6 @@ final class ReceiptRepository {
         await fetchAll()
     }
     
-    /// Loads the receipts folder ID from user defaults or Drive and caches it locally.
-    func loadReceiptsFolderID() async -> String? {
-        if let folderID = userDefaultsManager.receiptsFolderID { return folderID }
-        guard let folderID = await googleDriveService.getFolder(named: AppConstants.receiptsFolderName) else { return nil }
-        userDefaultsManager.setReceiptsFolderID(folderID)
-        return folderID
-    }
-    
     /// Uploads the receipt image, appends the receipt to the spreadsheet, and updates the local receipt list.
     func add(
         _ receipt: Receipt,
@@ -221,18 +213,23 @@ private extension ReceiptRepository {
             return nil
         }
         do {
-            guard let folderID = await loadReceiptsFolderID() else { return nil }
-            guard let response = try await googleDriveService.uploadFile(
-                name: fileName,
-                mimeType: "image/jpeg",
-                parents: [folderID],
-                data: data
-            ) else { return nil }
-            return response.id
-        }  catch {
+            return try await receiptSpreadsheetService.withFolderRecovery(.receipts) { folderID in
+                guard let response = try await self.googleDriveService.uploadFile(
+                    name: fileName,
+                    mimeType: "image/jpeg",
+                    parents: [folderID],
+                    data: data
+                ) else { return nil }
+                return response.id
+            }
+        } catch let error as UploadFileEndpoint.EndpointError {
+            handleUploadFileError(error)
+        } catch let error as UploadFileEndpoint.BodyError {
             handleUploadFileBodyError(error)
-            return nil
+        } catch {
+            handleUnknownError()
         }
+        return nil
     }
     
     /// Appends a receipt row to the spreadsheet and local receipt list.
@@ -417,6 +414,13 @@ private extension ReceiptRepository {
         switch error {
         case .spreadsheetNotFound:
             ToastManager.shared.show(DefaultToastType.spreadsheetNotFound)
+        }
+    }
+    
+    func handleUploadFileError(_ error: UploadFileEndpoint.EndpointError) {
+        switch error {
+        case .parentFolderNotFound:
+            ToastManager.shared.show(DefaultToastType.uploadFileFailed)
         }
     }
     

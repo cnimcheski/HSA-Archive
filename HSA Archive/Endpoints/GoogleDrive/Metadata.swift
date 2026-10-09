@@ -12,6 +12,7 @@ nonisolated struct Metadata: Encodable {
     let appProperties: [String: String]?
     
     /// Sets the `appProperties` to have the app tag by default.
+    /// - Note: Only the immediate parent ID should be passed in `parents` parameter. There cannot be multiple `parents`.
     init(
         name: String,
         mimeType: String,

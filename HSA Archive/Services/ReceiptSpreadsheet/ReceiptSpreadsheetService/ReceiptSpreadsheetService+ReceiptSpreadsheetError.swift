@@ -7,6 +7,7 @@
 
 nonisolated extension ReceiptSpreadsheetService {
     enum ReceiptSpreadsheetError: Error {
+        case folderNotFound
         case spreadsheetNotFound
     }
 }

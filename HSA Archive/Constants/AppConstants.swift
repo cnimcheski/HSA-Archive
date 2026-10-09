@@ -24,6 +24,7 @@ nonisolated final class AppConstants {
     static let spreadsheetAppPropertyValue = "true"
     
     // MARK: - Drive
+    static let archiveFolderName = "HSA Archive"
     static let receiptsFolderName = "Receipts"
     
     // MARK: - App Configuration

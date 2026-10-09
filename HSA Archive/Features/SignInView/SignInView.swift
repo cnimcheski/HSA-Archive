@@ -21,7 +21,11 @@ struct SignInView: View {
             ScrollView {
                 content
             }
-            .toolbar { closeButton }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    closeButton
+                }
+            }
         }
     }
 }

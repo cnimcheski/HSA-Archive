@@ -11,6 +11,7 @@ import FactoryKit
 final class AppSession {
     private let googleAuthService = Container.shared.googleAuthService()
     private let receiptRepository = Container.shared.receiptRepository()
+    private let receiptSpreadsheetService = Container.shared.receiptSpreadsheetService()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
     
     private var authObservationTask: Task<Void, Never>?
@@ -44,7 +45,7 @@ private extension AppSession {
     /// Loads the authenticated user's data into the app session.
     func loadUserData() async {
         async let loadReceiptsTask: Void = receiptRepository.loadReceipts()
-        async let ensureReceiptsFolderTask = receiptRepository.loadReceiptsFolderID()
+        async let ensureReceiptsFolderTask = receiptSpreadsheetService.loadFolderID(.receipts)
         _ = await (loadReceiptsTask, ensureReceiptsFolderTask)
     }
     

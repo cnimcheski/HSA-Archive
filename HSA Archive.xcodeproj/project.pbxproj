@@ -234,6 +234,8 @@
 		99FC0F1C3070C2AC004FFFFB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021A7C30147E9500D7DC8D /* AppConstants.swift */; };
 		99FC0F1E3070C6D1004FFFFB /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */; };
 		99FC0F1F30715412004FFFFB /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */; };
+		99FC0F21307346C6004FFFFB /* FolderFailureConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F20307346C6004FFFFB /* FolderFailureConvertible.swift */; };
+		99FC0F2330776B70004FFFFB /* ReceiptSpreadsheetService+Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F2230776B6F004FFFFB /* ReceiptSpreadsheetService+Folder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -493,6 +495,8 @@
 		99FC0F19306ED467004FFFFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		99FC0F1B306F5F23004FFFFB /* HSA ArchiveShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HSA ArchiveShareExtension.entitlements"; sourceTree = "<group>"; };
 		99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		99FC0F20307346C6004FFFFB /* FolderFailureConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFailureConvertible.swift; sourceTree = "<group>"; };
+		99FC0F2230776B6F004FFFFB /* ReceiptSpreadsheetService+Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+Folder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -842,6 +846,7 @@
 				99DD445E3035762600843826 /* ReceiptSpreadsheetService.swift */,
 				999ECB753053A4BB00484B13 /* ReceiptSpreadsheetService+ReceiptSpreadsheetError.swift */,
 				999ECB773053A4FA00484B13 /* ReceiptSpreadsheetService+SpreadsheetRecoveryResult.swift */,
+				99FC0F2230776B6F004FFFFB /* ReceiptSpreadsheetService+Folder.swift */,
 			);
 			path = ReceiptSpreadsheetService;
 			sourceTree = "<group>";
@@ -1724,6 +1729,7 @@
 			isa = PBXGroup;
 			children = (
 				99F2DD5630302E8800A4B653 /* DI */,
+				99FC0F20307346C6004FFFFB /* FolderFailureConvertible.swift */,
 				99F2DD5430302E5E00A4B653 /* GoogleAPIErrorHandler.swift */,
 				99DD446F303AC44900843826 /* SpreadsheetFailureConvertible.swift */,
 			);
@@ -2032,6 +2038,7 @@
 				995F9D173064AF7C0096CEB9 /* ListLoadingRow.swift in Sources */,
 				99021A7930147A9600D7DC8D /* SingleSelectionView+ViewModel.swift in Sources */,
 				99DD4468303A299B00843826 /* UploadFileEndpoint+Response.swift in Sources */,
+				99FC0F2330776B70004FFFFB /* ReceiptSpreadsheetService+Folder.swift in Sources */,
 				99D231A130492017005F3B9E /* NoReceiptsView.swift in Sources */,
 				99F2DD29302D7F8E00A4B653 /* SignInView+ViewModel.swift in Sources */,
 				99021A7A30147A9600D7DC8D /* SingleSelectionView.swift in Sources */,
@@ -2053,6 +2060,7 @@
 				99B98D843012F92B00A45554 /* InputContainer.swift in Sources */,
 				99C008E13001A57900CDF610 /* ReceiptsView+ViewModel.swift in Sources */,
 				99C0098C300D505400CDF610 /* ReceiptScannerView.swift in Sources */,
+				99FC0F21307346C6004FFFFB /* FolderFailureConvertible.swift in Sources */,
 				995F9CEC305BA43C0096CEB9 /* AppGroupBox.swift in Sources */,
 				99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */,
 				99A541FC304485B5001997B6 /* AppSession.swift in Sources */,

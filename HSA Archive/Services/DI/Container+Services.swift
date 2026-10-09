@@ -43,6 +43,7 @@ extension Container {
         }.singleton
     }
     
+    @MainActor
     var receiptSpreadsheetService: Factory<ReceiptSpreadsheetService> {
         self { ReceiptSpreadsheetService() }.singleton
     }

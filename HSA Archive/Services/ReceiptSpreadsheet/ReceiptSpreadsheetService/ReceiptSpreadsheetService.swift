@@ -8,10 +8,18 @@
 import FactoryKit
 import Toast
 
-nonisolated final class ReceiptSpreadsheetService {
+final class ReceiptSpreadsheetService {
     private let googleDriveService = Container.shared.googleDriveService()
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
+    
+    /// Loads the given folder ID from user defaults or Drive and caches it locally.
+    func loadFolderID(_ folder: Folder) async -> String? {
+        if let folderID = folder.id { return folderID }
+        guard let folderID = await googleDriveService.findFolder(named: folder.name) else { return nil }
+        folder.set(id: folderID)
+        return folderID
+    }
     
     /// Runs a Sheets operation using the stored spreadsheet ID.
     /// If the spreadsheet can't be found, recovers an existing spreadsheet or creates a new one,
@@ -38,11 +46,41 @@ nonisolated final class ReceiptSpreadsheetService {
             return try await handleSpreadsheetRecovery(operation, onNewSpreadsheet: onNewSpreadsheet)
         }
     }
+    
+    /// Runs an operation against the given folder, recovering the folder if necessary.
+    /// Uses the folder's existing ID when available. If the ID is missing or the folder is no longer found,
+    /// recovers the folder hierarchy and retries using the recovered ID.
+    /// When a new folder is recovered, `onNewFolder` can be used to perform a different operation
+    /// against the new folder ID.
+    ///
+    /// - Parameters:
+    ///   - folder: The folder to perform the operation against.
+    ///   - operation: The operation to perform using the folder ID.
+    ///   - onNewFolder: An optional operation to perform when the folder is recovered. Defaults to `operation`.
+    /// - Returns: The id of the given folder.
+    /// - Throws: `ReceiptSpreadsheetError.folderNotFound` if recovery fails, otherwise whatever
+    ///  `operation` or `onNewFolder` throws.
+    func withFolderRecovery<T>(
+        _ folder: Folder,
+        _ operation: @escaping (String) async throws -> T,
+        onNewFolder: ((String) async throws -> T)? = nil
+    ) async throws -> T {
+        let onNewFolder = onNewFolder ?? operation
+        guard let folderID = folder.id
+        else { return try await handleFolderRecovery(folder, onNewFolder: onNewFolder) }
+        do {
+            return try await operation(folderID)
+        } catch {
+            guard let error = error as? FolderFailureConvertible, error.folderFailureReason == .notFound
+            else { throw error }
+            return try await handleFolderRecovery(folder, onNewFolder: onNewFolder)
+        }
+    }
 }
 
 // MARK: - Private Methods
 
-nonisolated private extension ReceiptSpreadsheetService {
+private extension ReceiptSpreadsheetService {
     /// Creates and configures the app's spreadsheet with the required worksheet and header row.
     func setupSpreadsheet() async -> AppendSpreadsheetRowsEndpoint.Response? {
         guard let spreadsheetID = await createSpreadsheet() else { return nil }
@@ -52,16 +90,26 @@ nonisolated private extension ReceiptSpreadsheetService {
             userDefaultsManager.setSpreadsheetID(spreadsheetID)
             return response
         } catch {
-            await handleSetupSpreadsheetFailure()
+            handleSetupSpreadsheetFailure()
             return nil
         }
     }
     
     /// Creates an app receipt spreadsheet.
     func createSpreadsheet() async -> String? {
-        await googleDriveService.createSpreadsheet(
-            name: AppConstants.spreadsheetTitle
-        )
+        do {
+            return try await withFolderRecovery(.archive) { folderID in
+                try await self.googleDriveService.createSpreadsheet(
+                    name: AppConstants.spreadsheetTitle,
+                    parents: [folderID]
+                )
+            }
+        } catch let error as CreateSpreadsheetEndpoint.EndpointError {
+            handleCreateSpreadsheetError(error)
+        } catch {
+            handleUnknownError()
+        }
+        return nil
     }
     
     /// Finds the first sheet and renames it to the app's worksheet name.
@@ -100,15 +148,6 @@ nonisolated private extension ReceiptSpreadsheetService {
             values: [ReceiptSpreadsheetSchema.headers]
         )
     }
-}
-
-// MARK: - Main Actor Private Error Handlers
-
-private extension ReceiptSpreadsheetService {
-    /// Shows a toast indicating that spreadsheet setup failed.
-    func handleSetupSpreadsheetFailure() {
-        ToastManager.shared.show(DefaultToastType.spreadsheetSetupFailed)
-    }
     
     /// Runs the appropriate operation for the recovered spreadsheet.
     func handleSpreadsheetRecovery<T>(
@@ -133,11 +172,65 @@ private extension ReceiptSpreadsheetService {
             return .existing(spreadsheetID)
         } else {
             guard let response = await setupSpreadsheet() else { return nil }
+            userDefaultsManager.clearReceiptsFolderID()
             let toastType = hadStoredSpreadsheetID
                 ? DefaultToastType.spreadsheetRecreated
                 : DefaultToastType.spreadsheetCreated
             ToastManager.shared.show(toastType)
             return .new(response.spreadsheetID)
         }
+    }
+    
+    /// Recovers the folder and its hierarchy and performs an operation using the recovered folder ID.
+    func handleFolderRecovery<T>(
+        _ folder: Folder,
+        onNewFolder: (String) async throws -> T
+    ) async throws -> T {
+        let folderID = try await recoverFolderHierarchy(folder)
+        return try await onNewFolder(folderID)
+    }
+    
+    /// Recovers a folder and recursively recovers any required parent folders.
+    func recoverFolderHierarchy(_ folder: Folder) async throws -> String {
+        let parentID: String?
+        if let parent = folder.parent {
+            parentID = try await recoverFolderHierarchy(parent)
+        } else {
+            parentID = nil
+        }
+        guard let folderID = await recoverFolder(folder, parentID: parentID)
+        else { throw ReceiptSpreadsheetError.folderNotFound }
+        return folderID
+    }
+    
+    /// Recovers the specified folder by finding an existing one or creating a new one, otherwise returns nil.
+    func recoverFolder(_ folder: Folder, parentID: String? = nil) async -> String? {
+        folder.clearID()
+        guard let folderID = await googleDriveService.getOrCreateFolder(
+            named: folder.name,
+            parents: [parentID].compactMap { $0 }
+        )
+        else { return nil }
+        folder.set(id: folderID)
+        return folderID
+    }
+}
+
+// MARK: - Private Error Handlers
+
+private extension ReceiptSpreadsheetService {
+    func handleSetupSpreadsheetFailure() {
+        ToastManager.shared.show(DefaultToastType.spreadsheetSetupFailed)
+    }
+    
+    func handleCreateSpreadsheetError(_ error: CreateSpreadsheetEndpoint.EndpointError) {
+        switch error {
+        case .parentFolderNotFound:
+            ToastManager.shared.show(DefaultToastType.spreadsheetSetupFailed)
+        }
+    }
+    
+    func handleUnknownError() {
+        ToastManager.shared.show(DefaultToastType.unexpectedError)
     }
 }
