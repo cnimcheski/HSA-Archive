@@ -13,6 +13,7 @@ struct AppTextField<Style: ShapeStyle>: View {
     private let foregroundStyle: Style
     private let loadingText: String?
     private let textField: AnyView
+    private let shouldShowDoneButton: Bool
     
     init(
         _ prompt: String,
@@ -30,6 +31,7 @@ struct AppTextField<Style: ShapeStyle>: View {
                 text: text
             )
         )
+        shouldShowDoneButton = false
     }
     
     init<Format>(
@@ -50,6 +52,7 @@ struct AppTextField<Style: ShapeStyle>: View {
                 format: format
             )
         )
+        shouldShowDoneButton = true
     }
     
     var body: some View {
@@ -66,6 +69,22 @@ struct AppTextField<Style: ShapeStyle>: View {
                 textField
                     .multilineTextAlignment(.trailing)
                     .focused($isFocused)
+                    .toolbar { doneKeyboardToolbarButton }
+            }
+        }
+    }
+}
+
+// MARK: - Private Views
+
+private extension AppTextField {
+    var doneKeyboardToolbarButton: ToolbarItemGroup<some View> {
+        ToolbarItemGroup(placement: .keyboard) {
+            if isFocused && shouldShowDoneButton {
+                Spacer()
+                Button("Done") {
+                    isFocused = false
+                }
             }
         }
     }
