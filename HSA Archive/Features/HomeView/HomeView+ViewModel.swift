@@ -39,11 +39,13 @@ extension HomeView {
         var recentReceipts: [Receipt] {
             receiptRepository.isLoading
                 ? Placeholders.recentReceipts
-                : Array(receiptRepository.sortedReceipts.prefix(3))
+                : Array(receiptRepository.receipts.sorted {
+                    ($0.submissionDate ?? .distantPast) > ($1.submissionDate ?? .distantPast)
+                }.prefix(3))
         }
         
         var shouldShowViewAllReceiptsButton: Bool {
-            receiptRepository.sortedReceipts.count > 3
+            receiptRepository.receipts.count > 3
         }
         
         func showSignInView() {

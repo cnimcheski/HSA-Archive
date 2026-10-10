@@ -28,7 +28,7 @@ extension GrowthView {
         weak var delegate: NavigationDelegate?
         
         var currentAmount: Double {
-            receiptRepository.sortedReceipts.filter { !$0.isReimbursed }.map { $0.amount }.reduce(0, +)
+            receiptRepository.receipts.filter { !$0.isReimbursed }.map { $0.amount }.reduce(0, +)
         }
         
         var projectedAmount: Double {

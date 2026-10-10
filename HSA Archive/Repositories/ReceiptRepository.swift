@@ -24,11 +24,6 @@ final class ReceiptRepository {
     private let receiptSpreadsheetService = Container.shared.receiptSpreadsheetService()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
     
-    // TODO: - Sort by submission date instead?
-    var sortedReceipts: [Receipt] {
-        receipts.sorted { $0.transactionDate > $1.transactionDate }
-    }
-    
     var isLoading: Bool {
         state == .loading
     }
@@ -37,8 +32,8 @@ final class ReceiptRepository {
         state == .failed
     }
     
+    private(set) var receipts = [Receipt]()
     private(set) var failedRows = [ReceiptSpreadsheetDecoder.Response.FailedRow]()
-    private var receipts = [Receipt]()
     private var state = State.loading
     
     /// Loads receipts by fetching all receipt rows, excluding headers, and updates the repository state.
@@ -237,6 +232,8 @@ private extension ReceiptRepository {
         _ receipt: Receipt,
         spreadsheetID: String
     ) async throws -> [Receipt]? {
+        var receipt = receipt
+        receipt.submissionDate = receipt.submissionDate ?? .now
         guard try await self.googleSheetsService.appendRows(
             spreadsheetID: spreadsheetID,
             range: AppConstants.worksheetName,

@@ -40,7 +40,7 @@ nonisolated private extension ReceiptSpreadsheetDecoder {
             transactionDate: date,
             category: .init(rawValue: value[5]) ?? .other,
             reimbursementDate: DateFormatter.iso8601DateOnly.date(from: value[6]),
-            submissionDate: DateFormatter.iso8601DateOnly.date(from: value[7]),
+            submissionDate: DateFormatter.iso8601DateTime.date(from: value[7]),
             notes: value[8],
             fileID: value[9]
         )

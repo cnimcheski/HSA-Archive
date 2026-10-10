@@ -26,7 +26,7 @@ nonisolated struct ReceiptSpreadsheetEncoder {
             DateFormatter.iso8601DateOnly.string(from: receipt.transactionDate),
             receipt.category.rawValue,
             receipt.reimbursementDate.map { DateFormatter.iso8601DateOnly.string(from: $0) } ?? "",
-            DateFormatter.iso8601DateOnly.string(from: receipt.submissionDate ?? .now),
+            DateFormatter.iso8601DateTime.string(from: receipt.submissionDate ?? .now),
             receipt.notes
         ]
     }

@@ -31,7 +31,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .animation(.easeInOut, value: receiptRepository.sortedReceipts)
+            .animation(.easeInOut, value: receiptRepository.receipts)
             .refreshable(action: receiptRepository.refreshReceipts)
     }
 }
@@ -42,7 +42,7 @@ private extension HomeView {
     var content: some View {
         List {
             if !receiptRepository.hasError {
-                Overview(receipts: receiptRepository.sortedReceipts, isLoading: receiptRepository.isLoading)
+                Overview(receipts: receiptRepository.receipts, isLoading: receiptRepository.isLoading)
                 if googleAuthService.authState.isSignedOut {
                     signInBanner
                 }

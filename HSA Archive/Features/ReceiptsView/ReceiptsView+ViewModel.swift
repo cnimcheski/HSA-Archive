@@ -45,7 +45,7 @@ extension ReceiptsView {
         var filteredReceipts: [Receipt] {
             guard !receiptRepository.isLoading else { return Placeholders.receipts }
             let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-            return receiptRepository.sortedReceipts
+            return receiptRepository.receipts.sorted { $0.transactionDate > $1.transactionDate }
                 .filter {
                     $0.matches(filters)
                         && $0.matches(searchText: searchText)

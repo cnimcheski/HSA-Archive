@@ -91,7 +91,7 @@ private extension ReceiptsView {
     var overlayContent: some View {
         if receiptRepository.hasError {
             DataLoadingErrorView()
-        } else if !receiptRepository.isLoading && receiptRepository.sortedReceipts.isEmpty {
+        } else if !receiptRepository.isLoading && receiptRepository.receipts.isEmpty {
             NoReceiptsView()
         } else if viewModel.receiptSections.isEmpty {
             filteredReceiptsEmptyView
