@@ -112,7 +112,6 @@ nonisolated final class GoogleSheetsService {
 // MARK: - Private Methods
 
 nonisolated private extension GoogleSheetsService {
-    // TODO: - This was simply moved so doesn't need reviewing..
     /// Fetches a spreadsheets details by its ID.
     func fetchSpreadsheet(
         spreadsheetID: String
