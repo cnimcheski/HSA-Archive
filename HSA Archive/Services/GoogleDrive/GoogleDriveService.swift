@@ -13,6 +13,13 @@ nonisolated final class GoogleDriveService {
     private let apiManager = Container.shared.googleDriveAPIManager()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
     
+    /// Retrieves file metadata for the specified file ID.
+    func getFile(for id: String) async throws(APIManagerError) -> Metadata {
+        try await apiManager.performThrowingRequest(
+            for: GetFileEndpoint(fileID: id)
+        )
+    }
+    
     /// Lists all files in Drive matching the optional query.
     func listFiles(
         query: String? = nil
@@ -77,6 +84,16 @@ nonisolated final class GoogleDriveService {
         id: String
     ) async throws(DeleteFileEndpoint.EndpointError) -> EmptyResponse? {
         try await apiManager.performRequest(for: DeleteFileEndpoint(fileID: id))
+    }
+    
+    /// Updates the app properties of a file.
+    func updateAppProperties(
+        _ appProperties: [String: String],
+        fileID: String
+    ) async throws(APIManagerError) -> UpdateFileEndpoint.Response {
+        try await apiManager.performThrowingRequest(
+            for: UpdateFileEndpoint(fileID: fileID, body: .init(appProperties: appProperties))
+        )
     }
     
     /// Moves the specified file to the trash.

@@ -14,15 +14,18 @@ extension RootCoordinator {
         enum RootViewType {
             case onboarding
             case tabs
+            case updateRequired
         }
         
+        private let receiptSpreadsheetService = Container.shared.receiptSpreadsheetService()
         private let userDefaultsManager = Container.shared.userDefaultsManager()
         
         let onboardingViewModel = OnboardingView.ViewModel()
         let tabsCoordinatorViewModel = TabsCoordinator.ViewModel()
         
         var rootViewType: RootViewType {
-            userDefaultsManager.didFinishOnboarding ? .tabs : .onboarding
+            if receiptSpreadsheetService.requiresAppUpdate { return .updateRequired }
+            return userDefaultsManager.didFinishOnboarding ? .tabs : .onboarding
         }
     }
 }

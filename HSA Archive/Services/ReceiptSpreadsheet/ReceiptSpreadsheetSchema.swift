@@ -6,6 +6,11 @@
 //
 
 nonisolated enum ReceiptSpreadsheetSchema {
+    /// The current schema version.
+    /// - Note: The schema version must be updated in order for the app to migrate to new schema versions on app launch.
+    /// - Note: Whenever this is changed, we need to also add a case to `migrateSchema` in `ReceiptSpreadsheetService`.
+    static let currentVersion = 1
+    
     /// The ordered column headers used for receipt data in the spreadsheet.
     static let headers = [
         "ID",

@@ -54,6 +54,7 @@ private extension AppSession {
         // TODO: - Is there anything else that needs to happen when user becomes unauthenticated?
         receiptRepository.clear()
         userDefaultsManager.clearSpreadsheetID()
+        userDefaultsManager.clearSpreadsheetSchemaVersion()
         userDefaultsManager.clearReceiptsFolderID()
     }
 }

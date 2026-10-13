@@ -6,12 +6,22 @@
 //
 
 import FactoryKit
+import Networking
+import Observation
 import Toast
 
+@Observable
 final class ReceiptSpreadsheetService {
+    enum SchemaMigrationError: Error {
+        case unsupportedVersion(Int)
+        case noSchemaVersionFound
+    }
+    
     private let googleDriveService = Container.shared.googleDriveService()
     private let googleSheetsService = Container.shared.googleSheetsService()
     private let userDefaultsManager = Container.shared.userDefaultsManager()
+    
+    private(set) var requiresAppUpdate = false
     
     /// Loads the given folder ID from user defaults or Drive and caches it locally.
     func loadFolderID(_ folder: Folder) async -> String? {
@@ -76,6 +86,23 @@ final class ReceiptSpreadsheetService {
             return try await handleFolderRecovery(folder, onNewFolder: onNewFolder)
         }
     }
+    
+    /// Ensures the app spreadsheet uses the current schema version, migrating it if necessary.
+    /// Returns the current schema version.
+    /// - Throws: `APIManagerError` and `SchemaMigrationError`.
+    func ensureCurrentSchema(for spreadsheetID: String) async throws -> Int {
+        let currentVersion = ReceiptSpreadsheetSchema.currentVersion
+        if userDefaultsManager.spreadsheetSchemaVersion == currentVersion { return currentVersion }
+        do {
+            let storedVersion = try await self.getSchemaVersion(spreadsheetID: spreadsheetID)
+            try await self.migrateSchema(from: storedVersion, spreadsheetID: spreadsheetID)
+            try await self.setSchemaVersion(currentVersion, spreadsheetID: spreadsheetID)
+            return currentVersion
+        } catch let error as SchemaMigrationError {
+            requiresAppUpdate = true
+            throw error
+        }
+    }
 }
 
 // MARK: - Private Methods
@@ -99,10 +126,12 @@ private extension ReceiptSpreadsheetService {
     func createSpreadsheet() async -> String? {
         do {
             return try await withFolderRecovery(.archive) { folderID in
-                try await self.googleDriveService.createSpreadsheet(
+                let spreadsheetID = try await self.googleDriveService.createSpreadsheet(
                     name: AppConstants.spreadsheetTitle,
                     parents: [folderID]
                 )
+                self.userDefaultsManager.setSpreadsheetSchemaVersion(ReceiptSpreadsheetSchema.currentVersion)
+                return spreadsheetID
             }
         } catch let error as CreateSpreadsheetEndpoint.EndpointError {
             handleCreateSpreadsheetError(error)
@@ -213,6 +242,47 @@ private extension ReceiptSpreadsheetService {
         else { return nil }
         folder.set(id: folderID)
         return folderID
+    }
+    
+    /// Returns the spreadsheet's schema version, or `nil` if unavailable.
+    /// - Throws: `APIManagerError` and `SchemaMigrationError`.
+    func getSchemaVersion(spreadsheetID: String) async throws -> Int {
+        let file = try await googleDriveService.getFile(for: spreadsheetID)
+        guard let value = file.appProperties?[AppConstants.schemaVersionAppPropertyKey].flatMap(Int.init)
+        else { throw SchemaMigrationError.noSchemaVersionFound }
+        return value
+    }
+    
+    /// Updates the spreadsheet's schema version, returning the new version or `nil` if the update fails.
+    func setSchemaVersion(_ schemaVersion: Int, spreadsheetID: String) async throws(APIManagerError) {
+        _ = try await googleDriveService.updateAppProperties(
+            [
+                AppConstants.spreadsheetAppPropertyKey: AppConstants.spreadsheetAppPropertyValue,
+                AppConstants.schemaVersionAppPropertyKey: String(schemaVersion)
+            ],
+            fileID: spreadsheetID
+        )
+        userDefaultsManager.setSpreadsheetSchemaVersion(schemaVersion)
+    }
+}
+
+// MARK: - Schema Migration Methods
+
+private extension ReceiptSpreadsheetService {
+    /// Migrates from an old stored schema version to latest.
+    /// When adding new schema version, simply add a case to the version switch statement and create the
+    /// associated `migrateToVersionX` method.
+    /// - Note: Migrations are handled sequentially. Rather than needing to handle migrating from version 1->3 directly,
+    /// we go from 1->2 then 2->3. This ensures we only have to add a single migration case from x-1->x.
+    func migrateSchema(from storedVersion: Int, spreadsheetID: String) async throws(SchemaMigrationError) {
+        let currentVersion = ReceiptSpreadsheetSchema.currentVersion
+        if storedVersion == currentVersion { return }
+        if storedVersion > currentVersion { throw SchemaMigrationError.unsupportedVersion(storedVersion) }
+        for version in (storedVersion + 1)...currentVersion {
+            switch version {
+            default: throw SchemaMigrationError.unsupportedVersion(version)
+            }
+        }
     }
 }
 

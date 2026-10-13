@@ -20,6 +20,8 @@ struct RootCoordinator: View {
                     .transition(.opacity)
             case .tabs:
                 TabsCoordinator(viewModel: viewModel.tabsCoordinatorViewModel)
+            case .updateRequired:
+                UpdateRequiredView()
             }
         }
         .animation(.spring, value: viewModel.rootViewType)

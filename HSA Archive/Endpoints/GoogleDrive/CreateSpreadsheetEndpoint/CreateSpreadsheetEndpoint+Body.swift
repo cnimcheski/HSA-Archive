@@ -12,11 +12,12 @@ nonisolated extension CreateSpreadsheetEndpoint {
         let appProperties: [String: String]?
         let parents: [String]?
         
-        /// Sets the `appProperties` to have the app tag by default.
+        /// Sets the `appProperties` to have the app tag and current schema version by default.
         init(
             name: String,
             appProperties: [String: String]? = [
-                AppConstants.spreadsheetAppPropertyKey: AppConstants.spreadsheetAppPropertyValue
+                AppConstants.spreadsheetAppPropertyKey: AppConstants.spreadsheetAppPropertyValue,
+                AppConstants.schemaVersionAppPropertyKey: String(ReceiptSpreadsheetSchema.currentVersion)
             ],
             parents: [String]? = nil
         ) {

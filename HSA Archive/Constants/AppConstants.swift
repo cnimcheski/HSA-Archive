@@ -22,10 +22,15 @@ nonisolated final class AppConstants {
     static let worksheetName = "Receipts"
     static let spreadsheetAppPropertyKey = "HSA_Archive"
     static let spreadsheetAppPropertyValue = "true"
+    static let schemaVersionAppPropertyKey = "HSA_Archive_Schema_Version"
     
     // MARK: - Drive
     static let archiveFolderName = "HSA Archive"
     static let receiptsFolderName = "Receipts"
+    
+    // MARK: - App Store
+    static let appStoreID = "6502607881" // TODO: - Update to actual app store id.
+    static let appStoreURL = URL(string: "https://apps.apple.com/app/id\(appStoreID)")
     
     // MARK: - App Configuration
     static let appGroupID = "group.me.nimcheski.chris.HSA-Archive"

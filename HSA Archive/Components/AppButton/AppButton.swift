@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AppButton: View {
     private let title: String
-    private let style: Style
+    private let style: AppButtonStyle
     private let action: () -> Void
     
-    init(_ title: String, style: Style = .primary, action: @escaping () -> Void) {
+    init(_ title: String, style: AppButtonStyle = .primary, action: @escaping () -> Void) {
         self.title = title
         self.style = style
         self.action = action

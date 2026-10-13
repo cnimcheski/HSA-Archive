@@ -15,6 +15,7 @@ nonisolated final class UserDefaultsManager {
     var assumedAnnualReturn = 0.07
     private(set) var didFinishOnboarding = false
     private(set) var spreadsheetID: String?
+    private(set) var spreadsheetSchemaVersion: Int?
     private(set) var archiveFolderID: String?
     private(set) var receiptsFolderID: String?
     
@@ -28,6 +29,14 @@ nonisolated final class UserDefaultsManager {
     
     func clearSpreadsheetID() {
         spreadsheetID = nil
+    }
+    
+    func setSpreadsheetSchemaVersion(_ spreadsheetSchemaVersion: Int) {
+        self.spreadsheetSchemaVersion = spreadsheetSchemaVersion
+    }
+    
+    func clearSpreadsheetSchemaVersion() {
+        spreadsheetSchemaVersion = nil
     }
     
     func setArchiveFolderID(_ archiveFolderID: String) {

@@ -7,6 +7,12 @@
 
 nonisolated extension UpdateFileEndpoint {
     struct Body: Encodable {
-        let trashed: Bool
+        let trashed: Bool?
+        let appProperties: [String: String]?
+        
+        init(trashed: Bool? = nil, appProperties: [String: String]? = nil) {
+            self.trashed = trashed
+            self.appProperties = appProperties
+        }
     }
 }

@@ -36,7 +36,7 @@
 		99021AC7301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99021AC6301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift */; };
 		990B584B304CC5F000D8AB4E /* Receipt+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B584A304CC5EF00D8AB4E /* Receipt+Filters.swift */; };
 		990B584E304CDA9600D8AB4E /* AdaptiveBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B584D304CDA9600D8AB4E /* AdaptiveBadge.swift */; };
-		990B5850304F09AB00D8AB4E /* AppButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B584F304F09AB00D8AB4E /* AppButton+Style.swift */; };
+		990B5850304F09AB00D8AB4E /* AppButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B584F304F09AB00D8AB4E /* AppButtonStyle.swift */; };
 		990B5853304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B5852304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift */; };
 		990B5855304F726900D8AB4E /* Receipt+Filters+DateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B5854304F726900D8AB4E /* Receipt+Filters+DateFilter.swift */; };
 		990B5857304F729400D8AB4E /* Receipt+Filters+SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B5856304F729400D8AB4E /* Receipt+Filters+SortingOption.swift */; };
@@ -236,6 +236,9 @@
 		99FC0F1F30715412004FFFFB /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */; };
 		99FC0F21307346C6004FFFFB /* FolderFailureConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F20307346C6004FFFFB /* FolderFailureConvertible.swift */; };
 		99FC0F2330776B70004FFFFB /* ReceiptSpreadsheetService+Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F2230776B6F004FFFFB /* ReceiptSpreadsheetService+Folder.swift */; };
+		99FC0F283079ECEE004FFFFB /* GetFileEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F273079ECEE004FFFFB /* GetFileEndpoint.swift */; };
+		99FC0F2D307AA863004FFFFB /* UpdateRequiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F2C307AA863004FFFFB /* UpdateRequiredView.swift */; };
+		99FC0F32307AD4A5004FFFFB /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC0F31307AD4A5004FFFFB /* AppLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,7 +307,7 @@
 		99021AC6301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertViewModel+ReceiptReviewView.swift"; sourceTree = "<group>"; };
 		990B584A304CC5EF00D8AB4E /* Receipt+Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Filters.swift"; sourceTree = "<group>"; };
 		990B584D304CDA9600D8AB4E /* AdaptiveBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveBadge.swift; sourceTree = "<group>"; };
-		990B584F304F09AB00D8AB4E /* AppButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppButton+Style.swift"; sourceTree = "<group>"; };
+		990B584F304F09AB00D8AB4E /* AppButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtonStyle.swift; sourceTree = "<group>"; };
 		990B5852304F724D00D8AB4E /* Receipt+Filters+ReimbursementStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Filters+ReimbursementStatus.swift"; sourceTree = "<group>"; };
 		990B5854304F726900D8AB4E /* Receipt+Filters+DateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Filters+DateFilter.swift"; sourceTree = "<group>"; };
 		990B5856304F729400D8AB4E /* Receipt+Filters+SortingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+Filters+SortingOption.swift"; sourceTree = "<group>"; };
@@ -497,6 +500,9 @@
 		99FC0F1D3070C6D1004FFFFB /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		99FC0F20307346C6004FFFFB /* FolderFailureConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFailureConvertible.swift; sourceTree = "<group>"; };
 		99FC0F2230776B6F004FFFFB /* ReceiptSpreadsheetService+Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptSpreadsheetService+Folder.swift"; sourceTree = "<group>"; };
+		99FC0F273079ECEE004FFFFB /* GetFileEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFileEndpoint.swift; sourceTree = "<group>"; };
+		99FC0F2C307AA863004FFFFB /* UpdateRequiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRequiredView.swift; sourceTree = "<group>"; };
+		99FC0F31307AD4A5004FFFFB /* AppLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -718,6 +724,7 @@
 				995F9CFF305E45A80096CEB9 /* DeleteFileEndpoint */,
 				990B5858304FA18300D8AB4E /* DownloadFileEndpoint */,
 				99F2DD4E302F87B200A4B653 /* FindSpreadsheetIDEndpoint */,
+				99FC0F263079ECE1004FFFFB /* GetFileEndpoint */,
 				995F9CF7305D04D40096CEB9 /* ListFilesEndpoint */,
 				999ECB7C3055F2D200484B13 /* UpdateFileEndpoint */,
 				99DD4464303A254700843826 /* UploadFileEndpoint */,
@@ -738,6 +745,7 @@
 		995F9CF1305CD8FD0096CEB9 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				990B584F304F09AB00D8AB4E /* AppButtonStyle.swift */,
 				995F9CF2305CD9520096CEB9 /* CustomSpacingLabelStyle.swift */,
 			);
 			path = Styles;
@@ -1070,6 +1078,7 @@
 				995F9D10306397BE0096CEB9 /* ShareView */,
 				99021A7830147A9600D7DC8D /* SingleSelectionView */,
 				99F2DD25302D7F7400A4B653 /* SignInView */,
+				99FC0F2B307AA845004FFFFB /* UpdateRequiredView */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1102,6 +1111,7 @@
 				99C00982300C421B00CDF610 /* AppButton */,
 				99B98D8530130DE400A45554 /* AppDatePicker */,
 				995F9CEA305BA42E0096CEB9 /* AppGroupBox */,
+				99FC0F30307AD498004FFFFB /* AppLink */,
 				99D554053014229900E937BB /* AppMenu */,
 				995F9D22306A054E0096CEB9 /* AppSlider */,
 				99C009AC3010889900CDF610 /* AppTextField */,
@@ -1265,7 +1275,6 @@
 			isa = PBXGroup;
 			children = (
 				99C00983300C423100CDF610 /* AppButton.swift */,
-				990B584F304F09AB00D8AB4E /* AppButton+Style.swift */,
 			);
 			path = AppButton;
 			sourceTree = "<group>";
@@ -1771,6 +1780,30 @@
 			path = DeepLinks;
 			sourceTree = "<group>";
 		};
+		99FC0F263079ECE1004FFFFB /* GetFileEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				99FC0F273079ECEE004FFFFB /* GetFileEndpoint.swift */,
+			);
+			path = GetFileEndpoint;
+			sourceTree = "<group>";
+		};
+		99FC0F2B307AA845004FFFFB /* UpdateRequiredView */ = {
+			isa = PBXGroup;
+			children = (
+				99FC0F2C307AA863004FFFFB /* UpdateRequiredView.swift */,
+			);
+			path = UpdateRequiredView;
+			sourceTree = "<group>";
+		};
+		99FC0F30307AD498004FFFFB /* AppLink */ = {
+			isa = PBXGroup;
+			children = (
+				99FC0F31307AD4A5004FFFFB /* AppLink.swift */,
+			);
+			path = AppLink;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1986,7 +2019,7 @@
 				99C0097F300AC79200CDF610 /* RootCoordinator.swift in Sources */,
 				99F2DD18302C075B00A4B653 /* GoogleAuthService.swift in Sources */,
 				99DD4455303189AC00843826 /* BatchUpdateSpreadsheetEndpoint+Body.swift in Sources */,
-				990B5850304F09AB00D8AB4E /* AppButton+Style.swift in Sources */,
+				990B5850304F09AB00D8AB4E /* AppButtonStyle.swift in Sources */,
 				99B98D7C3012F58400A45554 /* Category.swift in Sources */,
 				99F2DD1A302C087A00A4B653 /* UIApplication+Extensions.swift in Sources */,
 				99021A9E3016FA7700D7DC8D /* AIRequest.swift in Sources */,
@@ -2048,6 +2081,7 @@
 				99021A7D30147E9500D7DC8D /* AppConstants.swift in Sources */,
 				995F9D2C306B56C40096CEB9 /* GrowthView+ProjectionSummary+ViewModel.swift in Sources */,
 				99C00996300DA31500CDF610 /* ReceiptReviewView+ViewModel.swift in Sources */,
+				99FC0F2D307AA863004FFFFB /* UpdateRequiredView.swift in Sources */,
 				99C008E53001DECD00CDF610 /* DotSeparator.swift in Sources */,
 				99D2319230475664005F3B9E /* Date+Extensions.swift in Sources */,
 				99021AB33018546100D7DC8D /* RemoteConfigClient+RemoteConfigKey.swift in Sources */,
@@ -2063,6 +2097,7 @@
 				99FC0F21307346C6004FFFFB /* FolderFailureConvertible.swift in Sources */,
 				995F9CEC305BA43C0096CEB9 /* AppGroupBox.swift in Sources */,
 				99D2D5E830284936007A65C3 /* DefaultToastType.swift in Sources */,
+				99FC0F32307AD4A5004FFFFB /* AppLink.swift in Sources */,
 				99A541FC304485B5001997B6 /* AppSession.swift in Sources */,
 				99C0090C30043A3400CDF610 /* CornerRadius.swift in Sources */,
 				99021A873015594100D7DC8D /* Binding+Optional.swift in Sources */,
@@ -2150,6 +2185,7 @@
 				995F9D0C3062206E0096CEB9 /* CreateFolderEndpoint+Response.swift in Sources */,
 				99021AB830186AAD00D7DC8D /* ReceiptExtractionResponse+Payload+Fields.swift in Sources */,
 				99C009AA3010091D00CDF610 /* Container+Services.swift in Sources */,
+				99FC0F283079ECEE004FFFFB /* GetFileEndpoint.swift in Sources */,
 				99021AC7301E5C4900D7DC8D /* AlertViewModel+ReceiptReviewView.swift in Sources */,
 				99C0090030032B7A00CDF610 /* Badge.swift in Sources */,
 				99FC0F15306E050E004FFFFB /* DeepLinkRegistry.swift in Sources */,

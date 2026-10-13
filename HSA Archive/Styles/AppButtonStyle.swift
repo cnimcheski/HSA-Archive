@@ -1,5 +1,5 @@
 //
-//  AppButton+Style.swift
+//  AppButtonStyle.swift
 //  HSA Archive
 //
 //  Created by Steve Nimcheski on 9/7/26.
@@ -7,18 +7,16 @@
 
 import SwiftUI
 
-nonisolated extension AppButton {
-    enum Style {
-        case primary
-        case secondary
-        
-        var buttonStyle: AnyPrimitiveButtonStyle {
-            switch self {
-            case .primary:
-                .init(.borderedProminent)
-            case .secondary:
-                .init(.bordered)
-            }
+enum AppButtonStyle {
+    case primary
+    case secondary
+    
+    var buttonStyle: AnyPrimitiveButtonStyle {
+        switch self {
+        case .primary:
+            .init(.borderedProminent)
+        case .secondary:
+            .init(.bordered)
         }
     }
 }

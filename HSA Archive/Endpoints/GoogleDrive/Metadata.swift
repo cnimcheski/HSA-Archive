@@ -5,7 +5,7 @@
 //  Created by Steve Nimcheski on 9/20/26.
 //
 
-nonisolated struct Metadata: Encodable {
+nonisolated struct Metadata: Codable {
     let name: String
     let mimeType: String
     let parents: [String]?

@@ -185,7 +185,8 @@ private extension ReceiptRepository {
     func fetchAll() async {
         do {
             guard let values = try await withSpreadsheetRecovery({ spreadsheetID in
-                try await self.googleSheetsService.fetchRows(
+                _ = try await self.receiptSpreadsheetService.ensureCurrentSchema(for: spreadsheetID)
+                return try await self.googleSheetsService.fetchRows(
                     spreadsheetID: spreadsheetID,
                     range: AppConstants.worksheetName + "!A2:Z"
                 )
