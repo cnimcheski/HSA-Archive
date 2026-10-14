@@ -19,7 +19,7 @@ extension ReceiptScannerView {
     @Observable
     final class ViewModel: NavigationModel, Navigating {
         enum Destination {
-            case dismiss(uiImage: UIImage? = nil)
+            case dismiss(uiImages: [UIImage] = [])
         }
         
         weak var delegate: NavigationDelegate?
@@ -36,8 +36,8 @@ extension ReceiptScannerView {
         }
         
         /// Dismisses this screen and pushes on the `ReceiptReviewView` when passing an actual UIImage.
-        func dismiss(uiImages: [UIImage]? = nil) {
-            delegate?.navigate(to: .dismiss(uiImage: uiImages?.first))
+        func dismiss(uiImages: [UIImage] = []) {
+            delegate?.navigate(to: .dismiss(uiImages: uiImages))
         }
     }
 }

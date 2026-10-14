@@ -26,6 +26,9 @@ final class AddReceiptCoordinator: ChildCoordinator {
     
     weak var delegate: NavigationDelegate?
     
+    /// Array of receipt reviews awaiting presentation so they can be presented one after the other.
+    private var pendingReceiptReviewCoordinators = [ReceiptReviewCoordinator]()
+    
     func build(page: Page) -> some View {
         switch page {
         case let .review(receiptReviewCoordinator):
@@ -54,6 +57,24 @@ final class AddReceiptCoordinator: ChildCoordinator {
     func dismissFullScreenCover(onDismiss: (() -> Void)? = nil) {
         delegate?.dismissFullScreenCover(onDismiss: onDismiss)
     }
+    
+    /// Creates review coordinators for the provided images and presents the first receipt.
+    /// Used to present the receipts one by one.
+    func startReviewBatch(uiImages: [UIImage]) {
+        pendingReceiptReviewCoordinators = uiImages.map { .init(receiptReviewViewModel: .init(uiImage: $0)) }
+        presentNextPendingReview()
+    }
+}
+
+// MARK: - Private Methods
+
+private extension AddReceiptCoordinator {
+    /// Presents the next pending receipt if available.
+    func presentNextPendingReview() {
+        guard !pendingReceiptReviewCoordinators.isEmpty else { return }
+        let receiptReviewCoordinator = pendingReceiptReviewCoordinators.removeFirst()
+        push(.review(receiptReviewCoordinator), type: .sheet)
+    }
 }
 
 // MARK: - Delegate Handlers
@@ -61,10 +82,9 @@ final class AddReceiptCoordinator: ChildCoordinator {
 extension AddReceiptCoordinator: ReceiptScannerView.NavigationDelegate {
     func navigate(to destination: ReceiptScannerView.ViewModel.Destination) {
         switch destination {
-        case let .dismiss(uiImage):
+        case let .dismiss(uiImages):
             dismissFullScreenCover { [weak self] in
-                guard let self, let uiImage else { return }
-                push(.review(.init(receiptReviewViewModel: .init(uiImage: uiImage))), type: .sheet)
+                self?.startReviewBatch(uiImages: uiImages)
             }
         }
     }
@@ -74,9 +94,14 @@ extension AddReceiptCoordinator: ReceiptReviewCoordinator.NavigationDelegate {
     func navigate(to destination: ReceiptReviewCoordinator.Destination) {
         switch destination {
         case let .dismiss(shouldShowScanner):
-            dismissSheet(
-                onDismiss: shouldShowScanner ? { self.push(.scanner, type: .fullScreenCover) } : nil
-            )
+            dismissSheet { [weak self] in
+                guard let self else { return }
+                if shouldShowScanner {
+                    push(.scanner, type: .fullScreenCover)
+                } else {
+                    presentNextPendingReview()
+                }
+            }
         }
     }
 }

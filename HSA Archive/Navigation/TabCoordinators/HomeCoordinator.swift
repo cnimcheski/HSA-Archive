@@ -67,9 +67,7 @@ final class HomeCoordinator: Navigating, StackCoordinator {
 
 private extension HomeCoordinator {
     func handleSelectedImages(_ uiImages: [UIImage]) {
-        // TODO: - Use all images instead of just first
-        guard let uiImage = uiImages.first else { return }
-        push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: .init(uiImage: uiImage)))), type: .sheet)
+        addReceiptCoordinator.startReviewBatch(uiImages: uiImages)
     }
 }
 
@@ -83,11 +81,11 @@ extension HomeCoordinator: HomeView.NavigationDelegate {
         case .photosPicker:
             photosPickerViewModel = .init(onCompletion: handleSelectedImages)
         case .scanner:
-            push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
+            addReceiptCoordinator.push(.scanner, type: .fullScreenCover)
         case .receiptsTab:
             delegate?.navigate(to: .receiptsTab)
         case let .reviewReceipt(receiptReviewViewModel):
-            push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: receiptReviewViewModel))), type: .sheet)
+            addReceiptCoordinator.push(.review(.init(receiptReviewViewModel: receiptReviewViewModel)), type: .sheet)
         case let .signIn(viewModel):
             push(.signIn(viewModel), type: .fullScreenCover)
         case let .invalidReceipts(viewModel):

@@ -54,9 +54,7 @@ final class ReceiptsCoordinator: StackCoordinator {
     }
     
     func handleSelectedImages(_ uiImages: [UIImage]) {
-        // TODO: - Use all images instead of just first
-        guard let uiImage = uiImages.first else { return }
-        push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: .init(uiImage: uiImage)))), type: .sheet)
+        addReceiptCoordinator.startReviewBatch(uiImages: uiImages)
     }
 }
 
@@ -66,7 +64,7 @@ extension ReceiptsCoordinator: ReceiptsView.NavigationDelegate {
     func navigate(to destination: ReceiptsView.ViewModel.Destination) {
         switch destination {
         case .scanner:
-            push(.addReceiptCoordinator(.scanner), type: .fullScreenCover)
+            addReceiptCoordinator.push(.scanner, type: .fullScreenCover)
         case .filePicker:
             fileImporterViewModel = .init(onCompletion: handleSelectedImages)
         case .photosPicker:
@@ -76,7 +74,7 @@ extension ReceiptsCoordinator: ReceiptsView.NavigationDelegate {
         case let .invalidReceipts(viewModel):
             push(.invalidReceipts(viewModel))
         case let .reviewReceipt(receiptReviewViewModel):
-            push(.addReceiptCoordinator(.review(.init(receiptReviewViewModel: receiptReviewViewModel))), type: .sheet)
+            addReceiptCoordinator.push(.review(.init(receiptReviewViewModel: receiptReviewViewModel)), type: .sheet)
         case let .signIn(viewModel):
             push(.signIn(viewModel), type: .fullScreenCover)
         }
